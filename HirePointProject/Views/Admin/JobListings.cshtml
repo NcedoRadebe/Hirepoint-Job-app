@@ -1,0 +1,509 @@
+﻿@model IEnumerable<HirePoint.Models.Job>
+
+@{
+    ViewData["Title"] = "Job Listings";
+}
+
+<style>
+
+    /* ==========================
+               PAGE BACKGROUND
+               ========================== */
+
+    .job-listings-container {
+        background: #eef6fb;
+        padding: 25px;
+        border-radius: 16px;
+        min-height: 100%;
+    }
+
+
+    /* ==========================
+               PAGE HEADER
+               ========================== */
+
+    .job-listings-header {
+        margin-bottom: 22px;
+    }
+
+        .job-listings-header h2 {
+            font-weight: 700;
+            color: #183b56;
+            margin-bottom: 5px;
+        }
+
+        .job-listings-header p {
+            color: #607d8b;
+            margin-bottom: 0;
+        }
+
+
+    /* ==========================
+               MAIN CARD
+               ========================== */
+
+    .job-listings-card {
+        background: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        border: 1px solid #d7e6ef;
+        box-shadow: 0 4px 15px rgba(24, 59, 86, 0.08);
+    }
+
+
+    /* ==========================
+               CARD HEADER
+               ========================== */
+
+    .job-listings-card-header {
+        background: #2878ad;
+        padding: 15px 20px;
+        border-bottom: 1px solid #20658f;
+    }
+
+        .job-listings-card-header h5 {
+            margin: 0;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+
+    /* ==========================
+               TABLE
+               ========================== */
+
+    .job-listings-table {
+        margin-bottom: 0;
+    }
+
+        .job-listings-table thead {
+            background: #2878ad;
+        }
+
+            .job-listings-table thead th {
+                background: #2878ad;
+                color: #ffffff;
+                font-weight: 600;
+                border: none;
+                padding: 13px 15px;
+                white-space: nowrap;
+            }
+
+        .job-listings-table tbody td {
+            padding: 13px 15px;
+            vertical-align: middle;
+            color: #3d4f5c;
+            border-color: #e1ebf1;
+        }
+
+
+        /* ==========================
+               ROW HOVER
+               ========================== */
+
+        .job-listings-table tbody tr {
+            transition: all 0.2s ease;
+        }
+
+            .job-listings-table tbody tr:hover {
+                background: #e7f2f8;
+            }
+
+
+    /* ==========================
+               JOB TITLE
+               ========================== */
+
+    .job-title {
+        font-weight: 600;
+        color: #183b56;
+    }
+
+
+    /* ==========================
+               ACTIVE STATUS
+               ========================== */
+
+    .active-job-status {
+        display: inline-block;
+        padding: 5px 11px;
+        border-radius: 20px;
+        background: #d9edf7;
+        color: #2878ad;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+
+    /* ==========================
+               OTHER STATUS
+               ========================== */
+
+    .other-job-status {
+        display: inline-block;
+        padding: 5px 11px;
+        border-radius: 20px;
+        background: #edf1f4;
+        color: #66737d;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+
+    /* ==========================
+               EDIT BUTTON
+               ========================== */
+
+    .edit-job-button {
+        background: #2878ad;
+        border: 1px solid #2878ad;
+        color: #ffffff;
+        font-weight: 600;
+        border-radius: 7px;
+        padding: 5px 12px;
+        transition: all 0.2s ease;
+    }
+
+        .edit-job-button:hover {
+            background: #1d5f8a;
+            border-color: #1d5f8a;
+            color: #ffffff;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(40, 120, 173, 0.25);
+        }
+
+
+    /* ==========================
+               DELETE BUTTON
+               ========================== */
+
+    .delete-job-button {
+        background: #f8e2e2;
+        border: 1px solid #efc4c4;
+        color: #a33a3a;
+        font-weight: 600;
+        border-radius: 7px;
+        padding: 5px 12px;
+        transition: all 0.2s ease;
+    }
+
+        .delete-job-button:hover {
+            background: #a33a3a;
+            border-color: #a33a3a;
+            color: #ffffff;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(163, 58, 58, 0.20);
+        }
+
+
+    /* ==========================
+               EMPTY STATE
+               ========================== */
+
+    .empty-job-listings {
+        text-align: center;
+        padding: 55px 20px;
+        color: #71808a;
+    }
+
+        .empty-job-listings i {
+            font-size: 40px;
+            color: #2878ad;
+            margin-bottom: 12px;
+        }
+
+        .empty-job-listings h5 {
+            color: #183b56;
+            font-weight: 700;
+        }
+
+
+    /* ==========================
+               LINKS
+               ========================== */
+
+    .job-listings-table a {
+        text-decoration: none;
+    }
+
+
+    /* ==========================
+               RESPONSIVE
+               ========================== */
+
+    @@media (max-width: 768px) {
+
+        .job-listings-container {
+            padding: 15px;
+        }
+
+        .job-listings-card-header {
+            padding: 14px;
+        }
+
+        .job-listings-table thead th,
+        .job-listings-table tbody td {
+            padding: 11px;
+        }
+    }
+
+</style>
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<div class="job-listings-container">
+
+
+    <!-- ==========================
+         PAGE HEADER
+         ========================== -->
+
+    <div class="job-listings-header">
+
+        <h2>
+            <i class="bi bi-briefcase me-2"></i>
+            Job Listings
+        </h2>
+
+        <p>
+            View and manage all jobs posted on HirePoint.
+        </p>
+
+    </div>
+
+
+    <!-- ==========================
+         JOB LISTINGS CARD
+         ========================== -->
+
+    <div class="job-listings-card">
+
+
+        <!-- CARD HEADER -->
+
+        <div class="job-listings-card-header">
+
+            <h5>
+                <i class="bi bi-list-ul me-2"></i>
+                All Job Listings
+            </h5>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="table-responsive">
+
+            <table class="table job-listings-table table-hover mb-0">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Company
+                        </th>
+
+                        <th>
+                            Job Name
+                        </th>
+
+                        <th>
+                            Salary Range
+                        </th>
+
+                        <th>
+                            Date Posted
+                        </th>
+
+                        <th>
+                            Location
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th class="text-center">
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    @if (Model != null && Model.Any())
+                    {
+
+                        foreach (var job in Model)
+                        {
+
+                            <tr>
+
+
+                                <!-- COMPANY -->
+
+                                <td>
+
+                                    <strong class="job-title">
+                                        @job.Company?.CompanyName
+                                    </strong>
+
+                                </td>
+
+
+                                <!-- JOB NAME -->
+
+                                <td>
+
+                                    <span class="job-title">
+                                        @job.JobTitle
+                                    </span>
+
+                                </td>
+
+
+                                <!-- SALARY -->
+
+                                <td>
+                                    @job.Salary
+                                </td>
+
+
+                                <!-- DATE POSTED -->
+
+                                <td>
+                                    @job.DatePosted.ToShortDateString()
+                                </td>
+
+
+                                <!-- LOCATION -->
+
+                                <td>
+                                    @job.City, @job.Province
+                                </td>
+
+
+                                <!-- STATUS -->
+
+                                <td>
+
+                                    @if (job.JobStatus == "Active")
+                                    {
+
+                                        <span class="active-job-status">
+                                            Active
+                                        </span>
+
+                                    }
+                                    else
+                                    {
+
+                                        <span class="other-job-status">
+                                            @job.JobStatus
+                                        </span>
+
+                                    }
+
+                                </td>
+
+
+                                <!-- ACTIONS -->
+
+                                <td class="text-center">
+
+                                    <div class="d-flex justify-content-center gap-2">
+
+
+                                        <!-- EDIT -->
+
+                                        <a asp-controller="Admin"
+                                           asp-action="EditJob"
+                                           asp-route-id="@job.JobID"
+                                           class="btn btn-sm edit-job-button">
+
+                                            <i class="bi bi-pencil-square me-1"></i>
+                                            Edit
+
+                                        </a>
+
+
+                                        <!-- DELETE -->
+
+                                        <form asp-controller="Admin"
+                                              asp-action="DeleteJob"
+                                              method="post"
+                                              class="d-inline"
+                                              onsubmit="return confirm('you cannot dele job deactivate or close it?');">
+
+                                            @Html.AntiForgeryToken()
+
+                                            <input type="hidden"
+                                                   name="id"
+                                                   value="@job.JobID" />
+
+                                            <button type="submit"
+                                                    class="btn btn-sm delete-job-button">
+
+                                                <i class="bi bi-trash me-1"></i>
+                                                Delete
+
+                                            </button>
+
+                                        </form>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        }
+
+                    }
+                    else
+                    {
+
+                        <!-- EMPTY STATE -->
+
+                        <tr>
+
+                            <td colspan="7">
+
+                                <div class="empty-job-listings">
+
+                                    <i class="bi bi-briefcase"></i>
+
+                                    <h5>
+                                        No Job Listings
+                                    </h5>
+
+                                    <p class="mb-0">
+                                        There are currently no jobs posted on HirePoint.
+                                    </p>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

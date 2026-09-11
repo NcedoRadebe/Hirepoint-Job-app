@@ -1,0 +1,1853 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\recruiter\\applicants.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\recruiter\\applicants.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\recruiter\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\recruiter\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\recruiter\\editjob.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\recruiter\\editjob.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\recruiter\\managejobs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\recruiter\\managejobs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\recruiter\\postjob.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\recruiter\\postjob.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\recruiter\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\recruiter\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\controllers\\recruitercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\controllers\\recruitercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\jobseeker\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\jobseeker\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\jobseeker\\interests.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\jobseeker\\interests.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\controllers\\jobseekercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\controllers\\jobseekercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\jobseeker\\applications.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\jobseeker\\applications.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\jobseeker\\jobs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\jobseeker\\jobs.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\viewmodels\\jobinterestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\viewmodels\\jobinterestviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\data\\hirepointdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\data\\hirepointdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\jobseekerinterest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\jobseekerinterest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\jobinterest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\jobinterest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\job.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\job.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\jobseekerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\jobseekerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\hirepoint.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\hirepoint.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\services\\aiemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\services\\aiemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\aisettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\aisettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ncedo\\AppData\\Roaming\\Microsoft\\UserSecrets\\1d6cf3a4-647e-4f3f-a290-8de65406ce0e\\secrets.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\services\\iaiemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\services\\iaiemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\viewmodels\\forgotpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\viewmodels\\forgotpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\account\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\account\\forgotpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\account\\resetpasswordexpired.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\account\\resetpasswordexpired.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\account\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\viewmodels\\resetpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\viewmodels\\resetpasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\services\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\services\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260910235715_AddPasswordResetTokens.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HirePointProject\\Migrations\\20260910235715_AddPasswordResetTokens.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\passwordresettoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\passwordresettoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\jobseeker\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\jobseeker\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260910223650_ChangeQualificationToText.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HirePointProject\\Migrations\\20260910223650_ChangeQualificationToText.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\admin\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\admin\\recruiterapprovals.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\admin\\recruiterapprovals.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\recruiterprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\recruiterprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\admin\\createadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\admin\\createadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\viewmodels\\createadminviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\viewmodels\\createadminviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\company.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\company.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\qualification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\qualification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260809152953_addnotifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260809152953_addnotifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\jobapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\jobapplication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\jobseeker\\notifications.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\jobseeker\\notifications.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\admin\\joblistings.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\admin\\joblistings.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\admin\\editjob.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\admin\\editjob.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\admin\\manageusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\admin\\manageusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ncedo\\Downloads\\HirePointProject (3)\\HirePointProject (2)\\HirePointProject\\HirePointProject\\Migrations\\20260820100313_CheckCurrentModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\hirepoint.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\hirepoint.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\province.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\province.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\helpers\\sessionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\helpers\\sessionhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\admin\\analytics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\admin\\analytics.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260806195003_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260806195003_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\viewmodels\\changepasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\viewmodels\\changepasswordviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\account\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\account\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\admin\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\admin\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\admin\\edituser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\admin\\edituser.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\views\\account\\verifyemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\views\\account\\verifyemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\viewmodels\\verifyemailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\viewmodels\\verifyemailviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\useractivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\useractivity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\notification.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260819022250_companyjobrelationships.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260819022250_companyjobrelationships.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260819021620_CompanyJobRelationships.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HirePointProject\\Migrations\\20260819021620_CompanyJobRelationships.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818164020_AddSystemAdministratorFlag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HirePointProject\\Migrations\\20260818164020_AddSystemAdministratorFlag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818163546_AddSystemAdministratorFlag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HirePointProject\\Migrations\\20260818163546_AddSystemAdministratorFlag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260818081554_updatedatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260818081554_updatedatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260813143310_updatemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260813143310_updatemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\hirepointdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\hirepointdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806191437_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HirePointProject\\Migrations\\20260806191437_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806185135_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HirePointProject\\Migrations\\20260806185135_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806123409_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HirePointProject\\Migrations\\20260806123409_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260719180502_Hirepoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HirePointProject\\Migrations\\20260719180502_Hirepoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260719175901_HirePointUpdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HirePointProject\\Migrations\\20260719175901_HirePointUpdate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\wwwroot\\uploads\\cv.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\wwwroot\\uploads\\cv.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260810010643_final.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260810010643_final.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260808113106_addapplicationdecisionandinterview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260808113106_addapplicationdecisionandinterview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260806235248_removeminimummaximumsalary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260806235248_removeminimummaximumsalary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260806234857_addsalarycolumntojobs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260806234857_addsalarycolumntojobs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260818092601_makejobseekerprofilefieldsnullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260818092601_makejobseekerprofilefieldsnullable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260818085959_jobseekerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260818085959_jobseekerprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260818185456_addpasswordresetfields.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260818185456_addpasswordresetfields.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260818170129_addsystemadministratorflag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260818170129_addsystemadministratorflag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260819041208_addrecruiterprofilecolumns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260819041208_addrecruiterprofilecolumns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260819200812_addcompanytojobs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260819200812_addcompanytojobs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260911134018_addjobinterests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260911134018_addjobinterests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260910235904_addpasswordresettokens.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260910235904_addpasswordresettokens.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260910225519_changequalificationtotext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260910225519_changequalificationtotext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260910172550_addcompanysupport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260910172550_addcompanysupport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|c:\\users\\ncedo\\downloads\\hirepointproject\\hirepointproject\\migrations\\20260910091248_addqualifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C88E566-4AE9-9B50-A4E0-6B27649FFF0C}|HirePointProject\\HirePoint.csproj|solutionrelative:hirepointproject\\migrations\\20260910091248_addqualifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Program.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Program.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Program.cs",
+              "RelativeToolTip": "HirePointProject\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T13:58:27.956Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Recruiter\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Recruiter\\Dashboard.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Recruiter\\Dashboard.cshtml*",
+              "RelativeToolTip": "HirePointProject\\Views\\Recruiter\\Dashboard.cshtml*",
+              "ViewState": "AgIAABUAAAAAAAAAAAAwwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T15:43:07.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EditJob.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Recruiter\\EditJob.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Recruiter\\EditJob.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Recruiter\\EditJob.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Recruiter\\EditJob.cshtml",
+              "ViewState": "AgIAAOICAAAAAAAAAAAwwPwCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T15:45:32.245Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ManageJobs.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Recruiter\\ManageJobs.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Recruiter\\ManageJobs.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Recruiter\\ManageJobs.cshtml*",
+              "RelativeToolTip": "HirePointProject\\Views\\Recruiter\\ManageJobs.cshtml*",
+              "ViewState": "AgIAACACAAAAAAAAAAAwwDoCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T15:44:51.313Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PostJob.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Recruiter\\PostJob.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Recruiter\\PostJob.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Recruiter\\PostJob.cshtml*",
+              "RelativeToolTip": "HirePointProject\\Views\\Recruiter\\PostJob.cshtml*",
+              "ViewState": "AgIAAB4DAAAAAAAAAAAwwDgDAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T15:44:14.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Applicants.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Recruiter\\Applicants.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Recruiter\\Applicants.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Recruiter\\Applicants.cshtml*",
+              "RelativeToolTip": "HirePointProject\\Views\\Recruiter\\Applicants.cshtml*",
+              "ViewState": "AgIAAHACAAAAAAAAAAAwwIoCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T15:46:08.773Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Profile.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Recruiter\\Profile.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Recruiter\\Profile.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Recruiter\\Profile.cshtml*",
+              "RelativeToolTip": "HirePointProject\\Views\\Recruiter\\Profile.cshtml*",
+              "ViewState": "AgIAAK8BAAAAAAAAAAAwwMkBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-20T15:35:23.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RecruiterController.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Controllers\\RecruiterController.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Controllers\\RecruiterController.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Controllers\\RecruiterController.cs",
+              "RelativeToolTip": "HirePointProject\\Controllers\\RecruiterController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T15:38:39.501Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "HirePointProject\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAmwEgAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T14:07:49.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 104,
+              "Title": "20260911134018_AddJobInterests.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260911134018_AddJobInterests.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260911134018_AddJobInterests.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260911134018_AddJobInterests.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260911134018_AddJobInterests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-11T13:40:20.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Interests.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Jobseeker\\Interests.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Jobseeker\\Interests.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Jobseeker\\Interests.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Jobseeker\\Interests.cshtml",
+              "ViewState": "AgIAAG0BAAAAAAAAAIBJwHABAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-11T13:31:52.16Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Jobseeker\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Jobseeker\\Dashboard.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Jobseeker\\Dashboard.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Jobseeker\\Dashboard.cshtml",
+              "ViewState": "AgIAACICAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T14:57:21.568Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "JobseekerController.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Controllers\\JobseekerController.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Controllers\\JobseekerController.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Controllers\\JobseekerController.cs",
+              "RelativeToolTip": "HirePointProject\\Controllers\\JobseekerController.cs",
+              "ViewState": "AgIAACQHAAAAAAAAAAAwwD4HAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T14:53:26.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Jobs.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Jobseeker\\Jobs.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Jobseeker\\Jobs.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Jobseeker\\Jobs.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Jobseeker\\Jobs.cshtml",
+              "ViewState": "AgIAAMkGAAAAAAAAAAAwwOMGAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T14:58:04.633Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Applications.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Jobseeker\\Applications.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Jobseeker\\Applications.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Jobseeker\\Applications.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Jobseeker\\Applications.cshtml",
+              "ViewState": "AgIAAKkBAAAAAAAAAAAwwMMBAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T14:58:50.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "HirePointDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Data\\HirePointDbContext.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Data\\HirePointDbContext.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Data\\HirePointDbContext.cs",
+              "RelativeToolTip": "HirePointProject\\Data\\HirePointDbContext.cs",
+              "ViewState": "AgIAAK0BAAAAAAAAAAAwwMcBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T14:05:52.169Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\User.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\User.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\User.cs",
+              "ViewState": "AgIAAJAAAAAAAAAAAAAzwKQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T14:00:30.385Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "JobseekerInterest.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\JobseekerInterest.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\JobseekerInterest.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\JobseekerInterest.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\JobseekerInterest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-11T13:00:23.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "JobInterestViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\JobInterestViewModel.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\ViewModels\\JobInterestViewModel.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\JobInterestViewModel.cs",
+              "RelativeToolTip": "HirePointProject\\ViewModels\\JobInterestViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-11T13:02:56.176Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "JobInterest.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\JobInterest.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\JobInterest.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\JobInterest.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\JobInterest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-11T12:59:26.106Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Job.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\Job.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\Job.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\Job.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\Job.cs",
+              "ViewState": "AgIAAIsAAAAAAAAAAAAkwKIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T14:03:25.804Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "JobseekerProfile.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\JobseekerProfile.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\JobseekerProfile.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\JobseekerProfile.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\JobseekerProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T17:40:54.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "HirePointProject\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T17:24:12.988Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\ViewModels\\RegisterViewModel.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\RegisterViewModel.cs",
+              "RelativeToolTip": "HirePointProject\\ViewModels\\RegisterViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T17:25:12.494Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T14:09:29.512Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Account\\Register.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Account\\Register.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Account\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T16:43:40.033Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "HirePoint.csproj",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\HirePoint.csproj",
+              "RelativeDocumentMoniker": "HirePointProject\\HirePoint.csproj",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\HirePoint.csproj",
+              "RelativeToolTip": "HirePointProject\\HirePoint.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-07-19T13:59:33.647Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "HirePointProject\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAAI4KAAAAAAAAAAAwwKIKAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T14:10:33.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "AIEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Services\\AIEmailService.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Services\\AIEmailService.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Services\\AIEmailService.cs",
+              "RelativeToolTip": "HirePointProject\\Services\\AIEmailService.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAwwD0AAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-11T06:24:42.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Services\\EmailService.cs",
+              "RelativeToolTip": "HirePointProject\\Services\\EmailService.cs",
+              "ViewState": "AgIAACMAAAAAAAAAAAAwwD0AAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-11T00:07:04.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\appsettings.json",
+              "RelativeDocumentMoniker": "HirePointProject\\appsettings.json",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\appsettings.json",
+              "RelativeToolTip": "HirePointProject\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-07-19T13:57:41.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "IAIEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Services\\IAIEmailService.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Services\\IAIEmailService.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Services\\IAIEmailService.cs",
+              "RelativeToolTip": "HirePointProject\\Services\\IAIEmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-11T06:23:55.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "secrets.json",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\AppData\\Roaming\\Microsoft\\UserSecrets\\1d6cf3a4-647e-4f3f-a290-8de65406ce0e\\secrets.json",
+              "RelativeDocumentMoniker": "..\\..\\AppData\\Roaming\\Microsoft\\UserSecrets\\1d6cf3a4-647e-4f3f-a290-8de65406ce0e\\secrets.json",
+              "ToolTip": "C:\\Users\\Ncedo\\AppData\\Roaming\\Microsoft\\UserSecrets\\1d6cf3a4-647e-4f3f-a290-8de65406ce0e\\secrets.json",
+              "RelativeToolTip": "..\\..\\AppData\\Roaming\\Microsoft\\UserSecrets\\1d6cf3a4-647e-4f3f-a290-8de65406ce0e\\secrets.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-09-11T06:39:40.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "AISettings.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\AISettings.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\AISettings.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\AISettings.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\AISettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-11T06:34:15.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "ForgotPasswordViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\ForgotPasswordViewModel.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\ViewModels\\ForgotPasswordViewModel.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\ForgotPasswordViewModel.cs",
+              "RelativeToolTip": "HirePointProject\\ViewModels\\ForgotPasswordViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-18T18:41:57.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "ForgotPassword.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Account\\ForgotPassword.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Account\\ForgotPassword.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Account\\ForgotPassword.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Account\\ForgotPassword.cshtml",
+              "ViewState": "AgIAAIkBAAAAAAAAAAAwwKMBAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-18T18:48:45.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "ResetPassword.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Account\\ResetPassword.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Account\\ResetPassword.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Account\\ResetPassword.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Account\\ResetPassword.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-18T19:44:26.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "ResetPasswordExpired.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Account\\ResetPasswordExpired.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Account\\ResetPasswordExpired.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Account\\ResetPasswordExpired.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Account\\ResetPasswordExpired.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-11T00:26:47.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "ResetPasswordViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\ResetPasswordViewModel.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\ViewModels\\ResetPasswordViewModel.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\ResetPasswordViewModel.cs",
+              "RelativeToolTip": "HirePointProject\\ViewModels\\ResetPasswordViewModel.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAowCcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-18T18:40:43.825Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Services\\IEmailService.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Services\\IEmailService.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Services\\IEmailService.cs",
+              "RelativeToolTip": "HirePointProject\\Services\\IEmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-11T00:06:16.455Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "EmailSettings.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\EmailSettings.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\EmailSettings.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\EmailSettings.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\EmailSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-11T00:04:24.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 105,
+              "Title": "20260910235904_AddPasswordResetTokens.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260910235904_AddPasswordResetTokens.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260910235904_AddPasswordResetTokens.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260910235904_AddPasswordResetTokens.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260910235904_AddPasswordResetTokens.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAswDgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-10T23:59:04.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "20260910235715_AddPasswordResetTokens.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260910235715_AddPasswordResetTokens.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260910235715_AddPasswordResetTokens.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260910235715_AddPasswordResetTokens.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260910235715_AddPasswordResetTokens.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-10T23:57:16.053Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "PasswordResetToken.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\PasswordResetToken.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\PasswordResetToken.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\PasswordResetToken.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\PasswordResetToken.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAwwBoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-10T23:54:31.351Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 106,
+              "Title": "20260910225519_ChangeQualificationToText.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260910225519_ChangeQualificationToText.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260910225519_ChangeQualificationToText.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260910225519_ChangeQualificationToText.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260910225519_ChangeQualificationToText.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-10T22:55:19.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "20260910223650_ChangeQualificationToText.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260910223650_ChangeQualificationToText.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260910223650_ChangeQualificationToText.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260910223650_ChangeQualificationToText.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260910223650_ChangeQualificationToText.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-10T22:36:51.615Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "Profile.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Jobseeker\\Profile.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Jobseeker\\Profile.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Jobseeker\\Profile.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Jobseeker\\Profile.cshtml",
+              "ViewState": "AgIAAO8BAAAAAAAAAAAwwAcCAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T14:59:19.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Admin\\Dashboard.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\Dashboard.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Admin\\Dashboard.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-06T23:43:07.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "RecruiterApprovals.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\RecruiterApprovals.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Admin\\RecruiterApprovals.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\RecruiterApprovals.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Admin\\RecruiterApprovals.cshtml",
+              "ViewState": "AgIAAEQBAAAAAAAAAAAwwF4BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-10T19:20:24.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "RecruiterProfile.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\RecruiterProfile.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\RecruiterProfile.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\RecruiterProfile.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\RecruiterProfile.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAkwCkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T15:40:36.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "CreateAdminViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\CreateAdminViewModel.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\ViewModels\\CreateAdminViewModel.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\CreateAdminViewModel.cs",
+              "RelativeToolTip": "HirePointProject\\ViewModels\\CreateAdminViewModel.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAkwGkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-14T02:50:32.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 107,
+              "Title": "20260910172550_AddCompanySupport.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260910172550_AddCompanySupport.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260910172550_AddCompanySupport.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260910172550_AddCompanySupport.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260910172550_AddCompanySupport.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-10T17:25:50.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "CreateAdmin.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\CreateAdmin.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Admin\\CreateAdmin.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\CreateAdmin.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Admin\\CreateAdmin.cshtml",
+              "ViewState": "AgIAABwCAAAAAAAAAIBJwB8CAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-14T02:53:42.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "Company.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\Company.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\Company.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\Company.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\Company.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAgwE8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-18T22:46:41.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAwwHkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-09T23:55:07.915Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAG0DAAAAAAAAAIBJwHADAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T14:36:01.216Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "Qualification.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\Qualification.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\Qualification.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\Qualification.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\Qualification.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAkwCUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-09T21:31:48.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 108,
+              "Title": "20260910091248_AddQualifications.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260910091248_AddQualifications.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260910091248_AddQualifications.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260910091248_AddQualifications.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260910091248_AddQualifications.cs",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAwwJUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-10T09:12:48.478Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "20260809152953_AddNotifications.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260809152953_AddNotifications.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260809152953_AddNotifications.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260809152953_AddNotifications.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260809152953_AddNotifications.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-09T15:29:54.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "JobApplication.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\JobApplication.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\JobApplication.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\JobApplication.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\JobApplication.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T14:54:30.5Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "Notifications.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Jobseeker\\Notifications.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Jobseeker\\Notifications.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Jobseeker\\Notifications.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Jobseeker\\Notifications.cshtml",
+              "ViewState": "AgIAAFkCAAAAAAAAAAAIwGsCAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-09T14:38:39.23Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "HirePointProject\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwBgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T17:13:05.545Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "EditJob.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\EditJob.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Admin\\EditJob.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\EditJob.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Admin\\EditJob.cshtml",
+              "ViewState": "AgIAAMoBAAAAAAAAAAAIwN0BAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T14:47:42.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "JobListings.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\JobListings.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Admin\\JobListings.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\JobListings.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Admin\\JobListings.cshtml",
+              "ViewState": "AgIAALYBAAAAAAAAAAAgwNEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T14:46:50.665Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-20T17:28:26.784Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-20T17:28:30.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "20260820100313_CheckCurrentModel.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject (3)\\HirePointProject (2)\\HirePointProject\\HirePointProject\\Migrations\\20260820100313_CheckCurrentModel.cs",
+              "RelativeDocumentMoniker": "..\\HirePointProject (3)\\HirePointProject (2)\\HirePointProject\\HirePointProject\\Migrations\\20260820100313_CheckCurrentModel.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject (3)\\HirePointProject (2)\\HirePointProject\\HirePointProject\\Migrations\\20260820100313_CheckCurrentModel.cs",
+              "RelativeToolTip": "..\\HirePointProject (3)\\HirePointProject (2)\\HirePointProject\\HirePointProject\\Migrations\\20260820100313_CheckCurrentModel.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-20T10:03:13.442Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "ManageUsers.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\ManageUsers.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Admin\\ManageUsers.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\ManageUsers.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Admin\\ManageUsers.cshtml",
+              "ViewState": "AgIAALMCAAAAAAAAAAAiwMICAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T14:23:34.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "HirePoint",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\HirePoint.csproj",
+              "RelativeDocumentMoniker": "HirePointProject\\HirePoint.csproj",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\HirePoint.csproj",
+              "RelativeToolTip": "HirePointProject\\HirePoint.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-08-20T16:21:47.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "Province.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\Province.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\Province.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\Province.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\Province.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAADwvwcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T14:02:53.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "SessionHelper.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Helpers\\SessionHelper.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Helpers\\SessionHelper.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Helpers\\SessionHelper.cs",
+              "RelativeToolTip": "HirePointProject\\Helpers\\SessionHelper.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAUwFAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T16:37:49.53Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "Analytics.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\Analytics.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Admin\\Analytics.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\Analytics.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Admin\\Analytics.cshtml",
+              "ViewState": "AgIAAJUBAAAAAAAAAAAYwMcBAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T14:48:17.933Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "20260806195003_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806195003_InitialCreate.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260806195003_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806195003_InitialCreate.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260806195003_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T19:50:03.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 103,
+              "Title": "20260819200812_AddCompanyToJobs.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260819200812_AddCompanyToJobs.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260819200812_AddCompanyToJobs.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260819200812_AddCompanyToJobs.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260819200812_AddCompanyToJobs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T20:08:12.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "ChangePasswordViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\ChangePasswordViewModel.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\ViewModels\\ChangePasswordViewModel.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\ChangePasswordViewModel.cs",
+              "RelativeToolTip": "HirePointProject\\ViewModels\\ChangePasswordViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-09T19:16:12.943Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "ChangePassword.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Account\\ChangePassword.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Account\\ChangePassword.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Account\\ChangePassword.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Account\\ChangePassword.cshtml",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAkwJgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-09T19:18:28.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-19T16:52:27.209Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-20T13:35:45.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-19T16:48:35.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "Profile.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\Profile.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Admin\\Profile.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\Profile.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Admin\\Profile.cshtml",
+              "ViewState": "AgIAAFoBAAAAAAAAAAAYwHABAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T14:48:51.947Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "EditUser.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\EditUser.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Admin\\EditUser.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Admin\\EditUser.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Admin\\EditUser.cshtml",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwFMAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-07-19T14:29:08.813Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "VerifyEmail.cshtml",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Account\\VerifyEmail.cshtml",
+              "RelativeDocumentMoniker": "HirePointProject\\Views\\Account\\VerifyEmail.cshtml",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Views\\Account\\VerifyEmail.cshtml",
+              "RelativeToolTip": "HirePointProject\\Views\\Account\\VerifyEmail.cshtml",
+              "ViewState": "AgIAAL8AAAAAAAAAAAAYwEIBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-08-09T19:18:03.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "VerifyEmailViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\VerifyEmailViewModel.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\ViewModels\\VerifyEmailViewModel.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\ViewModels\\VerifyEmailViewModel.cs",
+              "RelativeToolTip": "HirePointProject\\ViewModels\\VerifyEmailViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-09T19:15:45.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 77,
+              "Title": "UserActivity.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\UserActivity.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\UserActivity.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\UserActivity.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\UserActivity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T14:45:55.052Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 78,
+              "Title": "Notification.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\Notification.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\Notification.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\Notification.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\Notification.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwEQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-08T10:52:56.06Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 102,
+              "Title": "20260819041208_AddRecruiterProfileColumns.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260819041208_AddRecruiterProfileColumns.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260819041208_AddRecruiterProfileColumns.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260819041208_AddRecruiterProfileColumns.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260819041208_AddRecruiterProfileColumns.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T04:12:09.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 79,
+              "Title": "20260819022250_CompanyJobRelationships.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260819022250_CompanyJobRelationships.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260819022250_CompanyJobRelationships.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260819022250_CompanyJobRelationships.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260819022250_CompanyJobRelationships.cs",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAwwIQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T02:22:51.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 80,
+              "Title": "20260819021620_CompanyJobRelationships.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260819021620_CompanyJobRelationships.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260819021620_CompanyJobRelationships.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260819021620_CompanyJobRelationships.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260819021620_CompanyJobRelationships.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T02:16:20.579Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 100,
+              "Title": "20260818185456_AddPasswordResetFields.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818185456_AddPasswordResetFields.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260818185456_AddPasswordResetFields.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818185456_AddPasswordResetFields.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260818185456_AddPasswordResetFields.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-18T18:54:56.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 101,
+              "Title": "20260818170129_AddSystemAdministratorFlag.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818170129_AddSystemAdministratorFlag.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260818170129_AddSystemAdministratorFlag.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818170129_AddSystemAdministratorFlag.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260818170129_AddSystemAdministratorFlag.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAkwA4AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-18T17:01:29.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 82,
+              "Title": "20260818163546_AddSystemAdministratorFlag.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818163546_AddSystemAdministratorFlag.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260818163546_AddSystemAdministratorFlag.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818163546_AddSystemAdministratorFlag.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260818163546_AddSystemAdministratorFlag.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-18T16:35:47.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 81,
+              "Title": "20260818164020_AddSystemAdministratorFlag.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818164020_AddSystemAdministratorFlag.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260818164020_AddSystemAdministratorFlag.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818164020_AddSystemAdministratorFlag.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260818164020_AddSystemAdministratorFlag.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-18T16:40:20.099Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 98,
+              "Title": "20260818092601_MakeJobseekerProfileFieldsNullable.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818092601_MakeJobseekerProfileFieldsNullable.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260818092601_MakeJobseekerProfileFieldsNullable.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818092601_MakeJobseekerProfileFieldsNullable.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260818092601_MakeJobseekerProfileFieldsNullable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-18T09:26:01.547Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 99,
+              "Title": "20260818085959_Jobseekerprofile.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818085959_Jobseekerprofile.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260818085959_Jobseekerprofile.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818085959_Jobseekerprofile.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260818085959_Jobseekerprofile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-18T09:00:00Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 83,
+              "Title": "20260818081554_UpdateDatabase.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818081554_UpdateDatabase.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260818081554_UpdateDatabase.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260818081554_UpdateDatabase.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260818081554_UpdateDatabase.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAswCAAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-18T08:15:54.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 84,
+              "Title": "20260813143310_updatemodel.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260813143310_updatemodel.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260813143310_updatemodel.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260813143310_updatemodel.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260813143310_updatemodel.cs",
+              "ViewState": "AgIAAEoCAAAAAAAAAAAmwF8CAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-13T14:33:10.737Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 85,
+              "Title": "HirePointDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\HirePointDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\HirePointDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\HirePointDbContextModelSnapshot.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\HirePointDbContextModelSnapshot.cs",
+              "ViewState": "AgIAACQCAAAAAAAAAAAmwDoCAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-13T23:24:40.897Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 94,
+              "Title": "20260810010643_final.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260810010643_final.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260810010643_final.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260810010643_final.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260810010643_final.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-10T01:06:44.637Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 86,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "HirePointProject\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "HirePointProject\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-07-19T18:12:01.834Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 95,
+              "Title": "20260808113106_AddApplicationDecisionAndInterview.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260808113106_AddApplicationDecisionAndInterview.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260808113106_AddApplicationDecisionAndInterview.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260808113106_AddApplicationDecisionAndInterview.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260808113106_AddApplicationDecisionAndInterview.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-08T11:31:07.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 96,
+              "Title": "20260806235248_RemoveMinimumMaximumSalary.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806235248_RemoveMinimumMaximumSalary.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260806235248_RemoveMinimumMaximumSalary.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806235248_RemoveMinimumMaximumSalary.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260806235248_RemoveMinimumMaximumSalary.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T23:52:48.555Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 97,
+              "Title": "20260806234857_AddSalaryColumnToJobs.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806234857_AddSalaryColumnToJobs.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260806234857_AddSalaryColumnToJobs.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806234857_AddSalaryColumnToJobs.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260806234857_AddSalaryColumnToJobs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T23:48:57.54Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 87,
+              "Title": "20260806191437_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806191437_InitialCreate.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260806191437_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806191437_InitialCreate.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260806191437_InitialCreate.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T19:14:37.677Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 88,
+              "Title": "20260806185135_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806185135_InitialCreate.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260806185135_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806185135_InitialCreate.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260806185135_InitialCreate.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T18:51:35.371Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 89,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "HirePointProject\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T17:58:13.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 90,
+              "Title": "20260806123409_InitialCreate.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806123409_InitialCreate.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260806123409_InitialCreate.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260806123409_InitialCreate.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260806123409_InitialCreate.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-06T12:34:09.911Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 91,
+              "Title": "20260719180502_Hirepoint.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260719180502_Hirepoint.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260719180502_Hirepoint.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260719180502_Hirepoint.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260719180502_Hirepoint.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T18:05:03.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 92,
+              "Title": "20260719175901_HirePointUpdate.cs",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260719175901_HirePointUpdate.cs",
+              "RelativeDocumentMoniker": "HirePointProject\\Migrations\\20260719175901_HirePointUpdate.cs",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\Migrations\\20260719175901_HirePointUpdate.cs",
+              "RelativeToolTip": "HirePointProject\\Migrations\\20260719175901_HirePointUpdate.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-19T17:59:03.59Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 93,
+              "Title": "cv.css",
+              "DocumentMoniker": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\wwwroot\\uploads\\cv.css",
+              "RelativeDocumentMoniker": "HirePointProject\\wwwroot\\uploads\\cv.css",
+              "ToolTip": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\wwwroot\\uploads\\cv.css",
+              "RelativeToolTip": "HirePointProject\\wwwroot\\uploads\\cv.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-07-19T17:43:31.162Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

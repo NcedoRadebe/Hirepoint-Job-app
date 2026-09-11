@@ -1,0 +1,770 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<!-- ==========================
+     HEADER
+     ========================== -->
+
+<div class="admin-dashboard">
+
+    
+    <div class="admin-dashboard-header">
+
+        <div>
+            <h2>
+                <i class="bi bi-speedometer2 me-2"></i>
+                Admin Dashboard
+            </h2>
+
+            <p class="mb-0">
+                Manage users, jobs and platform activity.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- ==========================
+     STATISTICS
+     ========================== -->
+
+    <div class="row g-4 mb-4">
+
+        <!-- TOTAL USERS -->
+
+        <div class="col-md-3">
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-body">
+
+                    <div class="admin-stat-icon">
+                        <i class="bi bi-people"></i>
+                    </div>
+
+                    <div>
+                        <h6>Total Users</h6>
+
+                        <h2>
+                            @ViewBag.TotalUsers
+                        </h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ACTIVE JOBS -->
+
+        <div class="col-md-3">
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-body">
+
+                    <div class="admin-stat-icon">
+                        <i class="bi bi-briefcase"></i>
+                    </div>
+
+                    <div>
+                        <h6>Active Jobs</h6>
+
+                        <h2>
+                            @ViewBag.ActiveJobs
+                        </h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- APPLICATIONS -->
+
+        <div class="col-md-3">
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-body">
+
+                    <div class="admin-stat-icon">
+                        <i class="bi bi-file-earmark-text"></i>
+                    </div>
+
+                    <div>
+                        <h6>Applications</h6>
+
+                        <h2>
+                            @ViewBag.Applications
+                        </h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- JOBSEEKERS -->
+
+        <div class="col-md-3">
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-body">
+
+                    <div class="admin-stat-icon">
+                        <i class="bi bi-person-check"></i>
+                    </div>
+
+                    <div>
+                        <h6>Jobseekers</h6>
+
+                        <h2>
+                            @ViewBag.Jobseekers
+                        </h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================
+     SECOND ROW
+     ========================== -->
+
+    <div class="row g-4 mb-4">
+
+        <!-- RECRUITERS -->
+
+        <div class="col-md-6">
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-body">
+
+                    <div class="admin-stat-icon">
+                        <i class="bi bi-building"></i>
+                    </div>
+
+                    <div>
+                        <h6>Recruiters</h6>
+
+                        <h2>
+                            @ViewBag.Recruiters
+                        </h2>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK ACTIONS -->
+
+        <div class="col-md-6">
+
+            <div class="admin-card quick-actions-card">
+
+                <div class="admin-card-header">
+
+                    <h5>
+                        <i class="bi bi-lightning-charge me-2"></i>
+                        Quick Actions
+                    </h5>
+
+                </div>
+
+                <div class="admin-card-body quick-actions">
+
+                    <!-- MANAGE USERS -->
+
+                    <a asp-controller="Admin"
+                       asp-action="ManageUsers"
+                       class="admin-action-button">
+
+                        <i class="bi bi-people me-2"></i>
+                        Manage Users
+
+                    </a>
+
+
+                    <!-- RECRUITER APPROVALS -->
+
+                    <a asp-controller="Admin"
+                       asp-action="RecruiterApprovals"
+                       class="admin-action-button">
+
+                        <i class="bi bi-person-check me-2"></i>
+                        Recruiter Approvals
+
+                    </a>
+
+
+                    <!-- CREATE ADMINISTRATOR -->
+
+                    <a asp-controller="Admin"
+                       asp-action="CreateAdmin"
+                       class="admin-action-button">
+
+                        <i class="bi bi-person-plus me-2"></i>
+                        Create Administrator
+
+                    </a>
+
+
+                    <!-- REVIEW JOBS -->
+
+                    <a asp-controller="Admin"
+                       asp-action="JobListings"
+                       class="admin-action-button">
+
+                        <i class="bi bi-briefcase me-2"></i>
+                        Review Jobs
+
+                    </a>
+
+
+                    <!-- ANALYTICS -->
+
+                    <a asp-controller="Admin"
+                       asp-action="Analytics"
+                       class="admin-action-button">
+
+                        <i class="bi bi-bar-chart me-2"></i>
+                        View Analytics
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================
+     TABLES
+     ========================== -->
+
+    <div class="row g-4">
+
+
+        <!-- ==========================
+         RECENT USERS
+         ========================== -->
+
+        <div class="col-lg-6">
+
+            <div class="admin-card">
+
+                <div class="admin-card-header">
+
+                    <h5>
+                        <i class="bi bi-people me-2"></i>
+                        Recent Users
+                    </h5>
+
+                </div>
+
+
+                <div class="admin-card-body p-0">
+
+                    <div class="table-responsive">
+
+                        <table class="table admin-table mb-0">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>Name</th>
+
+                                    <th>Email</th>
+
+                                    <th>Type</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                @if (ViewBag.RecentUsers != null &&
+                                     ViewBag.RecentUsers.Count > 0)
+                                {
+                                    foreach (var user in ViewBag.RecentUsers)
+                                    {
+                                        <tr>
+
+                                            <td>
+                                                <strong>
+                                                    @user.FullName
+                                                </strong>
+                                            </td>
+
+                                            <td>
+                                                @user.Email
+                                            </td>
+
+                                            <td>
+                                                <span class="user-type">
+                                                    @user.UserType
+                                                </span>
+                                            </td>
+
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+
+                                        <td colspan="3"
+                                            class="empty-table text-center">
+
+                                            No users found.
+
+                                        </td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==========================
+         RECENT JOBS
+         ========================== -->
+
+        <div class="col-lg-6">
+
+            <div class="admin-card">
+
+                <div class="admin-card-header">
+
+                    <h5>
+                        <i class="bi bi-briefcase me-2"></i>
+                        Recent Jobs
+                    </h5>
+
+                </div>
+
+
+                <div class="admin-card-body p-0">
+
+                    <div class="table-responsive">
+
+                        <table class="table admin-table mb-0">
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Job Title
+                                    </th>
+
+                                    <th>
+                                        Company
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody>
+
+                                @if (ViewBag.RecentJobs != null &&
+                                     ViewBag.RecentJobs.Count > 0)
+                                {
+                                    foreach (var job in ViewBag.RecentJobs)
+                                    {
+                                        <tr>
+
+                                            <!-- JOB TITLE -->
+
+                                            <td>
+                                                <strong>
+                                                    @job.JobTitle
+                                                </strong>
+                                            </td>
+
+
+                                            <!-- COMPANY -->
+
+                                            <td>
+
+                                                @if (job.Company != null &&
+                                                     !string.IsNullOrWhiteSpace(
+                                                         job.Company.CompanyName))
+                                                {
+                                                    <strong>
+                                                        @job.Company.CompanyName
+                                                    </strong>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted">
+                                                        Company not provided
+                                                    </span>
+                                                }
+
+                                            </td>
+
+
+                                            <!-- STATUS -->
+
+                                            <td>
+
+                                                @if (string.Equals(
+                                                    job.JobStatus,
+                                                    "Active",
+                                                    StringComparison.OrdinalIgnoreCase))
+                                                {
+                                                    <span class="active-status">
+                                                        Active
+                                                    </span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="other-status">
+                                                        @job.JobStatus
+                                                    </span>
+                                                }
+
+                                            </td>
+
+                                        </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr>
+
+                                        <td colspan="3"
+                                            class="empty-table text-center">
+
+                                            No jobs found.
+
+                                        </td>
+
+                                    </tr>
+                                }
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =====================================================
+     ADMIN DASHBOARD CSS
+     ===================================================== -->
+
+<style>
+
+    .admin-dashboard {
+        background: #eef6fb;
+        min-height: 100vh;
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+
+    .admin-dashboard-header {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 18px 22px;
+        margin-bottom: 20px;
+        border-left: 5px solid #2878ad;
+        box-shadow: 0 3px 12px rgba(40, 120, 173, 0.08);
+    }
+
+
+        .admin-dashboard-header h2 {
+            color: #2878ad;
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 4px;
+        }
+
+
+        .admin-dashboard-header p {
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+
+    .admin-stat-card {
+        background: #2878ad;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 0 4px 12px rgba(40, 120, 173, 0.15);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        height: 100%;
+        overflow: hidden;
+    }
+
+
+        .admin-stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 18px rgba(40, 120, 173, 0.22);
+        }
+
+
+    .admin-stat-body {
+        padding: 15px 17px;
+        display: flex;
+        align-items: center;
+        gap: 13px;
+    }
+
+
+    .admin-stat-icon {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.18);
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+    }
+
+
+    .admin-stat-body h6 {
+        color: rgba(255, 255, 255, 0.90);
+        font-size: 12px;
+        margin-bottom: 2px;
+        font-weight: 600;
+    }
+
+
+    .admin-stat-body h2 {
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: 700;
+        margin: 0;
+    }
+
+
+    .admin-card {
+        background: #ffffff;
+        border-radius: 10px;
+        border: 1px solid #d9eaf5;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(40, 120, 173, 0.08);
+    }
+
+
+    .admin-card-header {
+        background: #2878ad;
+        color: #ffffff;
+        padding: 14px 18px;
+    }
+
+
+        .admin-card-header h5 {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+
+    .admin-card-body {
+        padding: 18px;
+    }
+
+
+    .admin-table {
+        margin-bottom: 0;
+    }
+
+
+        .admin-table thead th {
+            background: #2878ad;
+            color: #ffffff;
+            border: none;
+            padding: 12px 15px;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+
+        .admin-table tbody td {
+            padding: 13px 15px;
+            vertical-align: middle;
+            border-color: #e8f1f6;
+            color: #444444;
+            font-size: 13px;
+        }
+
+
+        .admin-table tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+
+            .admin-table tbody tr:hover {
+                background: #eef8fd;
+            }
+
+
+    .active-status {
+        display: inline-block;
+        background: #e4f5eb;
+        color: #21874b;
+        padding: 4px 9px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+
+    .other-status {
+        display: inline-block;
+        background: #eef1f4;
+        color: #66727c;
+        padding: 4px 9px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+
+    .user-type {
+        display: inline-block;
+        background: #e4f2fa;
+        color: #2878ad;
+        padding: 4px 9px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+
+    .quick-actions-card {
+        height: 100%;
+    }
+
+
+    .quick-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+
+    .admin-action-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 9px 13px;
+        border-radius: 7px;
+        background: #e4f2fa;
+        color: #2878ad;
+        border: 1px solid #c9e3f1;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.25s ease;
+    }
+
+
+        .admin-action-button:hover {
+            background: #2878ad;
+            color: #ffffff;
+            border-color: #2878ad;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(40, 120, 173, 0.18);
+        }
+
+
+    .empty-table {
+        padding: 25px !important;
+        color: #7b8790;
+    }
+
+
+    @@media (max-width: 768px) {
+
+        .admin-dashboard {
+            padding: 12px;
+        }
+
+        .admin-dashboard-header {
+            padding: 15px;
+        }
+
+            .admin-dashboard-header h2 {
+                font-size: 20px;
+            }
+
+        .admin-stat-body {
+            padding: 13px 15px;
+        }
+
+        .admin-stat-icon {
+            width: 38px;
+            height: 38px;
+            min-width: 38px;
+            font-size: 16px;
+        }
+
+        .admin-stat-body h2 {
+            font-size: 21px;
+        }
+
+        .admin-stat-body h6 {
+            font-size: 11px;
+        }
+    }
+
+</style>

@@ -1,0 +1,1764 @@
+﻿@model IEnumerable<HirePoint.Models.Job>
+
+@{
+    ViewData["Title"] = "Find Jobs";
+
+    string currentSort =
+        Context.Request.Query["sort"].ToString();
+
+    if (string.IsNullOrWhiteSpace(currentSort))
+    {
+        currentSort = "newest";
+    }
+
+    string currentDatePosted =
+        Context.Request.Query["datePosted"].ToString();
+
+    if (string.IsNullOrWhiteSpace(currentDatePosted))
+    {
+        currentDatePosted = "any";
+    }
+}
+
+<style>
+
+    /* ==========================
+           PAGE
+           ========================== */
+
+    .jobs-page {
+        background: #eef6fb;
+        padding: 25px;
+        border-radius: 14px;
+        min-height: 100%;
+    }
+
+
+    /* ==========================
+           HEADER
+           ========================== */
+
+    .jobs-header {
+        margin-bottom: 22px;
+    }
+
+        .jobs-header h2 {
+            color: #183b56;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .jobs-header p {
+            color: #66737d;
+            margin-bottom: 0;
+        }
+
+
+    /* ==========================
+           SEARCH CARD
+           ========================== */
+
+    .jobs-search-card {
+        background: #ffffff;
+        border: 1px solid #d7e7f0;
+        border-radius: 12px;
+        padding: 18px;
+        margin-bottom: 20px;
+        box-shadow: 0 3px 10px rgba(24, 59, 86, 0.07);
+    }
+
+    .jobs-search-label {
+        color: #183b56;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .jobs-search-input,
+    .jobs-filter-select {
+        border: 1px solid #cddfe9;
+        border-radius: 7px;
+        padding: 10px 12px;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+        .jobs-search-input:focus,
+        .jobs-filter-select:focus {
+            border-color: #2878ad;
+            box-shadow: 0 0 0 3px rgba(40, 120, 173, 0.12);
+            outline: none;
+        }
+
+
+    /* ==========================
+           AUTOCOMPLETE WRAPPERS
+           ========================== */
+
+    .job-title-search-wrapper,
+    .job-province-search-wrapper,
+    .job-city-search-wrapper {
+        position: relative;
+    }
+
+
+    /* ==========================
+           AUTOCOMPLETE
+           ========================== */
+
+    .job-autocomplete {
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border: 1px solid #d7e7f0;
+        border-radius: 8px;
+        box-shadow: 0 6px 18px rgba(24, 59, 86, 0.15);
+        z-index: 1050;
+        display: none;
+        max-height: 300px;
+        overflow-y: auto;
+    }
+
+        .job-autocomplete.show {
+            display: block;
+        }
+
+    .job-suggestion {
+        padding: 11px 13px;
+        border-bottom: 1px solid #edf2f5;
+        cursor: pointer;
+        transition: background 0.15s ease;
+    }
+
+        .job-suggestion:last-child {
+            border-bottom: none;
+        }
+
+        .job-suggestion:hover {
+            background: #eef6fb;
+        }
+
+    .job-suggestion-title {
+        color: #183b56;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 3px;
+    }
+
+    .job-suggestion-details {
+        color: #66737d;
+        font-size: 12px;
+    }
+
+        .job-suggestion-details i {
+            color: #2878ad;
+        }
+
+    .job-autocomplete-message {
+        padding: 12px 14px;
+        color: #71808a;
+        font-size: 13px;
+        text-align: center;
+    }
+
+    .autocomplete-loading {
+        padding: 12px 14px;
+        color: #2878ad;
+        font-size: 13px;
+        text-align: center;
+    }
+
+
+    /* ==========================
+           SEARCH BUTTON
+           ========================== */
+
+    .search-btn {
+        background: #2878ad;
+        color: #ffffff;
+        border: 1px solid #2878ad;
+        border-radius: 7px;
+        padding: 9px 18px;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+        .search-btn:hover {
+            background: #1f638f;
+            border-color: #1f638f;
+            color: #ffffff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(40, 120, 173, 0.20);
+        }
+
+
+    /* ==========================
+           CLEAR BUTTON
+           ========================== */
+
+    .clear-btn {
+        background: #ffffff;
+        color: #66737d;
+        border: 1px solid #cddfe9;
+        border-radius: 7px;
+        padding: 9px 18px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+
+        .clear-btn:hover {
+            background: #f5f9fb;
+            color: #183b56;
+            border-color: #a9c5d5;
+        }
+
+
+    /* ==========================
+           TABLE CARD
+           ========================== */
+
+    .jobs-table-card {
+        background: #ffffff;
+        border: 1px solid #d7e7f0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(24, 59, 86, 0.07);
+    }
+
+    .jobs-table-header {
+        background: #2878ad;
+        color: #ffffff;
+        padding: 13px 17px;
+    }
+
+        .jobs-table-header h5 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+
+    /* ==========================
+           TABLE
+           ========================== */
+
+    .jobs-table {
+        margin-bottom: 0;
+    }
+
+        .jobs-table thead th {
+            background: #2878ad;
+            color: #ffffff;
+            border: none;
+            padding: 12px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .jobs-table tbody td {
+            padding: 12px 14px;
+            color: #3d4f5c;
+            font-size: 13px;
+            vertical-align: middle;
+            border-color: #e5eef3;
+        }
+
+        .jobs-table tbody tr {
+            transition: all 0.2s ease;
+        }
+
+            .jobs-table tbody tr:hover {
+                background: #eef6fb;
+            }
+
+
+    /* ==========================
+           JOB TITLE
+           ========================== */
+
+    .job-title {
+        color: #183b56;
+        font-weight: 600;
+    }
+
+    .job-location {
+        color: #66737d;
+    }
+
+
+    /* ==========================
+           COMPANY
+           ========================== */
+
+    .company-name {
+        color: #183b56;
+        font-weight: 600;
+    }
+
+
+    /* ==========================
+           DATE
+           ========================== */
+
+    .date-text {
+        white-space: nowrap;
+        color: #4d6270;
+    }
+
+    .closing-date {
+        white-space: nowrap;
+        font-weight: 600;
+        color: #183b56;
+    }
+
+
+    /* ==========================
+           DAYS LEFT
+           ========================== */
+
+    .days-left {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 5px 9px;
+        border-radius: 20px;
+        background: #eaf6ee;
+        color: #24713a;
+        font-size: 11px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .closing-soon {
+        background: #fff4df;
+        color: #9a6500;
+    }
+
+
+    /* ==========================
+           APPLY BUTTON
+           ========================== */
+
+    .apply-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #2878ad;
+        color: #ffffff;
+        border: 1px solid #2878ad;
+        border-radius: 7px;
+        padding: 7px 13px;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+
+        .apply-btn:hover {
+            background: #1f638f;
+            border-color: #1f638f;
+            color: #ffffff;
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(40, 120, 173, 0.22);
+        }
+
+
+    /* ==========================
+           EMPTY STATE
+           ========================== */
+
+    .jobs-empty {
+        text-align: center;
+        color: #71808a;
+        padding: 40px !important;
+    }
+
+
+    /* ==========================
+           MOBILE
+           ========================== */
+
+    @@media (max-width: 768px) {
+
+        .jobs-page {
+            padding: 15px;
+        }
+
+        .jobs-search-card {
+            padding: 15px;
+        }
+
+        .search-btn,
+        .clear-btn {
+            width: 100%;
+        }
+
+        .job-autocomplete {
+            max-height: 260px;
+        }
+    }
+
+</style>
+
+
+<div class="jobs-page">
+
+
+    <!-- ==========================
+         PAGE HEADER
+         ========================== -->
+
+    <div class="jobs-header">
+
+        <h2>
+            <i class="bi bi-search me-2"></i>
+            Find Jobs
+        </h2>
+
+        <p>
+            Search for available job opportunities and apply for positions that match your qualification.
+        </p>
+
+    </div>
+
+
+    <!-- ==========================
+         SEARCH + FILTERS
+         ========================== -->
+
+    <div class="jobs-search-card">
+
+        <form asp-controller="Jobseeker"
+              asp-action="Jobs"
+              method="get"
+              id="jobSearchForm">
+
+            <div class="row g-3 align-items-end">
+
+
+                <!-- ==========================
+                     JOB TITLE
+                     ========================== -->
+
+                <div class="col-md-3">
+
+                    <label class="jobs-search-label">
+                        Job Title
+                    </label>
+
+                    <div class="job-title-search-wrapper">
+
+                        <input type="text"
+                               id="jobTitleInput"
+                               class="form-control jobs-search-input"
+                               name="title"
+                               value="@Context.Request.Query["title"]"
+                               placeholder="e.g. Software Developer"
+                               autocomplete="off" />
+
+                        <div id="jobAutocomplete"
+                             class="job-autocomplete">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==========================
+                     PROVINCE
+                     ========================== -->
+
+                <div class="col-md-3">
+
+                    <label class="jobs-search-label">
+                        Province
+                    </label>
+
+                    <div class="job-province-search-wrapper">
+
+                        <input type="text"
+                               id="jobProvinceInput"
+                               class="form-control jobs-search-input"
+                               name="province"
+                               value="@Context.Request.Query["province"]"
+                               placeholder="e.g. Eastern Cape"
+                               autocomplete="off" />
+
+                        <div id="jobProvinceAutocomplete"
+                             class="job-autocomplete">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==========================
+                     CITY
+                     ========================== -->
+
+                <div class="col-md-3">
+
+                    <label class="jobs-search-label">
+                        City
+                    </label>
+
+                    <div class="job-city-search-wrapper">
+
+                        <input type="text"
+                               id="jobCityInput"
+                               class="form-control jobs-search-input"
+                               name="city"
+                               value="@Context.Request.Query["city"]"
+                               placeholder="e.g. Gqeberha"
+                               autocomplete="off" />
+
+                        <div id="jobCityAutocomplete"
+                             class="job-autocomplete">
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ==========================
+                     DATE POSTED
+                     ========================== -->
+
+                <div class="col-md-3">
+
+                    <label class="jobs-search-label">
+                        Date Posted
+                    </label>
+
+                    <select name="datePosted"
+                            class="form-select jobs-filter-select">
+
+                        @if (currentDatePosted == "any")
+                        {
+                            <option value="any" selected>
+                                Any time
+                            </option>
+                        }
+                        else
+                        {
+                            <option value="any">
+                                Any time
+                            </option>
+                        }
+
+                        @if (currentDatePosted == "today")
+                        {
+                            <option value="today" selected>
+                                Today
+                            </option>
+                        }
+                        else
+                        {
+                            <option value="today">
+                                Today
+                            </option>
+                        }
+
+                        @if (currentDatePosted == "3days")
+                        {
+                            <option value="3days" selected>
+                                Last 3 days
+                            </option>
+                        }
+                        else
+                        {
+                            <option value="3days">
+                                Last 3 days
+                            </option>
+                        }
+
+                        @if (currentDatePosted == "7days")
+                        {
+                            <option value="7days" selected>
+                                Last 7 days
+                            </option>
+                        }
+                        else
+                        {
+                            <option value="7days">
+                                Last 7 days
+                            </option>
+                        }
+
+                        @if (currentDatePosted == "14days")
+                        {
+                            <option value="14days" selected>
+                                Last 14 days
+                            </option>
+                        }
+                        else
+                        {
+                            <option value="14days">
+                                Last 14 days
+                            </option>
+                        }
+
+                        @if (currentDatePosted == "30days")
+                        {
+                            <option value="30days" selected>
+                                Last 30 days
+                            </option>
+                        }
+                        else
+                        {
+                            <option value="30days">
+                                Last 30 days
+                            </option>
+                        }
+
+                    </select>
+
+                </div>
+
+
+                <!-- ==========================
+                     SORT
+                     ========================== -->
+
+                <div class="col-md-3">
+
+                    <label class="jobs-search-label">
+                        Sort By
+                    </label>
+
+                    <select name="sort"
+                            class="form-select jobs-filter-select">
+
+                        @if (currentSort == "newest")
+                        {
+                            <option value="newest" selected>
+                                Newest First
+                            </option>
+                        }
+                        else
+                        {
+                            <option value="newest">
+                                Newest First
+                            </option>
+                        }
+
+                        @if (currentSort == "oldest")
+                        {
+                            <option value="oldest" selected>
+                                Oldest First
+                            </option>
+                        }
+                        else
+                        {
+                            <option value="oldest">
+                                Oldest First
+                            </option>
+                        }
+
+                        @if (currentSort == "closing")
+                        {
+                            <option value="closing" selected>
+                                Closing Soon
+                            </option>
+                        }
+                        else
+                        {
+                            <option value="closing">
+                                Closing Soon
+                            </option>
+                        }
+
+                    </select>
+
+                </div>
+
+
+                <!-- ==========================
+                     SEARCH BUTTON
+                     ========================== -->
+
+                <div class="col-md-3">
+
+                    <button type="submit"
+                            class="search-btn w-100">
+
+                        <i class="bi bi-search me-1"></i>
+                        Search
+
+                    </button>
+
+                </div>
+
+
+                <!-- ==========================
+                     CLEAR FILTERS
+                     ========================== -->
+
+                <div class="col-md-3">
+
+                    <a asp-controller="Jobseeker"
+                       asp-action="Jobs"
+                       class="clear-btn w-100">
+
+                        <i class="bi bi-x-circle me-1"></i>
+                        Clear Filters
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- ==========================
+         JOB TABLE
+         ========================== -->
+
+    <div class="jobs-table-card">
+
+        <div class="jobs-table-header">
+
+            <h5>
+                <i class="bi bi-briefcase me-2"></i>
+                Available Jobs
+            </h5>
+
+        </div>
+
+
+        <div class="table-responsive">
+
+            <table class="table jobs-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Job Title
+                        </th>
+
+                        <th>
+                            Location
+                        </th>
+
+                        <th>
+                            Salary
+                        </th>
+
+                        <th>
+                            Employment
+                        </th>
+
+                        <th>
+                            Company
+                        </th>
+
+                        <th>
+                            Date Posted
+                        </th>
+
+                        <th>
+                            Closing Date
+                        </th>
+
+                        <th>
+                            Availability
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    @if (Model != null && Model.Any())
+                    {
+
+                        foreach (var job in Model)
+                        {
+
+                            var daysLeft =
+                                (job.ClosingDate.Date -
+                                 DateTime.Today).Days;
+
+
+                            <tr>
+
+
+                                <!-- JOB TITLE -->
+
+                                <td>
+
+                                    <span class="job-title">
+                                        @job.JobTitle
+                                    </span>
+
+                                </td>
+
+
+                                <!-- LOCATION -->
+
+                                <td>
+
+                                    <span class="job-location">
+
+                                        <i class="bi bi-geo-alt me-1"></i>
+
+                                        @job.City, @job.Province
+
+                                    </span>
+
+                                </td>
+
+
+                                <!-- SALARY -->
+
+                                <td>
+                                    @job.Salary
+                                </td>
+
+
+                                <!-- EMPLOYMENT -->
+
+                                <td>
+                                    @job.EmploymentType
+                                </td>
+
+
+                                <!-- COMPANY -->
+
+                                <td>
+
+                                    @if (job.Recruiter?.RecruiterProfile != null &&
+                                         !string.IsNullOrWhiteSpace(
+                                             job.Recruiter.RecruiterProfile.CompanyName))
+                                    {
+                                        <span class="company-name">
+
+                                            <i class="bi bi-building me-1"></i>
+
+                                            @job.Recruiter.RecruiterProfile.CompanyName
+
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">
+                                            Company not provided
+                                        </span>
+                                    }
+
+                                </td>
+
+
+                                <!-- DATE POSTED -->
+
+                                <td>
+
+                                    <span class="date-text">
+
+                                        <i class="bi bi-calendar-plus me-1"></i>
+
+                                        @job.DatePosted.ToString("dd MMM yyyy")
+
+                                    </span>
+
+                                </td>
+
+
+                                <!-- CLOSING DATE -->
+
+                                <td>
+
+                                    <span class="closing-date">
+
+                                        <i class="bi bi-calendar-x me-1"></i>
+
+                                        @job.ClosingDate.ToString("dd MMM yyyy")
+
+                                    </span>
+
+                                </td>
+
+
+                                <!-- DAYS LEFT -->
+
+                                <td>
+
+                                    @if (daysLeft == 0)
+                                    {
+                                        <span class="days-left closing-soon">
+
+                                            <i class="bi bi-clock"></i>
+
+                                            Closes today
+
+                                        </span>
+                                    }
+                                    else if (daysLeft <= 3)
+                                    {
+                                        <span class="days-left closing-soon">
+
+                                            <i class="bi bi-clock"></i>
+
+                                            @daysLeft day(s) left
+
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="days-left">
+
+                                            <i class="bi bi-check-circle"></i>
+
+                                            @daysLeft days left
+
+                                        </span>
+                                    }
+
+                                </td>
+
+
+                                <!-- APPLY -->
+
+                                <td>
+
+                                    <form asp-controller="Jobseeker"
+                                          asp-action="Apply"
+                                          method="post"
+                                          class="d-inline">
+
+                                        @Html.AntiForgeryToken()
+
+                                        <input type="hidden"
+                                               name="id"
+                                               value="@job.JobID" />
+
+                                        <button type="submit"
+                                                class="apply-btn">
+
+                                            <i class="bi bi-send me-1"></i>
+
+                                            Apply
+
+                                        </button>
+
+                                    </form>
+
+                                </td>
+
+                            </tr>
+
+                        }
+
+                    }
+                    else
+                    {
+
+                        <tr>
+
+                            <td colspan="9"
+                                class="jobs-empty">
+
+                                <i class="bi bi-briefcase me-2"></i>
+
+                                No jobs found matching your search.
+
+                            </td>
+
+                        </tr>
+
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     AUTOCOMPLETE SCRIPT
+     ========================================================= -->
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+
+        // =========================================================
+        // ELEMENTS
+        // =========================================================
+
+        const jobTitleInput =
+            document.getElementById("jobTitleInput");
+
+        const jobAutocomplete =
+            document.getElementById("jobAutocomplete");
+
+        const jobProvinceInput =
+            document.getElementById("jobProvinceInput");
+
+        const jobProvinceAutocomplete =
+            document.getElementById("jobProvinceAutocomplete");
+
+        const jobCityInput =
+            document.getElementById("jobCityInput");
+
+        const jobCityAutocomplete =
+            document.getElementById("jobCityAutocomplete");
+
+        const form =
+            document.getElementById("jobSearchForm");
+
+
+        if (!form) {
+            return;
+        }
+
+
+        // =========================================================
+        // TIMERS
+        // =========================================================
+
+        let jobSearchTimer = null;
+        let provinceSearchTimer = null;
+        let citySearchTimer = null;
+
+
+        // =========================================================
+        // REQUEST NUMBERS
+        // =========================================================
+
+        let jobRequestNumber = 0;
+        let provinceRequestNumber = 0;
+        let cityRequestNumber = 0;
+
+
+        // =========================================================
+        // ESCAPE HTML
+        // =========================================================
+
+        function escapeHtml(value) {
+
+            const div =
+                document.createElement("div");
+
+            div.textContent =
+                value == null
+                    ? ""
+                    : String(value);
+
+            return div.innerHTML;
+        }
+
+
+        // =========================================================
+        // HIDE AUTOCOMPLETE
+        // =========================================================
+
+        function hideAutocomplete(element) {
+
+            if (!element) {
+                return;
+            }
+
+            element.innerHTML = "";
+
+            element.classList.remove("show");
+        }
+
+
+        // =========================================================
+        // MESSAGE
+        // =========================================================
+
+        function showMessage(element, message) {
+
+            if (!element) {
+                return;
+            }
+
+            element.innerHTML =
+                '<div class="job-autocomplete-message">'
+                + escapeHtml(message)
+                + '</div>';
+
+            element.classList.add("show");
+        }
+
+
+        // =========================================================
+        // LOADING MESSAGE
+        // =========================================================
+
+        function showLoading(element, icon, message) {
+
+            if (!element) {
+                return;
+            }
+
+            element.innerHTML =
+                '<div class="autocomplete-loading">'
+                + '<i class="bi '
+                + icon
+                + ' me-1"></i>'
+                + escapeHtml(message)
+                + '</div>';
+
+            element.classList.add("show");
+        }
+
+
+        // =========================================================
+        // SEARCH JOB TITLES
+        // =========================================================
+
+        function searchJobs(term) {
+
+            const currentRequest =
+                ++jobRequestNumber;
+
+
+            fetch(
+                '@Url.Action("SearchJobs", "Jobseeker")'
+                + '?term='
+                + encodeURIComponent(term),
+                {
+                    method: "GET",
+
+                    headers: {
+                        "X-Requested-With":
+                            "XMLHttpRequest"
+                    }
+                }
+            )
+                .then(function(response) {
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Job search request failed.");
+                    }
+
+                    return response.json();
+                })
+                .then(function(results) {
+
+                    if (currentRequest !==
+                        jobRequestNumber) {
+
+                        return;
+                    }
+
+
+                    jobAutocomplete.innerHTML = "";
+
+
+                    if (!results ||
+                        results.length === 0) {
+
+                        showMessage(
+                            jobAutocomplete,
+                            "No matching jobs found.");
+
+                        return;
+                    }
+
+
+                    results.forEach(function(job) {
+
+                        const suggestion =
+                            document.createElement("div");
+
+                        suggestion.className =
+                            "job-suggestion";
+
+
+                        const title =
+                            document.createElement("div");
+
+                        title.className =
+                            "job-suggestion-title";
+
+                        title.textContent =
+                            job.title || "Job";
+
+
+                        const details =
+                            document.createElement("div");
+
+                        details.className =
+                            "job-suggestion-details";
+
+
+                        const location =
+                            job.location ||
+                            "Location not specified";
+
+
+                        details.innerHTML =
+                            '<i class="bi bi-geo-alt me-1"></i>'
+                            + escapeHtml(location);
+
+
+                        suggestion.appendChild(title);
+
+                        suggestion.appendChild(details);
+
+
+                        suggestion.addEventListener(
+                            "mousedown",
+                            function(event) {
+
+                                event.preventDefault();
+
+                                jobTitleInput.value =
+                                    job.title || "";
+
+                                hideAutocomplete(
+                                    jobAutocomplete);
+
+                                form.submit();
+                            });
+
+
+                        jobAutocomplete.appendChild(
+                            suggestion);
+                    });
+
+
+                    jobAutocomplete.classList.add(
+                        "show");
+                })
+                .catch(function(error) {
+
+                    console.error(
+                        "Job autocomplete error:",
+                        error);
+
+                    hideAutocomplete(
+                        jobAutocomplete);
+                });
+        }
+
+
+        // =========================================================
+        // SEARCH PROVINCES
+        // =========================================================
+
+        function searchProvinces(term) {
+
+            const currentRequest =
+                ++provinceRequestNumber;
+
+
+            fetch(
+                '@Url.Action("SearchJobProvinces", "Jobseeker")'
+                + '?term='
+                + encodeURIComponent(term),
+                {
+                    method: "GET",
+
+                    headers: {
+                        "X-Requested-With":
+                            "XMLHttpRequest"
+                    }
+                }
+            )
+                .then(function(response) {
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "Province search request failed.");
+                    }
+
+                    return response.json();
+                })
+                .then(function(results) {
+
+                    if (currentRequest !==
+                        provinceRequestNumber) {
+
+                        return;
+                    }
+
+
+                    jobProvinceAutocomplete.innerHTML =
+                        "";
+
+
+                    if (!results ||
+                        results.length === 0) {
+
+                        showMessage(
+                            jobProvinceAutocomplete,
+                            "No matching provinces found.");
+
+                        return;
+                    }
+
+
+                    results.forEach(function(province) {
+
+                        const suggestion =
+                            document.createElement("div");
+
+                        suggestion.className =
+                            "job-suggestion";
+
+
+                        const title =
+                            document.createElement("div");
+
+                        title.className =
+                            "job-suggestion-title";
+
+                        title.innerHTML =
+                            '<i class="bi bi-map me-1"></i>'
+                            + escapeHtml(
+                                province.value);
+
+
+                        suggestion.appendChild(title);
+
+
+                        suggestion.addEventListener(
+                            "mousedown",
+                            function(event) {
+
+                                event.preventDefault();
+
+                                jobProvinceInput.value =
+                                    province.value || "";
+
+                                hideAutocomplete(
+                                    jobProvinceAutocomplete);
+
+                                form.submit();
+                            });
+
+
+                        jobProvinceAutocomplete.appendChild(
+                            suggestion);
+                    });
+
+
+                    jobProvinceAutocomplete.classList.add(
+                        "show");
+                })
+                .catch(function(error) {
+
+                    console.error(
+                        "Province autocomplete error:",
+                        error);
+
+                    hideAutocomplete(
+                        jobProvinceAutocomplete);
+                });
+        }
+
+
+        // =========================================================
+        // SEARCH CITIES
+        // =========================================================
+
+        function searchCities(term) {
+
+            const currentRequest =
+                ++cityRequestNumber;
+
+
+            fetch(
+                '@Url.Action("SearchJobCities", "Jobseeker")'
+                + '?term='
+                + encodeURIComponent(term),
+                {
+                    method: "GET",
+
+                    headers: {
+                        "X-Requested-With":
+                            "XMLHttpRequest"
+                    }
+                }
+            )
+                .then(function(response) {
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "City search request failed.");
+                    }
+
+                    return response.json();
+                })
+                .then(function(results) {
+
+                    if (currentRequest !==
+                        cityRequestNumber) {
+
+                        return;
+                    }
+
+
+                    jobCityAutocomplete.innerHTML =
+                        "";
+
+
+                    if (!results ||
+                        results.length === 0) {
+
+                        showMessage(
+                            jobCityAutocomplete,
+                            "No matching cities found.");
+
+                        return;
+                    }
+
+
+                    results.forEach(function(city) {
+
+                        const suggestion =
+                            document.createElement("div");
+
+                        suggestion.className =
+                            "job-suggestion";
+
+
+                        const title =
+                            document.createElement("div");
+
+                        title.className =
+                            "job-suggestion-title";
+
+                        title.innerHTML =
+                            '<i class="bi bi-geo-alt me-1"></i>'
+                            + escapeHtml(
+                                city.value);
+
+
+                        suggestion.appendChild(title);
+
+
+                        suggestion.addEventListener(
+                            "mousedown",
+                            function(event) {
+
+                                event.preventDefault();
+
+                                jobCityInput.value =
+                                    city.value || "";
+
+                                hideAutocomplete(
+                                    jobCityAutocomplete);
+
+                                form.submit();
+                            });
+
+
+                        jobCityAutocomplete.appendChild(
+                            suggestion);
+                    });
+
+
+                    jobCityAutocomplete.classList.add(
+                        "show");
+                })
+                .catch(function(error) {
+
+                    console.error(
+                        "City autocomplete error:",
+                        error);
+
+                    hideAutocomplete(
+                        jobCityAutocomplete);
+                });
+        }
+
+
+        // =========================================================
+        // JOB TITLE INPUT
+        // =========================================================
+
+        if (jobTitleInput &&
+            jobAutocomplete) {
+
+            jobTitleInput.addEventListener(
+                "input",
+                function() {
+
+                    const term =
+                        jobTitleInput.value.trim();
+
+
+                    clearTimeout(
+                        jobSearchTimer);
+
+
+                    if (term.length < 2) {
+
+                        hideAutocomplete(
+                            jobAutocomplete);
+
+                        return;
+                    }
+
+
+                    showLoading(
+                        jobAutocomplete,
+                        "bi-search",
+                        "Searching jobs...");
+
+
+                    jobSearchTimer =
+                        setTimeout(
+                            function() {
+
+                                searchJobs(term);
+
+                            },
+                            250);
+                });
+
+
+            jobTitleInput.addEventListener(
+                "focus",
+                function() {
+
+                    const term =
+                        jobTitleInput.value.trim();
+
+                    if (term.length >= 2) {
+
+                        searchJobs(term);
+                    }
+                });
+
+
+            jobTitleInput.addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (event.key === "Escape") {
+
+                        hideAutocomplete(
+                            jobAutocomplete);
+
+                        jobTitleInput.blur();
+                    }
+                });
+        }
+
+
+        // =========================================================
+        // PROVINCE INPUT
+        // =========================================================
+
+        if (jobProvinceInput &&
+            jobProvinceAutocomplete) {
+
+            jobProvinceInput.addEventListener(
+                "input",
+                function() {
+
+                    const term =
+                        jobProvinceInput.value.trim();
+
+
+                    clearTimeout(
+                        provinceSearchTimer);
+
+
+                    if (term.length < 2) {
+
+                        hideAutocomplete(
+                            jobProvinceAutocomplete);
+
+                        return;
+                    }
+
+
+                    showLoading(
+                        jobProvinceAutocomplete,
+                        "bi-map",
+                        "Searching provinces...");
+
+
+                    provinceSearchTimer =
+                        setTimeout(
+                            function() {
+
+                                searchProvinces(term);
+
+                            },
+                            250);
+                });
+
+
+            jobProvinceInput.addEventListener(
+                "focus",
+                function() {
+
+                    const term =
+                        jobProvinceInput.value.trim();
+
+                    if (term.length >= 2) {
+
+                        searchProvinces(term);
+                    }
+                });
+
+
+            jobProvinceInput.addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (event.key === "Escape") {
+
+                        hideAutocomplete(
+                            jobProvinceAutocomplete);
+
+                        jobProvinceInput.blur();
+                    }
+                });
+        }
+
+
+        // =========================================================
+        // CITY INPUT
+        // =========================================================
+
+        if (jobCityInput &&
+            jobCityAutocomplete) {
+
+            jobCityInput.addEventListener(
+                "input",
+                function() {
+
+                    const term =
+                        jobCityInput.value.trim();
+
+
+                    clearTimeout(
+                        citySearchTimer);
+
+
+                    if (term.length < 2) {
+
+                        hideAutocomplete(
+                            jobCityAutocomplete);
+
+                        return;
+                    }
+
+
+                    showLoading(
+                        jobCityAutocomplete,
+                        "bi-geo-alt",
+                        "Searching cities...");
+
+
+                    citySearchTimer =
+                        setTimeout(
+                            function() {
+
+                                searchCities(term);
+
+                            },
+                            250);
+                });
+
+
+            jobCityInput.addEventListener(
+                "focus",
+                function() {
+
+                    const term =
+                        jobCityInput.value.trim();
+
+                    if (term.length >= 2) {
+
+                        searchCities(term);
+                    }
+                });
+
+
+            jobCityInput.addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (event.key === "Escape") {
+
+                        hideAutocomplete(
+                            jobCityAutocomplete);
+
+                        jobCityInput.blur();
+                    }
+                });
+        }
+
+
+        // =========================================================
+        // CLICK OUTSIDE
+        // =========================================================
+
+        document.addEventListener(
+            "click",
+            function(event) {
+
+                if (!event.target.closest(
+                    ".job-title-search-wrapper")) {
+
+                    hideAutocomplete(
+                        jobAutocomplete);
+                }
+
+
+                if (!event.target.closest(
+                    ".job-province-search-wrapper")) {
+
+                    hideAutocomplete(
+                        jobProvinceAutocomplete);
+                }
+
+
+                if (!event.target.closest(
+                    ".job-city-search-wrapper")) {
+
+                    hideAutocomplete(
+                        jobCityAutocomplete);
+                }
+            });
+
+
+    });
+
+</script>

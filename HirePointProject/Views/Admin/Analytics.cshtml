@@ -1,0 +1,456 @@
+﻿@{
+    ViewData["Title"] = "Analytics";
+}
+
+<style>
+
+    /* ==========================
+               ANALYTICS PAGE
+               ========================== */
+
+    .analytics-page {
+        background: #eef6fb;
+        padding: 25px;
+        border-radius: 14px;
+        min-height: 100%;
+    }
+
+
+    /* ==========================
+               PAGE HEADER
+               ========================== */
+
+    .analytics-header {
+        margin-bottom: 22px;
+    }
+
+        .analytics-header h2 {
+            color: #183b56;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .analytics-header p {
+            color: #66737d;
+            margin-bottom: 0;
+        }
+
+
+    /* ==========================
+               STAT CARDS
+               ========================== */
+
+    .analytics-stat-card {
+        background: #eef6fb;
+        border: 1px solid #cfe3f0;
+        border-top: 5px solid #2878ad;
+        border-radius: 12px;
+        padding: 16px;
+        box-shadow: 0 3px 10px rgba(24, 59, 86, 0.08);
+        transition: all 0.2s ease;
+        height: 100%;
+    }
+
+        .analytics-stat-card:hover {
+            background: #ffffff;
+            transform: translateY(-4px);
+            border-color: #2878ad;
+            box-shadow: 0 7px 18px rgba(40, 120, 173, 0.18);
+        }
+
+        .analytics-stat-card h3 {
+            color: #2878ad;
+            font-size: 27px;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .analytics-stat-card p {
+            color: #3d5d73;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 0;
+        }
+
+    .analytics-stat-icon {
+        width: 42px;
+        height: 42px;
+        background: #ffffff;
+        color: #2878ad;
+        border: 1px solid #cfe3f0;
+        border-radius: 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 9px;
+        font-size: 19px;
+        transition: all 0.2s ease;
+    }
+
+    .analytics-stat-card:hover .analytics-stat-icon {
+        background: #2878ad;
+        color: #ffffff;
+        border-color: #2878ad;
+    }
+
+
+    /* ==========================
+               MAIN CARDS
+               ========================== */
+
+    .analytics-card {
+        background: #ffffff;
+        border: 1px solid #d7e7f0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(24, 59, 86, 0.07);
+        height: 100%;
+    }
+
+    .analytics-card-header {
+        background: #2878ad;
+        color: #ffffff;
+        padding: 13px 17px;
+    }
+
+        .analytics-card-header h5 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+    .analytics-card-body {
+        padding: 18px;
+    }
+
+
+    /* ==========================
+               PROVINCE TABLE
+               ========================== */
+
+    .analytics-table {
+        margin-bottom: 0;
+    }
+
+        .analytics-table thead {
+            background: #2878ad;
+            color: #ffffff;
+        }
+
+            .analytics-table thead th {
+                background: #2878ad;
+                color: #ffffff;
+                font-size: 13px;
+                font-weight: 600;
+                padding: 11px 14px;
+                border: none;
+            }
+
+        .analytics-table tbody td {
+            padding: 11px 14px;
+            color: #3d4f5c;
+            font-size: 13px;
+            border-color: #e5eef3;
+        }
+
+        .analytics-table tbody tr {
+            transition: all 0.2s ease;
+        }
+
+            .analytics-table tbody tr:hover {
+                background: #eef6fb;
+            }
+
+
+    /* ==========================
+               INFORMATION ITEMS
+               ========================== */
+
+    .analytics-info-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 12px;
+        margin-bottom: 8px;
+        background: #eef6fb;
+        border-radius: 8px;
+        color: #3d4f5c;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+        .analytics-info-item:hover {
+            background: #2878ad;
+            color: #ffffff;
+            transform: translateX(2px);
+        }
+
+    .analytics-info-value {
+        font-weight: 700;
+        color: #2878ad;
+    }
+
+    .analytics-info-item:hover .analytics-info-value {
+        color: #ffffff;
+    }
+
+
+    /* ==========================
+               EMPTY STATE
+               ========================== */
+
+    .analytics-empty {
+        color: #71808a;
+        padding: 25px !important;
+        text-align: center;
+    }
+
+
+    /* ==========================
+               RESPONSIVE
+               ========================== */
+
+    @@media (max-width: 768px) {
+
+        .analytics-page {
+            padding: 15px;
+        }
+
+        .analytics-stat-card {
+            padding: 14px;
+        }
+
+            .analytics-stat-card h3 {
+                font-size: 22px;
+            }
+    }
+
+</style>
+
+
+<div class="analytics-page">
+
+    <!-- PAGE HEADER -->
+
+    <div class="analytics-header">
+
+        <h2>
+            <i class="bi bi-bar-chart-line me-2"></i>
+            Analytics
+        </h2>
+
+        <p>
+            View statistics and activity across the HirePoint platform.
+        </p>
+
+    </div>
+
+
+    <!-- STATISTICS -->
+
+    <div class="row g-3 mb-4">
+
+        <div class="col-md-3">
+
+            <div class="analytics-stat-card">
+
+                <div class="analytics-stat-icon">
+                    <i class="bi bi-people"></i>
+                </div>
+
+                <h3>@ViewBag.TotalUsers</h3>
+
+                <p>Total Users</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-3">
+
+            <div class="analytics-stat-card">
+
+                <div class="analytics-stat-icon">
+                    <i class="bi bi-person-check"></i>
+                </div>
+
+                <h3>@ViewBag.ActiveUsers</h3>
+
+                <p>Active Users</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-3">
+
+            <div class="analytics-stat-card">
+
+                <div class="analytics-stat-icon">
+                    <i class="bi bi-briefcase"></i>
+                </div>
+
+                <h3>@ViewBag.ActiveJobs</h3>
+
+                <p>Active Jobs</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-3">
+
+            <div class="analytics-stat-card">
+
+                <div class="analytics-stat-icon">
+                    <i class="bi bi-person-plus"></i>
+                </div>
+
+                <h3>@ViewBag.NewToday</h3>
+
+                <p>New Today</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PROVINCE STATISTICS -->
+
+    <div class="row g-3 mb-4">
+
+        <div class="col-12">
+
+            <div class="analytics-card">
+
+                <div class="analytics-card-header">
+
+                    <h5>
+                        <i class="bi bi-geo-alt me-2"></i>
+                        Users by Province
+                    </h5>
+
+                </div>
+
+                <div class="table-responsive">
+
+                    <table class="table analytics-table">
+
+                        <thead>
+
+                            <tr>
+                                <th>Province</th>
+                                <th>Users</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            @if (ViewBag.Provinces != null && ViewBag.Provinces.Count > 0)
+                            {
+                                foreach (var province in ViewBag.Provinces)
+                                {
+                                    <tr>
+                                        <td><strong>@province.Province</strong></td>
+                                        <td>@province.Total</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="2" class="analytics-empty">
+                                        No province statistics available.
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- USER INFORMATION -->
+
+    <div class="row g-3">
+
+        <div class="col-md-6">
+
+            <div class="analytics-card">
+
+                <div class="analytics-card-header">
+
+                    <h5>
+                        <i class="bi bi-gender-ambiguous me-2"></i>
+                        Gender Distribution
+                    </h5>
+
+                </div>
+
+                <div class="analytics-card-body">
+
+                    <div class="analytics-info-item">
+                        <span>Male</span>
+                        <span class="analytics-info-value">@ViewBag.Male</span>
+                    </div>
+
+                    <div class="analytics-info-item">
+                        <span>Female</span>
+                        <span class="analytics-info-value">@ViewBag.Female</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-6">
+
+            <div class="analytics-card">
+
+                <div class="analytics-card-header">
+
+                    <h5>
+                        <i class="bi bi-people me-2"></i>
+                        User Types
+                    </h5>
+
+                </div>
+
+                <div class="analytics-card-body">
+
+                    <div class="analytics-info-item">
+                        <span>Job Seekers</span>
+                        <span class="analytics-info-value">@ViewBag.JobSeekers</span>
+                    </div>
+
+                    <div class="analytics-info-item">
+                        <span>Recruiters</span>
+                        <span class="analytics-info-value">@ViewBag.Employers</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

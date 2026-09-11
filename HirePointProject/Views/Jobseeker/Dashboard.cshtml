@@ -1,0 +1,694 @@
+﻿@{
+    ViewData["Title"] = "Jobseeker Dashboard";
+
+    var recommendedJobs =
+        ViewBag.RecommendedJobs as List<HirePoint.Models.Job>;
+}
+
+<style>
+
+    /* ==========================
+           DASHBOARD PAGE
+           ========================== */
+
+    .jobseeker-page {
+        background: #eef6fb;
+        padding: 25px;
+        border-radius: 14px;
+        min-height: calc(100vh - 120px);
+    }
+
+
+    /* ==========================
+           HEADER
+           ========================== */
+
+    .jobseeker-header {
+        margin-bottom: 25px;
+    }
+
+        .jobseeker-header h2 {
+            color: #183b56;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .jobseeker-header p {
+            color: #66737d;
+            margin-bottom: 0;
+        }
+
+
+    /* ==========================
+           ALERTS
+           ========================== */
+
+    .jobseeker-alert {
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+
+    /* ==========================
+           STAT CARDS
+           ========================== */
+
+    .jobseeker-card {
+        background: #ffffff;
+        border: 1px solid #d7e7f0;
+        border-radius: 12px;
+        padding: 20px;
+        height: 100%;
+        box-shadow: 0 3px 10px rgba(24, 59, 86, 0.07);
+        transition: all 0.2s ease;
+    }
+
+        .jobseeker-card:hover {
+            transform: translateY(-3px);
+            border-color: #2878ad;
+            box-shadow: 0 6px 16px rgba(40, 120, 173, 0.16);
+        }
+
+    .jobseeker-card-icon {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #eef6fb;
+        color: #2878ad;
+        border-radius: 9px;
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .jobseeker-card h5 {
+        color: #183b56;
+        font-weight: 600;
+        margin-bottom: 5px;
+    }
+
+    .jobseeker-card h2 {
+        color: #2878ad;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .jobseeker-card p {
+        color: #66737d;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+
+    /* ==========================
+           BUTTONS
+           ========================== */
+
+    .jobseeker-btn,
+    .jobseeker-apply-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: #2878ad;
+        color: #ffffff;
+        border: 1px solid #2878ad;
+        border-radius: 7px;
+        padding: 8px 14px;
+        font-size: 13px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+        .jobseeker-btn:hover,
+        .jobseeker-apply-btn:hover {
+            background: #1f628e;
+            border-color: #1f628e;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(40, 120, 173, 0.25);
+        }
+
+
+    /* ==========================
+           RECOMMENDED JOBS SECTION
+           ========================== */
+
+    .jobseeker-section {
+        background: #ffffff;
+        border: 1px solid #d7e7f0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(24, 59, 86, 0.07);
+    }
+
+    .jobseeker-section-header {
+        background: #2878ad;
+        color: #ffffff;
+        padding: 14px 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+        .jobseeker-section-header h5 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .jobseeker-section-header a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+            .jobseeker-section-header a:hover {
+                opacity: 0.8;
+            }
+
+
+    /* ==========================
+           TABLE
+           ========================== */
+
+    .jobseeker-table {
+        margin-bottom: 0;
+    }
+
+        .jobseeker-table thead th {
+            background: #f3f8fb;
+            color: #183b56;
+            border-bottom: 1px solid #d7e7f0;
+            padding: 12px 14px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .jobseeker-table tbody td {
+            padding: 12px 14px;
+            color: #3d4f5c;
+            font-size: 13px;
+            border-color: #e5eef3;
+            vertical-align: middle;
+        }
+
+        .jobseeker-table tbody tr:hover {
+            background: #eef6fb;
+        }
+
+
+    /* ==========================
+           JOB TITLE
+           ========================== */
+
+    .job-title {
+        color: #183b56;
+        font-weight: 600;
+    }
+
+
+    /* ==========================
+           COMPANY
+           ========================== */
+
+    .company-name {
+        color: #183b56;
+        font-weight: 600;
+    }
+
+
+    /* ==========================
+           EMPTY STATE
+           ========================== */
+
+    .jobseeker-empty {
+        color: #71808a;
+        text-align: center;
+        padding: 30px !important;
+    }
+
+
+    /* ==========================
+           INTERESTS NOTICE
+           ========================== */
+
+    .interest-notice {
+        padding: 20px;
+        background: #f8fbfd;
+        text-align: center;
+    }
+
+    .interest-notice-icon {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #eef6fb;
+        color: #2878ad;
+        border-radius: 50%;
+        font-size: 21px;
+    }
+
+    .interest-notice h6 {
+        color: #183b56;
+        font-weight: 700;
+        margin-bottom: 7px;
+    }
+
+    .interest-notice p {
+        color: #66737d;
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+
+    /* ==========================
+           RESPONSIVE
+           ========================== */
+
+    @@media (max-width: 768px) {
+
+        .jobseeker-page {
+            padding: 15px;
+        }
+
+        .jobseeker-header h2 {
+            font-size: 22px;
+        }
+
+        .jobseeker-card {
+            padding: 16px;
+        }
+
+        .jobseeker-section-header {
+            padding: 12px 14px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .jobseeker-table {
+            min-width: 850px;
+        }
+    }
+
+</style>
+
+
+<div class="jobseeker-page">
+
+    <!-- ==========================
+         PAGE HEADER
+         ========================== -->
+
+    <div class="jobseeker-header">
+
+        <h2>
+            <i class="bi bi-speedometer2 me-2"></i>
+            Dashboard
+        </h2>
+
+        <p>
+            Welcome back,
+            <strong>@ViewBag.UserName</strong>.
+            Find opportunities, manage your applications,
+            and keep your profile up to date.
+        </p>
+
+    </div>
+
+
+    <!-- ==========================
+         SUCCESS MESSAGE
+         ========================== -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show jobseeker-alert"
+             role="alert">
+
+            <i class="bi bi-check-circle me-2"></i>
+
+            @TempData["Success"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert">
+            </button>
+
+        </div>
+    }
+
+
+    <!-- ==========================
+         ERROR MESSAGE
+         ========================== -->
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show jobseeker-alert"
+             role="alert">
+
+            <i class="bi bi-exclamation-circle me-2"></i>
+
+            @TempData["Error"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert">
+            </button>
+
+        </div>
+    }
+
+
+    <!-- ==========================
+         STATISTICS
+         ========================== -->
+
+    <div class="row g-4 mb-4">
+
+        <!-- AVAILABLE JOBS -->
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="jobseeker-card">
+
+                <div class="jobseeker-card-icon">
+                    <i class="bi bi-briefcase"></i>
+                </div>
+
+                <h5>
+                    Available Jobs
+                </h5>
+
+                <h2>
+                    @ViewBag.AvailableJobs
+                </h2>
+
+                <a asp-controller="Jobseeker"
+                   asp-action="Jobs"
+                   class="jobseeker-btn">
+
+                    <i class="bi bi-search me-1"></i>
+                    Find Jobs
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- APPLICATIONS -->
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="jobseeker-card">
+
+                <div class="jobseeker-card-icon">
+                    <i class="bi bi-file-earmark-text"></i>
+                </div>
+
+                <h5>
+                    My Applications
+                </h5>
+
+                <h2>
+                    @ViewBag.Applications
+                </h2>
+
+                <a asp-controller="Jobseeker"
+                   asp-action="Applications"
+                   class="jobseeker-btn">
+
+                    <i class="bi bi-folder2-open me-1"></i>
+                    View Applications
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROFILE -->
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="jobseeker-card">
+
+                <div class="jobseeker-card-icon">
+                    <i class="bi bi-person-circle"></i>
+                </div>
+
+                <h5>
+                    Profile
+                </h5>
+
+                <p>
+                    Update your personal information and CV.
+                </p>
+
+                <a asp-controller="Jobseeker"
+                   asp-action="Profile"
+                   class="jobseeker-btn">
+
+                    <i class="bi bi-pencil-square me-1"></i>
+                    Update Profile
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================
+         RECOMMENDED JOBS
+         ========================== -->
+
+    <div class="jobseeker-section">
+
+        <div class="jobseeker-section-header">
+
+            <h5>
+                <i class="bi bi-stars me-2"></i>
+                Jobs Recommended For You
+            </h5>
+
+            <div>
+
+                <a asp-controller="Jobseeker"
+                   asp-action="Interests"
+                   class="me-3">
+
+                    <i class="bi bi-heart me-1"></i>
+                    Update Interests
+
+                </a>
+
+                <a asp-controller="Jobseeker"
+                   asp-action="Jobs">
+
+                    View All
+                    <i class="bi bi-arrow-right ms-1"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        @if (ViewBag.HasInterests != null &&
+             ViewBag.HasInterests == true &&
+             recommendedJobs != null &&
+             recommendedJobs.Any())
+        {
+            <div class="table-responsive">
+
+                <table class="table jobseeker-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Job Title
+                            </th>
+
+                            <th>
+                                Company
+                            </th>
+
+                            <th>
+                                Location
+                            </th>
+
+                            <th>
+                                Salary
+                            </th>
+
+                            <th>
+                                Employment Type
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        @foreach (var job in recommendedJobs)
+                        {
+                            <tr>
+
+                                <!-- JOB TITLE -->
+
+                                <td>
+                                    <span class="job-title">
+                                        @job.JobTitle
+                                    </span>
+                                </td>
+
+
+                                <!-- COMPANY -->
+
+                                <td>
+
+                                    @if (job.Recruiter?.RecruiterProfile != null &&
+                                         !string.IsNullOrWhiteSpace(
+                                             job.Recruiter.RecruiterProfile.CompanyName))
+                                    {
+                                        <span class="company-name">
+
+                                            <i class="bi bi-building me-1"></i>
+
+                                            @job.Recruiter.RecruiterProfile.CompanyName
+
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">
+                                            Company not provided
+                                        </span>
+                                    }
+
+                                </td>
+
+
+                                <!-- LOCATION -->
+
+                                <td>
+
+                                    <i class="bi bi-geo-alt me-1"></i>
+
+                                    @job.City, @job.Province
+
+                                </td>
+
+
+                                <!-- SALARY -->
+
+                                <td>
+                                    @job.Salary
+                                </td>
+
+
+                                <!-- EMPLOYMENT TYPE -->
+
+                                <td>
+                                    @job.EmploymentType
+                                </td>
+
+
+                                <!-- APPLY -->
+
+                                <td>
+
+                                    <form asp-controller="Jobseeker"
+                                          asp-action="Apply"
+                                          asp-route-id="@job.JobID"
+                                          method="post"
+                                          class="d-inline">
+
+                                        @Html.AntiForgeryToken()
+
+                                        <button type="submit"
+                                                class="jobseeker-apply-btn">
+
+                                            <i class="bi bi-send me-1"></i>
+
+                                            Apply
+
+                                        </button>
+
+                                    </form>
+
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+        }
+        else if (ViewBag.HasInterests != null &&
+                 ViewBag.HasInterests == true)
+        {
+            <div class="jobseeker-empty">
+
+                <i class="bi bi-search fs-4 d-block mb-2"></i>
+
+                No matching jobs are available right now.
+
+            </div>
+        }
+        else
+        {
+            <div class="interest-notice">
+
+                <div class="interest-notice-icon">
+                    <i class="bi bi-heart-fill"></i>
+                </div>
+
+                <h6>
+                    Tell us what jobs you're interested in
+                </h6>
+
+                <p>
+                    Select your job interests and HirePoint will
+                    recommend suitable opportunities directly on
+                    your dashboard.
+                </p>
+
+                <a asp-controller="Jobseeker"
+                   asp-action="Interests"
+                   class="jobseeker-btn">
+
+                    <i class="bi bi-heart me-1"></i>
+                    Select Job Interests
+
+                </a>
+
+            </div>
+        }
+
+    </div>
+
+</div>

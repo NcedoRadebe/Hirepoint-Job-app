@@ -1,0 +1,512 @@
+﻿@model HirePoint.ViewModels.JobInterestViewModel
+
+@{
+    ViewData["Title"] = "Job Interests";
+}
+
+<div class="interest-page">
+
+    ```
+    <div class="interest-card">
+
+        <!-- HEADER -->
+
+        <div class="interest-header">
+
+            <div class="interest-icon">
+                <i class="bi bi-stars"></i>
+            </div>
+
+            <div class="interest-eyebrow">
+                PERSONALISE YOUR JOB SEARCH
+            </div>
+
+            <h2>
+                What kind of work interests you?
+            </h2>
+
+            <p>
+                Pick the job areas you're interested in and we'll
+                use your choices to show you better opportunities.
+            </p>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form asp-controller="Jobseeker"
+              asp-action="Interests"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+
+            <!-- INTEREST GRID -->
+
+            <div class="interest-grid">
+
+                @foreach (var interest in Model.Interests)
+                {
+                    var interestId = int.Parse(interest.Value);
+
+                    var isSelected =
+                        Model.SelectedInterestIds.Contains(interestId);
+
+                    <label class="interest-option">
+
+                        <input type="checkbox"
+                               name="SelectedInterestIds"
+                               value="@interest.Value"
+                               checked="@isSelected" />
+
+                        <span class="interest-check">
+                            <i class="bi bi-check-lg"></i>
+                        </span>
+
+                        <span class="interest-content">
+
+                            <span class="interest-name">
+                                @interest.Text
+                            </span>
+
+                            <span class="interest-select-text">
+                                Select
+                            </span>
+
+                        </span>
+
+                        <span class="interest-arrow">
+                            <i class="bi bi-arrow-right"></i>
+                        </span>
+
+                    </label>
+                }
+
+            </div>
+
+
+            <!-- VALIDATION -->
+
+            <div asp-validation-summary="All"
+                 class="text-danger validation-message">
+            </div>
+
+
+            <!-- SAVE -->
+
+            <button type="submit"
+                    class="interest-btn">
+
+                <span>
+                    <i class="bi bi-magic me-2"></i>
+                    Show Me My Jobs
+                </span>
+
+                <i class="bi bi-arrow-right btn-arrow"></i>
+
+            </button>
+
+        </form>
+
+
+        <!-- FOOTER -->
+
+        <div class="interest-footer">
+
+            <i class="bi bi-shield-check me-1"></i>
+
+            You can change your interests anytime from your dashboard.
+
+        </div>
+
+    </div>
+    ```
+
+</div>
+
+<style>
+
+    /* ==============================
+           PAGE
+           ============================== */
+
+    .interest-page {
+        min-height: calc(100vh - 70px);
+        padding: 50px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: radial-gradient( circle at top left, rgba(255,255,255,0.18), transparent 35% ), radial-gradient( circle at bottom right, rgba(255,255,255,0.12), transparent 35% ), linear-gradient( 135deg, #176b9c, #2878ad 45%, #35a0c7 );
+    }
+
+
+    /* ==============================
+           MAIN CARD
+           ============================== */
+
+    .interest-card {
+        width: 100%;
+        max-width: 950px;
+        background: rgba(255,255,255,0.98);
+        border-radius: 30px;
+        padding: 48px;
+        box-shadow: 0 25px 70px rgba(13, 48, 70, 0.28);
+        animation: cardAppear 0.5s ease;
+    }
+
+
+    @@keyframes cardAppear {
+
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
+    /* ==============================
+           HEADER
+           ============================== */
+
+    .interest-header {
+        text-align: center;
+        margin-bottom: 38px;
+    }
+
+
+    .interest-icon {
+        width: 72px;
+        height: 72px;
+        margin: 0 auto 17px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 22px;
+        background: linear-gradient( 135deg, #2878ad, #35a0c7 );
+        color: #ffffff;
+        font-size: 30px;
+        box-shadow: 0 10px 25px rgba(40,120,173,0.25);
+    }
+
+
+    .interest-eyebrow {
+        margin-bottom: 8px;
+        color: #2878ad;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+    }
+
+
+    .interest-header h2 {
+        margin: 0;
+        color: #183b56;
+        font-size: 30px;
+        font-weight: 800;
+    }
+
+
+    .interest-header p {
+        max-width: 650px;
+        margin: 12px auto 0;
+        color: #6b7280;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+
+    /* ==============================
+           INTEREST GRID
+           ============================== */
+
+    .interest-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+
+    /* ==============================
+           INTEREST CARD
+           ============================== */
+
+    .interest-option {
+        position: relative;
+        min-height: 78px;
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        padding: 15px 16px;
+        border: 2px solid #e5edf2;
+        border-radius: 18px;
+        background: #ffffff;
+        cursor: pointer;
+        transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+
+        .interest-option:hover {
+            transform: translateY(-4px);
+            border-color: #78b9d5;
+            background: #f7fcfe;
+            box-shadow: 0 9px 22px rgba(40,120,173,0.12);
+        }
+
+
+        /* ==============================
+           HIDDEN CHECKBOX
+           ============================== */
+
+        .interest-option input {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+
+    /* ==============================
+           CHECKBOX
+           ============================== */
+
+    .interest-check {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #cbd9e1;
+        border-radius: 9px;
+        color: transparent;
+        background: #ffffff;
+        transition: all 0.2s ease;
+    }
+
+
+        .interest-check i {
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+
+    /* ==============================
+           SELECTED CARD
+           ============================== */
+
+    .interest-option:has(input:checked) {
+        border-color: #2878ad;
+        background: linear-gradient( 135deg, #f0f9fd, #e7f5fa );
+        box-shadow: 0 8px 20px rgba(40,120,173,0.14);
+        transform: translateY(-2px);
+    }
+
+
+    .interest-option input:checked + .interest-check {
+        border-color: #2878ad;
+        background: linear-gradient( 135deg, #2878ad, #35a0c7 );
+        color: #ffffff;
+        transform: scale(1.05);
+    }
+
+
+    /* ==============================
+           TEXT
+           ============================== */
+
+    .interest-content {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+
+    .interest-name {
+        color: #183b56;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.3;
+    }
+
+
+    .interest-select-text {
+        margin-top: 3px;
+        color: #9aa8b2;
+        font-size: 11px;
+        transition: color 0.2s ease;
+    }
+
+
+    .interest-option:has(input:checked)
+    .interest-select-text {
+        color: #2878ad;
+        font-weight: 600;
+    }
+
+
+    /* ==============================
+           ARROW
+           ============================== */
+
+    .interest-arrow {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #b8c6ce;
+        border-radius: 50%;
+        transition: all 0.2s ease;
+    }
+
+
+    .interest-option:hover .interest-arrow {
+        color: #2878ad;
+        transform: translateX(3px);
+    }
+
+
+    .interest-option:has(input:checked)
+    .interest-arrow {
+        color: #2878ad;
+        background: rgba(40,120,173,0.10);
+    }
+
+
+    /* ==============================
+           VALIDATION
+           ============================== */
+
+    .validation-message {
+        margin-top: 18px;
+        text-align: center;
+        font-size: 13px;
+    }
+
+
+    /* ==============================
+           BUTTON
+           ============================== */
+
+    .interest-btn {
+        width: 100%;
+        min-height: 56px;
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 22px;
+        border: none;
+        border-radius: 15px;
+        background: linear-gradient( 135deg, #2878ad, #35a0c7 );
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 9px 22px rgba(40,120,173,0.25);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+
+        .interest-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 13px 28px rgba(40,120,173,0.32);
+        }
+
+
+        .interest-btn:active {
+            transform: translateY(0);
+        }
+
+
+    .btn-arrow {
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.18);
+        transition: transform 0.2s ease;
+    }
+
+
+    .interest-btn:hover .btn-arrow {
+        transform: translateX(4px);
+    }
+
+
+    /* ==============================
+           FOOTER
+           ============================== */
+
+    .interest-footer {
+        margin-top: 18px;
+        text-align: center;
+        color: #8a98a2;
+        font-size: 12px;
+    }
+
+
+        .interest-footer i {
+            color: #2878ad;
+        }
+
+
+    /* ==============================
+           RESPONSIVE
+           ============================== */
+
+    @@media (max-width: 900px) {
+
+        .interest-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+
+    @@media (max-width: 650px) {
+
+        .interest-page {
+            padding: 25px 14px;
+        }
+
+
+        .interest-card {
+            padding: 30px 20px;
+            border-radius: 22px;
+        }
+
+
+        .interest-header h2 {
+            font-size: 24px;
+        }
+
+
+        .interest-grid {
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+
+        .interest-option {
+            min-height: 70px;
+        }
+
+
+        .interest-icon {
+            width: 62px;
+            height: 62px;
+            font-size: 25px;
+        }
+    }
+
+</style>

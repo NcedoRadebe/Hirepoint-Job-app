@@ -1,0 +1,771 @@
+﻿@model HirePoint.ViewModels.CreateAdminViewModel
+
+@{
+    ViewData["Title"] = "Create Company Administrator";
+}
+
+<style>
+    /* =========================================================
+           HIREPOINT - CREATE COMPANY ADMIN PAGE
+           GREEN THEME
+           ========================================================= */
+
+    :root {
+        --hirepoint-primary:#2878ad;
+        --hirepoint-primary-dark:  #2878ad;
+        --hirepoint-primary-light: #e9f7ef;
+        --hirepoint-secondary: #6c757d;
+        --hirepoint-danger: #dc3545;
+        --hirepoint-light: #f4f8f5;
+        --hirepoint-dark: #1f2933;
+        --hirepoint-white: #ffffff;
+        --hirepoint-border: #d9e5dd;
+        --hirepoint-text-muted: #6b7280;
+    }
+
+    /* =========================================================
+           PAGE
+           ========================================================= */
+
+    .create-user-page {
+        min-height: 100vh;
+        background: linear-gradient( 135deg, #f4f8f5 0%, #eef7f1 50%, #f8faf9 100% );
+        padding: 45px 20px;
+    }
+
+    /* =========================================================
+           MAIN CARD
+           ========================================================= */
+
+    .create-user-card {
+        background-color: var(--hirepoint-white);
+        border: 1px solid var(--hirepoint-border);
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(25, 135, 84, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+        overflow: hidden;
+        position: relative;
+    }
+
+        .create-user-card::before {
+            content: "";
+            display: block;
+            height: 5px;
+            width: 100%;
+            background: linear-gradient( 90deg, #2878ad,#2878ad,#2878ad
+            );
+        }
+
+        /* =========================================================
+           CARD BODY
+           ========================================================= */
+
+        .create-user-card .card-body {
+            padding: 40px !important;
+        }
+
+    /* =========================================================
+           PAGE TITLE
+           ========================================================= */
+
+    .create-user-title {
+        color: var(--hirepoint-primary-dark);
+        font-weight: 700;
+        font-size: 1.8rem;
+        letter-spacing: -0.3px;
+    }
+
+        .create-user-title::after {
+            content: "";
+            display: block;
+            width: 55px;
+            height: 3px;
+            background-color: var(--hirepoint-primary);
+            border-radius: 10px;
+            margin: 12px auto 0;
+        }
+
+    /* =========================================================
+           SECTION TITLES
+           ========================================================= */
+
+    .section-title {
+        color: var(--hirepoint-primary-dark);
+        font-weight: 700;
+        font-size: 1.05rem;
+        border-bottom: 1px solid var(--hirepoint-border);
+        padding-bottom: 11px;
+        margin-bottom: 22px;
+        position: relative;
+    }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 65px;
+            height: 3px;
+            background-color: var(--hirepoint-primary);
+            border-radius: 4px;
+        }
+
+    /* =========================================================
+           FORM LABELS
+           ========================================================= */
+
+    .create-user-card .form-label {
+        color: #374151;
+        font-weight: 600;
+        font-size: 0.92rem;
+        margin-bottom: 7px;
+    }
+
+    /* =========================================================
+           INPUTS
+           ========================================================= */
+
+    .create-user-card .form-control,
+    .create-user-card .form-select {
+        min-height: 46px;
+        border: 1px solid var(--hirepoint-border);
+        border-radius: 9px;
+        color: var(--hirepoint-dark);
+        background-color: var(--hirepoint-white);
+        padding: 10px 13px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    }
+
+    .create-user-card textarea.form-control {
+        min-height: 125px;
+        resize: vertical;
+        line-height: 1.55;
+    }
+
+    /* =========================================================
+           INPUT FOCUS
+           ========================================================= */
+
+    .create-user-card .form-control:focus,
+    .create-user-card .form-select:focus {
+        border-color: var(--hirepoint-primary);
+        box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.13);
+        outline: none;
+    }
+
+    /* =========================================================
+           PLACEHOLDER
+           ========================================================= */
+
+    .create-user-card .form-control::placeholder {
+        color: #9ca3af;
+        opacity: 1;
+    }
+
+    /* =========================================================
+           ACCOUNT TYPE
+           ========================================================= */
+
+    .account-type-select {
+        background-color: #edf5ef !important;
+        color: var(--hirepoint-primary-dark) !important;
+        font-weight: 600;
+        cursor: not-allowed;
+        border-color: #c9dfd0 !important;
+    }
+
+    /* =========================================================
+           INFORMATION NOTE
+           ========================================================= */
+
+    .info-note {
+        font-size: 0.88rem;
+        color: #4b6355;
+        background: linear-gradient( 135deg, #edf8f1, #f5fbf7 );
+        border: 1px solid #cfe6d7;
+        border-left: 4px solid var(--hirepoint-primary);
+        border-radius: 9px;
+        padding: 13px 15px;
+        margin-bottom: 27px;
+        line-height: 1.5;
+    }
+
+    /* =========================================================
+           VALIDATION
+           ========================================================= */
+
+    .create-user-card .text-danger {
+        color: var(--hirepoint-danger) !important;
+        font-size: 0.84rem;
+        margin-top: 5px;
+        display: block;
+    }
+
+    /* =========================================================
+           SUCCESS ALERT
+           ========================================================= */
+
+    .create-user-card .alert-success {
+        color: #2878ad;
+        background-color: #e8f6ed;
+        border: 1px solid #bfe3ca;
+        border-left: 4px solid var(--hirepoint-primary);
+        border-radius: 9px;
+    }
+
+    /* =========================================================
+           ERROR ALERT
+           ========================================================= */
+
+    .create-user-card .alert-danger {
+        color: #842029;
+        background-color: #fdf0f1;
+        border: 1px solid #f1c5ca;
+        border-left: 4px solid var(--hirepoint-danger);
+        border-radius: 9px;
+    }
+
+    /* =========================================================
+           FORM SPACING
+           ========================================================= */
+
+    .create-user-card .mb-3 {
+        margin-bottom: 20px !important;
+    }
+
+    /* =========================================================
+           DROPDOWN
+           ========================================================= */
+
+    .create-user-card .form-select {
+        cursor: pointer;
+    }
+
+        .create-user-card .form-select:disabled {
+            opacity: 1;
+        }
+
+    /* =========================================================
+           PRIMARY BUTTON
+           ========================================================= */
+
+    .create-user-card .btn-primary {
+        background: linear-gradient( 135deg, #2878ad,#2878ad);
+        border: none;
+        border-radius: 9px;
+        min-height: 46px;
+        font-weight: 600;
+        letter-spacing: 0.1px;
+        box-shadow: 0 4px 10px rgba(25, 135, 84, 0.18);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+        .create-user-card .btn-primary:hover {
+            background: linear-gradient( 135deg, #2878ad,#2878ad);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(25, 135, 84, 0.24);
+        }
+
+        .create-user-card .btn-primary:active {
+            transform: translateY(0);
+        }
+
+    /* =========================================================
+           SECONDARY BUTTON
+           ========================================================= */
+
+    .create-user-card .btn-secondary {
+        background-color: #ffffff;
+        color: #495057;
+        border: 1px solid #ced4da;
+        border-radius: 9px;
+        min-height: 46px;
+        font-weight: 600;
+        padding-left: 22px;
+        padding-right: 22px;
+        transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+        .create-user-card .btn-secondary:hover {
+            background-color: #f1f3f5;
+            border-color: #adb5bd;
+            color: #343a40;
+        }
+
+    /* =========================================================
+           BUTTON AREA
+           ========================================================= */
+
+    .create-user-card form .d-flex {
+        border-top: 1px solid #edf1ee;
+        padding-top: 24px;
+    }
+
+    /* =========================================================
+           MOBILE
+           ========================================================= */
+
+    @@media (max-width: 768px) {
+
+        .create-user-page {
+            padding: 25px 12px;
+        }
+
+        .create-user-card {
+            border-radius: 14px;
+        }
+
+            .create-user-card .card-body {
+                padding: 28px 22px !important;
+            }
+
+        .create-user-title {
+            font-size: 1.5rem;
+        }
+    }
+
+    @@media (max-width: 576px) {
+
+        .create-user-page {
+            padding: 15px 8px;
+        }
+
+        .create-user-card .card-body {
+            padding: 24px 18px !important;
+        }
+
+        .create-user-card .d-flex {
+            flex-direction: column;
+            gap: 10px !important;
+        }
+
+        .create-user-card .btn {
+            width: 100%;
+        }
+
+        .create-user-card .btn-secondary {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+</style>
+
+
+<div class="create-user-page">
+
+    <div class="container">
+
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8 col-md-10">
+
+                <div class="card create-user-card">
+
+                    <div class="card-body p-4">
+
+                        <!-- =====================================================
+                             PAGE TITLE
+                             ===================================================== -->
+
+                        <h2 class="text-center mb-4 create-user-title">
+                            Create Company Administrator
+                        </h2>
+
+
+                        <!-- =====================================================
+                             INFORMATION
+                             ===================================================== -->
+
+                        <div class="info-note">
+                            Create the company and its administrator together.
+                            The administrator will manage the company's recruiters,
+                            users, and job listings.
+                        </div>
+
+
+                        <!-- =====================================================
+                             ERROR MESSAGE
+                             ===================================================== -->
+                        @if (TempData["Error"] != null)
+                        {
+                            <div class="alert alert-danger">
+                                @TempData["Error"]
+                            </div>
+                        }
+
+
+                        <!-- =====================================================
+                             SUCCESS MESSAGE
+                             ===================================================== -->
+                        @if (TempData["Success"] != null)
+                        {
+                            <div class="alert alert-success">
+                                @TempData["Success"]
+                            </div>
+                        }
+
+
+                        <!-- =====================================================
+                             VALIDATION SUMMARY
+                             ===================================================== -->
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+
+                        <form asp-action="CreateAdmin"
+                              asp-controller="Admin"
+                              method="post">
+
+                            @Html.AntiForgeryToken()
+
+
+                            <!-- =====================================================
+                                 ADMINISTRATOR DETAILS
+                                 ===================================================== -->
+
+                            <div class="section-title">
+                                Administrator Details
+                            </div>
+
+
+                            <!-- FULL NAME -->
+
+                            <div class="mb-3">
+
+                                <label asp-for="FullName"
+                                       class="form-label">
+                                    Full Name
+                                </label>
+
+                                <input asp-for="FullName"
+                                       class="form-control"
+                                       placeholder="Enter administrator's full name"
+                                       autocomplete="name" />
+
+                                <span asp-validation-for="FullName"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+
+                            <div class="mb-3">
+
+                                <label asp-for="Email"
+                                       class="form-label">
+                                    Email Address
+                                </label>
+
+                                <input asp-for="Email"
+                                       type="email"
+                                       class="form-control"
+                                       placeholder="Enter administrator's email address"
+                                       autocomplete="email" />
+
+                                <span asp-validation-for="Email"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <!-- PHONE NUMBER -->
+
+                            <div class="mb-3">
+
+                                <label asp-for="PhoneNumber"
+                                       class="form-label">
+                                    Phone Number
+                                </label>
+
+                                <input asp-for="PhoneNumber"
+                                       type="tel"
+                                       class="form-control"
+                                       placeholder="e.g. 071 234 5678"
+                                       autocomplete="tel" />
+
+                                <span asp-validation-for="PhoneNumber"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <!-- GENDER -->
+
+                            <div class="mb-3">
+
+                                <label asp-for="Gender"
+                                       class="form-label">
+                                    Gender
+                                </label>
+
+                                <select asp-for="Gender"
+                                        class="form-select">
+
+                                    <option value="">
+                                        -- Select Gender --
+                                    </option>
+
+                                    <option value="Male">
+                                        Male
+                                    </option>
+
+                                    <option value="Female">
+                                        Female
+                                    </option>
+
+                                    <option value="Other">
+                                        Other
+                                    </option>
+
+                                    <option value="Prefer not to say">
+                                        Prefer not to say
+                                    </option>
+
+                                </select>
+
+                                <span asp-validation-for="Gender"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <!-- PROVINCE -->
+
+                            <div class="mb-3">
+
+                                <label asp-for="ProvinceID"
+                                       class="form-label">
+                                    Province
+                                </label>
+
+                                <select asp-for="ProvinceID"
+                                        class="form-select">
+
+                                    <option value="">
+                                        -- Select Province --
+                                    </option>
+
+                                    @if (ViewBag.Provinces != null)
+                                    {
+                                        foreach (var province in ViewBag.Provinces)
+                                        {
+                                            <option value="@province.ProvinceID">
+                                                @province.ProvinceName
+                                            </option>
+                                        }
+                                    }
+
+                                </select>
+
+                                <span asp-validation-for="ProvinceID"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <!-- =====================================================
+                                 ACCOUNT TYPE
+                                 ===================================================== -->
+
+                            <div class="mb-3">
+
+                                <label asp-for="UserType"
+                                       class="form-label">
+                                    Account Type
+                                </label>
+
+                                <select asp-for="UserType"
+                                        class="form-select account-type-select"
+                                        disabled>
+
+                                    <option value="Admin">
+                                        Admin
+                                    </option>
+
+                                </select>
+
+                                <!-- Hidden value ensures Admin is submitted -->
+
+                                <input type="hidden"
+                                       asp-for="UserType"
+                                       value="Admin" />
+
+                                <span asp-validation-for="UserType"
+                                      class="text-danger">
+                                </span>
+
+                                <div class="info-note mt-2 mb-0">
+                                    Account Type is restricted to Admin because
+                                    this page creates a company administrator.
+                                </div>
+
+                            </div>
+
+
+                            <!-- =====================================================
+                                 PASSWORD
+                                 ===================================================== -->
+
+                            <div class="mb-3">
+
+                                <label asp-for="Password"
+                                       class="form-label">
+                                    Password
+                                </label>
+
+                                <input asp-for="Password"
+                                       type="password"
+                                       class="form-control"
+                                       placeholder="Enter password"
+                                       autocomplete="new-password" />
+
+                                <span asp-validation-for="Password"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <!-- =====================================================
+                                 CONFIRM PASSWORD
+                                 ===================================================== -->
+
+                            <div class="mb-3">
+
+                                <label asp-for="ConfirmPassword"
+                                       class="form-label">
+                                    Confirm Password
+                                </label>
+
+                                <input asp-for="ConfirmPassword"
+                                       type="password"
+                                       class="form-control"
+                                       placeholder="Confirm password"
+                                       autocomplete="new-password" />
+
+                                <span asp-validation-for="ConfirmPassword"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <!-- =====================================================
+                                 COMPANY DETAILS
+                                 ===================================================== -->
+
+                            <div class="section-title mt-4">
+                                Company Details
+                            </div>
+
+
+                            <!-- COMPANY NAME -->
+
+                            <div class="mb-3">
+
+                                <label asp-for="CompanyName"
+                                       class="form-label">
+                                    Company Name
+                                </label>
+
+                                <input asp-for="CompanyName"
+                                       type="text"
+                                       class="form-control"
+                                       placeholder="Enter company name"
+                                       autocomplete="organization" />
+
+                                <span asp-validation-for="CompanyName"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <!-- COMPANY DESCRIPTION -->
+
+                            <div class="mb-3">
+
+                                <label asp-for="CompanyDescription"
+                                       class="form-label">
+                                    Company Description
+                                </label>
+
+                                <textarea asp-for="CompanyDescription"
+                                          class="form-control"
+                                          rows="5"
+                                          placeholder="Describe the company, its services, industry, and other relevant information"></textarea>
+
+                                <span asp-validation-for="CompanyDescription"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <!-- WEBSITE -->
+
+                            <div class="mb-3">
+
+                                <label asp-for="Website"
+                                       class="form-label">
+                                    Website
+                                </label>
+
+                                <input asp-for="Website"
+                                       type="url"
+                                       class="form-control"
+                                       placeholder="https://www.example.com"
+                                       autocomplete="url" />
+
+                                <span asp-validation-for="Website"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+
+                            <!-- =====================================================
+                                 BUTTONS
+                                 ===================================================== -->
+
+                            <div class="d-flex gap-2 mt-4">
+
+                                <button type="submit"
+                                        class="btn btn-primary flex-grow-1">
+                                    Create Company &amp; Admin
+                                </button>
+
+                                <a asp-controller="Admin"
+                                   asp-action="ManageUsers"
+                                   class="btn btn-secondary">
+                                    Cancel
+                                </a>
+
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

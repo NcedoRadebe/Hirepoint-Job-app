@@ -1,0 +1,832 @@
+﻿@model HirePoint.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Create Account";
+}
+
+<div class="register-page">
+
+    <div class="register-card">
+
+        <div class="register-header">
+
+            <div class="register-logo">
+                <i class="bi bi-person-plus-fill"></i>
+            </div>
+
+            <h2 class="register-title">
+                Create Your Account
+            </h2>
+
+            <p class="register-subtitle">
+                Join HirePoint and start your journey today.
+            </p>
+
+        </div>
+
+        @if (TempData["Error"] != null)
+        {
+            <div class="register-alert register-alert-danger">
+                <i class="bi bi-exclamation-circle-fill"></i>
+                <span>@TempData["Error"]</span>
+            </div>
+        }
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="register-alert register-alert-success">
+                <i class="bi bi-check-circle-fill"></i>
+                <span>@TempData["Success"]</span>
+            </div>
+        }
+
+        <div asp-validation-summary="All"
+             class="register-validation">
+        </div>
+
+        <form asp-action="Register"
+              asp-controller="Account"
+              method="post"
+              class="register-form"
+              id="registerForm">
+
+            @Html.AntiForgeryToken()
+
+            <!-- PERSONAL INFORMATION -->
+
+            <div class="register-section">
+
+                <div class="register-section-title">
+
+                    <span class="section-icon">
+                        <i class="bi bi-person-fill"></i>
+                    </span>
+
+                    <div>
+                        <strong>Personal Information</strong>
+                        <small>Tell us about yourself</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- FULL NAME -->
+
+            <div class="register-field">
+
+                <label asp-for="FullName">
+                    Full Name
+                </label>
+
+                <div class="register-input-group">
+
+                    <i class="bi bi-person"></i>
+
+                    <input asp-for="FullName"
+                           class="form-control"
+                           placeholder="Enter your full name"
+                           autocomplete="name" />
+
+                </div>
+
+                <span asp-validation-for="FullName"
+                      class="register-field-error">
+                </span>
+
+            </div>
+
+            <!-- EMAIL -->
+
+            <div class="register-field">
+
+                <label asp-for="Email">
+                    Email Address
+                </label>
+
+                <div class="register-input-group">
+
+                    <i class="bi bi-envelope"></i>
+
+                    <input asp-for="Email"
+                           type="email"
+                           class="form-control"
+                           placeholder="Enter your email address"
+                           autocomplete="email" />
+
+                </div>
+
+                <span asp-validation-for="Email"
+                      class="register-field-error">
+                </span>
+
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="register-field">
+
+                <label asp-for="Password">
+                    Password
+                </label>
+
+                <div class="register-input-group">
+
+                    <i class="bi bi-lock"></i>
+
+                    <input asp-for="Password"
+                           type="password"
+                           class="form-control"
+                           placeholder="Create a strong password"
+                           autocomplete="new-password" />
+
+                </div>
+
+                <small class="password-hint">
+                    <i class="bi bi-shield-check"></i>
+                    Minimum 8 characters with uppercase,
+                    lowercase, number and special character.
+                </small>
+
+                <span asp-validation-for="Password"
+                      class="register-field-error">
+                </span>
+
+            </div>
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="register-field">
+
+                <label asp-for="ConfirmPassword">
+                    Confirm Password
+                </label>
+
+                <div class="register-input-group">
+
+                    <i class="bi bi-lock-fill"></i>
+
+                    <input asp-for="ConfirmPassword"
+                           type="password"
+                           class="form-control"
+                           placeholder="Confirm your password"
+                           autocomplete="new-password" />
+
+                </div>
+
+                <span asp-validation-for="ConfirmPassword"
+                      class="register-field-error">
+                </span>
+
+            </div>
+
+            <!-- PHONE NUMBER OPTIONAL -->
+
+            <div class="register-field">
+
+                <label asp-for="PhoneNumber">
+                    Phone Number
+                </label>
+
+                <div class="register-input-group">
+
+                    <i class="bi bi-telephone"></i>
+
+                    <input asp-for="PhoneNumber"
+                           type="tel"
+                           class="form-control"
+                           placeholder="Enter your phone number (optional)"
+                           autocomplete="tel" />
+
+                </div>
+
+                <span asp-validation-for="PhoneNumber"
+                      class="register-field-error">
+                </span>
+
+            </div>
+
+            <!-- GENDER OPTIONAL -->
+
+            <div class="register-field">
+
+                <label asp-for="Gender">
+                    Gender
+                </label>
+
+                <div class="register-input-group">
+
+                    <i class="bi bi-gender-ambiguous"></i>
+
+                    <select asp-for="Gender"
+                            class="form-select">
+
+                        <option value="">
+                            Select Gender (optional)
+                        </option>
+
+                        <option value="Male">
+                            Male
+                        </option>
+
+                        <option value="Female">
+                            Female
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <span asp-validation-for="Gender"
+                      class="register-field-error">
+                </span>
+
+            </div>
+
+            <!-- PROVINCE OPTIONAL -->
+
+            <div class="register-field">
+
+                <label asp-for="ProvinceID">
+                    Province
+                </label>
+
+                <div class="register-input-group">
+
+                    <i class="bi bi-geo-alt"></i>
+
+                    <select asp-for="ProvinceID"
+                            asp-items="Model.Provinces"
+                            class="form-select">
+
+                        <option value="">
+                            Select Province (optional)
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <span asp-validation-for="ProvinceID"
+                      class="register-field-error">
+                </span>
+
+            </div>
+
+            <!-- QUALIFICATION OPTIONAL -->
+
+            <div id="qualificationSection"
+                 class="qualification-section">
+
+                <div class="register-field">
+
+                    <label asp-for="Qualification">
+                        Qualification
+                    </label>
+
+                    <div class="register-input-group">
+
+                        <i class="bi bi-mortarboard"></i>
+
+                        <input asp-for="Qualification"
+                               type="text"
+                               class="form-control"
+                               placeholder="Enter your qualification (optional)"
+                               autocomplete="off" />
+
+                    </div>
+
+                    <span asp-validation-for="Qualification"
+                          class="register-field-error">
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- ACCOUNT INFORMATION -->
+
+            <div class="register-section">
+
+                <div class="register-section-title">
+
+                    <span class="section-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </span>
+
+                    <div>
+                        <strong>Account Information</strong>
+                        <small>Choose how you will use HirePoint</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- USER TYPE -->
+
+            <div class="register-field">
+
+                <label asp-for="UserType">
+                    Account Type
+                </label>
+
+                <div class="register-input-group">
+
+                    <i class="bi bi-briefcase"></i>
+
+                    <select asp-for="UserType"
+                            class="form-select"
+                            id="userType">
+
+                        <option value="">
+                            Select Account Type
+                        </option>
+
+                        <option value="Jobseeker">
+                            Jobseeker
+                        </option>
+
+                        <option value="Recruiter">
+                            Recruiter
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <span asp-validation-for="UserType"
+                      class="register-field-error">
+                </span>
+
+            </div>
+
+            <!-- RECRUITER INFORMATION -->
+
+            <div id="recruiterSection"
+                 class="recruiter-section">
+
+                <div class="register-section">
+
+                    <div class="register-section-title">
+
+                        <span class="section-icon">
+                            <i class="bi bi-building"></i>
+                        </span>
+
+                        <div>
+                            <strong>Company Information</strong>
+                            <small>Company information for recruiter accounts</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- COMPANY NAME -->
+
+                <div class="register-field">
+
+                    <label asp-for="CompanyName">
+                        Company Name
+                    </label>
+
+                    <div class="register-input-group">
+
+                        <i class="bi bi-building"></i>
+
+                        <input asp-for="CompanyName"
+                               class="form-control"
+                               placeholder="Enter company name" />
+
+                    </div>
+
+                    <span asp-validation-for="CompanyName"
+                          class="register-field-error">
+                    </span>
+
+                </div>
+
+                <!-- COMPANY DESCRIPTION -->
+
+                <div class="register-field">
+
+                    <label asp-for="CompanyDescription">
+                        Company Description
+                    </label>
+
+                    <textarea asp-for="CompanyDescription"
+                              class="register-textarea"
+                              placeholder="Briefly describe your company"></textarea>
+
+                    <span asp-validation-for="CompanyDescription"
+                          class="register-field-error">
+                    </span>
+
+                </div>
+
+                <!-- WEBSITE -->
+
+                <div class="register-field">
+
+                    <label asp-for="Website">
+                        Company Website
+                    </label>
+
+                    <div class="register-input-group">
+
+                        <i class="bi bi-globe"></i>
+
+                        <input asp-for="Website"
+                               type="url"
+                               class="form-control"
+                               placeholder="https://example.com" />
+
+                    </div>
+
+                    <span asp-validation-for="Website"
+                          class="register-field-error">
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- SUBMIT -->
+
+            <button type="submit"
+                    class="register-btn">
+
+                <i class="bi bi-person-plus-fill"></i>
+                Create Account
+
+            </button>
+
+        </form>
+
+        <!-- FOOTER -->
+
+        <div class="register-footer">
+
+            <p>
+                Already have an account?
+
+                <a asp-controller="Account"
+                   asp-action="Login"
+                   class="register-link">
+                    Login here
+                </a>
+            </p>
+
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="register-home">
+
+                <i class="bi bi-arrow-left"></i>
+                Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+    .register-page {
+        min-height: 100vh;
+        width: 100%;
+        background: #2878ad;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 50px 20px;
+    }
+
+    .register-card {
+        width: 100%;
+        max-width: 680px;
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 40px;
+        box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+    }
+
+    .register-header {
+        text-align: center;
+        margin-bottom: 32px;
+    }
+
+    .register-logo {
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #2878ad;
+        color: #ffffff;
+        border-radius: 18px;
+        font-size: 30px;
+    }
+
+    .register-title {
+        margin: 0;
+        color: #1f2937;
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .register-subtitle {
+        margin-top: 8px;
+        color: #6b7280;
+        font-size: 15px;
+    }
+
+    .register-alert {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    .register-alert-danger {
+        background: #fff1f2;
+        color: #b42318;
+        border: 1px solid #fecdd3;
+    }
+
+    .register-alert-success {
+        background: #ecfdf3;
+        color: #027a48;
+        border: 1px solid #abefc6;
+    }
+
+    .register-validation {
+        color: #b42318;
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .register-field-error {
+        display: block;
+        color: #b42318;
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .register-section {
+        margin-top: 26px;
+        margin-bottom: 18px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .register-section-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+        .register-section-title strong {
+            display: block;
+            color: #1f2937;
+            font-size: 16px;
+        }
+
+        .register-section-title small {
+            display: block;
+            margin-top: 2px;
+            color: #9ca3af;
+            font-size: 12px;
+        }
+
+    .section-icon {
+        width: 38px;
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        background: rgba(40,120,173,0.10);
+        color: #2878ad;
+    }
+
+    .register-field {
+        margin-bottom: 18px;
+    }
+
+        .register-field label {
+            display: block;
+            margin-bottom: 7px;
+            color: #374151;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+    .register-input-group {
+        position: relative;
+        display: flex;
+        align-items: center;
+    }
+
+        .register-input-group > i {
+            position: absolute;
+            left: 14px;
+            z-index: 2;
+            color: #8b98a7;
+            pointer-events: none;
+        }
+
+        .register-input-group .form-control,
+        .register-input-group .form-select {
+            min-height: 46px;
+            padding-left: 43px;
+            border: 1px solid #d7dee7;
+            border-radius: 9px;
+            background: #ffffff;
+            color: #1f2937;
+            font-size: 14px;
+        }
+
+            .register-input-group .form-control:focus,
+            .register-input-group .form-select:focus {
+                border-color: #2878ad;
+                box-shadow: 0 0 0 3px rgba(40,120,173,0.12);
+            }
+
+    .register-textarea {
+        width: 100%;
+        min-height: 100px;
+        resize: vertical;
+        border: 1px solid #d7dee7;
+        border-radius: 9px;
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+
+        .register-textarea:focus {
+            outline: none;
+            border-color: #2878ad;
+            box-shadow: 0 0 0 3px rgba(40,120,173,0.12);
+        }
+
+    .password-hint {
+        display: block;
+        margin-top: 7px;
+        color: #6b7280;
+        font-size: 11px;
+    }
+
+        .password-hint i {
+            color: #2878ad;
+            margin-right: 4px;
+        }
+
+    .qualification-section {
+        display: none;
+    }
+
+        .qualification-section.show {
+            display: block;
+        }
+
+    .recruiter-section {
+        display: none;
+    }
+
+        .recruiter-section.show {
+            display: block;
+        }
+
+    .register-btn {
+        width: 100%;
+        min-height: 48px;
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: none;
+        border-radius: 9px;
+        background: #2878ad;
+        color: #ffffff;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+        .register-btn:hover {
+            background: #21658f;
+        }
+
+    .register-footer {
+        text-align: center;
+        margin-top: 28px;
+        padding-top: 22px;
+        border-top: 1px solid #e5e7eb;
+        color: #6b7280;
+        font-size: 14px;
+    }
+
+    .register-link {
+        color: #2878ad;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .register-home {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #6b7280;
+        font-size: 13px;
+        text-decoration: none;
+    }
+
+    @@media (max-width: 768px) {
+
+        .register-page {
+            padding: 25px 15px;
+        }
+
+        .register-card {
+            padding: 28px 22px;
+        }
+    }
+
+</style>
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const userType =
+                document.getElementById("userType");
+
+            const recruiterSection =
+                document.getElementById("recruiterSection");
+
+            const qualificationSection =
+                document.getElementById("qualificationSection");
+
+            const qualificationInput =
+                document.querySelector('[name="Qualification"]');
+
+
+            function updateAccountSections() {
+
+                if (userType.value === "Recruiter") {
+
+                    recruiterSection.classList.add("show");
+
+                }
+                else {
+
+                    recruiterSection.classList.remove("show");
+
+                }
+
+
+                if (userType.value === "Jobseeker") {
+
+                    qualificationSection.classList.add("show");
+
+                }
+                else {
+
+                    qualificationSection.classList.remove("show");
+
+                    if (qualificationInput) {
+
+                        qualificationInput.value = "";
+
+                    }
+
+                }
+
+            }
+
+
+            userType.addEventListener(
+                "change",
+                updateAccountSections
+            );
+
+
+            updateAccountSections();
+
+        });
+
+    </script>
+
+}

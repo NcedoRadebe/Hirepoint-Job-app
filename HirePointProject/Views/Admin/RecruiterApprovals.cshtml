@@ -1,0 +1,350 @@
+﻿@model IEnumerable<HirePoint.Models.User>
+
+@{
+    ViewData["Title"] = "Recruiter Approvals";
+
+bool isSystemAdministrator = ViewBag.IsSystemAdministrator is bool value && value;
+
+}
+
+<div class="container-fluid py-4">
+
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h2 class="fw-bold mb-1">Recruiter Approvals</h2>
+
+            <p class="text-muted mb-0">
+                Review and approve recruiters who have requested to join your company.
+            </p>
+        </div>
+
+        <a asp-controller="Admin"
+           asp-action="Dashboard"
+           class="btn btn-outline-primary">
+            <i class="bi bi-arrow-left"></i>
+            Back to Dashboard
+        </a>
+    </div>
+
+    <!-- Success Message -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            @TempData["Success"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert">
+            </button>
+        </div>
+    }
+
+    <!-- Error Message -->
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            @TempData["Error"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert">
+            </button>
+        </div>
+    }
+
+    @if (isSystemAdministrator)
+    {
+        <div class="alert alert-info border-0 shadow-sm">
+            <i class="bi bi-info-circle-fill me-2"></i>
+
+            <strong>System Administrator view:</strong>
+            Pending recruiters are displayed for monitoring purposes.
+            Approval and rejection must be performed by the relevant Company Administrator.
+        </div>
+    }
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="card shadow-sm border-0">
+            <div class="card-body text-center py-5">
+
+                <div class="mb-3">
+                    <i class="bi bi-person-check"
+                       style="font-size: 3rem; color: #0d6efd;">
+                    </i>
+                </div>
+
+                <h4 class="fw-bold">No Pending Recruiters</h4>
+
+                <p class="text-muted mb-0">
+                    There are currently no recruiters waiting for approval.
+                </p>
+
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+
+            @foreach (var recruiter in Model)
+            {
+                <div class="col-12">
+
+                    <div class="card shadow-sm border-0">
+
+                        <!-- Recruiter Header -->
+                        <div class="card-header bg-primary text-white py-3">
+
+                            <div class="d-flex justify-content-between align-items-center">
+
+                                <div>
+                                    <h5 class="mb-1 fw-bold">
+                                        @recruiter.FullName
+                                    </h5>
+
+                                    <small>
+                                        <i class="bi bi-clock me-1"></i>
+                                        Pending approval
+                                    </small>
+                                </div>
+
+                                <span class="badge bg-warning text-dark">
+                                    @recruiter.Status
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="card-body">
+
+                            <div class="row g-4">
+
+                                <!-- Personal Information -->
+                                <div class="col-md-6">
+
+                                    <h6 class="fw-bold text-primary mb-3">
+                                        <i class="bi bi-person me-2"></i>
+                                        Personal Information
+                                    </h6>
+
+                                    <div class="mb-2">
+                                        <strong>Full Name:</strong>
+                                        <span class="text-muted">
+                                            @recruiter.FullName
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <strong>Email:</strong>
+                                        <span class="text-muted">
+                                            @recruiter.Email
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <strong>Phone:</strong>
+                                        <span class="text-muted">
+                                            @(string.IsNullOrWhiteSpace(recruiter.PhoneNumber)
+                                                ? "Not provided"
+                                                : recruiter.PhoneNumber)
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <strong>Gender:</strong>
+                                        <span class="text-muted">
+                                            @(string.IsNullOrWhiteSpace(recruiter.Gender)
+                                                ? "Not provided"
+                                                : recruiter.Gender)
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <strong>Province:</strong>
+                                        <span class="text-muted">
+                                            @(recruiter.Province?.ProvinceName ?? "Not provided")
+                                        </span>
+                                    </div>
+
+                                    <div class="mb-2">
+                                        <strong>Registered:</strong>
+                                        <span class="text-muted">
+                                            @recruiter.DateCreated
+                                            .ToLocalTime()
+                                            .ToString("dd MMMM yyyy HH:mm")
+                                        </span>
+                                    </div>
+
+                                </div>
+
+                                <!-- Professional Information -->
+                                <div class="col-md-6">
+
+                                    <h6 class="fw-bold text-primary mb-3">
+                                        <i class="bi bi-building me-2"></i>
+                                        Professional Information
+                                    </h6>
+
+                                    @if (recruiter.RecruiterProfile != null)
+                                    {
+                                        <div class="mb-2">
+                                            <strong>Requested Company:</strong>
+
+                                            <span class="text-muted">
+                                                @recruiter.RecruiterProfile.CompanyName
+                                            </span>
+                                        </div>
+
+                                        <div class="mb-2">
+                                            <strong>Company Description:</strong>
+
+                                            <div class="text-muted mt-1">
+                                                @(string.IsNullOrWhiteSpace(
+                                                    recruiter.RecruiterProfile.CompanyDescription)
+                                                    ? "Not provided"
+                                                    : recruiter.RecruiterProfile.CompanyDescription)
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-2">
+                                            <strong>Website:</strong>
+
+                                            @if (!string.IsNullOrWhiteSpace(
+                                                recruiter.RecruiterProfile.Website))
+                                            {
+                                                <div>
+                                                    <a href="@recruiter.RecruiterProfile.Website"
+                                                       target="_blank"
+                                                       rel="noopener noreferrer">
+                                                        @recruiter.RecruiterProfile.Website
+                                                    </a>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted">
+                                                    Not provided
+                                                </span>
+                                            }
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="alert alert-warning mb-0">
+                                            <i class="bi bi-exclamation-triangle me-2"></i>
+
+                                            Recruiter professional profile could not be found.
+                                        </div>
+                                    }
+
+                                </div>
+
+                            </div>
+
+                            <hr class="my-4" />
+
+                            <!-- Approval Actions -->
+                            @if (!isSystemAdministrator)
+                            {
+                                <div class="d-flex justify-content-end gap-2">
+
+                                    <!-- Reject -->
+                                    <form asp-controller="Admin"
+                                          asp-action="RejectRecruiter"
+                                          method="post"
+                                          class="d-inline"
+                                          onsubmit="return confirm('Are you sure you want to reject this recruiter?');">
+
+                                        @Html.AntiForgeryToken()
+
+                                        <input type="hidden"
+                                               name="id"
+                                               value="@recruiter.UserID" />
+
+                                        <button type="submit"
+                                                class="btn btn-outline-danger">
+                                            <i class="bi bi-x-circle me-1"></i>
+                                            Reject
+                                        </button>
+
+                                    </form>
+
+                                    <!-- Approve -->
+                                    <form asp-controller="Admin"
+                                          asp-action="ApproveRecruiter"
+                                          method="post"
+                                          class="d-inline"
+                                          onsubmit="return confirm('Are you sure you want to approve this recruiter?');">
+
+                                        @Html.AntiForgeryToken()
+
+                                        <input type="hidden"
+                                               name="id"
+                                               value="@recruiter.UserID" />
+
+                                        <button type="submit"
+                                                class="btn btn-success">
+                                            <i class="bi bi-check-circle me-1"></i>
+                                            Approve
+                                        </button>
+
+                                    </form>
+
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-secondary mb-0">
+                                    <i class="bi bi-shield-lock me-2"></i>
+
+                                    <strong>Monitoring only:</strong>
+                                    The System Administrator cannot approve or reject recruiters.
+                                    The relevant Company Administrator must perform this action.
+                                </div>
+                            }
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    }
+    
+
+</div>
+
+<style>
+    .card {
+        border-radius: 12px;
+    }
+
+    .card-header {
+        border-radius: 12px 12px 0 0 !important;
+    }
+
+    .badge {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.75rem;
+    }
+
+    .btn {
+        border-radius: 7px;
+    }
+
+    h6 {
+        border-bottom: 1px solid #e9ecef;
+        padding-bottom: 8px;
+    }
+
+    .alert {
+        border-radius: 10px;
+    }
+</style>

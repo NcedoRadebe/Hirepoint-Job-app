@@ -1,0 +1,942 @@
+﻿@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        @ViewData["Title"] - HirePoint
+    </title>
+
+
+    <!-- Bootstrap -->
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+
+    <!-- Bootstrap Icons -->
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+
+    <!-- Main Site CSS -->
+
+    <link rel="stylesheet"
+          href="~/css/site.css" />
+
+
+    @await RenderSectionAsync("Styles", required: false)
+
+
+    <style>
+
+            /* ========================================
+                                   GLOBAL
+                                   ======================================== */
+
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                min-height: 100%;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+
+            /* ========================================
+                                   DASHBOARD LAYOUT
+                                   ======================================== */
+
+            .dashboard-wrapper {
+                display: flex;
+                min-height: 100vh;
+                background: #eef6fb;
+            }
+
+
+            /* ========================================
+                                   SIDEBAR
+                                   ======================================== */
+
+            .dashboard-sidebar {
+                width: 250px;
+                min-height: 100vh;
+                background: #183b56;
+                color: white;
+                position: fixed;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                display: flex;
+                flex-direction: column;
+                padding: 22px 16px;
+                box-shadow: 4px 0 15px rgba(0, 0, 0, 0.08);
+                z-index: 1000;
+            }
+
+
+            /* ========================================
+                                   LOGO
+                                   ======================================== */
+
+            .dashboard-logo {
+                text-align: center;
+                padding: 8px 5px 15px;
+            }
+
+
+            .dashboard-logo-icon {
+                width: 52px;
+                height: 52px;
+                margin: 0 auto 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #2878ad;
+                color: white;
+                border-radius: 14px;
+                font-size: 25px;
+                box-shadow: 0 5px 15px rgba(40, 120, 173, 0.3);
+            }
+
+
+            .dashboard-logo h3 {
+                margin: 0;
+                color: white;
+                font-size: 23px;
+                font-weight: 700;
+            }
+
+
+            .dashboard-logo small {
+                display: block;
+                color: #b8cbd8;
+                margin-top: 4px;
+                font-size: 12px;
+            }
+
+
+            /* ========================================
+                                   SIDEBAR DIVIDER
+                                   ======================================== */
+
+            .dashboard-sidebar hr {
+                border: 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.12);
+                margin: 8px 0 20px;
+            }
+
+
+            /* ========================================
+                                   MENU TITLE
+                                   ======================================== */
+
+            .dashboard-menu-title {
+                color: #9fb7c7;
+                text-transform: uppercase;
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 1px;
+                padding: 0 12px;
+                margin-bottom: 10px;
+            }
+
+
+            /* ========================================
+                                   NAVIGATION
+                                   ======================================== */
+
+            .dashboard-nav {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+
+                .dashboard-nav a {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    color: #d9e7ef;
+                    text-decoration: none;
+                    padding: 12px 13px;
+                    border-radius: 9px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    transition: all 0.2s ease;
+                }
+
+
+                    .dashboard-nav a i {
+                        width: 22px;
+                        text-align: center;
+                        font-size: 17px;
+                    }
+
+
+                    .dashboard-nav a:hover {
+                        background: rgba(40, 120, 173, 0.25);
+                        color: white;
+                        transform: translateX(2px);
+                    }
+
+
+                    .dashboard-nav a.active {
+                        background: #2878ad;
+                        color: white;
+                        box-shadow: 0 4px 10px rgba(40, 120, 173, 0.25);
+                    }
+
+
+            /* ========================================
+                                   LOGOUT
+                                   ======================================== */
+
+            .dashboard-logout {
+                margin-top: auto;
+                padding-top: 20px;
+            }
+
+
+                .dashboard-logout a {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    color: #ffccd0;
+                    text-decoration: none;
+                    padding: 12px 13px;
+                    border-radius: 9px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    transition: all 0.2s ease;
+                }
+
+
+                    .dashboard-logout a i {
+                        width: 22px;
+                        text-align: center;
+                    }
+
+
+                    .dashboard-logout a:hover {
+                        background: rgba(220, 53, 69, 0.18);
+                        color: #ff6b78;
+                    }
+
+
+            /* ========================================
+                                   MAIN AREA
+                                   ======================================== */
+
+            .dashboard-content {
+                margin-left: 250px;
+                width: calc(100% - 250px);
+                min-height: 100vh;
+            }
+
+
+            /* ========================================
+                                   TOP BAR
+                                   ======================================== */
+
+            .dashboard-topbar {
+                height: 70px;
+                background: white;
+                border-bottom: 1px solid #dce8ef;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0 28px;
+                box-shadow: 0 2px 8px rgba(24, 59, 86, 0.04);
+            }
+
+
+                .dashboard-topbar h4 {
+                    margin: 0;
+                    color: #183b56;
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+
+
+            .dashboard-user {
+                display: flex;
+                align-items: center;
+                gap: 9px;
+                color: #66737d;
+                font-size: 14px;
+            }
+
+
+                .dashboard-user i {
+                    color: #2878ad;
+                    font-size: 25px;
+                }
+
+
+                .dashboard-user strong {
+                    color: #183b56;
+                }
+
+
+            /* ========================================
+                                   PAGE CONTENT
+                                   ======================================== */
+
+            .dashboard-body {
+                padding: 25px;
+            }
+
+
+            /* ========================================
+                                   LOGOUT CONFIRMATION MODAL
+                                   ======================================== */
+
+            .logout-modal {
+                border: none;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 15px 45px rgba(24, 59, 86, 0.25);
+            }
+
+
+            /* ========================================
+                                   MODAL HEADER
+                                   ======================================== */
+
+            .logout-modal-header {
+                border-bottom: none;
+                padding: 22px 22px 5px;
+            }
+
+
+            .logout-icon {
+                width: 52px;
+                height: 52px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #eef6fb;
+                color: #2878ad;
+                border-radius: 14px;
+                font-size: 23px;
+            }
+
+
+            /* ========================================
+                                   MODAL BODY
+                                   ======================================== */
+
+            .logout-modal .modal-body {
+                padding: 10px 30px 20px;
+            }
+
+
+                .logout-modal .modal-body h4 {
+                    color: #183b56;
+                    font-size: 21px;
+                    font-weight: 700;
+                    margin-bottom: 10px;
+                }
+
+
+                .logout-modal .modal-body p {
+                    color: #66737d;
+                    font-size: 14px;
+                    line-height: 1.6;
+                    margin-bottom: 0;
+                }
+
+
+            /* ========================================
+                                   MODAL FOOTER
+                                   ======================================== */
+
+            .logout-modal-footer {
+                border-top: none;
+                padding: 10px 30px 25px;
+                gap: 10px;
+            }
+
+
+            /* ========================================
+                                   CANCEL BUTTON
+                                   ======================================== */
+
+            .logout-cancel-btn {
+                border: 1px solid #dce8ef;
+                background: white;
+                color: #66737d;
+                padding: 10px 20px;
+                border-radius: 9px;
+                font-size: 14px;
+                font-weight: 600;
+                transition: all 0.2s ease;
+            }
+
+
+                .logout-cancel-btn:hover {
+                    background: #f3f7fa;
+                    color: #183b56;
+                    border-color: #c9d9e3;
+                }
+
+
+            /* ========================================
+                                   CONFIRM LOGOUT BUTTON
+                                   ======================================== */
+
+            .logout-confirm-btn {
+                background: #dc3545;
+                border: 1px solid #dc3545;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 9px;
+                font-size: 14px;
+                font-weight: 600;
+                transition: all 0.2s ease;
+            }
+
+
+                .logout-confirm-btn:hover {
+                    background: #bb2d3b;
+                    border-color: #bb2d3b;
+                    color: white;
+                }
+
+
+            /* ========================================
+                                   MOBILE
+                                   ======================================== */
+
+            @@media (max-width: 768px) {
+
+                .dashboard-sidebar {
+                    width: 75px;
+                    padding: 18px 8px;
+                }
+
+
+                .dashboard-logo h3,
+                .dashboard-logo small,
+                .dashboard-menu-title,
+                .dashboard-nav span,
+                .dashboard-logout span {
+                    display: none;
+                }
+
+
+                .dashboard-logo-icon {
+                    width: 45px;
+                    height: 45px;
+                    font-size: 21px;
+                }
+
+
+                .dashboard-nav a,
+                .dashboard-logout a {
+                    justify-content: center;
+                    padding: 12px 5px;
+                }
+
+
+                    .dashboard-nav a i,
+                    .dashboard-logout a i {
+                        width: auto;
+                        font-size: 19px;
+                    }
+
+
+                .dashboard-content {
+                    margin-left: 75px;
+                    width: calc(100% - 75px);
+                }
+
+
+                .dashboard-topbar {
+                    padding: 0 15px;
+                }
+
+
+                .dashboard-user span {
+                    display: none;
+                }
+
+
+                .dashboard-body {
+                    padding: 15px;
+                }
+            }
+
+
+            /* ========================================
+                                   SMALL MOBILE MODAL
+                                   ======================================== */
+
+            @@media (max-width: 576px) {
+
+                .logout-modal .modal-body {
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+
+
+                .logout-modal-footer {
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+
+
+                .logout-cancel-btn,
+                .logout-confirm-btn {
+                    flex: 1;
+                }
+            }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    @if (Context.Session.GetString("UserType") != null)
+    {
+
+        <div class="dashboard-wrapper">
+
+
+            <!-- ====================================
+                 SIDEBAR
+                 ==================================== -->
+
+            <aside class="dashboard-sidebar">
+
+
+                <!-- LOGO -->
+
+                <div class="dashboard-logo">
+
+                    <div class="dashboard-logo-icon">
+
+                        <i class="bi bi-mortarboard-fill"></i>
+
+                    </div>
+
+                    <h3>
+                        HirePoint
+                    </h3>
+
+                    <small>
+                        @Context.Session.GetString("UserType") Portal
+                    </small>
+
+                </div>
+
+
+                <hr />
+
+
+                <!-- MENU TITLE -->
+
+                <div class="dashboard-menu-title">
+                    Main Menu
+                </div>
+
+
+                <!-- ====================================
+                     ADMIN MENU
+                     ==================================== -->
+                @if (Context.Session.GetString("UserType") == "Admin")
+                {
+                    <nav class="dashboard-nav">
+
+                        <a asp-controller="Admin"
+                           asp-action="Dashboard">
+
+                            <i class="bi bi-speedometer2"></i>
+
+                            <span>
+                                Dashboard
+                            </span>
+
+                        </a>
+
+
+                        <a asp-controller="Admin"
+                           asp-action="ManageUsers">
+
+                            <i class="bi bi-people"></i>
+
+                            <span>
+                                Manage Users
+                            </span>
+
+                        </a>
+
+
+                        <a asp-controller="Admin"
+                           asp-action="JobListings">
+
+                            <i class="bi bi-briefcase"></i>
+
+                            <span>
+                                Job Listings
+                            </span>
+
+                        </a>
+
+
+                        <a asp-controller="Admin"
+                           asp-action="Analytics">
+
+                            <i class="bi bi-bar-chart"></i>
+
+                            <span>
+                                Analytics
+                            </span>
+
+                        </a>
+
+
+                        <a asp-controller="Admin"
+                           asp-action="Profile">
+
+                            <i class="bi bi-person-circle"></i>
+
+                            <span>
+                                Profile
+                            </span>
+
+                        </a>
+
+                    </nav>
+                }
+
+
+                <!-- ====================================
+                     JOBSEEKER MENU
+                     ==================================== -->
+                @if (Context.Session.GetString("UserType") == "Jobseeker")
+                {
+                    <nav class="dashboard-nav">
+
+                        <a asp-controller="Jobseeker"
+                           asp-action="Dashboard">
+
+                            <i class="bi bi-speedometer2"></i>
+
+                            <span>
+                                Dashboard
+                            </span>
+
+                        </a>
+
+
+                        <a asp-controller="Jobseeker"
+                           asp-action="Jobs">
+
+                            <i class="bi bi-briefcase"></i>
+
+                            <span>
+                                Find Jobs
+                            </span>
+
+                        </a>
+
+
+                        <a asp-controller="Jobseeker"
+                           asp-action="Applications">
+
+                            <i class="bi bi-file-earmark-text"></i>
+
+                            <span>
+                                Applications
+                            </span>
+
+                        </a>
+
+
+                        <a asp-controller="Jobseeker"
+                           asp-action="Notifications">
+
+                            <i class="bi bi-bell"></i>
+
+                            <span>
+                                Notifications
+                            </span>
+
+                        </a>
+
+
+                        <a asp-controller="Jobseeker"
+                           asp-action="Profile">
+
+                            <i class="bi bi-person-circle"></i>
+
+                            <span>
+                                Profile
+                            </span>
+
+                        </a>
+
+                    </nav>
+                }
+
+
+                <!-- ====================================
+                     RECRUITER MENU
+                     ==================================== -->
+                @if (Context.Session.GetString("UserType") == "Recruiter")
+                {
+                    <nav class="dashboard-nav">
+
+                        <a asp-controller="Recruiter"
+                           asp-action="Dashboard">
+
+                            <i class="bi bi-speedometer2"></i>
+
+                            <span>
+                                Dashboard
+                            </span>
+
+                        </a>
+
+
+                        <a asp-controller="Recruiter"
+                           asp-action="PostJob">
+
+                            <i class="bi bi-plus-circle"></i>
+
+                            <span>
+                                Post Job
+                            </span>
+
+                        </a>
+
+
+                        <a asp-controller="Recruiter"
+                           asp-action="ManageJobs">
+
+                            <i class="bi bi-briefcase"></i>
+
+                            <span>
+                                My Jobs
+                            </span>
+
+                        </a>
+
+
+                        <a asp-controller="Recruiter"
+                           asp-action="Applicants">
+
+                            <i class="bi bi-people"></i>
+
+                            <span>
+                                Applicants
+                            </span>
+
+                        </a>
+
+
+                        <a asp-controller="Recruiter"
+                           asp-action="Profile">
+
+                            <i class="bi bi-person-circle"></i>
+
+                            <span>
+                                Profile
+                            </span>
+
+                        </a>
+
+                    </nav>
+                }
+
+
+                <!-- ====================================
+                     LOGOUT
+                     ==================================== -->
+
+                <div class="dashboard-logout">
+
+                    <a href="#"
+                       data-bs-toggle="modal"
+                       data-bs-target="#logoutModal">
+
+                        <i class="bi bi-box-arrow-right"></i>
+
+                        <span>
+                            Logout
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+            </aside>
+
+
+            <!-- ====================================
+                 MAIN CONTENT
+                 ==================================== -->
+
+            <div class="dashboard-content">
+
+
+                <!-- TOP BAR -->
+
+                <div class="dashboard-topbar">
+
+                    <h4>
+                        HirePoint Portal
+                    </h4>
+
+
+                    <div class="dashboard-user">
+
+                        <i class="bi bi-person-circle"></i>
+
+                        <span>
+
+                            Welcome,
+                            <strong>
+                                @Context.Session.GetString("UserName")
+                            </strong>
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PAGE -->
+
+                <div class="dashboard-body">
+
+                    @RenderBody()
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    }
+    else
+    {
+
+        <!-- ====================================
+             PUBLIC PAGES
+             ==================================== -->
+
+        @RenderBody()
+
+    }
+
+
+    <!-- =========================================
+         LOGOUT CONFIRMATION MODAL
+         ========================================= -->
+
+    <div class="modal fade"
+         id="logoutModal"
+         tabindex="-1"
+         aria-labelledby="logoutModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content logout-modal">
+
+
+                <!-- HEADER -->
+
+                <div class="modal-header logout-modal-header">
+
+                    <div class="logout-icon">
+
+                        <i class="bi bi-box-arrow-right"></i>
+
+                    </div>
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close">
+                    </button>
+
+                </div>
+
+
+                <!-- BODY -->
+
+                <div class="modal-body text-center">
+
+                    <h4 id="logoutModalLabel">
+                        Are you sure you want to logout?
+                    </h4>
+
+                    <p>
+                        You will be signed out of your HirePoint
+                        account and returned to the login page.
+                    </p>
+
+                </div>
+
+
+                <!-- FOOTER -->
+
+                <div class="modal-footer logout-modal-footer">
+
+                    <button type="button"
+                            class="btn logout-cancel-btn"
+                            data-bs-dismiss="modal">
+
+                        Cancel
+
+                    </button>
+
+
+                    <a asp-controller="Account"
+                       asp-action="Logout"
+                       class="btn logout-confirm-btn">
+
+                        <i class="bi bi-box-arrow-right"></i>
+
+                        Yes, Logout
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
+</html>

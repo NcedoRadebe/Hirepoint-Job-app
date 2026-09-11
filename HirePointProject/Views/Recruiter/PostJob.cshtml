@@ -1,0 +1,824 @@
+﻿@model HirePoint.Models.Job
+
+@{
+    ViewData["Title"] = "Post Job";
+}
+
+<style>
+    .hirepoint-post-page {
+        background: #cfe3f7;
+        min-height: 100vh;
+        padding: 40px 20px 60px;
+    }
+
+    .hirepoint-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .page-heading {
+        margin-bottom: 28px;
+    }
+
+        .page-heading h1 {
+            font-size: 30px;
+            font-weight: 700;
+            color: #1f3b57;
+            margin-bottom: 6px;
+        }
+
+        .page-heading p {
+            color: #607589;
+            margin: 0;
+            font-size: 15px;
+        }
+
+    .job-form-wrapper {
+        background: #fff;
+        border: 1px solid #d3e0eb;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(31, 59, 87, .08);
+        overflow: hidden;
+    }
+
+    .form-top {
+        padding: 24px 30px;
+        border-bottom: 1px solid #dce6ef;
+    }
+
+    .form-top-title {
+        font-size: 17px;
+        font-weight: 700;
+        color: #1f3b57;
+        margin: 0;
+    }
+
+    .form-top-subtitle {
+        font-size: 13px;
+        color: #6c7f91;
+        margin: 5px 0 0;
+    }
+
+    .job-form-body {
+        padding: 32px;
+    }
+
+    .form-section {
+        margin-bottom: 38px;
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+
+    .section-number {
+        width: 31px;
+        height: 31px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #d7e7f5;
+        color: #326b9d;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .section-header h3 {
+        font-size: 16px;
+        font-weight: 700;
+        color: #1f3b57;
+        margin: 0;
+    }
+
+    .section-header p {
+        font-size: 13px;
+        color: #718394;
+        margin: 3px 0 0;
+    }
+
+    .form-label {
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        color: #344b60;
+        margin-bottom: 8px;
+    }
+
+    .required {
+        color: #dc3545;
+    }
+
+    .form-control,
+    .form-select {
+        width: 100%;
+        min-height: 46px;
+        border: 1px solid #ccd9e4;
+        border-radius: 7px;
+        padding: 10px 13px;
+        font-size: 14px;
+        color: #263d51;
+        background: #fff;
+    }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #5b8db5;
+            box-shadow: 0 0 0 3px rgba(50, 107, 157, .10);
+            outline: none;
+        }
+
+    textarea.form-control {
+        min-height: 145px;
+        resize: vertical;
+        line-height: 1.6;
+    }
+
+    .field {
+        margin-bottom: 22px;
+    }
+
+    .validation-message {
+        display: block;
+        margin-top: 6px;
+        font-size: 13px;
+    }
+
+    .validation-summary {
+        margin-bottom: 25px;
+    }
+
+    .form-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding: 22px 32px;
+        background: #f4f8fb;
+        border-top: 1px solid #dce6ef;
+    }
+
+    .footer-note {
+        margin: 0;
+        font-size: 13px;
+        color: #718394;
+    }
+
+    .footer-buttons {
+        display: flex;
+        gap: 10px;
+    }
+
+    .publish-button {
+        min-width: 170px;
+        min-height: 46px;
+        border: none;
+        border-radius: 7px;
+        background: #326b9d;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 10px 22px;
+        cursor: pointer;
+    }
+
+        .publish-button:hover {
+            background: #285a85;
+        }
+
+    .cancel-button {
+        min-height: 46px;
+        border: 1px solid #ccd9e4;
+        border-radius: 7px;
+        background: #fff;
+        color: #326b9d;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 10px 22px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .cancel-button:hover {
+            background: #eef5fa;
+            color: #285a85;
+            text-decoration: none;
+        }
+
+    .optional-text {
+        color: #718394;
+        font-size: 12px;
+        font-weight: 400;
+        margin-left: 4px;
+    }
+
+    .field-help {
+        display: block;
+        color: #718394;
+        font-size: 12px;
+        margin-top: 6px;
+    }
+
+    @@media (max-width: 768px) {
+
+        .hirepoint-post-page {
+            padding: 25px 12px 40px;
+        }
+
+        .job-form-body {
+            padding: 24px 20px;
+        }
+
+        .form-top {
+            padding: 20px;
+        }
+
+        .form-footer {
+            padding: 20px;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .footer-buttons {
+            flex-direction: column;
+        }
+
+        .publish-button,
+        .cancel-button {
+            width: 100%;
+        }
+    }
+</style>
+
+<div class="hirepoint-post-page">
+
+    <div class="hirepoint-container">
+
+        <div class="page-heading">
+
+            <h1>Post a Job</h1>
+
+            <p>
+                Create and publish a new job listing.
+            </p>
+
+        </div>
+
+        <div class="job-form-wrapper">
+
+            <div class="form-top">
+
+                <p class="form-top-title">
+                    Job Information
+                </p>
+
+                <p class="form-top-subtitle">
+                    Complete the information below and publish your job.
+                </p>
+
+            </div>
+
+            <form asp-controller="Recruiter"
+                  asp-action="PostJob"
+                  method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div class="job-form-body">
+
+                    <div asp-validation-summary="All"
+                         class="alert alert-danger validation-summary">
+                    </div>
+
+
+                    <!-- POSITION -->
+
+                    <div class="form-section">
+
+                        <div class="section-header">
+
+                            <div class="section-number">
+                                1
+                            </div>
+
+                            <div>
+                                <h3>
+                                    Position Details
+                                </h3>
+
+                                <p>
+                                    Enter the basic information about the position.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <!-- JOB TITLE -->
+
+                            <div class="col-md-8">
+
+                                <div class="field">
+
+                                    <label asp-for="JobTitle"
+                                           class="form-label">
+
+                                        Job Title
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+                                    <input asp-for="JobTitle"
+                                           class="form-control"
+                                           placeholder="e.g. Software Developer" />
+
+                                    <span asp-validation-for="JobTitle"
+                                          class="text-danger validation-message">
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- EMPLOYMENT TYPE -->
+
+                            <div class="col-md-4">
+
+                                <div class="field">
+
+                                    <label asp-for="EmploymentType"
+                                           class="form-label">
+
+                                        Employment Type
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+                                    <select asp-for="EmploymentType"
+                                            class="form-select">
+
+                                        <option value="">
+                                            Select employment type
+                                        </option>
+
+                                        <option value="Full Time">
+                                            Full Time
+                                        </option>
+
+                                        <option value="Part Time">
+                                            Part Time
+                                        </option>
+
+                                        <option value="Internship">
+                                            Internship
+                                        </option>
+
+                                    </select>
+
+                                    <span asp-validation-for="EmploymentType"
+                                          class="text-danger validation-message">
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- QUALIFICATION OPTIONAL -->
+
+                            <div class="col-md-8">
+
+                                <div class="field">
+
+                                    <label for="qualification"
+                                           class="form-label">
+
+                                        Qualification
+
+                                        <span class="optional-text">
+                                            (Optional)
+                                        </span>
+
+                                    </label>
+
+                                    <input type="text"
+                                           id="qualification"
+                                           name="qualification"
+                                           class="form-control"
+                                           value="@ViewBag.Qualification"
+                                           placeholder="e.g. Bachelor of Computer Science"
+                                           autocomplete="off" />
+
+                                    <span class="text-danger validation-message">
+
+                                        @if (ViewData.ModelState["Qualification"]?.Errors.Count > 0)
+                                        {
+                                            @ViewData.ModelState["Qualification"]?.Errors[0].ErrorMessage
+                                        }
+
+                                    </span>
+
+                                    <small class="field-help">
+                                        You may leave this blank if no specific qualification is required.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOCATION -->
+
+                    <div class="form-section">
+
+                        <div class="section-header">
+
+                            <div class="section-number">
+                                2
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Location & Compensation
+                                </h3>
+
+                                <p>
+                                    Provide the location, salary and experience requirements.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="row">
+
+                            <!-- PROVINCE -->
+
+                            <div class="col-md-4">
+
+                                <div class="field">
+
+                                    <label asp-for="Province"
+                                           class="form-label">
+
+                                        Province
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+                                    <select asp-for="Province"
+                                            class="form-select">
+
+                                        <option value="">
+                                            Select province
+                                        </option>
+
+                                        @if (ViewBag.Provinces != null)
+                                        {
+                                            foreach (var province in ViewBag.Provinces)
+                                            {
+                                                <option value="@province.ProvinceName">
+                                                    @province.ProvinceName
+                                                </option>
+                                            }
+                                        }
+
+                                    </select>
+
+                                    <span asp-validation-for="Province"
+                                          class="text-danger validation-message">
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- CITY -->
+
+                            <div class="col-md-4">
+
+                                <div class="field">
+
+                                    <label asp-for="City"
+                                           class="form-label">
+
+                                        City
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+                                    <input asp-for="City"
+                                           class="form-control"
+                                           placeholder="e.g. Gqeberha" />
+
+                                    <span asp-validation-for="City"
+                                          class="text-danger validation-message">
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- SALARY -->
+
+                            <div class="col-md-4">
+
+                                <div class="field">
+
+                                    <label asp-for="Salary"
+                                           class="form-label">
+
+                                        Salary
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+                                    <input asp-for="Salary"
+                                           class="form-control"
+                                           placeholder="e.g. R25,000 - R35,000 per month" />
+
+                                    <span asp-validation-for="Salary"
+                                          class="text-danger validation-message">
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- EXPERIENCE -->
+
+                            <div class="col-md-4">
+
+                                <div class="field">
+
+                                    <label asp-for="ExperienceLevel"
+                                           class="form-label">
+
+                                        Experience
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+                                    <select asp-for="ExperienceLevel"
+                                            class="form-select">
+
+                                        <option value="">
+                                            Select experience
+                                        </option>
+
+                                        <option value="0-1 Years">
+                                            0-1 Years
+                                        </option>
+
+                                        <option value="1-3 Years">
+                                            1-3 Years
+                                        </option>
+
+                                        <option value="2-4 Years">
+                                            2-4 Years
+                                        </option>
+
+                                        <option value="3-5 Years">
+                                            3-5 Years
+                                        </option>
+
+                                        <option value="4-6 Years">
+                                            4-6 Years
+                                        </option>
+
+                                        <option value="5-7 Years">
+                                            5-7 Years
+                                        </option>
+
+                                        <option value="7-10 Years">
+                                            7-10 Years
+                                        </option>
+
+                                        <option value="10+ Years">
+                                            10+ Years
+                                        </option>
+
+                                    </select>
+
+                                    <span asp-validation-for="ExperienceLevel"
+                                          class="text-danger validation-message">
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- CLOSING DATE -->
+
+                            <div class="col-md-4">
+
+                                <div class="field">
+
+                                    <label asp-for="ClosingDate"
+                                           class="form-label">
+
+                                        Closing Date
+
+                                        <span class="required">*</span>
+
+                                    </label>
+
+                                    <input asp-for="ClosingDate"
+                                           type="date"
+                                           class="form-control"
+                                           min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+
+                                    <span asp-validation-for="ClosingDate"
+                                          class="text-danger validation-message">
+                                    </span>
+
+                                    <small class="field-help">
+                                        The closing date cannot be earlier than today.
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="form-section">
+
+                        <div class="section-header">
+
+                            <div class="section-number">
+                                3
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Job Description
+                                </h3>
+
+                                <p>
+                                    Describe the role and responsibilities.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label asp-for="JobDescription"
+                                   class="form-label">
+
+                                Description
+
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <textarea asp-for="JobDescription"
+                                      class="form-control"
+                                      rows="7"
+                                      placeholder="Describe the role, responsibilities and daily duties..."></textarea>
+
+                            <span asp-validation-for="JobDescription"
+                                  class="text-danger validation-message">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- REQUIREMENTS -->
+
+                    <div class="form-section">
+
+                        <div class="section-header">
+
+                            <div class="section-number">
+                                4
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Candidate Requirements
+                                </h3>
+
+                                <p>
+                                    Specify the skills and qualifications required.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label asp-for="Requirements"
+                                   class="form-label">
+
+                                Requirements
+
+                                <span class="required">*</span>
+
+                            </label>
+
+                            <textarea asp-for="Requirements"
+                                      class="form-control"
+                                      rows="7"
+                                      placeholder="Qualifications, skills, experience and certifications..."></textarea>
+
+                            <span asp-validation-for="Requirements"
+                                  class="text-danger validation-message">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOOTER -->
+
+                <div class="form-footer">
+
+                    <p class="footer-note">
+
+                        Your job will be published immediately after submission.
+
+                    </p>
+
+
+                    <div class="footer-buttons">
+
+                        <a asp-controller="Recruiter"
+                           asp-action="ManageJobs"
+                           class="cancel-button">
+
+                            <i class="bi bi-x-circle me-1"></i>
+
+                            Cancel
+
+                        </a>
+
+
+                        <button type="submit"
+                                class="publish-button">
+
+                            <i class="bi bi-send me-1"></i>
+
+                            Publish Job
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}

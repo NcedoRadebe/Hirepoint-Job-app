@@ -1,0 +1,457 @@
+﻿@model HirePoint.Models.RecruiterProfile
+
+@{
+    ViewData["Title"] = "Recruiter Profile";
+}
+
+<style>
+
+    .profile-page {
+        background: #d6e9f8;
+        min-height: 100vh;
+        padding: 35px 25px 60px;
+    }
+
+    .profile-container {
+        max-width: 1150px;
+        margin: 0 auto;
+    }
+
+    /* PAGE HEADER */
+
+    .profile-header {
+        margin-bottom: 28px;
+    }
+
+        .profile-header h2 {
+            color: #173f5f;
+            font-weight: 700;
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .profile-header p {
+            color: #647b8e;
+            margin: 0;
+            font-size: 15px;
+        }
+
+    /* ALERTS */
+
+    .profile-alert {
+        border-radius: 8px;
+        padding: 13px 17px;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    .profile-success {
+        background: #d1e7dd;
+        color: #0f5132;
+        border: 1px solid #badbcc;
+    }
+
+    .profile-error {
+        background: #f8d7da;
+        color: #842029;
+        border: 1px solid #f1aeb5;
+    }
+
+    .validation-summary {
+        border-radius: 8px;
+        margin-bottom: 22px;
+    }
+
+    /* PROFILE CARD */
+
+    .profile-card {
+        background: #ffffff;
+        border: 1px solid #d3e2ec;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 6px 20px rgba(31, 70, 100, 0.08);
+    }
+
+    /* CARD HEADER */
+
+    .profile-card-header {
+        background: #2878ad;
+        color: #ffffff;
+        padding: 22px 30px;
+    }
+
+        .profile-card-header h4 {
+            margin: 0;
+            font-size: 19px;
+            font-weight: 600;
+        }
+
+        .profile-card-header p {
+            margin: 6px 0 0;
+            color: rgba(255,255,255,0.88);
+            font-size: 14px;
+        }
+
+    /* BODY */
+
+    .profile-card-body {
+        padding: 35px;
+    }
+
+    /* FORM */
+
+    .profile-field {
+        margin-bottom: 25px;
+    }
+
+    .profile-form-label {
+        color: #344b5f;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .profile-input {
+        min-height: 46px;
+        border: 1px solid #d2e1ec;
+        border-radius: 7px;
+        padding: 11px 13px;
+        font-size: 14px;
+        color: #263d51;
+        background: #ffffff;
+    }
+
+        .profile-input:focus {
+            border-color: #2878ad;
+            box-shadow: 0 0 0 0.2rem rgba(40, 120, 173, 0.15);
+            outline: none;
+        }
+
+    textarea.profile-input {
+        min-height: 145px;
+        resize: vertical;
+        line-height: 1.6;
+    }
+
+    .field-help {
+        display: block;
+        color: #718394;
+        font-size: 12px;
+        margin-top: 6px;
+    }
+
+    /* BUTTONS */
+
+    .profile-buttons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-top: 5px;
+        margin-top: 10px;
+    }
+
+    .save-profile-button {
+        background: #2878ad;
+        border: 1px solid #2878ad;
+        color: #ffffff;
+        min-height: 46px;
+        padding: 10px 22px;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+        .save-profile-button:hover {
+            background: #1f638f;
+            border-color: #1f638f;
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        .save-profile-button:active {
+            background: #174d70;
+            border-color: #174d70;
+            color: #ffffff;
+            transform: translateY(0);
+        }
+
+    .back-profile-button {
+        background: #ffffff;
+        border: 1px solid #2878ad;
+        color: #2878ad;
+        min-height: 46px;
+        padding: 10px 22px;
+        border-radius: 7px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+
+        .back-profile-button:hover {
+            background: #2878ad;
+            border-color: #2878ad;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .back-profile-button:active {
+            background: #1f638f;
+            border-color: #1f638f;
+            color: #ffffff;
+        }
+
+    /* RESPONSIVE */
+
+    @@media (max-width: 768px) {
+
+        .profile-page {
+            padding: 25px 15px 40px;
+        }
+
+        .profile-header h2 {
+            font-size: 24px;
+        }
+
+        .profile-card-body {
+            padding: 25px 20px;
+        }
+
+        .profile-card-header {
+            padding: 20px;
+        }
+
+        .profile-buttons {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .save-profile-button,
+        .back-profile-button {
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+</style>
+
+<div class="profile-page">
+
+    
+    <div class="profile-container">
+
+        <!-- PAGE HEADER -->
+
+        <div class="profile-header">
+
+            <h2>
+                <i class="bi bi-building me-2"></i>
+                Recruiter Profile
+            </h2>
+
+            <p>
+                Manage your company information and profile details.
+            </p>
+
+        </div>
+
+
+        <!-- SUCCESS MESSAGE -->
+        @if (TempData["Success"] != null)
+        {
+            <div class="profile-alert profile-success">
+
+                <i class="bi bi-check-circle me-2"></i>
+
+                @TempData["Success"]
+
+            </div>
+        }
+
+
+        <!-- ERROR MESSAGE -->
+        @if (TempData["Error"] != null)
+        {
+            <div class="profile-alert profile-error">
+
+                <i class="bi bi-exclamation-circle me-2"></i>
+
+                @TempData["Error"]
+
+            </div>
+        }
+
+
+        <!-- VALIDATION -->
+
+        <div asp-validation-summary="ModelOnly"
+             class="alert alert-danger validation-summary">
+        </div>
+
+
+        <!-- PROFILE CARD -->
+
+        <div class="profile-card">
+
+            <div class="profile-card-header">
+
+                <h4>
+                    Company Information
+                </h4>
+
+                <p>
+                    Keep your company information accurate and up to date for job seekers.
+                </p>
+
+            </div>
+
+
+            <div class="profile-card-body">
+
+                <form asp-action="Profile"
+                      method="post">
+
+                    @Html.AntiForgeryToken()
+
+                    <input type="hidden"
+                           asp-for="UserID" />
+
+
+                    <div class="row">
+
+                        <!-- COMPANY NAME -->
+
+                        <div class="col-md-6">
+
+                            <div class="profile-field">
+
+                                <label asp-for="CompanyName"
+                                       class="profile-form-label">
+
+                                    Company Name
+
+                                </label>
+
+                                <input asp-for="CompanyName"
+                                       class="form-control profile-input"
+                                       placeholder="Enter your company name" />
+
+                                <span asp-validation-for="CompanyName"
+                                      class="text-danger">
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- WEBSITE -->
+
+                        <div class="col-md-6">
+
+                            <div class="profile-field">
+
+                                <label asp-for="Website"
+                                       class="profile-form-label">
+
+                                    Website
+
+                                </label>
+
+                                <input asp-for="Website"
+                                       class="form-control profile-input"
+                                       type="url"
+                                       placeholder="https://example.com" />
+
+                                <span asp-validation-for="Website"
+                                      class="text-danger">
+                                </span>
+
+                                <small class="field-help">
+                                    Add your company's public website if available.
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- COMPANY DESCRIPTION -->
+
+                        <div class="col-12">
+
+                            <div class="profile-field">
+
+                                <label asp-for="CompanyDescription"
+                                       class="profile-form-label">
+
+                                    Company Description
+
+                                </label>
+
+                                <textarea asp-for="CompanyDescription"
+                                          class="form-control profile-input"
+                                          rows="7"
+                                          placeholder="Tell candidates about your company, what you do, your values and your workplace..."></textarea>
+
+                                <span asp-validation-for="CompanyDescription"
+                                      class="text-danger">
+                                </span>
+
+                                <small class="field-help">
+                                    A clear company description helps candidates understand your organisation.
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- BUTTONS -->
+
+                    <div class="profile-buttons">
+
+                        <button type="submit"
+                                class="save-profile-button">
+
+                            <i class="bi bi-check-circle me-1"></i>
+
+                            Save Changes
+
+                        </button>
+
+
+                        <a asp-controller="Recruiter"
+                           asp-action="Dashboard"
+                           class="back-profile-button">
+
+                            <i class="bi bi-arrow-left me-1"></i>
+
+                            Back to Dashboard
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+}

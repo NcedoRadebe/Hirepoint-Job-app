@@ -1,0 +1,1058 @@
+﻿@model IEnumerable<HirePoint.Models.User>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<style>
+    /* =========================================================
+       HIREPOINT - MANAGE USERS
+       Modern Admin Dashboard
+       ========================================================= */
+
+    :root {
+        --hp-primary: #2878ad;
+        --hp-primary-dark: #1e628f;
+        --hp-primary-light: #eaf5fb;
+        --hp-text: #263746;
+        --hp-text-soft: #667784;
+        --hp-muted: #8b99a3;
+        --hp-border: #e5edf2;
+        --hp-border-light: #edf2f5;
+        --hp-background: #f4f7fa;
+        --hp-white: #ffffff;
+        --hp-success: #17804c;
+        --hp-success-bg: #eaf7f0;
+        --hp-danger: #c63d48;
+        --hp-danger-bg: #fff0f1;
+        --hp-radius: 18px;
+        --hp-shadow: 0 8px 30px rgba(31, 82, 112, 0.07);
+        --hp-shadow-hover: 0 15px 40px rgba(31, 82, 112, 0.12);
+    }
+
+
+    /* =========================================================
+       GLOBAL
+       ========================================================= */
+
+    body {
+        background: radial-gradient( circle at 0% 0%, rgba(40, 120, 173, 0.07), transparent 28% ), linear-gradient( 180deg, #f7fafc 0%, #f4f7fa 100% );
+        color: var(--hp-text);
+        font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    }
+
+
+    /* =========================================================
+       PAGE
+       ========================================================= */
+
+    .admin-page {
+        width: 100%;
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 20px 0 45px;
+    }
+
+
+    /* =========================================================
+       PAGE HEADER
+       ========================================================= */
+
+    .admin-page-header {
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 24px;
+        padding: 30px 32px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--hp-radius);
+        background: linear-gradient( 135deg, #2d84bd 0%, #2878ad 48%, #205f8c 100% );
+        color: #fff;
+        box-shadow: 0 14px 35px rgba(40, 120, 173, 0.20);
+    }
+
+
+        /* Decorative circles */
+
+        .admin-page-header::before,
+        .admin-page-header::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .admin-page-header::before {
+            width: 280px;
+            height: 280px;
+            right: -90px;
+            top: -170px;
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        .admin-page-header::after {
+            width: 170px;
+            height: 170px;
+            right: 120px;
+            bottom: -130px;
+            background: rgba(255, 255, 255, 0.045);
+        }
+
+
+        /* Header title */
+
+        .admin-page-header h2 {
+            position: relative;
+            z-index: 2;
+            margin: 0 0 7px;
+            font-size: 28px;
+            line-height: 1.2;
+            font-weight: 750;
+            letter-spacing: -0.6px;
+        }
+
+        .admin-page-header p {
+            position: relative;
+            z-index: 2;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.80);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+
+    /* =========================================================
+       TOTAL USERS
+       ========================================================= */
+
+    .total-users-badge {
+        position: relative;
+        z-index: 3;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 10px 15px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.13);
+        color: #fff;
+        font-size: 13px;
+        font-weight: 700;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    }
+
+        .total-users-badge i {
+            font-size: 14px;
+        }
+
+
+    /* =========================================================
+       ALERTS
+       ========================================================= */
+
+    .admin-alert {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        padding: 14px 17px;
+        border: 0;
+        border-radius: 12px;
+        font-size: 14px;
+        box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+    }
+
+        .admin-alert strong {
+            margin-right: 5px;
+        }
+
+        .admin-alert.alert-success {
+            color: #176b43;
+            background: var(--hp-success-bg);
+            border-left: 4px solid #198754;
+        }
+
+        .admin-alert.alert-danger {
+            color: #9c3039;
+            background: var(--hp-danger-bg);
+            border-left: 4px solid #dc3545;
+        }
+
+        .admin-alert .btn-close {
+            margin-left: auto;
+        }
+
+
+    /* =========================================================
+       USERS CARD
+       ========================================================= */
+
+    .users-card {
+        overflow: hidden;
+        border: 1px solid var(--hp-border);
+        border-radius: var(--hp-radius);
+        background: var(--hp-white);
+        box-shadow: var(--hp-shadow);
+        transition: box-shadow 0.25s ease, transform 0.25s ease;
+    }
+
+        .users-card:hover {
+            box-shadow: var(--hp-shadow-hover);
+        }
+
+
+    /* =========================================================
+       CARD HEADER
+       ========================================================= */
+
+    .users-card-header {
+        padding: 18px 23px;
+        background: linear-gradient( 135deg, #2878ad 0%, #226c9c 100% );
+        color: #fff;
+    }
+
+        .users-card-header h5 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.1px;
+        }
+
+            .users-card-header h5 i {
+                opacity: 0.9;
+            }
+
+        .users-card-header span {
+            color: rgba(255, 255, 255, 0.68);
+            font-size: 12px;
+        }
+
+
+    /* =========================================================
+       TABLE WRAPPER
+       ========================================================= */
+
+    .users-card .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: #cbd9e1 transparent;
+    }
+
+        .users-card .table-responsive::-webkit-scrollbar {
+            height: 7px;
+        }
+
+        .users-card .table-responsive::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .users-card .table-responsive::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background: #cbd9e1;
+        }
+
+
+    /* =========================================================
+       TABLE
+       ========================================================= */
+
+    .users-table {
+        width: 100%;
+        min-width: 850px;
+        margin: 0;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: #fff;
+    }
+
+
+        /* Header */
+
+        .users-table thead {
+            background: #f8fafb;
+        }
+
+            .users-table thead th {
+                padding: 13px 15px;
+                border: 0;
+                border-bottom: 1px solid var(--hp-border);
+                background: #f8fafb;
+                color: #657782;
+                font-size: 10.5px;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 0.65px;
+                white-space: nowrap;
+                vertical-align: middle;
+            }
+
+                .users-table thead th:first-child {
+                    padding-left: 24px;
+                }
+
+
+        /* Body */
+
+        .users-table tbody td {
+            padding: 16px 15px;
+            border-bottom: 1px solid var(--hp-border-light);
+            background: #fff;
+            color: #465763;
+            font-size: 13px;
+            vertical-align: middle;
+        }
+
+        .users-table tbody tr {
+            transition: background-color 0.18s ease, transform 0.18s ease;
+        }
+
+            .users-table tbody tr:hover td {
+                background: #f8fcfe;
+            }
+
+            .users-table tbody tr:last-child td {
+                border-bottom: none;
+            }
+
+
+    /* =========================================================
+       NAME
+       ========================================================= */
+
+    .user-name {
+        color: #246f9f;
+        font-size: 14px;
+        font-weight: 700;
+        transition: color 0.2s ease;
+    }
+
+    .users-table tbody tr:hover .user-name {
+        color: #174f73;
+    }
+
+    .users-table .text-muted {
+        color: #84929b !important;
+    }
+
+
+    /* =========================================================
+       ACCOUNT TYPE BADGES
+       ========================================================= */
+
+    .admin-blue-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px 10px;
+        border: 1px solid #d6e8f2;
+        border-radius: 8px;
+        background: #edf7fc;
+        color: #2878ad;
+        font-size: 11px;
+        font-weight: 750;
+        white-space: nowrap;
+    }
+
+        .admin-blue-badge i {
+            font-size: 12px;
+        }
+
+
+        /* Admin */
+
+        .admin-blue-badge:has(.bi-shield-check) {
+            background: #edf4ff;
+            color: #376ca5;
+            border-color: #dce8f7;
+        }
+
+
+        /* Recruiter */
+
+        .admin-blue-badge:has(.bi-building) {
+            background: #eef8f8;
+            color: #287d82;
+            border-color: #d8eeee;
+        }
+
+
+        /* Jobseeker */
+
+        .admin-blue-badge:has(.bi-person) {
+            background: #f2f6fb;
+            color: #526f89;
+            border-color: #e0e8f0;
+        }
+
+
+    /* =========================================================
+       STATUS BADGES
+       ========================================================= */
+
+    .status-active,
+    .status-other {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 6px 10px;
+        border-radius: 8px;
+        font-size: 11px;
+        font-weight: 750;
+        white-space: nowrap;
+    }
+
+    .status-active {
+        background: #eaf7f0;
+        color: #18794e;
+        border: 1px solid #d6efdf;
+    }
+
+    .status-other {
+        background: #f2f4f6;
+        color: #697780;
+        border: 1px solid #e1e6e9;
+    }
+
+
+    /* =========================================================
+       EDIT BUTTON
+       ========================================================= */
+
+    .edit-user-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        min-width: 76px;
+        padding: 7px 12px;
+        border: 1px solid #c9dfeb;
+        border-radius: 8px;
+        background: #f8fcfe;
+        color: #2878ad;
+        font-size: 12px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+        .edit-user-button:hover {
+            color: #fff;
+            background: #2878ad;
+            border-color: #2878ad;
+            box-shadow: 0 6px 15px rgba(40, 120, 173, 0.22);
+            transform: translateY(-1px);
+        }
+
+        .edit-user-button:active {
+            transform: translateY(0);
+        }
+
+        .edit-user-button i {
+            font-size: 12px;
+        }
+
+
+    /* =========================================================
+       PROTECTED USER
+       ========================================================= */
+
+    .protected-user-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 7px 11px;
+        border: 1px solid #dfe5e8;
+        border-radius: 8px;
+        background: #f5f6f7;
+        color: #687780;
+        font-size: 11px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+        .protected-user-badge i {
+            color: #2878ad;
+        }
+
+
+    /* =========================================================
+       EMPTY USERS
+       ========================================================= */
+
+    .empty-users {
+        padding: 75px 20px;
+        text-align: center;
+        color: #87959e;
+    }
+
+        .empty-users i {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 72px;
+            height: 72px;
+            margin: 0 auto 17px;
+            border-radius: 50%;
+            background: #eaf5fb;
+            color: #2878ad;
+            font-size: 34px;
+        }
+
+        .empty-users h5 {
+            margin: 0 0 7px;
+            color: #34495e;
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .empty-users p {
+            margin: 0;
+            color: #8b99a1;
+            font-size: 13px;
+        }
+
+
+    /* =========================================================
+       BOOTSTRAP OVERRIDES
+       ========================================================= */
+
+    .table-hover > tbody > tr:hover > * {
+        --bs-table-accent-bg: transparent;
+    }
+
+    .btn:focus,
+    .btn:active:focus,
+    .btn:focus-visible,
+    a:focus-visible {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(40, 120, 173, 0.16);
+    }
+
+
+    /* =========================================================
+       TABLET
+       ========================================================= */
+
+    @@media (max-width: 1000px) {
+
+        .admin-page {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        .admin-page-header {
+            padding: 24px;
+        }
+
+        .users-table thead th,
+        .users-table tbody td {
+            padding: 12px 10px;
+        }
+
+            .users-table thead th:first-child,
+            .users-table tbody td:first-child {
+                padding-left: 16px;
+            }
+    }
+
+
+    /* =========================================================
+       MOBILE
+       ========================================================= */
+
+    @@media (max-width: 768px) {
+
+        .admin-page {
+            padding: 10px 10px 30px;
+        }
+
+        .admin-page-header {
+            padding: 21px;
+            margin-bottom: 18px;
+            border-radius: 15px;
+        }
+
+            .admin-page-header .d-flex {
+                flex-direction: column;
+                align-items: flex-start !important;
+                gap: 15px;
+            }
+
+            .admin-page-header h2 {
+                font-size: 23px;
+            }
+
+            .admin-page-header p {
+                font-size: 12px;
+            }
+
+        .total-users-badge {
+            padding: 8px 12px;
+            font-size: 12px;
+        }
+
+        .users-card {
+            border-radius: 15px;
+        }
+
+        .users-card-header {
+            padding: 15px 16px;
+        }
+
+            .users-card-header h5 {
+                font-size: 14px;
+            }
+
+        .users-table {
+            min-width: 850px;
+        }
+
+            .users-table thead th,
+            .users-table tbody td {
+                padding: 11px 9px;
+                font-size: 12px;
+            }
+
+                .users-table thead th:first-child,
+                .users-table tbody td:first-child {
+                    padding-left: 13px;
+                }
+
+        .user-name {
+            font-size: 13px;
+        }
+
+        .admin-blue-badge,
+        .status-active,
+        .status-other,
+        .protected-user-badge {
+            padding: 5px 8px;
+            font-size: 10px;
+        }
+
+        .edit-user-button {
+            min-width: 68px;
+            padding: 6px 9px;
+            font-size: 11px;
+        }
+
+        .empty-users {
+            padding: 55px 15px;
+        }
+    }
+
+
+    /* =========================================================
+       SMALL PHONES
+       ========================================================= */
+
+    @@media (max-width: 480px) {
+
+        .admin-page {
+            padding-left: 7px;
+            padding-right: 7px;
+        }
+
+        .admin-page-header {
+            padding: 18px;
+        }
+
+            .admin-page-header h2 {
+                font-size: 21px;
+            }
+
+            .admin-page-header p {
+                font-size: 11px;
+                line-height: 1.5;
+            }
+
+        .total-users-badge {
+            font-size: 11px;
+        }
+
+        .users-card-header {
+            padding: 14px;
+        }
+
+            .users-card-header span {
+                display: none;
+            }
+
+        .users-table {
+            min-width: 780px;
+        }
+
+        .empty-users {
+            padding: 45px 12px;
+        }
+
+            .empty-users i {
+                width: 62px;
+                height: 62px;
+                font-size: 30px;
+            }
+    }
+
+
+    /* =========================================================
+       REDUCED MOTION
+       ========================================================= */
+
+    @@media (prefers-reduced-motion: reduce) {
+
+        *,
+        *::before,
+        *::after {
+            scroll-behavior: auto !important;
+            transition-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+        }
+    }
+
+</style>
+<!-- ==============================
+     PAGE HEADER
+     ============================== -->
+
+<div class="admin-page-header">
+
+    <div class="d-flex justify-content-between align-items-center">
+
+        <div>
+
+            <h2>
+                Manage Users
+            </h2>
+
+            <p class="mb-0">
+                View and manage all registered HirePoint users.
+            </p>
+
+        </div>
+
+        <div>
+
+            <span class="total-users-badge">
+                <i class="bi bi-people me-1"></i>
+                Total Users: @Model.Count()
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==============================
+     ALERTS
+     ============================== -->
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show admin-alert"
+         role="alert">
+
+        <strong>Success:</strong>
+        @TempData["Success"]
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert">
+        </button>
+
+    </div>
+
+}
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show admin-alert"
+         role="alert">
+
+        <strong>Error:</strong>
+        @TempData["Error"]
+
+        <button type="button"
+                class="btn-close"
+                data-bs-dismiss="alert">
+        </button>
+
+    </div>
+
+
+}
+
+<!-- ==============================
+     USERS CARD
+     ============================== -->
+
+<div class="users-card">
+
+    <!-- CARD HEADER -->
+
+    <div class="users-card-header">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <h5>
+                <i class="bi bi-people me-2"></i>
+                Registered Users
+            </h5>
+
+            <span class="small">
+                User Management
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- CARD BODY -->
+
+    <div class="card-body p-0">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle users-table">
+
+                <!-- TABLE HEADER -->
+
+                <thead>
+
+                    <tr>
+
+                        <th class="px-4">
+                            Name
+                        </th>
+
+                        <th>
+                            Email
+                        </th>
+
+                        <th>
+                            Account Type
+                        </th>
+
+                        <th>
+                            Province
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th class="text-center">
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <!-- TABLE BODY -->
+
+                <tbody>
+
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var user in Model)
+                        {
+                            <tr>
+
+                                <!-- NAME -->
+
+                                <td class="px-4">
+
+                                    <div class="user-name">
+                                        @user.FullName
+                                    </div>
+
+                                </td>
+
+
+                                <!-- EMAIL -->
+
+                                <td>
+
+                                    <span class="text-muted">
+                                        @user.Email
+                                    </span>
+
+                                </td>
+
+
+                                <!-- ACCOUNT TYPE -->
+
+                                <td>
+
+                                    @if (user.UserType == "Admin")
+                                    {
+                                        <span class="admin-blue-badge">
+                                            <i class="bi bi-shield-check me-1"></i>
+                                            Admin
+                                        </span>
+                                    }
+                                    else if (user.UserType == "Recruiter")
+                                    {
+                                        <span class="admin-blue-badge">
+                                            <i class="bi bi-building me-1"></i>
+                                            Recruiter
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="admin-blue-badge">
+                                            <i class="bi bi-person me-1"></i>
+                                            Jobseeker
+
+                                        </span>
+                                    }
+
+                                </td>
+
+
+                                <!-- PROVINCE -->
+
+                                <td>
+
+                                    @if (user.Province != null)
+                                    {
+                                        <span>
+                                            @user.Province.ProvinceName
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">
+                                            Not specified
+                                        </span>
+                                    }
+
+                                </td>
+
+
+                                <!-- STATUS -->
+
+                                <td>
+
+                                    @if (user.Status == "Active")
+                                    {
+                                        <span class="status-active">
+                                            <i class="bi bi-check-circle me-1"></i>
+                                            Active
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="status-other">
+                                            @user.Status
+                                        </span>
+                                    }
+
+                                </td>
+
+
+                                <!-- ACTIONS -->
+                                
+
+                                <td class="text-center">
+
+                                    <div class="d-flex justify-content-center gap-2">
+
+                                        @if (user.UserID == 11)
+                                        {
+                                            <!-- PROTECTED SYSTEM ADMINISTRATOR -->
+
+                                            <span class="protected-user-badge"
+                                                  title="System Administrator account is protected">
+
+                                                <i class="bi bi-shield-lock me-1"></i>
+                                                Protected
+
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <!-- EDIT -->
+
+                                            <a asp-controller="Admin"
+                                               asp-action="EditUser"
+                                               asp-route-id="@user.UserID"
+                                               class="btn edit-user-button btn-sm">
+
+                                                <i class="bi bi-pencil-square"></i>
+                                                Edit
+
+                                            </a>
+                                        }
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+
+                            <td colspan="6">
+
+                                <div class="empty-users">
+
+                                    <i class="bi bi-people"></i>
+
+                                    <h5>
+                                        No users found
+                                    </h5>
+
+                                    <p class="mb-0">
+                                        There are currently no registered users.
+                                    </p>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+@section Scripts
+{
+    <script>
+
+          
+        setTimeout(function () {
+
+            const alerts =
+                document.querySelectorAll('.alert');
+
+            alerts.forEach(function (alert) {
+
+                const bsAlert =
+                    bootstrap.Alert.getOrCreateInstance(alert);
+
+                bsAlert.close();
+
+            });
+
+        }, 5000);
+
+    </script>
+
+}

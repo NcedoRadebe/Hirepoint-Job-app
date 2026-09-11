@@ -1,0 +1,323 @@
+﻿@model HirePoint.ViewModels.VerifyEmailViewModel
+
+@{
+    ViewData["Title"] = "Verify Email";
+}
+
+<style>
+    :root {
+        --hirepoint-blue: #2878ad;
+        --hirepoint-blue-dark: #1f638f;
+        --hirepoint-blue-light: #eaf5fb;
+        --hirepoint-text: #263746;
+        --hirepoint-muted: #6c7a89;
+        --hirepoint-border: #d9e2e8;
+        --hirepoint-danger: #dc3545;
+    }
+
+    .verify-page {
+        min-height: calc(100vh - 70px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 40px 20px;
+        background: #2878ad;
+    }
+
+    .verify-card {
+        width: 100%;
+        max-width: 500px;
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 40px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .verify-logo {
+        width: 72px;
+        height: 72px;
+        margin: 0 auto 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: var(--hirepoint-blue-light);
+        color: var(--hirepoint-blue);
+        font-size: 32px;
+    }
+
+    .verify-title {
+        margin-bottom: 8px;
+        color: var(--hirepoint-text);
+        font-size: 28px;
+        font-weight: 700;
+    }
+
+    .verify-subtitle {
+        margin: 0 auto;
+        max-width: 390px;
+        color: var(--hirepoint-muted);
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .verify-alert {
+        border-radius: 10px;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    .verify-info {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 14px 16px;
+        margin-bottom: 24px;
+        background: var(--hirepoint-blue-light);
+        border-left: 4px solid var(--hirepoint-blue);
+        border-radius: 10px;
+        color: #45606f;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+        .verify-info i {
+            color: var(--hirepoint-blue);
+            font-size: 18px;
+            margin-top: 1px;
+        }
+
+    .verify-form .form-label {
+        color: var(--hirepoint-text);
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+
+    .verify-form .input-group {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .verify-form .input-group-text {
+        background: #f7fafc;
+        border: 1px solid var(--hirepoint-border);
+        border-right: none;
+        color: var(--hirepoint-blue);
+        padding: 12px 14px;
+    }
+
+    .verify-form .form-control {
+        height: 48px;
+        border: 1px solid var(--hirepoint-border);
+        box-shadow: none;
+        font-size: 14px;
+    }
+
+        .verify-form .form-control:focus {
+            border-color: var(--hirepoint-blue);
+            box-shadow: 0 0 0 3px rgba(40, 120, 173, 0.12);
+        }
+
+    .verify-form .input-group:focus-within .input-group-text {
+        border-color: var(--hirepoint-blue);
+        background: var(--hirepoint-blue-light);
+    }
+
+    .verify-btn {
+        height: 48px;
+        border: none;
+        border-radius: 10px;
+        background: var(--hirepoint-blue);
+        color: #ffffff;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+        .verify-btn:hover {
+            background: var(--hirepoint-blue-dark);
+            color: #ffffff;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 15px rgba(40, 120, 173, 0.25);
+        }
+
+    .verify-footer {
+        text-align: center;
+        margin-top: 28px;
+        padding-top: 22px;
+        border-top: 1px solid #edf1f4;
+    }
+
+    .verify-back-link {
+        color: var(--hirepoint-blue);
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+        .verify-back-link:hover {
+            color: var(--hirepoint-blue-dark);
+            text-decoration: underline;
+        }
+
+    .text-danger {
+        font-size: 13px;
+        margin-top: 5px;
+    }
+
+    @@media (max-width: 576px) {
+
+        .verify-page {
+            padding: 25px 15px;
+        }
+
+        .verify-card {
+            padding: 30px 22px;
+            border-radius: 14px;
+        }
+
+        .verify-title {
+            font-size: 24px;
+        }
+
+        .verify-logo {
+            width: 64px;
+            height: 64px;
+            font-size: 28px;
+        }
+    }
+</style>
+
+
+<div class="verify-page">
+
+    <div class="verify-card">
+
+        <!-- HEADER -->
+        <div class="text-center mb-4">
+
+            <div class="verify-logo">
+                <i class="bi bi-shield-check"></i>
+            </div>
+
+            <h2 class="verify-title">
+                Verify Your Email
+            </h2>
+
+            <p class="verify-subtitle">
+                Enter the email address associated with
+                your HirePoint account to continue
+                resetting your password.
+            </p>
+
+        </div>
+
+
+        <!-- ERROR -->
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger verify-alert">
+
+                <i class="bi bi-exclamation-circle me-2"></i>
+
+                @TempData["Error"]
+
+            </div>
+        }
+
+
+        <!-- INFORMATION -->
+        <div class="verify-info">
+
+            <i class="bi bi-info-circle-fill"></i>
+
+            <span>
+                Enter the email you used when creating
+                your HirePoint account. We'll use it to
+                verify your account before you continue.
+            </span>
+
+        </div>
+
+
+        <!-- VALIDATION -->
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-3">
+        </div>
+
+
+        <!-- FORM -->
+        <form asp-action="VerifyEmail"
+              method="post"
+              class="verify-form">
+
+            @Html.AntiForgeryToken()
+
+
+            <div class="mb-4">
+
+                <label asp-for="Email"
+                       class="form-label">
+                    Email Address
+                </label>
+
+                <div class="input-group">
+
+                    <span class="input-group-text">
+                        <i class="bi bi-envelope"></i>
+                    </span>
+
+                    <input asp-for="Email"
+                           type="email"
+                           class="form-control"
+                           placeholder="Enter your registered email"
+                           autocomplete="email" />
+
+                </div>
+
+                <span asp-validation-for="Email"
+                      class="text-danger">
+                </span>
+
+            </div>
+
+
+            <!-- BUTTON -->
+            <button type="submit"
+                    class="btn verify-btn w-100">
+
+                <i class="bi bi-shield-check me-2"></i>
+
+                Verify Email
+
+            </button>
+
+        </form>
+
+
+        <!-- FOOTER -->
+        <div class="verify-footer">
+
+            <a asp-controller="Account"
+               asp-action="Login"
+               class="verify-back-link">
+
+                <i class="bi bi-arrow-left me-1"></i>
+
+                Back to Login
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}

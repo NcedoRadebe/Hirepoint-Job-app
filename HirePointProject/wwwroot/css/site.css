@@ -1,0 +1,498 @@
+
+/* =====================================================
+   HIREPOINT PROFESSIONAL LAYOUT
+   ===================================================== */
+:root {
+    --hp-primary: #2878ad;
+    --hp-primary-dark: #1f628e;
+    --hp-primary-light: #eaf4fa;
+    --hp-sidebar: #101c2c;
+    --hp-sidebar-light: #17263a;
+    --hp-text: #183b56;
+    --hp-muted: #71808a;
+    --hp-border: #e1ebf0;
+    --hp-background: #f5f9fc;
+}
+
+
+/* =====================================================
+   BODY
+   ===================================================== */
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    background: var(--hp-background);
+    color: var(--hp-text);
+}
+
+
+/* =====================================================
+   MAIN LAYOUT
+   ===================================================== */
+
+.hp-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   SIDEBAR
+   ===================================================== */
+
+.hp-sidebar {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: linear-gradient( 180deg, #101c2c 0%, #0d1827 100% );
+    color: white;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    box-shadow: 4px 0 20px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =====================================================
+   BRAND
+   ===================================================== */
+
+.hp-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 8px;
+}
+
+
+.hp-brand-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 11px;
+    background: var(--hp-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 6px 15px rgba(40, 120, 173, 0.25);
+}
+
+
+.hp-brand-text h3 {
+    margin: 0;
+    color: white;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+
+.hp-brand-text span {
+    display: block;
+    color: #91a4b8;
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+
+/* =====================================================
+   DIVIDER
+   ===================================================== */
+
+.hp-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 22px 4px 20px;
+}
+
+
+/* =====================================================
+   MENU TITLE
+   ===================================================== */
+
+.hp-menu-title {
+    padding: 0 12px 10px;
+}
+
+
+    .hp-menu-title span {
+        color: #73879c;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+    }
+
+
+/* =====================================================
+   NAVIGATION
+   ===================================================== */
+
+.hp-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+
+.hp-nav-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 12px 13px;
+    border-radius: 9px;
+    color: #c9d5df;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+
+    .hp-nav-link i {
+        width: 20px;
+        text-align: center;
+        font-size: 17px;
+    }
+
+
+    .hp-nav-link:hover {
+        background: rgba(40, 120, 173, 0.15);
+        color: white;
+        transform: translateX(2px);
+    }
+
+
+    /* Active item */
+
+    .hp-nav-link.active {
+        background: var(--hp-primary);
+        color: white;
+        box-shadow: 0 5px 15px rgba(40, 120, 173, 0.22);
+    }
+
+
+        .hp-nav-link.active::before {
+            content: "";
+            position: absolute;
+            left: -16px;
+            top: 8px;
+            bottom: 8px;
+            width: 3px;
+            border-radius: 0 4px 4px 0;
+            background: #65b4e8;
+        }
+
+
+/* =====================================================
+   SIDEBAR BOTTOM
+   ===================================================== */
+
+.hp-sidebar-bottom {
+    margin-top: auto;
+}
+
+
+/* =====================================================
+   HELP BOX
+   ===================================================== */
+
+.hp-help-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+
+.hp-help-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(40, 120, 173, 0.2);
+    color: #75bce9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.hp-help-box strong {
+    display: block;
+    color: white;
+    font-size: 12px;
+}
+
+
+.hp-help-box small {
+    color: #8497a9;
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   LOGOUT
+   ===================================================== */
+
+.hp-logout {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 13px;
+    border-radius: 9px;
+    color: #e3a5a5;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+
+    .hp-logout i {
+        width: 20px;
+        text-align: center;
+    }
+
+
+    .hp-logout:hover {
+        background: rgba(220, 53, 69, 0.15);
+        color: #ff8f8f;
+    }
+
+
+/* =====================================================
+   MAIN
+   ===================================================== */
+
+.hp-main {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    min-height: 100vh;
+}
+
+
+/* =====================================================
+   TOPBAR
+   ===================================================== */
+
+.hp-topbar {
+    height: 76px;
+    background: white;
+    border-bottom: 1px solid var(--hp-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-shadow: 0 2px 10px rgba(24, 59, 86, 0.03);
+}
+
+
+.hp-topbar-left h4 {
+    margin: 0;
+    color: var(--hp-text);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+
+.hp-topbar-left span {
+    display: block;
+    margin-top: 3px;
+    color: var(--hp-muted);
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   USER
+   ===================================================== */
+
+.hp-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 8px;
+    border-radius: 10px;
+}
+
+
+.hp-user-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--hp-primary-light);
+    color: var(--hp-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+
+.hp-user-info strong {
+    display: block;
+    color: var(--hp-text);
+    font-size: 13px;
+}
+
+
+.hp-user-info small {
+    display: block;
+    color: var(--hp-muted);
+    font-size: 10px;
+    margin-top: 1px;
+}
+
+
+.hp-user-arrow {
+    color: #9aa8b2;
+    font-size: 12px;
+    margin-left: 4px;
+}
+
+
+/* =====================================================
+   CONTENT
+   ===================================================== */
+
+.hp-content {
+    padding: 28px;
+}
+
+
+/* =====================================================
+   PUBLIC PAGES
+   ===================================================== */
+
+.hp-public {
+    min-height: 100vh;
+    background: linear-gradient( 135deg, #eef6fb, #ffffff );
+    padding: 30px;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+    .hp-sidebar {
+        width: 76px;
+        padding: 20px 10px;
+    }
+
+
+    .hp-brand {
+        justify-content: center;
+        padding: 0;
+    }
+
+
+    .hp-brand-text {
+        display: none;
+    }
+
+
+    .hp-brand-icon {
+        width: 43px;
+        height: 43px;
+    }
+
+
+    .hp-menu-title {
+        display: none;
+    }
+
+
+    .hp-divider {
+        margin: 20px 0;
+    }
+
+
+    .hp-nav-link {
+        justify-content: center;
+        padding: 13px 8px;
+    }
+
+
+        .hp-nav-link span {
+            display: none;
+        }
+
+
+        .hp-nav-link i {
+            width: auto;
+            font-size: 18px;
+        }
+
+
+        .hp-nav-link.active::before {
+            left: -10px;
+        }
+
+
+    .hp-help-box {
+        display: none;
+    }
+
+
+    .hp-logout {
+        justify-content: center;
+        padding: 13px 8px;
+    }
+
+
+        .hp-logout span {
+            display: none;
+        }
+
+
+        .hp-logout i {
+            width: auto;
+        }
+
+
+    .hp-main {
+        margin-left: 76px;
+        width: calc(100% - 76px);
+    }
+
+
+    .hp-topbar {
+        height: 65px;
+        padding: 0 15px;
+    }
+
+
+    .hp-topbar-left span {
+        display: none;
+    }
+
+
+    .hp-topbar-left h4 {
+        font-size: 15px;
+    }
+
+
+    .hp-user-info,
+    .hp-user-arrow {
+        display: none;
+    }
+
+
+    .hp-content {
+        padding: 15px;
+    }
+}
+
+
+
+

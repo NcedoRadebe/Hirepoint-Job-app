@@ -1,0 +1,484 @@
+﻿@model HirePoint.Models.Job
+
+@{
+    ViewData["Title"] = "Edit Job";
+}
+
+<style>
+
+    .edit-job-page {
+        background: #eef6fb;
+        padding: 25px;
+        border-radius: 16px;
+        min-height: 100%;
+    }
+
+    .edit-job-card {
+        background: #ffffff;
+        border: 1px solid #d8e8f2;
+        border-radius: 14px;
+        box-shadow: 0 4px 15px rgba(40, 120, 173, 0.10);
+        overflow: hidden;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .edit-job-header {
+        background: #2878ad;
+        color: #ffffff;
+        padding: 20px 25px;
+    }
+
+        .edit-job-header h2 {
+            margin: 0;
+            font-weight: 700;
+            font-size: 24px;
+        }
+
+        .edit-job-header p {
+            margin: 5px 0 0;
+            opacity: 0.9;
+        }
+
+    .edit-job-body {
+        padding: 25px;
+    }
+
+    .edit-job-section-title {
+        color: #2878ad;
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #dceaf2;
+    }
+
+    .edit-job-body .form-label {
+        color: #284b60;
+        font-weight: 600;
+        margin-bottom: 7px;
+    }
+
+    .edit-job-body .form-control,
+    .edit-job-body .form-select {
+        border: 1px solid #c9dce8;
+        border-radius: 8px;
+        padding: 10px 12px;
+        transition: all 0.2s ease;
+    }
+
+        .edit-job-body .form-control:focus,
+        .edit-job-body .form-select:focus {
+            border-color: #2878ad;
+            box-shadow: 0 0 0 0.2rem rgba(40, 120, 173, 0.15);
+        }
+
+    .job-id-box {
+        background: #eef6fb;
+        border: 1px solid #d5e6f0;
+        color: #2878ad;
+        font-weight: 700;
+        padding: 10px 12px;
+        border-radius: 8px;
+    }
+
+    .edit-job-footer {
+        background: #f7fbfd;
+        border-top: 1px solid #dceaf2;
+        padding: 18px 25px;
+    }
+
+    .save-job-button {
+        background: #2878ad;
+        border: 1px solid #2878ad;
+        color: #ffffff;
+        font-weight: 600;
+        border-radius: 8px;
+        padding: 9px 18px;
+        transition: all 0.2s ease;
+    }
+
+        .save-job-button:hover {
+            background: #1f638f;
+            border-color: #1f638f;
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+    .cancel-job-button {
+        background: #eef6fb;
+        border: 1px solid #c9dce8;
+        color: #2878ad;
+        font-weight: 600;
+        border-radius: 8px;
+        padding: 9px 18px;
+        transition: all 0.2s ease;
+    }
+
+        .cancel-job-button:hover {
+            background: #2878ad;
+            border-color: #2878ad;
+            color: #ffffff;
+        }
+
+    @@media (max-width: 768px) {
+
+        .edit-job-page {
+            padding: 15px;
+        }
+
+        .edit-job-body {
+            padding: 18px;
+        }
+
+        .edit-job-footer {
+            padding: 15px 18px;
+        }
+    }
+
+</style>
+
+
+
+<div class="edit-job-page">
+
+    <div class="edit-job-card">
+
+        <div class="edit-job-header">
+            <h2>
+                <i class="bi bi-pencil-square me-2"></i>
+                Edit Job
+            </h2>
+
+            <p>
+                Update the job information below.
+            </p>
+        </div>
+
+        @if (TempData["Success"] != null)
+        {
+            <div class="alert alert-success m-3">
+                <i class="bi bi-check-circle me-2"></i>
+                @TempData["Success"]
+            </div>
+        }
+
+        <!-- ONE FORM ONLY -->
+        <form asp-controller="Admin"
+              asp-action="EditJob"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <input type="hidden" asp-for="JobID" />
+
+            <div class="edit-job-body">
+
+                <div class="edit-job-section-title">
+                    <i class="bi bi-briefcase me-2"></i>
+                    Job Information
+                </div>
+
+                <!-- VALIDATION -->
+                <div asp-validation-summary="ModelOnly"
+                     class="alert alert-danger">
+                </div>
+
+                <!-- JOB ID -->
+                <div class="mb-3">
+                    <label class="form-label">
+                        Job ID
+                    </label>
+
+                    <div class="job-id-box">
+                        #@Model.JobID
+                    </div>
+                </div>
+
+                <!-- JOB TITLE -->
+                <div class="mb-3">
+                    <label asp-for="JobTitle"
+                           class="form-label">
+                        Job Title
+                    </label>
+
+                    <input asp-for="JobTitle"
+                           class="form-control"
+                           placeholder="Enter job title" />
+
+                    <span asp-validation-for="JobTitle"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <!-- DESCRIPTION -->
+                <div class="mb-3">
+                    <label asp-for="JobDescription"
+                           class="form-label">
+                        Description
+                    </label>
+
+                    <textarea asp-for="JobDescription"
+                              class="form-control"
+                              rows="5"
+                              placeholder="Enter job description"></textarea>
+
+                    <span asp-validation-for="JobDescription"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <!-- REQUIREMENTS -->
+                <div class="mb-3">
+                    <label asp-for="Requirements"
+                           class="form-label">
+                        Requirements
+                    </label>
+
+                    <textarea asp-for="Requirements"
+                              class="form-control"
+                              rows="5"
+                              placeholder="Enter job requirements"></textarea>
+
+                    <span asp-validation-for="Requirements"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="row g-3">
+
+                    <!-- SALARY -->
+                    <div class="col-md-6">
+                        <label asp-for="Salary"
+                               class="form-label">
+                            Salary
+                        </label>
+
+                        <input asp-for="Salary"
+                               type="text"
+                               class="form-control"
+                               placeholder="Enter salary" />
+
+                        <span asp-validation-for="Salary"
+                              class="text-danger">
+                        </span>
+                    </div>
+
+                    <!-- EMPLOYMENT TYPE -->
+                    <div class="col-md-6">
+                        <label asp-for="EmploymentType"
+                               class="form-label">
+                            Employment Type
+                        </label>
+
+                        <select asp-for="EmploymentType"
+                                class="form-select">
+
+                            <option value="">
+                                Select employment type
+                            </option>
+
+                            <option value="Full Time">
+                                Full Time
+                            </option>
+
+                            <option value="Part Time">
+                                Part Time
+                            </option>
+
+                            <option value="Internship">
+                                Internship
+                            </option>
+
+                        </select>
+
+                        <span asp-validation-for="EmploymentType"
+                              class="text-danger">
+                        </span>
+                    </div>
+
+                    <!-- PROVINCE -->
+                    <div class="col-md-6">
+                        <label asp-for="Province"
+                               class="form-label">
+                            Province
+                        </label>
+
+                        <select asp-for="Province"
+                                class="form-select">
+
+                            <option value="">
+                                Select Province
+                            </option>
+
+                            @if (ViewBag.Provinces != null)
+                            {
+                                foreach (var province in ViewBag.Provinces)
+                                {
+                                    <option value="@province.ProvinceName">
+                                        @province.ProvinceName
+                                    </option>
+                                }
+                            }
+
+                        </select>
+
+                        <span asp-validation-for="Province"
+                              class="text-danger">
+                        </span>
+                    </div>
+
+                    <!-- CITY -->
+                    <div class="col-md-6">
+                        <label asp-for="City"
+                               class="form-label">
+                            City
+                        </label>
+
+                        <input asp-for="City"
+                               type="text"
+                               class="form-control"
+                               placeholder="Enter city" />
+
+                        <span asp-validation-for="City"
+                              class="text-danger">
+                        </span>
+                    </div>
+
+                    <!-- EXPERIENCE LEVEL -->
+                    <div class="col-md-6">
+                        <label asp-for="ExperienceLevel"
+                               class="form-label">
+                            Experience Level
+                        </label>
+
+                        <select asp-for="ExperienceLevel"
+                                class="form-select">
+
+                            <option value="">
+                                Select experience level
+                            </option>
+
+                            <option value="No Experience">
+                                No Experience
+                            </option>
+
+                            <option value="0-1 Years">
+                                0-1 Years
+                            </option>
+
+                            <option value="1-2 Years">
+                                1-2 Years
+                            </option>
+
+                            <option value="2-3 Years">
+                                2-3 Years
+                            </option>
+
+                            <option value="3-5 Years">
+                                3-5 Years
+                            </option>
+
+                            <option value="5+ Years">
+                                5+ Years
+                            </option>
+
+                        </select>
+
+                        <span asp-validation-for="ExperienceLevel"
+                              class="text-danger">
+                        </span>
+                    </div>
+
+                    <!-- CLOSING DATE -->
+                    <div class="col-md-6">
+                        <label asp-for="ClosingDate"
+                               class="form-label">
+                            Closing Date
+                        </label>
+
+                        <input asp-for="ClosingDate"
+                               type="date"
+                               class="form-control" />
+
+                        <span asp-validation-for="ClosingDate"
+                              class="text-danger">
+                        </span>
+                    </div>
+
+                    <!-- STATUS -->
+                    <div class="col-md-6">
+                        <label asp-for="JobStatus"
+                               class="form-label">
+                            Job Status
+                        </label>
+
+                        <select asp-for="JobStatus"
+                                class="form-select">
+
+                            <option value="">
+                                Select status
+                            </option>
+
+                            <option value="Active">
+                                Active
+                            </option>
+
+                            <option value="Closed">
+                                Closed
+                            </option>
+
+                            <option value="Inactive">
+                                Inactive
+                            </option>
+
+                        </select>
+
+                        <span asp-validation-for="JobStatus"
+                              class="text-danger">
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- FOOTER IS STILL INSIDE THE SAME FORM -->
+            <div class="edit-job-footer">
+
+                <div class="d-flex justify-content-end gap-2">
+
+                    <a asp-controller="Admin"
+                       asp-action="JobListings"
+                       class="btn cancel-job-button">
+
+                        <i class="bi bi-arrow-left me-1"></i>
+                        Cancel
+
+                    </a>
+
+                    <button type="submit"
+                            class="btn save-job-button">
+
+                        <i class="bi bi-check-circle me-1"></i>
+                        Save Changes
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}

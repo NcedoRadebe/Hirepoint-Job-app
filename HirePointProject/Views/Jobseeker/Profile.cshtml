@@ -1,0 +1,695 @@
+﻿@model HirePoint.Models.User
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+<style>
+
+    .profile-page {
+        background: #eef6fb;
+        padding: 25px;
+        border-radius: 14px;
+        min-height: 100%;
+    }
+
+    .profile-header {
+        margin-bottom: 22px;
+    }
+
+        .profile-header h2 {
+            color: #183b56;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .profile-header p {
+            color: #66737d;
+            margin-bottom: 0;
+        }
+
+    .profile-alert {
+        border-radius: 10px;
+        border: none;
+        padding: 12px 15px;
+        margin-bottom: 18px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .profile-success {
+        background: #e8f6ef;
+        color: #20744a;
+        border-left: 4px solid #2878ad;
+    }
+
+    .profile-error {
+        background: #fdecec;
+        color: #a33a3a;
+        border-left: 4px solid #c75c5c;
+    }
+
+    .profile-card {
+        background: #ffffff;
+        border: 1px solid #d7e7f0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(24, 59, 86, 0.07);
+        height: 100%;
+    }
+
+    .profile-card-header {
+        background: #2878ad;
+        color: #ffffff;
+        padding: 15px 18px;
+    }
+
+        .profile-card-header h5 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+    .profile-card-body {
+        padding: 20px;
+    }
+
+    .profile-icon {
+        width: 55px;
+        height: 55px;
+        background: #eef6fb;
+        color: #2878ad;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        margin-bottom: 15px;
+    }
+
+    .profile-label {
+        color: #183b56;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .profile-input {
+        border: 1px solid #d7e7f0;
+        border-radius: 8px;
+        padding: 10px 12px;
+        color: #3d4f5c;
+        font-size: 14px;
+        transition: all 0.2s ease;
+    }
+
+        .profile-input:focus {
+            border-color: #2878ad;
+            box-shadow: 0 0 0 3px rgba(40, 120, 173, 0.10);
+        }
+
+        .profile-input:read-only {
+            background: #f3f8fb;
+            color: #66737d;
+        }
+
+    .profile-help {
+        display: block;
+        margin-top: 5px;
+        color: #66737d;
+        font-size: 12px;
+    }
+
+    .profile-save-btn {
+        background: #2878ad;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 18px;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+        .profile-save-btn:hover {
+            background: #183b56;
+            color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+    .profile-upload-btn {
+        background: #2878ad;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 18px;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+        .profile-upload-btn:hover {
+            background: #183b56;
+            color: #ffffff;
+        }
+
+    .profile-cv-btn {
+        display: inline-block;
+        background: #eef6fb;
+        color: #2878ad;
+        border: 1px solid #2878ad;
+        border-radius: 8px;
+        padding: 9px 16px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+        .profile-cv-btn:hover {
+            background: #2878ad;
+            color: #ffffff;
+        }
+
+    .cv-upload-area {
+        background: #eef6fb;
+        border: 1px dashed #9fc4d9;
+        border-radius: 10px;
+        padding: 18px;
+    }
+
+    .cv-upload-icon {
+        width: 45px;
+        height: 45px;
+        background: #ffffff;
+        color: #2878ad;
+        border-radius: 9px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 21px;
+        margin-bottom: 10px;
+    }
+
+    .cv-upload-title {
+        color: #183b56;
+        font-weight: 600;
+        margin-bottom: 3px;
+    }
+
+    .cv-upload-text {
+        color: #66737d;
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+    .cv-status {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #e8f6ef;
+        color: #20744a;
+        border-radius: 8px;
+        padding: 11px 13px;
+        margin-bottom: 15px;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+        .cv-status i {
+            font-size: 18px;
+        }
+
+    .no-cv-status {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #fff7e6;
+        color: #8a681c;
+        border-radius: 8px;
+        padding: 11px 13px;
+        margin-bottom: 15px;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .text-danger {
+        font-size: 12px;
+        display: block;
+        margin-top: 5px;
+    }
+
+    @@media (max-width: 768px) {
+
+        .profile-page {
+            padding: 15px;
+        }
+
+        .profile-card-body {
+            padding: 16px;
+        }
+    }
+
+</style>
+
+
+<div class="profile-page">
+
+    <!-- ==========================
+         PAGE HEADER
+         ========================== -->
+
+    <div class="profile-header">
+
+        <h2>
+            <i class="bi bi-person-circle me-2"></i>
+            My Profile
+        </h2>
+
+        <p>
+            Manage your personal information, education,
+            qualification and upload your CV.
+        </p>
+
+    </div>
+
+
+    <!-- ==========================
+         SUCCESS MESSAGE
+         ========================== -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="profile-alert profile-success">
+
+            <i class="bi bi-check-circle me-2"></i>
+
+            @TempData["Success"]
+
+        </div>
+    }
+
+
+    <!-- ==========================
+         ERROR MESSAGE
+         ========================== -->
+    @if (TempData["Error"] != null)
+    {
+        <div class="profile-alert profile-error">
+
+            <i class="bi bi-exclamation-circle me-2"></i>
+
+            @TempData["Error"]
+
+        </div>
+    }
+
+
+    <div class="row g-4">
+
+
+        <!-- ==========================
+             PERSONAL INFORMATION
+             ========================== -->
+
+        <div class="col-lg-7">
+
+            <div class="profile-card">
+
+                <div class="profile-card-header">
+
+                    <h5>
+                        <i class="bi bi-person-vcard me-2"></i>
+                        Personal Information
+                    </h5>
+
+                </div>
+
+
+                <div class="profile-card-body">
+
+                    <div class="profile-icon">
+
+                        <i class="bi bi-person"></i>
+
+                    </div>
+
+
+                    <form asp-controller="Jobseeker"
+                          asp-action="Profile"
+                          method="post">
+
+                        @Html.AntiForgeryToken()
+
+                        <!-- User ID -->
+
+                        <input type="hidden"
+                               asp-for="UserID" />
+
+
+                        <!-- ==========================
+                             FULL NAME
+                             ========================== -->
+
+                        <div class="mb-3">
+
+                            <label asp-for="FullName"
+                                   class="profile-label">
+                                Full Name
+                            </label>
+
+                            <input asp-for="FullName"
+                                   class="form-control profile-input" />
+
+                            <span asp-validation-for="FullName"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <!-- ==========================
+                             EMAIL
+                             ========================== -->
+
+                        <div class="mb-3">
+
+                            <label asp-for="Email"
+                                   class="profile-label">
+                                Email Address
+                            </label>
+
+                            <input asp-for="Email"
+                                   type="email"
+                                   class="form-control profile-input" />
+
+                            <span asp-validation-for="Email"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <!-- ==========================
+                             PHONE
+                             ========================== -->
+
+                        <div class="mb-3">
+
+                            <label asp-for="PhoneNumber"
+                                   class="profile-label">
+                                Phone Number
+                            </label>
+
+                            <input asp-for="PhoneNumber"
+                                   class="form-control profile-input" />
+
+                            <span asp-validation-for="PhoneNumber"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <!-- ==========================
+                             GENDER
+                             ========================== -->
+
+                        <div class="mb-3">
+
+                            <label asp-for="Gender"
+                                   class="profile-label">
+                                Gender
+                            </label>
+
+                            <select asp-for="Gender"
+                                    class="form-select profile-input">
+
+                                <option value="">
+                                    Select Gender
+                                </option>
+
+                                <option value="Male">
+                                    Male
+                                </option>
+
+                                <option value="Female">
+                                    Female
+                                </option>
+
+                            </select>
+
+                            <span asp-validation-for="Gender"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <!-- ==========================
+                             QUALIFICATION
+                             ========================== -->
+
+                        <div class="mb-3">
+
+                            <label asp-for="JobseekerProfile.Qualification"
+                                   class="profile-label">
+
+                                Qualification
+
+                            </label>
+
+                            <input asp-for="JobseekerProfile.Qualification"
+                                   type="text"
+                                   class="form-control profile-input"
+                                   placeholder="Enter your qualification"
+                                   autocomplete="off"
+                                   maxlength="150" />
+
+                            <span asp-validation-for="JobseekerProfile.Qualification"
+                                  class="text-danger">
+                            </span>
+
+                            <small class="profile-help">
+                                Enter your qualification. It does not need to
+                                exist in a qualification list.
+                            </small>
+
+                        </div>
+
+
+                        <!-- ==========================
+                             PROVINCE
+                             ========================== -->
+
+                        <div class="mb-4">
+
+                            <label asp-for="ProvinceID"
+                                   class="profile-label">
+
+                                Province
+
+                            </label>
+
+                            <select asp-for="ProvinceID"
+                                    class="form-select profile-input">
+
+                                <option value="">
+                                    -- Select Province --
+                                </option>
+
+                                @if (ViewBag.Provinces != null)
+                                {
+                                    foreach (var province in ViewBag.Provinces)
+                                    {
+                                        <option value="@province.ProvinceID">
+                                            @province.ProvinceName
+                                        </option>
+                                    }
+                                }
+
+                            </select>
+
+                            <span asp-validation-for="ProvinceID"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+
+                        <!-- ==========================
+                             SAVE CHANGES
+                             ========================== -->
+
+                        <button type="submit"
+                                class="profile-save-btn">
+
+                            <i class="bi bi-check2-circle me-1"></i>
+
+                            Save Changes
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==========================
+             CV SECTION
+             ========================== -->
+
+        <div class="col-lg-5">
+
+            <div class="profile-card">
+
+                <div class="profile-card-header">
+
+                    <h5>
+                        <i class="bi bi-file-earmark-person me-2"></i>
+                        My CV
+                    </h5>
+
+                </div>
+
+
+                <div class="profile-card-body">
+
+
+                    <!-- ==========================
+                         CV STATUS
+                         ========================== -->
+                    @if (Model.JobseekerProfile != null &&
+                                             !string.IsNullOrEmpty(Model.JobseekerProfile.CVFile))
+                    {
+
+                        <div class="cv-status">
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                            <span>
+                                CV uploaded successfully
+                            </span>
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <p class="cv-upload-title">
+                                Your current CV
+                            </p>
+
+                            <p class="cv-upload-text">
+                                You can view your uploaded CV
+                                or replace it with a newer version.
+                            </p>
+
+                            <a class="profile-cv-btn"
+                               href="/uploads/cv/@Model.JobseekerProfile.CVFile"
+                               target="_blank">
+
+                                <i class="bi bi-eye me-1"></i>
+
+                                View CV
+
+                            </a>
+
+                        </div>
+
+                    }
+                    else
+                    {
+
+                        <div class="no-cv-status">
+
+                            <i class="bi bi-exclamation-circle"></i>
+
+                            <span>
+                                No CV uploaded yet
+                            </span>
+
+                        </div>
+
+                    }
+
+
+                    <!-- ==========================
+                         UPLOAD AREA
+                         ========================== -->
+
+                    <div class="cv-upload-area">
+
+                        <div class="cv-upload-icon">
+
+                            <i class="bi bi-cloud-arrow-up"></i>
+
+                        </div>
+
+                        <div class="cv-upload-title">
+
+                            Upload your CV
+
+                        </div>
+
+                        <div class="cv-upload-text">
+
+                            PDF, DOC, or DOCX files are supported.
+
+                        </div>
+
+
+                        <form asp-controller="Jobseeker"
+                              asp-action="UploadCV"
+                              method="post"
+                              enctype="multipart/form-data">
+
+                            @Html.AntiForgeryToken()
+
+
+                            <div class="mb-3">
+
+                                <input type="file"
+                                       name="cv"
+                                       class="form-control profile-input"
+                                       accept=".pdf,.doc,.docx"
+                                       required />
+
+                            </div>
+
+
+                            <button type="submit"
+                                    class="profile-upload-btn">
+
+                                <i class="bi bi-upload me-1"></i>
+
+                                @(Model.JobseekerProfile != null &&
+                                  !string.IsNullOrEmpty(Model.JobseekerProfile.CVFile)
+                                    ? "Replace CV"
+                                    : "Upload CV")
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+}

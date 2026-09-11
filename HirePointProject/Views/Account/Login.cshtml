@@ -1,0 +1,852 @@
+﻿
+@model HirePoint.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="login-page">
+
+    <div class="login-card">
+
+        <!-- BRAND -->
+        <div class="brand-panel">
+
+            <div class="brand-content">
+
+                <div class="graduation-cap">
+
+                    <svg viewBox="0 0 120 100"
+                         xmlns="http://www.w3.org/2000/svg"
+                         aria-label="Graduation cap">
+
+                        <polygon points="60,8 110,32 60,56 10,32"
+                                 fill="none"
+                                 stroke="#2878ad"
+                                 stroke-width="5"
+                                 stroke-linejoin="round" />
+
+                        <path d="M30 42
+                        L30 57
+                        C30 70 90 70 90 57
+                        L90 42"
+                              fill="none"
+                              stroke="#2878ad"
+                              stroke-width="5"
+                              stroke-linecap="round" />
+
+                        <line x1="60"
+                              y1="56"
+                              x2="60"
+                              y2="70"
+                              stroke="#2878ad"
+                              stroke-width="5"
+                              stroke-linecap="round" />
+
+                        <line x1="110"
+                              y1="32"
+                              x2="110"
+                              y2="62"
+                              stroke="#2878ad"
+                              stroke-width="4"
+                              stroke-linecap="round" />
+
+                        <path d="M103 62
+                        L117 62
+                        L114 78
+                        L106 78
+                        Z"
+                              fill="#2878ad" />
+
+                    </svg>
+
+                </div>
+
+                <h1>HirePoint</h1>
+
+                <p>
+                    Find opportunities.<br />
+                    Build your future.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- LOGIN FORM -->
+        <div class="login-panel">
+
+            <div class="login-header">
+
+                <h2>Welcome Back</h2>
+
+                <p>
+                    Sign in to your HirePoint account
+                </p>
+
+            </div>
+
+
+            <!-- SUCCESS MESSAGE -->
+            @if (TempData["Success"] != null)
+            {
+                <div id="loginSuccessMessage"
+                     class="alert-success login-message"
+                     role="alert">
+
+                    @TempData["Success"]
+
+                </div>
+            }
+
+
+            <!-- LOGIN ERROR MESSAGE -->
+            @if (ViewData.ModelState[string.Empty] != null &&
+                 ViewData.ModelState[string.Empty]!.Errors.Count > 0)
+            {
+                <div id="loginErrorMessage"
+                     class="alert-error login-message"
+                     role="alert">
+
+                    @ViewData.ModelState[string.Empty]!.Errors[0].ErrorMessage
+
+                </div>
+            }
+
+
+            <form asp-controller="Account"
+                  asp-action="Login"
+                  method="post">
+
+                @Html.AntiForgeryToken()
+
+
+                <!-- EMAIL -->
+                <div class="form-group">
+
+                    <label asp-for="Email">
+                        Email Address
+                    </label>
+
+                    <input asp-for="Email"
+                           class="form-control"
+                           placeholder="Enter your email"
+                           autocomplete="email" />
+
+                    <span asp-validation-for="Email"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+                <div class="form-group">
+
+                    <div class="password-header">
+
+                        <label asp-for="Password">
+                            Password
+                        </label>
+
+                        <a asp-controller="Account"
+                           asp-action="ForgotPassword"
+                           class="forgot-link">
+
+                            Forgot Password?
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- PASSWORD INPUT -->
+                    <div class="password-wrapper">
+
+                        <input asp-for="Password"
+                               id="loginPassword"
+                               type="password"
+                               class="form-control password-input"
+                               placeholder="Enter your password"
+                               autocomplete="current-password" />
+
+                        <button type="button"
+                                class="password-toggle"
+                                id="loginPasswordToggle"
+                                aria-label="Show password">
+
+                            Show
+
+                        </button>
+
+                    </div>
+
+
+                    <span asp-validation-for="Password"
+                          class="text-danger">
+                    </span>
+
+                </div>
+
+
+                <!-- LOGIN BUTTON -->
+                <button type="submit"
+                        class="btn-login">
+
+                    Sign In
+
+                    <span class="login-arrow">
+                        →
+                    </span>
+
+                </button>
+
+            </form>
+
+
+            <!-- REGISTER -->
+            <div class="register-link-container">
+
+                <span>
+                    Don't have an account?
+                </span>
+
+                <a asp-controller="Account"
+                   asp-action="Register">
+
+                    Create Account
+
+                </a>
+
+            </div>
+
+
+            <!-- SECURITY -->
+            <div class="security-message">
+
+                <span>
+                    Your account information is secure.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<style>
+
+    /* =========================================
+           PAGE
+           ========================================= */
+
+    .login-page {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 25px 15px;
+        box-sizing: border-box;
+        background-color: #2878ad;
+    }
+
+
+    /* =========================================
+           CARD
+           ========================================= */
+
+    .login-card {
+        width: 500px;
+        max-width: 100%;
+        min-height: 440px;
+        display: grid;
+        grid-template-columns: 1fr;
+        background-color: #ffffff;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22);
+    }
+
+
+    /* =========================================
+           BRAND
+           ========================================= */
+
+    .brand-panel {
+        background-color: #ffffff;
+        color: #1f2937;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 30px 30px 10px;
+    }
+
+
+    .brand-content {
+        position: relative;
+        z-index: 2;
+    }
+
+
+    /* =========================================
+           GRADUATION CAP
+           ========================================= */
+
+    .graduation-cap {
+        width: 80px;
+        height: 68px;
+        margin: 0 auto 10px;
+    }
+
+
+        .graduation-cap svg {
+            width: 80px;
+            height: 68px;
+            display: block;
+        }
+
+
+    /* =========================================
+           BRAND TITLE
+           ========================================= */
+
+    .brand-content h1 {
+        margin: 0 0 8px;
+        color: #1f2937;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+
+    .brand-content p {
+        margin: 0;
+        color: #6b7280;
+        line-height: 1.6;
+        font-size: 13px;
+    }
+
+
+    /* =========================================
+           LOGIN PANEL
+           ========================================= */
+
+    .login-panel {
+        padding: 20px 45px 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #ffffff;
+    }
+
+
+    /* =========================================
+           HEADER
+           ========================================= */
+
+    .login-header {
+        margin-bottom: 20px;
+    }
+
+
+        .login-header h2 {
+            margin: 0 0 5px;
+            color: #1f2937;
+            font-size: 25px;
+            font-weight: 700;
+        }
+
+
+        .login-header p {
+            margin: 0;
+            color: #6b7280;
+            font-size: 12px;
+        }
+
+
+    /* =========================================
+           FORM
+           ========================================= */
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #374151;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+
+    /* =========================================
+           PASSWORD HEADER
+           ========================================= */
+
+    .password-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+        .password-header label {
+            margin-bottom: 6px;
+        }
+
+
+    .forgot-link {
+        margin-bottom: 6px;
+        color: #2878ad;
+        font-size: 11px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+
+        .forgot-link:hover {
+            color: #21658f;
+            text-decoration: underline;
+        }
+
+
+    /* =========================================
+           INPUT
+           ========================================= */
+
+    .form-control {
+        width: 100%;
+        height: 43px;
+        padding: 0 13px;
+        border: 1px solid #d7dde3;
+        border-radius: 7px;
+        box-sizing: border-box;
+        color: #1f2937;
+        background-color: #ffffff;
+        font-size: 13px;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+
+        .form-control:focus {
+            outline: none;
+            border-color: #2878ad;
+            box-shadow: 0 0 0 3px rgba(40, 120, 173, 0.12);
+        }
+
+
+    /* =========================================
+           PASSWORD SHOW / HIDE
+           ========================================= */
+
+    .password-wrapper {
+        position: relative;
+        width: 100%;
+    }
+
+
+    .password-input {
+        padding-right: 65px;
+    }
+
+
+    .password-toggle {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        height: 30px;
+        padding: 0 8px;
+        border: none;
+        background: transparent;
+        color: #2878ad;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+
+        .password-toggle:hover {
+            background-color: rgba(40, 120, 173, 0.08);
+            color: #21658f;
+        }
+
+
+        .password-toggle:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(40, 120, 173, 0.15);
+        }
+
+
+    /* =========================================
+           LOGIN BUTTON
+           ========================================= */
+
+    .btn-login {
+        width: 100%;
+        height: 44px;
+        border: none;
+        border-radius: 7px;
+        background-color: #2878ad;
+        color: white;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+
+        .btn-login:hover {
+            background-color: #21658f;
+            transform: translateY(-1px);
+            box-shadow: 0 7px 18px rgba(40, 120, 173, 0.25);
+        }
+
+
+        .btn-login:active {
+            transform: translateY(0);
+        }
+
+
+    .login-arrow {
+        margin-left: 7px;
+        font-size: 17px;
+    }
+
+
+    /* =========================================
+           REGISTER
+           ========================================= */
+
+    .register-link-container {
+        margin-top: 18px;
+        text-align: center;
+        color: #6b7280;
+        font-size: 12px;
+    }
+
+
+        .register-link-container a {
+            margin-left: 4px;
+            color: #2878ad;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+
+            .register-link-container a:hover {
+                color: #21658f;
+                text-decoration: underline;
+            }
+
+
+    /* =========================================
+           SECURITY
+           ========================================= */
+
+    .security-message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        margin-top: 15px;
+        color: #9ca3af;
+        font-size: 10px;
+        text-align: center;
+    }
+
+
+    /* =========================================
+           LOGIN MESSAGES
+           ========================================= */
+
+    .login-message {
+        overflow: hidden;
+        max-height: 100px;
+        opacity: 1;
+        transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease, padding 0.3s ease;
+    }
+
+
+    .alert-success {
+        padding: 9px 11px;
+        margin-bottom: 14px;
+        border-radius: 7px;
+        background-color: #e8f6ee;
+        border: 1px solid #c8ead6;
+        color: #217346;
+        font-size: 11px;
+    }
+
+
+    .alert-error {
+        padding: 9px 11px;
+        margin-bottom: 14px;
+        border-radius: 7px;
+        background-color: #fff1f2;
+        border: 1px solid #fecdd3;
+        color: #b42318;
+        font-size: 11px;
+    }
+
+
+    /* =========================================
+           VALIDATION
+           ========================================= */
+
+    .text-danger {
+        display: block;
+        margin-top: 4px;
+        color: #dc3545;
+        font-size: 11px;
+    }
+
+
+    /* =========================================
+           TABLET / MOBILE
+           ========================================= */
+
+    @@media (max-width: 700px) {
+
+        .login-page {
+            padding: 20px 12px;
+        }
+
+
+        .login-card {
+            width: 100%;
+            grid-template-columns: 1fr;
+        }
+
+
+        .brand-panel {
+            min-height: auto;
+            padding: 25px 20px 10px;
+        }
+
+
+        .login-panel {
+            padding: 25px 25px 30px;
+        }
+    }
+
+
+    /* =========================================
+           SMALL MOBILE
+           ========================================= */
+
+    @@media (max-width: 400px) {
+
+        .password-header {
+            display: block;
+        }
+
+
+        .forgot-link {
+            display: inline-block;
+            margin-top: 2px;
+        }
+
+
+        .brand-content h1 {
+            font-size: 27px;
+        }
+
+
+        .login-panel {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+
+</style>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync(
+            "_ValidationScriptsPartial"
+        );
+    }
+
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                /* =================================
+                   SHOW / HIDE PASSWORD
+                   ================================= */
+
+                const passwordInput =
+                    document.getElementById(
+                        "loginPassword"
+                    );
+
+                const passwordToggle =
+                    document.getElementById(
+                        "loginPasswordToggle"
+                    );
+
+
+                if (passwordInput &&
+                    passwordToggle) {
+
+                    passwordToggle.addEventListener(
+                        "click",
+                        function() {
+
+                            if (
+                                passwordInput.type ===
+                                "password"
+                            ) {
+
+                                passwordInput.type =
+                                    "text";
+
+                                passwordToggle.textContent =
+                                    "Hide";
+
+                                passwordToggle.setAttribute(
+                                    "aria-label",
+                                    "Hide password"
+                                );
+
+                            }
+                            else {
+
+                                passwordInput.type =
+                                    "password";
+
+                                passwordToggle.textContent =
+                                    "Show";
+
+                                passwordToggle.setAttribute(
+                                    "aria-label",
+                                    "Show password"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+
+
+                /* =================================
+                   HIDE LOGIN ERROR AFTER 2 SECONDS
+                   ================================= */
+
+                const loginError =
+                    document.getElementById(
+                        "loginErrorMessage"
+                    );
+
+
+                if (loginError) {
+
+                    setTimeout(
+                        function() {
+
+                            loginError.style.opacity =
+                                "0";
+
+                            loginError.style.maxHeight =
+                                "0";
+
+                            loginError.style.marginBottom =
+                                "0";
+
+                            loginError.style.paddingTop =
+                                "0";
+
+                            loginError.style.paddingBottom =
+                                "0";
+
+
+                            setTimeout(
+                                function() {
+
+                                    if (loginError) {
+                                        loginError.remove();
+                                    }
+
+                                },
+                                300
+                            );
+
+                        },
+                        2000
+                    );
+
+                }
+
+
+                /* =================================
+                   HIDE SUCCESS AFTER 2 SECONDS
+                   ================================= */
+
+                const successMessage =
+                    document.getElementById(
+                        "loginSuccessMessage"
+                    );
+
+
+                if (successMessage) {
+
+                    setTimeout(
+                        function() {
+
+                            successMessage.style.opacity =
+                                "0";
+
+                            successMessage.style.maxHeight =
+                                "0";
+
+                            successMessage.style.marginBottom =
+                                "0";
+
+                            successMessage.style.paddingTop =
+                                "0";
+
+                            successMessage.style.paddingBottom =
+                                "0";
+
+
+                            setTimeout(
+                                function() {
+
+                                    if (successMessage) {
+                                        successMessage.remove();
+                                    }
+
+                                },
+                                300
+                            );
+
+                        },
+                        2000
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+}
+

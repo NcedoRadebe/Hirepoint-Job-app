@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://go.microsoft.com/fwlink/?LinkID=208121. -->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>C:\Users\s224596519\Downloads\3rd Year Project</_PublishTargetUrl>
+    <History>True|2026-08-20T17:38:59.3706237Z||;True|2026-08-20T19:38:18.4081366+02:00||;True|2026-08-20T18:56:14.8552375+02:00||;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="appsettings.Development.json">
+      <publishTime>08/19/2026 23:24:18</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>08/19/2026 23:24:18</publishTime>
+    </File>
+    <File Include="Controllers/AccountController.cs">
+      <publishTime>08/20/2026 15:40:04</publishTime>
+    </File>
+    <File Include="Controllers/AdminController.cs">
+      <publishTime>08/20/2026 15:39:50</publishTime>
+    </File>
+    <File Include="Controllers/HomeController.cs">
+      <publishTime>08/19/2026 23:24:20</publishTime>
+    </File>
+    <File Include="Controllers/JobseekerController.cs">
+      <publishTime>08/20/2026 01:00:36</publishTime>
+    </File>
+    <File Include="Controllers/RecruiterController.cs">
+      <publishTime>08/20/2026 07:13:08</publishTime>
+    </File>
+    <File Include="Data/HirePointDbContext.cs">
+      <publishTime>08/20/2026 02:54:38</publishTime>
+    </File>
+    <File Include="dotnet-tools.json">
+      <publishTime>08/20/2026 18:55:27</publishTime>
+    </File>
+    <File Include="Helpers/SessionHelper.cs">
+      <publishTime>08/19/2026 23:24:20</publishTime>
+    </File>
+    <File Include="Migrations/20260806195003_InitialCreate.cs">
+      <publishTime>08/19/2026 23:24:20</publishTime>
+    </File>
+    <File Include="Migrations/20260806195003_InitialCreate.Designer.cs">
+      <publishTime>08/19/2026 23:24:20</publishTime>
+    </File>
+    <File Include="Migrations/20260806234857_AddSalaryColumnToJobs.cs">
+      <publishTime>08/19/2026 23:24:20</publishTime>
+    </File>
+    <File Include="Migrations/20260806234857_AddSalaryColumnToJobs.Designer.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260806235248_RemoveMinimumMaximumSalary.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260806235248_RemoveMinimumMaximumSalary.Designer.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260808113106_AddApplicationDecisionAndInterview.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260808113106_AddApplicationDecisionAndInterview.Designer.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260809152953_AddNotifications.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260809152953_AddNotifications.Designer.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260810010643_final.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260810010643_final.Designer.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260813143310_updatemodel.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260813143310_updatemodel.Designer.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260818081554_UpdateDatabase.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260818081554_UpdateDatabase.Designer.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260818085959_Jobseekerprofile.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260818085959_Jobseekerprofile.Designer.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260818092601_MakeJobseekerProfileFieldsNullable.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260818092601_MakeJobseekerProfileFieldsNullable.Designer.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260818170129_AddSystemAdministratorFlag.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260818170129_AddSystemAdministratorFlag.Designer.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260818185456_AddPasswordResetFields.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260818185456_AddPasswordResetFields.Designer.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260819022250_CompanyJobRelationships.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260819022250_CompanyJobRelationships.Designer.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260819041208_AddRecruiterProfileColumns.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260819041208_AddRecruiterProfileColumns.Designer.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260819200812_AddCompanyToJobs.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/20260819200812_AddCompanyToJobs.Designer.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Migrations/HirePointDbContextModelSnapshot.cs">
+      <publishTime>08/20/2026 12:04:44</publishTime>
+    </File>
+    <File Include="Models/Company.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Models/ErrorViewModel.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Models/Job.cs">
+      <publishTime>08/20/2026 05:04:18</publishTime>
+    </File>
+    <File Include="Models/JobApplication.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Models/JobseekerProfile.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Models/Notification.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Models/Province.cs">
+      <publishTime>08/20/2026 07:13:06</publishTime>
+    </File>
+    <File Include="Models/RecruiterProfile.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Models/User.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Models/UserActivity.cs">
+      <publishTime>08/19/2026 23:24:22</publishTime>
+    </File>
+    <File Include="Program.cs">
+      <publishTime>08/20/2026 15:40:08</publishTime>
+    </File>
+    <File Include="ViewModels/ChangePasswordViewModel.cs">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="ViewModels/CreateAdminViewModel.cs">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="ViewModels/ForgotPasswordViewModel.cs">
+      <publishTime>08/20/2026 11:43:06</publishTime>
+    </File>
+    <File Include="ViewModels/LoginViewModel.cs">
+      <publishTime>08/20/2026 11:43:06</publishTime>
+    </File>
+    <File Include="ViewModels/RegisterViewModel.cs">
+      <publishTime>08/20/2026 11:43:06</publishTime>
+    </File>
+    <File Include="ViewModels/ResetPasswordViewModel.cs">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="ViewModels/VerifyEmailViewModel.cs">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Account/ChangePassword.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Account/ForgotPassword.cshtml">
+      <publishTime>08/20/2026 11:43:06</publishTime>
+    </File>
+    <File Include="Views/Account/Login.cshtml">
+      <publishTime>08/20/2026 15:39:58</publishTime>
+    </File>
+    <File Include="Views/Account/Register.cshtml">
+      <publishTime>08/20/2026 11:43:06</publishTime>
+    </File>
+    <File Include="Views/Account/ResetPassword.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Account/VerifyEmail.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Admin/Analytics.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Admin/CreateAdmin.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Admin/Dashboard.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Admin/EditJob.cshtml">
+      <publishTime>08/20/2026 03:18:28</publishTime>
+    </File>
+    <File Include="Views/Admin/EditUser.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Admin/JobListings.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Admin/ManageUsers.cshtml">
+      <publishTime>08/20/2026 15:40:00</publishTime>
+    </File>
+    <File Include="Views/Admin/Profile.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Home/Index.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Home/Privacy.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Jobseeker/Applications.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Jobseeker/Dashboard.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Jobseeker/Jobs.cshtml">
+      <publishTime>08/20/2026 01:00:36</publishTime>
+    </File>
+    <File Include="Views/Jobseeker/Notifications.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Jobseeker/Profile.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Recruiter/Applicants.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Recruiter/Dashboard.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/Recruiter/EditJob.cshtml">
+      <publishTime>08/20/2026 04:43:50</publishTime>
+    </File>
+    <File Include="Views/Recruiter/ManageJobs.cshtml">
+      <publishTime>08/20/2026 04:09:16</publishTime>
+    </File>
+    <File Include="Views/Recruiter/PostJob.cshtml">
+      <publishTime>08/20/2026 05:16:28</publishTime>
+    </File>
+    <File Include="Views/Recruiter/Profile.cshtml">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>08/20/2026 19:28:52</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="Views/Shared/_ValidationScriptsPartial.cshtml">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="Views/_ViewImports.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>08/19/2026 23:24:24</publishTime>
+    </File>
+    <File Include="wwwroot/css/site.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/favicon.ico">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/images/ChatGPT Image Aug 7, 2026, 04_14_13 AM.png">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/js/site.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.min.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.js.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.min.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/bootstrap/LICENSE">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/additional-methods.min.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/dist/jquery.validate.min.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery-validation/LICENSE.md">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.min.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.min.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.slim.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.slim.min.js">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/dist/jquery.slim.min.map">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/lib/jquery/LICENSE.txt">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/uploads/cv.css">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/uploads/cv/0ded1e11-0504-4512-aaaa-911e4c0e4d64.pdf">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/uploads/cv/653375d1-3e12-4eb7-b715-6aa149e06643.pdf">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/uploads/cv/8601c284-77dc-4468-b74d-381ba17811f4.pdf">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/uploads/cv/9cb952ad-a6c8-4739-ae62-4e3577e451c1.docx">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+    <File Include="wwwroot/uploads/cv/bfd272e3-6b32-4a83-9960-9d91dba9b077.pdf">
+      <publishTime>08/19/2026 23:24:26</publishTime>
+    </File>
+  </ItemGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="DefaultConnection">
+      <Value>Server=SOIT-SQL.MANDELA.AC.ZA%3bDatabase=GRP-03-29%3bUser ID=GRP-03-29%3bPassword=grp-03-29-2026#%3bEncrypt=True%3bTrustServerCertificate=True%3bMultipleActiveResultSets=True</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="HirePoint.Data.HirePointDbContext">
+      <Value>Server=SOIT-SQL.MANDELA.AC.ZA%3bDatabase=GRP-03-29%3bUser ID=GRP-03-29%3bPassword=grp-03-29-2026#%3bEncrypt=True%3bTrustServerCertificate=True%3bMultipleActiveResultSets=True</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

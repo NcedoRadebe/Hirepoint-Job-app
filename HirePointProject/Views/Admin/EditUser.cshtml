@@ -1,0 +1,84 @@
+﻿@model HirePoint.Models.User
+
+
+<h2>Edit User</h2>
+
+
+<form method="post">
+
+
+    <input type="hidden"
+           name="UserID"
+           value="@Model.UserID" />
+
+
+
+    <label>Name</label>
+
+    <input class="form-control"
+           name="FullName"
+           value="@Model.FullName" />
+
+
+
+    <label>Email</label>
+
+    <input class="form-control"
+           name="Email"
+           value="@Model.Email" />
+
+
+
+    <label>Phone</label>
+
+    <input class="form-control"
+           name="PhoneNumber"
+           value="@Model.PhoneNumber" />
+
+
+
+    <label>Gender</label>
+
+    <input class="form-control"
+           name="Gender"
+           value="@Model.Gender" />
+
+
+
+    <label>Status</label>
+
+    <select class="form-control"
+            name="Status">
+
+
+        <option value="Active"
+                selected="@(Model.Status == "Active")">
+
+            Active
+
+        </option>
+
+
+        <option value="Inactive"
+                selected="@(Model.Status == "Inactive")">
+
+            Inactive
+
+        </option>
+
+
+    </select>
+
+
+
+    <br>
+
+
+    <button class="btn btn-success">
+
+        Save Changes
+
+    </button>
+
+
+</form>
