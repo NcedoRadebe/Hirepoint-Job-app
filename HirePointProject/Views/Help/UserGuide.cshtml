@@ -1,0 +1,1365 @@
+﻿@{
+    ViewData["Title"] = "HirePoint User Guide";
+
+    var userType =
+        User?.FindFirst(System.Security.Claims.ClaimTypes.Role)?.Value
+        ?? User?.FindFirst("UserType")?.Value
+        ?? Context.Session.GetString("UserType")
+        ?? "User";
+
+    userType = userType.Trim();
+
+    var isRecruiter =
+        userType.Equals("Recruiter", StringComparison.OrdinalIgnoreCase);
+
+    var isJobseeker =
+        userType.Equals("Jobseeker", StringComparison.OrdinalIgnoreCase);
+
+    var isAdmin =
+        userType.Equals("Admin", StringComparison.OrdinalIgnoreCase)
+        || userType.Equals("Administrator", StringComparison.OrdinalIgnoreCase);
+}
+
+
+<style>
+
+    /* =========================================================
+               USER GUIDE
+               ========================================================= */
+
+    .user-guide-page {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 14px;
+        min-height: calc(100vh - 120px);
+    }
+
+
+    /* =========================================================
+               HEADER
+               ========================================================= */
+
+    .user-guide-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 25px;
+        margin-bottom: 30px;
+    }
+
+    .help-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        color: #2878ad;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    .user-guide-header h1 {
+        color: #183b56;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .user-guide-header p {
+        color: #66737d;
+        margin-bottom: 0;
+    }
+
+    .guide-header-icon {
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #eef6fb;
+        color: #2878ad;
+        border-radius: 16px;
+        font-size: 30px;
+    }
+
+
+    /* =========================================================
+               TOUR CARD
+               ========================================================= */
+
+    .guide-tour-card {
+        background: #FBFFD9;
+        border: 1px solid #eef2bd;
+        border-radius: 16px;
+        padding: 30px;
+        text-align: center;
+        margin-bottom: 35px;
+        box-shadow: 0 4px 14px rgba(24, 59, 86, 0.06);
+    }
+
+    .guide-tour-icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #ffffff;
+        color: #2878ad;
+        border-radius: 50%;
+        font-size: 27px;
+    }
+
+    .guide-tour-card h2 {
+        color: #183b56;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .guide-tour-card p {
+        max-width: 650px;
+        margin: 0 auto 18px;
+        color: #66737d;
+        line-height: 1.6;
+    }
+
+    .guide-role {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 14px;
+        background: #ffffff;
+        border-radius: 8px;
+        color: #66737d;
+        font-size: 13px;
+        margin-bottom: 20px;
+    }
+
+        .guide-role i {
+            color: #2878ad;
+            font-size: 18px;
+        }
+
+        .guide-role strong {
+            color: #183b56;
+        }
+
+    .guide-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .guide-start-button,
+    .guide-reset-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+        border-radius: 8px;
+        padding: 10px 17px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .guide-start-button {
+        background: #2878ad;
+        border: 1px solid #2878ad;
+        color: #ffffff;
+    }
+
+        .guide-start-button:hover {
+            background: #1f628e;
+            border-color: #1f628e;
+            transform: translateY(-2px);
+        }
+
+    .guide-reset-button {
+        background: #ffffff;
+        border: 1px solid #d7e7f0;
+        color: #183b56;
+    }
+
+        .guide-reset-button:hover {
+            background: #f3f8fb;
+        }
+
+
+    /* =========================================================
+               GUIDE SECTION
+               ========================================================= */
+
+    .guide-section {
+        margin-top: 20px;
+    }
+
+    .guide-section-title {
+        margin-bottom: 20px;
+    }
+
+        .guide-section-title span {
+            color: #2878ad;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .guide-section-title h2 {
+            color: #183b56;
+            font-size: 24px;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+
+    /* =========================================================
+               TOPIC GRID
+               ========================================================= */
+
+    .guide-topic-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    .guide-topic-card {
+        position: relative;
+        background: #ffffff;
+        border: 1px solid #d7e7f0;
+        border-radius: 14px;
+        padding: 22px;
+        min-height: 180px;
+        box-shadow: 0 3px 10px rgba(24, 59, 86, 0.05);
+        transition: all 0.2s ease;
+    }
+
+        .guide-topic-card:hover {
+            transform: translateY(-3px);
+            border-color: #2878ad;
+            box-shadow: 0 7px 18px rgba(40, 120, 173, 0.12);
+        }
+
+    .guide-topic-number {
+        position: absolute;
+        top: 16px;
+        right: 18px;
+        color: #b4c5ce;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .guide-topic-card > i {
+        color: #2878ad;
+        font-size: 25px;
+        margin-bottom: 14px;
+    }
+
+    .guide-topic-card h3 {
+        color: #183b56;
+        font-size: 17px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .guide-topic-card p {
+        color: #66737d;
+        font-size: 13px;
+        line-height: 1.6;
+        margin-bottom: 0;
+    }
+
+
+    /* =========================================================
+               RESPONSIVE
+               ========================================================= */
+
+    @@media (max-width: 900px) {
+
+        .guide-topic-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+
+    @@media (max-width: 768px) {
+
+        .user-guide-page {
+            padding: 15px;
+        }
+
+        .user-guide-header {
+            align-items: flex-start;
+        }
+
+        .guide-header-icon {
+            width: 55px;
+            height: 55px;
+            min-width: 55px;
+            font-size: 24px;
+        }
+
+        .guide-topic-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+
+    @@media (max-width: 576px) {
+
+        .user-guide-header {
+            flex-direction: column;
+        }
+
+        .guide-tour-card {
+            padding: 22px 17px;
+        }
+
+        .guide-actions {
+            flex-direction: column;
+        }
+
+        .guide-start-button,
+        .guide-reset-button {
+            width: 100%;
+        }
+    }
+
+</style>
+
+
+<div class="user-guide-page">
+
+
+    <!-- =====================================================
+         HEADER
+         ===================================================== -->
+
+    <div class="user-guide-header">
+
+        <div>
+
+            <span class="help-eyebrow">
+
+                <i class="bi bi-compass"></i>
+
+                HIREPOINT USER GUIDE
+
+            </span>
+
+
+            <h1>
+                Welcome to HirePoint
+            </h1>
+
+
+            @if (isAdmin)
+            {
+                <p>
+                    Explore the HirePoint administration tools available
+                    for monitoring the platform, managing users, reviewing
+                    recruiter approvals, managing job listings and maintaining
+                    your administrator profile.
+                </p>
+            }
+
+            @if (isRecruiter)
+            {
+                <p>
+                    Explore the HirePoint tools available for
+                    managing jobs, reviewing applicants and
+                    maintaining your recruiter profile.
+                </p>
+            }
+
+            @if (isJobseeker)
+            {
+                <p>
+                    Explore the HirePoint tools available for
+                    finding jobs, managing applications,
+                    notifications and your profile.
+                </p>
+            }
+
+            @if (!isAdmin && !isRecruiter && !isJobseeker)
+            {
+                <p>
+                    Take a guided tour of HirePoint and learn
+                    how to use the main features available to you.
+                </p>
+            }
+
+        </div>
+
+
+        <div class="guide-header-icon">
+
+            @if (isAdmin)
+            {
+                <i class="bi bi-shield-check"></i>
+            }
+
+            @if (isRecruiter)
+            {
+                <i class="bi bi-building"></i>
+            }
+
+            @if (isJobseeker)
+            {
+                <i class="bi bi-mortarboard"></i>
+            }
+
+            @if (!isAdmin && !isRecruiter && !isJobseeker)
+            {
+                <i class="bi bi-person-circle"></i>
+            }
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         TOUR CARD
+         ===================================================== -->
+
+    <div class="guide-tour-card">
+
+        <div class="guide-tour-icon">
+
+            <i class="bi bi-stars"></i>
+
+        </div>
+
+
+        <h2>
+            Take the HirePoint Tour
+        </h2>
+
+
+        @if (isAdmin)
+        {
+            <p>
+                Start the complete administrator guided tour to learn
+                how to navigate the Admin Dashboard, view analytics,
+                review recruiter approvals, manage job listings,
+                manage users and maintain your administrator profile.
+            </p>
+        }
+
+        @if (isRecruiter)
+        {
+            <p>
+                Start the complete recruiter guided tour to learn
+                how to navigate your Dashboard, manage job listings,
+                review applicants and maintain your recruiter profile.
+            </p>
+        }
+
+        @if (isJobseeker)
+        {
+            <p>
+                Start the complete jobseeker guided tour to learn
+                how to navigate your Dashboard, find jobs, manage
+                applications, view notifications and maintain
+                your profile.
+            </p>
+        }
+
+        @if (!isAdmin && !isRecruiter && !isJobseeker)
+        {
+            <p>
+                Start the complete guided tour to learn how to
+                navigate HirePoint and use the main features
+                available to you.
+            </p>
+        }
+
+
+        <div class="guide-role">
+
+            @if (isAdmin)
+            {
+                <i class="bi bi-shield-check"></i>
+            }
+
+            @if (isRecruiter)
+            {
+                <i class="bi bi-building"></i>
+            }
+
+            @if (isJobseeker)
+            {
+                <i class="bi bi-person-circle"></i>
+            }
+
+            @if (!isAdmin && !isRecruiter && !isJobseeker)
+            {
+                <i class="bi bi-person-circle"></i>
+            }
+
+            <span>
+
+                You are using HirePoint as
+
+                <strong>
+                    @userType
+                </strong>.
+
+            </span>
+
+        </div>
+
+
+        <div class="guide-actions">
+
+            <!-- =================================================
+                 START FULL TOUR
+                 ================================================= -->
+
+            <button type="button"
+                    id="startGuideButton"
+                    class="guide-start-button">
+
+                <i class="bi bi-play-fill"></i>
+
+                Start Full Tour
+
+            </button>
+
+
+            <!-- =================================================
+                 RESET TOUR STATUS
+                 ================================================= -->
+
+            <button type="button"
+                    id="resetGuideButton"
+                    class="guide-reset-button">
+
+                <i class="bi bi-arrow-counterclockwise"></i>
+
+                Reset Tour Status
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         WHAT WILL BE COVERED
+         ================================================= -->
+
+    <div class="guide-section">
+
+        <div class="guide-section-title">
+
+            <span>
+                TOUR OVERVIEW
+            </span>
+
+            <h2>
+                What will you learn?
+            </h2>
+
+        </div>
+
+
+        <div class="guide-topic-grid">
+
+
+            <!-- =================================================
+                 ADMIN GUIDE
+                 ================================================= -->
+            @if (isAdmin)
+            {
+
+                <div class="guide-topic-card"
+                     data-guide-topic="dashboard">
+
+                    <div class="guide-topic-number">
+                        01
+                    </div>
+
+                    <i class="bi bi-speedometer2"></i>
+
+                    <h3>
+                        Admin Dashboard
+                    </h3>
+
+                    <p>
+                        Learn how the Admin Dashboard provides an
+                        overview of platform activity and important
+                        administration information.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="analytics">
+
+                    <div class="guide-topic-number">
+                        02
+                    </div>
+
+                    <i class="bi bi-bar-chart-line"></i>
+
+                    <h3>
+                        Analytics
+                    </h3>
+
+                    <p>
+                        Learn how to view platform statistics,
+                        users by province, gender distribution
+                        and user account information.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="recruiter-approvals">
+
+                    <div class="guide-topic-number">
+                        03
+                    </div>
+
+                    <i class="bi bi-person-check"></i>
+
+                    <h3>
+                        Recruiter Approvals
+                    </h3>
+
+                    <p>
+                        Learn how to review recruiter information,
+                        verify representatives and manage recruiter
+                        approval actions.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="job-listings">
+
+                    <div class="guide-topic-number">
+                        04
+                    </div>
+
+                    <i class="bi bi-briefcase"></i>
+
+                    <h3>
+                        Job Listings
+                    </h3>
+
+                    <p>
+                        Learn how to view registered job listings,
+                        check their status and access available
+                        job management actions.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="manage-users">
+
+                    <div class="guide-topic-number">
+                        05
+                    </div>
+
+                    <i class="bi bi-people"></i>
+
+                    <h3>
+                        Manage Users
+                    </h3>
+
+                    <p>
+                        Learn how to view registered users, identify
+                        account types, check account status and
+                        manage user accounts.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="profile">
+
+                    <div class="guide-topic-number">
+                        06
+                    </div>
+
+                    <i class="bi bi-person-circle"></i>
+
+                    <h3>
+                        Admin Profile
+                    </h3>
+
+                    <p>
+                        Learn how to maintain your administrator
+                        account information and save profile changes.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="help">
+
+                    <div class="guide-topic-number">
+                        07
+                    </div>
+
+                    <i class="bi bi-question-circle"></i>
+
+                    <h3>
+                        Help
+                    </h3>
+
+                    <p>
+                        Use the Help menu to access the User Guide,
+                        Help Centre, FAQs and troubleshooting information.
+                    </p>
+
+                </div>
+
+            }
+
+
+            <!-- =================================================
+                 RECRUITER GUIDE
+                 ================================================= -->
+            @if (isRecruiter)
+            {
+
+                <div class="guide-topic-card"
+                     data-guide-topic="dashboard">
+
+                    <div class="guide-topic-number">
+                        01
+                    </div>
+
+                    <i class="bi bi-speedometer2"></i>
+
+                    <h3>
+                        Dashboard
+                    </h3>
+
+                    <p>
+                        Learn how your Recruiter Dashboard gives you
+                        an overview of your jobs, active listings,
+                        applications and company information.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="manage-jobs">
+
+                    <div class="guide-topic-number">
+                        02
+                    </div>
+
+                    <i class="bi bi-briefcase"></i>
+
+                    <h3>
+                        Manage Jobs
+                    </h3>
+
+                    <p>
+                        Learn how to view, manage, edit and monitor
+                        the job listings you have posted.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="applicants">
+
+                    <div class="guide-topic-number">
+                        03
+                    </div>
+
+                    <i class="bi bi-people"></i>
+
+                    <h3>
+                        Applicants
+                    </h3>
+
+                    <p>
+                        Learn how to review job applications,
+                        check applicant status and access applicant
+                        actions.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="profile">
+
+                    <div class="guide-topic-number">
+                        04
+                    </div>
+
+                    <i class="bi bi-person-circle"></i>
+
+                    <h3>
+                        Profile
+                    </h3>
+
+                    <p>
+                        Learn how to maintain your recruiter profile
+                        and keep your account information up to date.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="help">
+
+                    <div class="guide-topic-number">
+                        05
+                    </div>
+
+                    <i class="bi bi-question-circle"></i>
+
+                    <h3>
+                        Help
+                    </h3>
+
+                    <p>
+                        Use the Help menu to access the User Guide,
+                        Help Centre, FAQs and troubleshooting information.
+                    </p>
+
+                </div>
+
+            }
+
+
+            <!-- =================================================
+                 JOBSEEKER GUIDE
+                 ================================================= -->
+            @if (isJobseeker)
+            {
+
+                <div class="guide-topic-card"
+                     data-guide-topic="dashboard">
+
+                    <div class="guide-topic-number">
+                        01
+                    </div>
+
+                    <i class="bi bi-speedometer2"></i>
+
+                    <h3>
+                        Dashboard
+                    </h3>
+
+                    <p>
+                        Learn how your Dashboard gives you quick
+                        access to important information, statistics,
+                        recommended jobs and tour controls.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="jobs">
+
+                    <div class="guide-topic-number">
+                        02
+                    </div>
+
+                    <i class="bi bi-briefcase"></i>
+
+                    <h3>
+                        Find Jobs
+                    </h3>
+
+                    <p>
+                        Learn how to search for available jobs,
+                        use search filters and view job opportunities.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="applications">
+
+                    <div class="guide-topic-number">
+                        03
+                    </div>
+
+                    <i class="bi bi-file-earmark-text"></i>
+
+                    <h3>
+                        Applications
+                    </h3>
+
+                    <p>
+                        Learn how to view your applications and
+                        monitor the status of your submitted jobs.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="notifications">
+
+                    <div class="guide-topic-number">
+                        04
+                    </div>
+
+                    <i class="bi bi-bell"></i>
+
+                    <h3>
+                        Notifications
+                    </h3>
+
+                    <p>
+                        Learn how HirePoint keeps you informed
+                        about important application and account updates.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="profile">
+
+                    <div class="guide-topic-number">
+                        05
+                    </div>
+
+                    <i class="bi bi-person-circle"></i>
+
+                    <h3>
+                        Profile
+                    </h3>
+
+                    <p>
+                        Learn how to maintain your personal information
+                        and manage your CV.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="help">
+
+                    <div class="guide-topic-number">
+                        06
+                    </div>
+
+                    <i class="bi bi-question-circle"></i>
+
+                    <h3>
+                        Help
+                    </h3>
+
+                    <p>
+                        Use the Help menu to access the User Guide,
+                        Help Centre, FAQs and troubleshooting information.
+                    </p>
+
+                </div>
+
+            }
+
+
+            <!-- =================================================
+                 FALLBACK GUIDE
+                 ================================================= -->
+            @if (!isAdmin && !isRecruiter && !isJobseeker)
+            {
+
+                <div class="guide-topic-card"
+                     data-guide-topic="dashboard">
+
+                    <div class="guide-topic-number">
+                        01
+                    </div>
+
+                    <i class="bi bi-speedometer2"></i>
+
+                    <h3>
+                        Dashboard
+                    </h3>
+
+                    <p>
+                        Explore the main HirePoint dashboard and
+                        available platform features.
+                    </p>
+
+                </div>
+
+
+                <div class="guide-topic-card"
+                     data-guide-topic="help">
+
+                    <div class="guide-topic-number">
+                        02
+                    </div>
+
+                    <i class="bi bi-question-circle"></i>
+
+                    <h3>
+                        Help
+                    </h3>
+
+                    <p>
+                        Use the Help menu to access the User Guide,
+                        Help Centre, FAQs and troubleshooting information.
+                    </p>
+
+                </div>
+
+            }
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                /* =====================================================
+                   USER ROLE
+                   ===================================================== */
+
+                const userType =
+                    "@userType".toLowerCase();
+
+
+                const isAdmin =
+                    userType === "admin" ||
+                    userType === "administrator";
+
+
+                const isRecruiter =
+                    userType === "recruiter";
+
+
+                const isJobseeker =
+                    userType === "jobseeker";
+
+
+                /* =====================================================
+                   CHECK CENTRAL TOUR ENGINE
+                   ===================================================== */
+
+                if (
+                    typeof window.HirePointTour ===
+                    "undefined"
+                ) {
+
+                    console.error(
+                        "HirePointTour is not loaded. " +
+                        "Make sure ~/js/hirepoint-tour.js " +
+                        "is included in _Layout.cshtml."
+                    );
+
+                    return;
+                }
+
+
+                /* =====================================================
+                   START FULL TOUR
+                   ===================================================== */
+
+                const startButton =
+                    document.getElementById(
+                        "startGuideButton"
+                    );
+
+
+                if (startButton) {
+
+                    startButton.addEventListener(
+                        "click",
+                        function (event) {
+
+                            event.preventDefault();
+                            event.stopPropagation();
+
+
+                            /* =================================================
+                               ADMIN
+                               ================================================= */
+
+                            if (isAdmin) {
+
+                                if (
+                                    typeof window.HirePointTour
+                                        .startFullAdminTour ===
+                                    "function"
+                                ) {
+
+                                    window.HirePointTour
+                                        .startFullAdminTour();
+
+                                } else {
+
+                                    console.error(
+                                        "Admin tour is not available. " +
+                                        "Make sure startFullAdminTour() " +
+                                        "exists in hirepoint-tour.js."
+                                    );
+
+                                }
+
+                                return;
+                            }
+
+
+                            /* =================================================
+                               RECRUITER
+                               ================================================= */
+
+                            if (isRecruiter) {
+
+                                if (
+                                    typeof window.HirePointTour
+                                        .startFullRecruiterTour ===
+                                    "function"
+                                ) {
+
+                                    window.HirePointTour
+                                        .startFullRecruiterTour();
+
+                                } else {
+
+                                    console.error(
+                                        "Recruiter tour is not available. " +
+                                        "Make sure startFullRecruiterTour() " +
+                                        "exists in hirepoint-tour.js."
+                                    );
+
+                                }
+
+                                return;
+                            }
+
+
+                            /* =================================================
+                               JOBSEEKER
+                               ================================================= */
+
+                            if (isJobseeker) {
+
+                                if (
+                                    typeof window.HirePointTour
+                                        .startFullJobseekerTour ===
+                                    "function"
+                                ) {
+
+                                    window.HirePointTour
+                                        .startFullJobseekerTour();
+
+                                }
+                                else if (
+                                    typeof window.HirePointTour
+                                        .restart ===
+                                    "function"
+                                ) {
+
+                                    window.HirePointTour
+                                        .restart();
+
+                                }
+                                else {
+
+                                    console.error(
+                                        "Jobseeker tour is not available."
+                                    );
+
+                                }
+
+                                return;
+                            }
+
+
+                            console.warn(
+                                "No supported HirePoint user type " +
+                                "was found."
+                            );
+
+                        }
+                    );
+
+                }
+
+
+                /* =====================================================
+                   RESET TOUR STATUS
+                   ===================================================== */
+
+                const resetButton =
+                    document.getElementById(
+                        "resetGuideButton"
+                    );
+
+
+                if (resetButton) {
+
+                    resetButton.addEventListener(
+                        "click",
+                        function (event) {
+
+                            event.preventDefault();
+                            event.stopPropagation();
+
+
+                            /* =================================================
+                               ADMIN
+                               ================================================= */
+
+                            if (isAdmin) {
+
+                                if (
+                                    typeof window.HirePointTour
+                                        .restartAdmin ===
+                                    "function"
+                                ) {
+
+                                    window.HirePointTour
+                                        .restartAdmin();
+
+                                }
+                                else if (
+                                    typeof window.HirePointTour
+                                        .restartAdminTour ===
+                                    "function"
+                                ) {
+
+                                    window.HirePointTour
+                                        .restartAdminTour();
+
+                                }
+                                else {
+
+                                    console.error(
+                                        "Admin tour reset is not available."
+                                    );
+
+                                }
+
+                                return;
+                            }
+
+
+                            /* =================================================
+                               RECRUITER
+                               ================================================= */
+
+                            if (isRecruiter) {
+
+                                if (
+                                    typeof window.HirePointTour
+                                        .restartRecruiter ===
+                                    "function"
+                                ) {
+
+                                    window.HirePointTour
+                                        .restartRecruiter();
+
+                                }
+                                else if (
+                                    typeof window.HirePointTour
+                                        .restartRecruiterTour ===
+                                    "function"
+                                ) {
+
+                                    window.HirePointTour
+                                        .restartRecruiterTour();
+
+                                }
+                                else {
+
+                                    console.error(
+                                        "Recruiter tour reset is not available."
+                                    );
+
+                                }
+
+                                return;
+                            }
+
+
+                            /* =================================================
+                               JOBSEEKER
+                               ================================================= */
+
+                            if (isJobseeker) {
+
+                                if (
+                                    typeof window.HirePointTour
+                                        .restartJobseekerTour ===
+                                    "function"
+                                ) {
+
+                                    window.HirePointTour
+                                        .restartJobseekerTour();
+
+                                }
+                                else if (
+                                    typeof window.HirePointTour
+                                        .restart ===
+                                    "function"
+                                ) {
+
+                                    window.HirePointTour
+                                        .restart();
+
+                                }
+                                else {
+
+                                    console.error(
+                                        "Jobseeker tour reset is not available."
+                                    );
+
+                                }
+
+                                return;
+                            }
+
+
+                            console.warn(
+                                "No supported HirePoint user type " +
+                                "was found."
+                            );
+
+                        }
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+}

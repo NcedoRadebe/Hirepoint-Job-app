@@ -358,7 +358,10 @@
                             </label>
 
                             <input asp-for="FullName"
-                                   class="form-control profile-input" />
+                                   class="form-control profile-input"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-placement="top"
+                                   title="Enter your full name as you want it displayed on your profile." />
 
                             <span asp-validation-for="FullName"
                                   class="text-danger">
@@ -380,7 +383,10 @@
 
                             <input asp-for="Email"
                                    type="email"
-                                   class="form-control profile-input" />
+                                   class="form-control profile-input"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-placement="top"
+                                   title="Enter the email address you use for your HirePoint account." />
 
                             <span asp-validation-for="Email"
                                   class="text-danger">
@@ -401,7 +407,10 @@
                             </label>
 
                             <input asp-for="PhoneNumber"
-                                   class="form-control profile-input" />
+                                   class="form-control profile-input"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-placement="top"
+                                   title="Enter your current phone number so employers can contact you." />
 
                             <span asp-validation-for="PhoneNumber"
                                   class="text-danger">
@@ -422,7 +431,10 @@
                             </label>
 
                             <select asp-for="Gender"
-                                    class="form-select profile-input">
+                                    class="form-select profile-input"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Select your gender.">
 
                                 <option value="">
                                     Select Gender
@@ -463,7 +475,10 @@
                                    class="form-control profile-input"
                                    placeholder="Enter your qualification"
                                    autocomplete="off"
-                                   maxlength="150" />
+                                   maxlength="150"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-placement="top"
+                                   title="Enter your highest or relevant qualification, such as Diploma in IT or BCom Accounting." />
 
                             <span asp-validation-for="JobseekerProfile.Qualification"
                                   class="text-danger">
@@ -491,7 +506,10 @@
                             </label>
 
                             <select asp-for="ProvinceID"
-                                    class="form-select profile-input">
+                                    class="form-select profile-input"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Select the province where you are located or where you are looking for work.">
 
                                 <option value="">
                                     -- Select Province --
@@ -521,7 +539,10 @@
                              ========================== -->
 
                         <button type="submit"
-                                class="profile-save-btn">
+                                class="profile-save-btn"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Save the changes you made to your personal profile information.">
 
                             <i class="bi bi-check2-circle me-1"></i>
 
@@ -571,7 +592,7 @@
                             <i class="bi bi-check-circle-fill"></i>
 
                             <span>
-                                CV uploaded successfully
+                                Your CV has been saved to your profile.
                             </span>
 
                         </div>
@@ -588,9 +609,13 @@
                                 or replace it with a newer version.
                             </p>
 
-                            <a class="profile-cv-btn"
-                               href="/uploads/cv/@Model.JobseekerProfile.CVFile"
-                               target="_blank">
+                            <a asp-controller="Jobseeker"
+                               asp-action="ViewCV"
+                               class="profile-cv-btn"
+                               target="_blank"
+                               data-bs-toggle="tooltip"
+                               data-bs-placement="top"
+                               title="Open your currently uploaded CV.">
 
                                 <i class="bi bi-eye me-1"></i>
 
@@ -656,13 +681,19 @@
                                        name="cv"
                                        class="form-control profile-input"
                                        accept=".pdf,.doc,.docx"
-                                       required />
+                                       required
+                                       data-bs-toggle="tooltip"
+                                       data-bs-placement="top"
+                                       title="Select your CV file. PDF, DOC, and DOCX files are supported." />
 
                             </div>
 
 
                             <button type="submit"
-                                    class="profile-upload-btn">
+                                    class="profile-upload-btn"
+                                    data-bs-toggle="tooltip"
+                                    data-bs-placement="top"
+                                    title="Upload the selected CV to your HirePoint profile.">
 
                                 <i class="bi bi-upload me-1"></i>
 
@@ -686,6 +717,24 @@
     </div>
 
 </div>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const tooltipTriggerList =
+            document.querySelectorAll('[data-bs-toggle="tooltip"]');
+
+        tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+
+            new bootstrap.Tooltip(tooltipTriggerEl);
+
+        });
+
+    });
+
+</script>
 
 
 @section Scripts {

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using HirePoint.Data;
 using HirePoint.Models;
 using HirePoint.Services;
+using HirePoint.ViewModels;
 
 namespace HirePoint.Controllers
 {
@@ -10,13 +11,16 @@ namespace HirePoint.Controllers
     {
         private readonly HirePointDbContext db;
         private readonly IAIEmailService aiEmailService;
+        private readonly IEmailService emailService;
 
         public RecruiterController(
-            HirePointDbContext context,
-            IAIEmailService aiEmailService)
+     HirePointDbContext context,
+     IAIEmailService aiEmailService,
+     IEmailService emailService)
         {
             db = context;
             this.aiEmailService = aiEmailService;
+            this.emailService = emailService;
         }
 
         // =========================================================
@@ -1181,11 +1185,120 @@ namespace HirePoint.Controllers
         // recruiter can use when communicating with the applicant.
         // =========================================================
 
+        // =========================================================
+        // UPDATE APPLICATION STATUS AND OPEN AI MESSAGE PAGE
+        // =========================================================
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> GenerateMessage(
+        public IActionResult GenerateMessage(
             int id,
-            string? messageType)
+            string applicationStatus)
+        {
+            if (!IsRecruiter())
+                return RedirectToAction(
+                    "Login",
+                    "Account");
+
+            int userID = GetUserID();
+
+            int? companyID =
+                GetRecruiterCompanyID(userID);
+
+            if (!companyID.HasValue)
+            {
+                TempData["Error"] =
+                    "Your recruiter account is not linked to a company.";
+
+                return RedirectToAction(
+                    nameof(Applicants));
+            }
+
+            string[] allowedStatuses =
+            {
+        "Pending",
+        "Shortlisted",
+        "Interview Scheduled",
+        "Accepted",
+        "Rejected"
+    };
+
+            if (!allowedStatuses.Contains(
+                    applicationStatus,
+                    StringComparer.OrdinalIgnoreCase))
+            {
+                TempData["Error"] =
+                    "Invalid application status selected.";
+
+                return RedirectToAction(
+                    nameof(Applicants));
+            }
+
+            string selectedStatus =
+                allowedStatuses.First(x =>
+                    x.Equals(
+                        applicationStatus,
+                        StringComparison.OrdinalIgnoreCase));
+
+            int recruiterCompanyID =
+                companyID.Value;
+
+            var application =
+                db.Applications
+                    .Include(x => x.Job)
+                    .Include(x => x.Jobseeker)
+                    .FirstOrDefault(x =>
+                        x.ApplicationID == id &&
+                        x.Job != null &&
+                        x.Job.RecruiterID == userID &&
+                        x.Job.CompanyID == recruiterCompanyID);
+
+            if (application == null)
+            {
+                TempData["Error"] =
+                    "Application could not be found.";
+
+                return RedirectToAction(
+                    nameof(Applicants));
+            }
+
+            application.ApplicationStatus =
+                selectedStatus;
+
+            application.DecisionMessage =
+                null;
+
+            application.DecisionDate =
+                DateTime.Now;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch
+            {
+                TempData["Error"] =
+                    "The application status could not be updated.";
+
+                return RedirectToAction(
+                    nameof(Applicants));
+            }
+
+            return RedirectToAction(
+                nameof(GenerateMessagePage),
+                new
+                {
+                    id = application.ApplicationID
+                });
+        }
+
+        // =========================================================
+        // AI MESSAGE GENERATION PAGE
+        // =========================================================
+
+        [HttpGet]
+        public IActionResult GenerateMessagePage(
+            int id)
         {
             if (!IsRecruiter())
                 return RedirectToAction(
@@ -1213,8 +1326,116 @@ namespace HirePoint.Controllers
                 db.Applications
                     .Include(x => x.Job)
                     .Include(x => x.Jobseeker)
+                        .ThenInclude(x => x!.JobseekerProfile)
                     .FirstOrDefault(x =>
                         x.ApplicationID == id &&
+                        x.Job != null &&
+                        x.Job.RecruiterID == userID &&
+                        x.Job.CompanyID == recruiterCompanyID);
+
+            if (application == null)
+            {
+                TempData["Error"] =
+                    "Application could not be found.";
+
+                return RedirectToAction(
+                    nameof(Applicants));
+            }
+
+            var model =
+                new ViewModels.ApplicationMessageViewModel
+                {
+                    ApplicationID =
+                        application.ApplicationID,
+
+                    ApplicantName =
+                        application.Jobseeker?.FullName ??
+                        "Applicant",
+
+                    ApplicantEmail =
+                        application.Jobseeker?.Email ??
+                        string.Empty,
+
+                    JobTitle =
+                        application.Job?.JobTitle ??
+                        "the position",
+
+                    ApplicationStatus =
+                        application.ApplicationStatus ??
+                        "Pending",
+
+                    Qualification =
+                        application.Jobseeker?
+                            .JobseekerProfile?
+                            .Qualification ??
+                        string.Empty,
+
+                    Skills =
+                        application.Jobseeker?
+                            .JobseekerProfile?
+                            .Skills ??
+                        string.Empty,
+
+                    Education =
+                        application.Jobseeker?
+                            .JobseekerProfile?
+                            .Education ??
+                        string.Empty,
+
+                    Experience =
+                        application.Jobseeker?
+                            .JobseekerProfile?
+                            .Experience ??
+                        string.Empty
+                };
+
+            return View(model);
+        }
+        // =========================================================
+        // GENERATE PERSONALIZED AI MESSAGE
+        // =========================================================
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> GeneratePersonalizedMessage(
+            ApplicationMessageViewModel model)
+        {
+            if (!IsRecruiter())
+                return RedirectToAction(
+                    "Login",
+                    "Account");
+
+            if (!ModelState.IsValid)
+            {
+                return View(
+                    nameof(GenerateMessagePage),
+                    model);
+            }
+
+            int userID = GetUserID();
+
+            int? companyID =
+                GetRecruiterCompanyID(userID);
+
+            if (!companyID.HasValue)
+            {
+                TempData["Error"] =
+                    "Your recruiter account is not linked to a company.";
+
+                return RedirectToAction(
+                    nameof(Applicants));
+            }
+
+            int recruiterCompanyID =
+                companyID.Value;
+
+            var application =
+                db.Applications
+                    .Include(x => x.Job)
+                    .Include(x => x.Jobseeker)
+                        .ThenInclude(x => x!.JobseekerProfile)
+                    .FirstOrDefault(x =>
+                        x.ApplicationID == model.ApplicationID &&
                         x.Job != null &&
                         x.Job.RecruiterID == userID &&
                         x.Job.CompanyID == recruiterCompanyID);
@@ -1240,81 +1461,266 @@ namespace HirePoint.Controllers
                 application.ApplicationStatus ??
                 "Pending";
 
-            messageType =
-                string.IsNullOrWhiteSpace(messageType)
-                    ? "Application Update"
-                    : messageType.Trim();
+            var profile =
+                application.Jobseeker?
+                    .JobseekerProfile;
 
-            string recruiterMessage =
-                messageType.ToLowerInvariant()
-                switch
-                {
-                    "followup" =>
-                        "Please provide a professional follow-up message to the applicant regarding their application.",
+            string recruiterContext =
+                $"""
+        Applicant information:
 
-                    "shortlist" =>
-                        "Please provide a professional message informing the applicant that their application is being considered for the next stage.",
+        Qualification:
+        {profile?.Qualification ?? "Not provided"}
 
-                    "accepted" =>
-                        "Please provide a professional message informing the applicant that their application has been successful and explaining the next steps.",
+        Skills:
+        {profile?.Skills ?? "Not provided"}
 
-                    "rejected" =>
-                        "Please provide a professional and respectful message informing the applicant that their application was unsuccessful.",
+        Education:
+        {profile?.Education ?? "Not provided"}
 
-                    _ =>
-                        "Please provide a professional personalised message to the applicant regarding their job application."
-                };
+        Experience:
+        {profile?.Experience ?? "Not provided"}
 
-            string aiMessage;
+        Recruiter's reason or additional details:
+        {model.Reason}
+        """;
 
             try
             {
-                aiMessage =
+                string aiMessage =
                     await aiEmailService
                         .GenerateStatusMessageAsync(
                             applicantName,
                             jobTitle,
                             status,
-                            recruiterMessage);
+                            recruiterContext);
+
+                model.ApplicantName =
+                    applicantName;
+
+                model.ApplicantEmail =
+                    application.Jobseeker?.Email ??
+                    string.Empty;
+
+                model.JobTitle =
+                    jobTitle;
+
+                model.ApplicationStatus =
+                    status;
+
+                model.Qualification =
+                    profile?.Qualification ??
+                    string.Empty;
+
+                model.Skills =
+                    profile?.Skills ??
+                    string.Empty;
+
+                model.Education =
+                    profile?.Education ??
+                    string.Empty;
+
+                model.Experience =
+                    profile?.Experience ??
+                    string.Empty;
+
+                model.GeneratedMessage =
+                    aiMessage;
+
+                model.MessageGenerated =
+                    true;
+
+                return View(
+                    nameof(GenerateMessagePage),
+                    model);
             }
-            catch
+            catch (Exception ex)
             {
-                aiMessage =
-                    $"Dear {applicantName},\n\n" +
-                    $"Thank you for your application for the {jobTitle} position. " +
-                    "We appreciate your interest and will be in touch regarding the next steps.\n\n" +
-                    "Kind regards,\n" +
-                    "Recruitment Team";
+                ModelState.AddModelError(
+                    string.Empty,
+                    $"AI message generation failed: {ex.Message}");
+
+                return View(
+                    nameof(GenerateMessagePage),
+                    model);
+            }
+        }
+
+        // =========================================================
+        // CONFIRM AND SEND AI MESSAGE
+        // =========================================================
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ConfirmAndSendMessage(
+    ApplicationMessageViewModel model)
+        {
+            if (!IsRecruiter())
+                return RedirectToAction(
+                    "Login",
+                    "Account");
+
+            if (string.IsNullOrWhiteSpace(
+                    model.GeneratedMessage))
+            {
+                TempData["Error"] =
+                    "There is no message to send.";
+
+                return RedirectToAction(
+                    nameof(Applicants));
             }
 
-            // Save the generated message so that it is available
-            // from the application record.
-            application.DecisionMessage =
-                aiMessage;
+            int userID =
+                GetUserID();
 
-            application.DecisionDate =
-                DateTime.Now;
+            int? companyID =
+                GetRecruiterCompanyID(userID);
+
+            if (!companyID.HasValue)
+            {
+                TempData["Error"] =
+                    "Your recruiter account is not linked to a company.";
+
+                return RedirectToAction(
+                    nameof(Applicants));
+            }
+
+            int recruiterCompanyID =
+                companyID.Value;
+
+            var application =
+                db.Applications
+                    .Include(x => x.Job)
+                    .Include(x => x.Jobseeker)
+                    .FirstOrDefault(x =>
+                        x.ApplicationID == model.ApplicationID &&
+                        x.Job != null &&
+                        x.Job.RecruiterID == userID &&
+                        x.Job.CompanyID == recruiterCompanyID);
+
+            if (application == null)
+            {
+                TempData["Error"] =
+                    "Application could not be found.";
+
+                return RedirectToAction(
+                    nameof(Applicants));
+            }
+
+            string applicantEmail =
+                application.Jobseeker?.Email ??
+                string.Empty;
+
+            string applicantName =
+                application.Jobseeker?.FullName ??
+                "Applicant";
+
+            string jobTitle =
+                application.Job?.JobTitle ??
+                "the position";
+
+            string status =
+                application.ApplicationStatus ??
+                "Pending";
+
+            if (string.IsNullOrWhiteSpace(
+                    applicantEmail))
+            {
+                TempData["Error"] =
+                    "The jobseeker does not have an email address.";
+
+                return RedirectToAction(
+                    nameof(Applicants));
+            }
+
+            string finalMessage =
+                model.GeneratedMessage.Trim();
+
+            if (finalMessage.Length > 1000)
+            {
+                TempData["Error"] =
+                    "The message cannot exceed 1000 characters.";
+
+                return View(
+                    nameof(GenerateMessagePage),
+                    model);
+            }
 
             try
             {
+                // =====================================================
+                // SEND EMAIL TO JOBSEEKER
+                // =====================================================
+
+                await emailService
+                    .SendApplicationStatusEmailAsync(
+                        applicantEmail,
+                        applicantName,
+                        jobTitle,
+                        status,
+                        finalMessage);
+
+
+                // =====================================================
+                // SAVE FINAL MESSAGE TO APPLICATION
+                // =====================================================
+
+                application.DecisionMessage =
+                    finalMessage;
+
+                application.DecisionDate =
+                    DateTime.Now;
+
+
+                // =====================================================
+                // CREATE JOBSEEKER NOTIFICATION
+                // =====================================================
+
+                CreateNotification(
+                    application.JobseekerID,
+                    $"Application Update - {jobTitle}",
+                    $"Your application for {jobTitle} has been updated to {status}.\n\n{finalMessage}");
+
+
+                // =====================================================
+                // SAVE APPLICATION + NOTIFICATION
+                // =====================================================
+
                 db.SaveChanges();
 
-                TempData["GeneratedMessage"] =
-                    aiMessage;
 
                 TempData["Success"] =
-                    "AI message generated successfully.";
+                    "The application status message was sent successfully.";
+
+                return RedirectToAction(
+                    nameof(Applicants));
             }
             catch
             {
-                TempData["Error"] =
-                    "The AI message was generated but could not be saved.";
+                ModelState.AddModelError(
+                    string.Empty,
+                    "The message could not be sent. Please try again.");
+
+                model.ApplicantName =
+                    applicantName;
+
+                model.ApplicantEmail =
+                    applicantEmail;
+
+                model.JobTitle =
+                    jobTitle;
+
+                model.ApplicationStatus =
+                    status;
+
+                model.MessageGenerated =
+                    true;
+
+                return View(
+                    nameof(GenerateMessagePage),
+                    model);
             }
-
-            return RedirectToAction(
-                nameof(Applicants));
         }
-
         // =========================================================
         // NOTIFICATION
         // =========================================================

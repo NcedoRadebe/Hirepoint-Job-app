@@ -43,6 +43,42 @@ namespace HirePoint.Models
 
 
         // =========================
+        // REPRESENTATIVE INFORMATION
+        // =========================
+
+        [StringLength(
+            150,
+            ErrorMessage = "Representative name cannot exceed 150 characters."
+        )]
+        public string? RepresentativeName { get; set; }
+
+
+        [EmailAddress(
+            ErrorMessage = "Please enter a valid representative email address."
+        )]
+        [StringLength(
+            254,
+            ErrorMessage = "Representative email address is too long."
+        )]
+        public string? RepresentativeEmail { get; set; }
+
+
+        // =========================
+        // REPRESENTATIVE VERIFICATION
+        // =========================
+
+        [StringLength(30)]
+        public string RepresentativeVerificationStatus { get; set; } = "Pending";
+
+
+        [StringLength(128)]
+        public string? RepresentativeVerificationTokenHash { get; set; }
+
+
+        public DateTime? RepresentativeVerificationExpiresAt { get; set; }
+
+
+        // =========================
         // RELATIONSHIP
         // =========================
 

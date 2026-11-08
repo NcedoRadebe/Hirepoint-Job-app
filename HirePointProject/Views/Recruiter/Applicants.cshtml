@@ -1,18 +1,19 @@
 ﻿@model IEnumerable<HirePoint.Models.JobApplication>
 
 @{
-ViewData["Title"] = "Job Applicants";
+    ViewData["Title"] = "Job Applicants";
 }
 
 <style>
     /* =========================================
-       HIREPOINT APPLICANTS
-       ========================================= */
+           HIREPOINT APPLICANTS
+           ========================================= */
 
     .applicants-container {
-        background: #f4f8fc;
+        background: #ffffff;
         min-height: 100vh;
         padding: 30px;
+        border-radius: 20px;
     }
 
     /* PAGE HEADER */
@@ -21,19 +22,19 @@ ViewData["Title"] = "Job Applicants";
         margin-bottom: 25px;
     }
 
-    .page-header h2 {
-        color: #173b5e;
-        font-weight: 700;
-    }
+        .page-header h2 {
+            color: #173b5e;
+            font-weight: 700;
+        }
 
-    .page-header p {
-        color: #6c757d;
-    }
+        .page-header p {
+            color: #6c757d;
+        }
 
     .total-applications {
-        background: #e8f2fa;
+        background: #FBFFD9;
         color: #2878ad;
-        border: 1px solid #c9dfef;
+        border: 1px solid #FBFFD9;
         border-radius: 8px;
         font-weight: 600;
     }
@@ -63,10 +64,10 @@ ViewData["Title"] = "Job Applicants";
         padding: 20px 24px;
     }
 
-    .applicants-card-header h5 {
-        margin: 0;
-        font-weight: 600;
-    }
+        .applicants-card-header h5 {
+            margin: 0;
+            font-weight: 600;
+        }
 
     /* TABLE */
 
@@ -74,32 +75,32 @@ ViewData["Title"] = "Job Applicants";
         margin-bottom: 0;
     }
 
-    .applicants-table thead {
-        background: #edf5fa;
-    }
+        .applicants-table thead {
+            background: #edf5fa;
+        }
 
-    .applicants-table thead th {
-        color: #173b5e;
-        font-size: 13px;
-        font-weight: 700;
-        padding: 16px;
-        border-bottom: 1px solid #d9e8f2;
-        white-space: nowrap;
-    }
+            .applicants-table thead th {
+                color: #173b5e;
+                font-size: 13px;
+                font-weight: 700;
+                padding: 16px;
+                border-bottom: 1px solid #d9e8f2;
+                white-space: nowrap;
+            }
 
-    .applicants-table tbody td {
-        padding: 20px 16px;
-        vertical-align: middle;
-        border-color: #edf2f6;
-    }
+        .applicants-table tbody td {
+            padding: 20px 16px;
+            vertical-align: middle;
+            border-color: #edf2f6;
+        }
 
-    .applicants-table tbody tr {
-        transition: all 0.2s ease;
-    }
+        .applicants-table tbody tr {
+            transition: all 0.2s ease;
+        }
 
-    .applicants-table tbody tr:hover {
-        background: #f7fbfe;
-    }
+            .applicants-table tbody tr:hover {
+                background: #f7fbfe;
+            }
 
     /* APPLICANT */
 
@@ -162,13 +163,13 @@ ViewData["Title"] = "Job Applicants";
         white-space: nowrap;
     }
 
-    .btn-generate-message:hover {
-        background: #1d5f8a;
-        border-color: #1d5f8a;
-        color: white;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 12px rgba(40, 120, 173, 0.25);
-    }
+        .btn-generate-message:hover {
+            background: #1d5f8a;
+            border-color: #1d5f8a;
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(40, 120, 173, 0.25);
+        }
 
     /* ACTION AREA */
 
@@ -227,424 +228,503 @@ ViewData["Title"] = "Job Applicants";
 </style>
 
 <div class="applicants-container">
-<!-- =========================================
+    <!-- =========================================
      PAGE HEADER
      ========================================= -->
 
-<div class="page-header d-flex justify-content-between align-items-center">
-
-    <div>
-        <h2 class="mb-1">
-            Job Applicants
-        </h2>
-
-        <p class="mb-0">
-            Review applicants and generate professional messages with AI.
-        </p>
-    </div>
-
-    <div class="total-applications px-3 py-2">
-        Total Applications: @Model.Count()
-    </div>
-
-</div>
-
-
-<!-- =========================================
-     SUCCESS MESSAGE
-     ========================================= -->
-
-@if (TempData["Success"] != null)
-{
-    <div class="alert alert-success alert-dismissible fade show shadow-sm"
-         role="alert">
-
-        <i class="bi bi-check-circle me-2"></i>
-
-        @TempData["Success"]
-
-        <button type="button"
-                class="btn-close"
-                data-bs-dismiss="alert">
-        </button>
-
-    </div>
-}
-
-
-<!-- =========================================
-     ERROR MESSAGE
-     ========================================= -->
-
-@if (TempData["Error"] != null)
-{
-    <div class="alert alert-danger alert-dismissible fade show shadow-sm"
-         role="alert">
-
-        <i class="bi bi-exclamation-triangle me-2"></i>
-
-        @TempData["Error"]
-
-        <button type="button"
-                class="btn-close"
-                data-bs-dismiss="alert">
-        </button>
-
-    </div>
-}
-
-
-<!-- =========================================
-     GENERATED AI MESSAGE
-     ========================================= -->
-
-@if (TempData["GeneratedMessage"] != null)
-{
-    <div class="alert alert-info alert-dismissible fade show shadow-sm"
-         role="alert">
-
-        <div class="fw-bold mb-2">
-            <i class="bi bi-stars me-2"></i>
-            AI Generated Message
-        </div>
+    <div class="page-header d-flex justify-content-between align-items-center">
 
         <div>
-            @TempData["GeneratedMessage"]
+            <h2 class="mb-1">
+                <i class="bi bi-people"></i>
+                Job Applicants
+            </h2>
+
+            <p class="mb-0">
+                Review applicants and generate professional messages with AI.
+            </p>
         </div>
 
-        <button type="button"
-                class="btn-close"
-                data-bs-dismiss="alert">
-        </button>
+        <div class="total-applications px-3 py-2"
+             data-bs-toggle="tooltip"
+             data-bs-placement="top"
+             title="The total number of job applications currently displayed.">
+            Total Applications: @Model.Count()
+        </div>
 
     </div>
-}
 
 
-<!-- =========================================
+    <!-- =========================================
+     SUCCESS MESSAGE
+     ========================================= -->
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show shadow-sm"
+             role="alert">
+
+            <i class="bi bi-check-circle me-2"></i>
+
+            @TempData["Success"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="left"
+                    title="Close this notification.">
+            </button>
+
+        </div>
+    }
+
+
+    <!-- =========================================
+     ERROR MESSAGE
+     ========================================= -->
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show shadow-sm"
+             role="alert">
+
+            <i class="bi bi-exclamation-triangle me-2"></i>
+
+            @TempData["Error"]
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="left"
+                    title="Close this notification.">
+            </button>
+
+        </div>
+    }
+
+
+    <!-- =========================================
+     GENERATED AI MESSAGE
+     ========================================= -->
+    @if (TempData["GeneratedMessage"] != null)
+    {
+        <div class="alert alert-info alert-dismissible fade show shadow-sm"
+             role="alert">
+
+            <div class="fw-bold mb-2">
+                <i class="bi bi-stars me-2"></i>
+                AI Generated Message
+            </div>
+
+            <div>
+                @TempData["GeneratedMessage"]
+            </div>
+
+            <button type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="left"
+                    title="Close this AI generated message.">
+            </button>
+
+        </div>
+    }
+
+
+    <!-- =========================================
      EMPTY APPLICATIONS
      ========================================= -->
-
-@if (!Model.Any())
-{
-    <div class="card empty-applications">
-
-        <div class="card-body text-center py-5">
-
-            <i class="bi bi-people fs-1"
-               style="color:#2878ad;">
-            </i>
-
-            <h5 class="fw-bold mt-3">
-                No Applications Yet
-            </h5>
-
-            <p class="text-muted mb-0">
-                Applications from jobseekers will appear here.
-            </p>
-
-        </div>
-
-    </div>
-}
-else
-{
-    <!-- =========================================
-         APPLICATIONS CARD
-         ========================================= -->
-
-    <div class="card applicants-card">
-
-        <div class="applicants-card-header">
-
-            <h5>
-                <i class="bi bi-people me-2"></i>
-                Applications
-            </h5>
-
-        </div>
-
-
-        <div class="card-body p-0">
-
-            <div class="table-responsive">
-
-                <table class="table table-hover align-middle applicants-table">
-
-                    <thead>
-
-                        <tr>
-
-                            <th class="px-4">
-                                Applicant
-                            </th>
-
-                            <th>
-                                Position
-                            </th>
-
-                            <th>
-                                Applied
-                            </th>
-
-                            <th>
-                                Status
-                            </th>
-
-                            <th>
-                                Message
-                            </th>
-
-                            <th class="text-center">
-                                Actions
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody>
-
-                        @foreach (var app in Model)
-                        {
-                            <tr>
-
-                                <!-- =====================================
-                                     APPLICANT
-                                     ===================================== -->
-
-                                <td class="px-4">
-
-                                    <div class="d-flex align-items-center">
-
-                                        <div class="applicant-avatar me-3">
-
-                                            @(app.Jobseeker?.FullName?
-                                                .Substring(0, 1)
-                                                .ToUpper() ?? "?")
-
-                                        </div>
-
-                                        <div>
-
-                                            <div class="fw-semibold">
-
-                                                @(app.Jobseeker?.FullName
-                                                    ?? "Unknown Applicant")
-
-                                            </div>
-
-                                            <small class="text-muted">
-                                                Jobseeker
-                                            </small>
-
-                                        </div>
-
-                                    </div>
-
-                                </td>
-
-
-                                <!-- =====================================
-                                     JOB
-                                     ===================================== -->
-
-                                <td>
-
-                                    <div class="fw-semibold">
-
-                                        @(app.Job?.JobTitle
-                                            ?? "Unknown Job")
-
-                                    </div>
-
-                                    <small class="text-muted">
-                                        Application #@app.ApplicationID
-                                    </small>
-
-                                </td>
-
-
-                                <!-- =====================================
-                                     APPLICATION DATE
-                                     ===================================== -->
-
-                                <td>
-
-                                    <span class="text-muted">
-
-                                        @app.ApplicationDate.ToString("dd MMM yyyy")
-
-                                    </span>
-
-                                </td>
-
-
-                                <!-- =====================================
-                                     STATUS
-                                     ===================================== -->
-
-                                <td>
-
-                                    @if (app.ApplicationStatus == "Pending")
-                                    {
-                                        <span class="status-badge status-pending">
-
-                                            <i class="bi bi-clock me-1"></i>
-
-                                            Pending
-
-                                        </span>
-                                    }
-                                    else if (app.ApplicationStatus == "Accepted")
-                                    {
-                                        <span class="status-badge status-accepted">
-
-                                            <i class="bi bi-check-circle me-1"></i>
-
-                                            Accepted
-
-                                        </span>
-                                    }
-                                    else if (app.ApplicationStatus == "Rejected")
-                                    {
-                                        <span class="status-badge status-rejected">
-
-                                            <i class="bi bi-x-circle me-1"></i>
-
-                                            Rejected
-
-                                        </span>
-                                    }
-                                    else if (app.ApplicationStatus == "Interview Scheduled")
-                                    {
-                                        <span class="status-badge status-interview">
-
-                                            <i class="bi bi-calendar-check me-1"></i>
-
-                                            Interview Scheduled
-
-                                        </span>
-                                    }
-                                    else
-                                    {
-                                        <span class="status-badge status-pending">
-
-                                            @app.ApplicationStatus
-
-                                        </span>
-                                    }
-
-                                </td>
-
-
-                                <!-- =====================================
-                                     MESSAGE
-                                     ===================================== -->
-
-                                <td>
-
-                                    @if (!string.IsNullOrWhiteSpace(app.DecisionMessage))
-                                    {
-                                        <div class="generated-message">
-
-                                            <div class="generated-message-title">
-
-                                                <i class="bi bi-stars me-1"></i>
-                                                Generated Message
-
-                                            </div>
-
-                                            <div>
-                                                @app.DecisionMessage
-                                            </div>
-
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        <span class="text-muted small">
-                                            No message generated
-                                        </span>
-                                    }
-
-                                </td>
-
-
-                                <!-- =====================================
-                                     ACTIONS
-                                     ===================================== -->
-
-                                <td class="text-center">
-
-                                    <div class="applicant-actions mx-auto">
-
-                                        <form asp-controller="Recruiter"
-                                              asp-action="GenerateMessage"
-                                              method="post">
-
-                                            @Html.AntiForgeryToken()
-
-                                            <input type="hidden"
-                                                   name="id"
-                                                   value="@app.ApplicationID" />
-
-                                            <input type="hidden"
-                                                   name="messageType"
-                                                   value="Application Update" />
-
-                                            <button type="submit"
-                                                    class="btn btn-generate-message btn-sm">
-
-                                                <i class="bi bi-stars me-1"></i>
-
-                                                Generate Message
-
-                                            </button>
-
-                                        </form>
-
-                                    </div>
-
-                                </td>
-
-                            </tr>
-                        }
-
-                    </tbody>
-
-                </table>
+    @if (!Model.Any())
+    {
+        <div class="card empty-applications">
+
+            <div class="card-body text-center py-5">
+
+                <i class="bi bi-people fs-1"
+                   style="color:#2878ad;">
+                </i>
+
+                <h5 class="fw-bold mt-3">
+                    No Applications Yet
+                </h5>
+
+                <p class="text-muted mb-0">
+                    Applications from jobseekers will appear here.
+                </p>
 
             </div>
 
         </div>
+    }
+    else
+    {
+        <!-- =========================================
+         APPLICATIONS CARD
+         ========================================= -->
 
-    </div>
-}
+        <div class="card applicants-card">
+
+            <div class="applicants-card-header">
+
+                <h5>
+                    <i class="bi bi-people me-2"></i>
+                    Applications
+                </h5>
+
+            </div>
+
+
+            <div class="card-body p-0">
+
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle applicants-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th class="px-4">
+                                    Applicant
+                                </th>
+
+                                <th>
+                                    Position
+                                </th>
+
+                                <th>
+                                    Applied
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Message
+                                </th>
+
+                                <th class="text-center">
+                                    Actions
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+                            @foreach (var app in Model)
+                            {
+                                <tr>
+
+                                    <!-- =====================================
+                                     APPLICANT
+                                     ===================================== -->
+
+                                    <td class="px-4"
+                                        data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="Applicant information for this job application.">
+
+                                        <div class="d-flex align-items-center">
+
+                                            <div class="applicant-avatar me-3">
+
+                                                @(app.Jobseeker?.FullName?
+                                                    .Substring(0, 1)
+                                                    .ToUpper() ?? "?")
+
+                                            </div>
+
+                                            <div>
+
+                                                <div class="fw-semibold">
+
+                                                    @(app.Jobseeker?.FullName
+                                                        ?? "Unknown Applicant")
+
+                                                </div>
+
+                                                <small class="text-muted">
+                                                    Jobseeker
+                                                </small>
+
+                                            </div>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <!-- =====================================
+                                     JOB
+                                     ===================================== -->
+
+                                    <td data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="The position this applicant applied for.">
+
+                                        <div class="fw-semibold">
+
+                                            @(app.Job?.JobTitle
+                                                ?? "Unknown Job")
+
+                                        </div>
+
+                                        <small class="text-muted">
+                                            Application #@app.ApplicationID
+                                        </small>
+
+                                    </td>
+
+
+                                    <!-- =====================================
+                                     APPLICATION DATE
+                                     ===================================== -->
+
+                                    <td data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="The date this application was submitted.">
+
+                                        <span class="text-muted">
+
+                                            @app.ApplicationDate.ToString("dd MMM yyyy")
+
+                                        </span>
+
+                                    </td>
+
+
+                                    <!-- =====================================
+                                     STATUS
+                                     ===================================== -->
+
+                                    <td data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="The current status of this job application.">
+
+                                        @if (app.ApplicationStatus == "Pending")
+                                        {
+                                            <span class="status-badge status-pending">
+
+                                                <i class="bi bi-clock me-1"></i>
+
+                                                Pending
+
+                                            </span>
+                                        }
+                                        else if (app.ApplicationStatus == "Accepted")
+                                        {
+                                            <span class="status-badge status-accepted">
+
+                                                <i class="bi bi-check-circle me-1"></i>
+
+                                                Accepted
+
+                                            </span>
+                                        }
+                                        else if (app.ApplicationStatus == "Rejected")
+                                        {
+                                            <span class="status-badge status-rejected">
+
+                                                <i class="bi bi-x-circle me-1"></i>
+
+                                                Rejected
+
+                                            </span>
+                                        }
+                                        else if (app.ApplicationStatus == "Interview Scheduled")
+                                        {
+                                            <span class="status-badge status-interview">
+
+                                                <i class="bi bi-calendar-check me-1"></i>
+
+                                                Interview Scheduled
+
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="status-badge status-pending">
+
+                                                @app.ApplicationStatus
+
+                                            </span>
+                                        }
+
+                                    </td>
+
+
+                                    <!-- =====================================
+                                     MESSAGE
+                                     ===================================== -->
+
+                                    <td data-bs-toggle="tooltip"
+                                        data-bs-placement="top"
+                                        title="The professional message generated for this applicant.">
+
+                                        @if (!string.IsNullOrWhiteSpace(app.DecisionMessage))
+                                        {
+                                            <div class="generated-message">
+
+                                                <div class="generated-message-title">
+
+                                                    <i class="bi bi-stars me-1"></i>
+                                                    Generated Message
+
+                                                </div>
+
+                                                <div>
+                                                    @app.DecisionMessage
+                                                </div>
+
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-muted small">
+                                                No message generated
+                                            </span>
+                                        }
+
+                                    </td>
+
+
+                                    <!-- =====================================
+                                     ACTIONS
+                                     ===================================== -->
+
+                                    <td class="text-center">
+
+                                        <div class="applicant-actions mx-auto">
+
+                                            <form asp-controller="Recruiter"
+                                                  asp-action="GenerateMessage"
+                                                  method="post">
+
+                                                @Html.AntiForgeryToken()
+
+                                                <input type="hidden"
+                                                       name="id"
+                                                       value="@app.ApplicationID" />
+
+                                                <div class="mb-2">
+
+                                                    <label class="form-label small fw-semibold">
+                                                        Update Status
+                                                    </label>
+
+                                                    <select name="applicationStatus"
+                                                            class="form-select form-select-sm"
+                                                            required
+                                                            data-bs-toggle="tooltip"
+                                                            data-bs-placement="top"
+                                                            title="Select the new status for this applicant.">
+
+                                                        <option value="Pending"
+                                                                selected="@(app.ApplicationStatus == "Pending" ? "selected" : null)">
+                                                            Pending
+                                                        </option>
+
+                                                        <option value="Shortlisted"
+                                                                selected="@(app.ApplicationStatus == "Shortlisted" ? "selected" : null)">
+                                                            Shortlisted
+                                                        </option>
+
+                                                        <option value="Interview Scheduled"
+                                                                selected="@(app.ApplicationStatus == "Interview Scheduled" ? "selected" : null)">
+                                                            Interview Scheduled
+                                                        </option>
+
+                                                        <option value="Accepted"
+                                                                selected="@(app.ApplicationStatus == "Accepted" ? "selected" : null)">
+                                                            Accepted
+                                                        </option>
+
+                                                        <option value="Rejected"
+                                                                selected="@(app.ApplicationStatus == "Rejected" ? "selected" : null)">
+                                                            Rejected
+                                                        </option>
+
+                                                    </select>
+
+                                                </div>
+
+                                                <button type="submit"
+                                                        class="btn btn-generate-message btn-sm w-100"
+                                                        data-bs-toggle="tooltip"
+                                                        data-bs-placement="top"
+                                                        title="Generate a professional message based on the selected application status.">
+
+                                                    <i class="bi bi-stars me-1"></i>
+
+                                                    Generate Message
+
+                                                </button>
+
+                                            </form>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+                            }
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+    }
 
 </div>
 
-@section Scripts
-{ <script>
+<script>
 
-    // Automatically hide alerts after 5 seconds
+    document.addEventListener("DOMContentLoaded", function () {
 
-    setTimeout(function () {
+        const tooltipTriggerList =
+            document.querySelectorAll('[data-bs-toggle="tooltip"]');
 
-        const alerts = document.querySelectorAll('.alert');
+        tooltipTriggerList.forEach(function (tooltipTriggerEl) {
 
-        alerts.forEach(function (alert) {
-
-            const bsAlert =
-                bootstrap.Alert.getOrCreateInstance(alert);
-
-            bsAlert.close();
+            new bootstrap.Tooltip(tooltipTriggerEl);
 
         });
 
-    }, 5000);
+    });
 
 </script>
+
+@section Scripts
+{
+    <script>
+
+          // Automatically hide alerts after 5 seconds
+
+          setTimeout(function () {
+
+              const alerts = document.querySelectorAll('.alert');
+
+              alerts.forEach(function (alert) {
+
+                  const bsAlert =
+                      bootstrap.Alert.getOrCreateInstance(alert);
+
+                  bsAlert.close();
+
+              });
+
+          }, 5000);
+
+    </script>
 
 }

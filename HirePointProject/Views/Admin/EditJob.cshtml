@@ -73,13 +73,54 @@
             box-shadow: 0 0 0 0.2rem rgba(40, 120, 173, 0.15);
         }
 
+    /* =========================================
+           READ-ONLY JOB DETAILS
+           ========================================= */
+
+    .readonly-field {
+        background: #eeeeee !important;
+        color: #777777 !important;
+        border-color: #d2d2d2 !important;
+        cursor: not-allowed;
+    }
+
+    .readonly-select {
+        background-color: #eeeeee !important;
+        color: #777777 !important;
+        border-color: #d2d2d2 !important;
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
     .job-id-box {
-        background: #eef6fb;
-        border: 1px solid #d5e6f0;
-        color: #2878ad;
+        background: #eeeeee;
+        border: 1px solid #d2d2d2;
+        color: #777777;
         font-weight: 700;
         padding: 10px 12px;
         border-radius: 8px;
+    }
+
+    /* =========================================
+           STATUS FIELD
+           ========================================= */
+
+    .status-editable {
+        background: #ffffff !important;
+        color: #284b60 !important;
+        border: 1px solid #2878ad !important;
+        cursor: pointer;
+    }
+
+        .status-editable:focus {
+            border-color: #2878ad !important;
+            box-shadow: 0 0 0 0.2rem rgba(40, 120, 173, 0.15) !important;
+        }
+
+    .status-help-text {
+        color: #2878ad;
+        font-size: 13px;
+        margin-top: 5px;
     }
 
     .edit-job-footer {
@@ -139,29 +180,35 @@
 </style>
 
 
-
 <div class="edit-job-page">
 
     <div class="edit-job-card">
 
         <div class="edit-job-header">
+
             <h2>
                 <i class="bi bi-pencil-square me-2"></i>
                 Edit Job
             </h2>
 
             <p>
-                Update the job information below.
+                Review the job information below and update the job status.
             </p>
+
         </div>
+
 
         @if (TempData["Success"] != null)
         {
             <div class="alert alert-success m-3">
+
                 <i class="bi bi-check-circle me-2"></i>
+
                 @TempData["Success"]
+
             </div>
         }
+
 
         <!-- ONE FORM ONLY -->
         <form asp-controller="Admin"
@@ -172,20 +219,29 @@
 
             <input type="hidden" asp-for="JobID" />
 
+
             <div class="edit-job-body">
 
                 <div class="edit-job-section-title">
+
                     <i class="bi bi-briefcase me-2"></i>
+
                     Job Information
+
                 </div>
 
+
                 <!-- VALIDATION -->
+
                 <div asp-validation-summary="ModelOnly"
                      class="alert alert-danger">
                 </div>
 
+
                 <!-- JOB ID -->
+
                 <div class="mb-3">
+
                     <label class="form-label">
                         Job ID
                     </label>
@@ -193,86 +249,117 @@
                     <div class="job-id-box">
                         #@Model.JobID
                     </div>
+
                 </div>
 
+
                 <!-- JOB TITLE -->
+
                 <div class="mb-3">
+
                     <label asp-for="JobTitle"
                            class="form-label">
+
                         Job Title
+
                     </label>
 
                     <input asp-for="JobTitle"
-                           class="form-control"
-                           placeholder="Enter job title" />
+                           class="form-control readonly-field"
+                           readonly />
 
                     <span asp-validation-for="JobTitle"
                           class="text-danger">
                     </span>
+
                 </div>
 
+
                 <!-- DESCRIPTION -->
+
                 <div class="mb-3">
+
                     <label asp-for="JobDescription"
                            class="form-label">
+
                         Description
+
                     </label>
 
                     <textarea asp-for="JobDescription"
-                              class="form-control"
+                              class="form-control readonly-field"
                               rows="5"
-                              placeholder="Enter job description"></textarea>
+                              readonly></textarea>
 
                     <span asp-validation-for="JobDescription"
                           class="text-danger">
                     </span>
+
                 </div>
 
+
                 <!-- REQUIREMENTS -->
+
                 <div class="mb-3">
+
                     <label asp-for="Requirements"
                            class="form-label">
+
                         Requirements
+
                     </label>
 
                     <textarea asp-for="Requirements"
-                              class="form-control"
+                              class="form-control readonly-field"
                               rows="5"
-                              placeholder="Enter job requirements"></textarea>
+                              readonly></textarea>
 
                     <span asp-validation-for="Requirements"
                           class="text-danger">
                     </span>
+
                 </div>
+
 
                 <div class="row g-3">
 
+
                     <!-- SALARY -->
+
                     <div class="col-md-6">
+
                         <label asp-for="Salary"
                                class="form-label">
+
                             Salary
+
                         </label>
 
                         <input asp-for="Salary"
                                type="text"
-                               class="form-control"
-                               placeholder="Enter salary" />
+                               class="form-control readonly-field"
+                               readonly />
 
                         <span asp-validation-for="Salary"
                               class="text-danger">
                         </span>
+
                     </div>
 
+
                     <!-- EMPLOYMENT TYPE -->
+
                     <div class="col-md-6">
+
                         <label asp-for="EmploymentType"
                                class="form-label">
+
                             Employment Type
+
                         </label>
 
                         <select asp-for="EmploymentType"
-                                class="form-select">
+                                class="form-select readonly-select">
 
                             <option value="">
                                 Select employment type
@@ -295,17 +382,23 @@
                         <span asp-validation-for="EmploymentType"
                               class="text-danger">
                         </span>
+
                     </div>
 
+
                     <!-- PROVINCE -->
+
                     <div class="col-md-6">
+
                         <label asp-for="Province"
                                class="form-label">
+
                             Province
+
                         </label>
 
                         <select asp-for="Province"
-                                class="form-select">
+                                class="form-select readonly-select">
 
                             <option value="">
                                 Select Province
@@ -326,34 +419,46 @@
                         <span asp-validation-for="Province"
                               class="text-danger">
                         </span>
+
                     </div>
 
+
                     <!-- CITY -->
+
                     <div class="col-md-6">
+
                         <label asp-for="City"
                                class="form-label">
+
                             City
+
                         </label>
 
                         <input asp-for="City"
                                type="text"
-                               class="form-control"
-                               placeholder="Enter city" />
+                               class="form-control readonly-field"
+                               readonly />
 
                         <span asp-validation-for="City"
                               class="text-danger">
                         </span>
+
                     </div>
 
+
                     <!-- EXPERIENCE LEVEL -->
+
                     <div class="col-md-6">
+
                         <label asp-for="ExperienceLevel"
                                class="form-label">
+
                             Experience Level
+
                         </label>
 
                         <select asp-for="ExperienceLevel"
-                                class="form-select">
+                                class="form-select readonly-select">
 
                             <option value="">
                                 Select experience level
@@ -388,33 +493,46 @@
                         <span asp-validation-for="ExperienceLevel"
                               class="text-danger">
                         </span>
+
                     </div>
 
+
                     <!-- CLOSING DATE -->
+
                     <div class="col-md-6">
+
                         <label asp-for="ClosingDate"
                                class="form-label">
+
                             Closing Date
+
                         </label>
 
                         <input asp-for="ClosingDate"
                                type="date"
-                               class="form-control" />
+                               class="form-control readonly-field"
+                               readonly />
 
                         <span asp-validation-for="ClosingDate"
                               class="text-danger">
                         </span>
+
                     </div>
 
+
                     <!-- STATUS -->
+
                     <div class="col-md-6">
+
                         <label asp-for="JobStatus"
                                class="form-label">
+
                             Job Status
+
                         </label>
 
                         <select asp-for="JobStatus"
-                                class="form-select">
+                                class="form-select status-editable">
 
                             <option value="">
                                 Select status
@@ -434,16 +552,25 @@
 
                         </select>
 
+                        <div class="status-help-text">
+                            <i class="bi bi-info-circle me-1"></i>
+                            The admin can only change the status of this job.
+                        </div>
+
                         <span asp-validation-for="JobStatus"
                               class="text-danger">
                         </span>
+
                     </div>
+
 
                 </div>
 
             </div>
 
-            <!-- FOOTER IS STILL INSIDE THE SAME FORM -->
+
+            <!-- FOOTER -->
+
             <div class="edit-job-footer">
 
                 <div class="d-flex justify-content-end gap-2">
@@ -453,14 +580,17 @@
                        class="btn cancel-job-button">
 
                         <i class="bi bi-arrow-left me-1"></i>
+
                         Cancel
 
                     </a>
+
 
                     <button type="submit"
                             class="btn save-job-button">
 
                         <i class="bi bi-check-circle me-1"></i>
+
                         Save Changes
 
                     </button>
@@ -474,6 +604,7 @@
     </div>
 
 </div>
+
 
 @section Scripts {
 

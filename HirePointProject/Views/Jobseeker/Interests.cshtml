@@ -6,7 +6,6 @@
 
 <div class="interest-page">
 
-    ```
     <div class="interest-card">
 
         <!-- HEADER -->
@@ -37,7 +36,8 @@
 
         <form asp-controller="Jobseeker"
               asp-action="Interests"
-              method="post">
+              method="post"
+              id="jobInterestsForm">
 
             @Html.AntiForgeryToken()
 
@@ -96,7 +96,8 @@
             <!-- SAVE -->
 
             <button type="submit"
-                    class="interest-btn">
+                    class="interest-btn"
+                    id="saveInterestsBtn">
 
                 <span>
                     <i class="bi bi-magic me-2"></i>
@@ -121,9 +122,9 @@
         </div>
 
     </div>
-    ```
 
 </div>
+
 
 <style>
 
@@ -233,7 +234,7 @@
 
 
     /* ==============================
-           INTEREST CARD
+           INTEREST OPTION
            ============================== */
 
     .interest-option {
@@ -368,7 +369,8 @@
     }
 
 
-    .interest-option:hover .interest-arrow {
+    .interest-option:hover
+    .interest-arrow {
         color: #2878ad;
         transform: translateX(3px);
     }
@@ -439,7 +441,8 @@
     }
 
 
-    .interest-btn:hover .btn-arrow {
+    .interest-btn:hover
+    .btn-arrow {
         transform: translateX(4px);
     }
 
@@ -510,3 +513,62 @@
     }
 
 </style>
+
+@section Scripts {
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                const form =
+                    document.getElementById(
+                        "jobInterestsForm"
+                    );
+
+                const saveButton =
+                    document.getElementById(
+                        "saveInterestsBtn"
+                    );
+
+
+                if (!form) {
+                    return;
+                }
+
+
+                /*
+                 * Prevent accidental double submission.
+                 *
+                 * The full tour is NOT activated here.
+                 * It will only be activated after the
+                 * controller successfully saves the interests
+                 * and redirects to Dashboard.
+                 */
+
+                form.addEventListener(
+                    "submit",
+                    function () {
+
+                        if (saveButton) {
+
+                            saveButton.disabled = true;
+
+                            saveButton.style.opacity =
+                                "0.75";
+
+                            saveButton.style.cursor =
+                                "wait";
+                        }
+
+                    }
+                );
+
+            }
+        );
+
+    </script>
+
+}
+}

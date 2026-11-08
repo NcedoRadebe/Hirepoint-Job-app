@@ -12,153 +12,197 @@ build_property.EntryPointFilePath =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = HirePoint
 build_property.RootNamespace = HirePoint
-build_property.ProjectDir = C:\Users\Ncedo\Downloads\HirePointProject\HirePointProject\
+build_property.ProjectDir = C:\Users\Ncedo\Downloads\Final version (2)\Final version\Final version\HirePointProject 3\HirePointProject\HirePointProject\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Ncedo\Downloads\HirePointProject\HirePointProject
+build_property.MSBuildProjectDirectory = C:\Users\Ncedo\Downloads\Final version (2)\Final version\Final version\HirePointProject 3\HirePointProject\HirePointProject
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Account/ChangePassword.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Account/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Account/ForgotPassword.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Account/CreatePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDcmVhdGVQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Account/CreatePasswordExpired.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxDcmVhdGVQYXNzd29yZEV4cGlyZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Account/ForgotPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxGb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Account/Login.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Account/Register.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Account/RecruiterPendingApproval.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWNydWl0ZXJQZW5kaW5nQXBwcm92YWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Account/ResetPassword.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Account/RepresentativeVerificationResult.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXByZXNlbnRhdGl2ZVZlcmlmaWNhdGlvblJlc3VsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Account/ResetPassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Account/ResetPasswordExpired.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Account/ResetPasswordExpired.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZXNldFBhc3N3b3JkRXhwaXJlZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Account/VerifyEmail.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Account/VerifyEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxWZXJpZnlFbWFpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Admin/Analytics.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Admin/Analytics.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQW5hbHl0aWNzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Admin/CreateAdmin.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Admin/CreateAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlQWRtaW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Admin/Dashboard.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Admin/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Admin/EditJob.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Admin/EditJob.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdEpvYi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Admin/EditUser.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Admin/EditUser.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRWRpdFVzZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Admin/JobListings.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Admin/JobListings.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSm9iTGlzdGluZ3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Admin/ManageUsers.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Admin/ManageUsers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlVXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Admin/Profile.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Admin/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Admin/RecruiterApprovals.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Admin/RecruiterApprovals.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVjcnVpdGVyQXBwcm92YWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Home/Index.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Help/FAQs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVscFxGQVFzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Help/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVscFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Help/Troubleshooting.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVscFxUcm91Ymxlc2hvb3RpbmcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Help/UserGuide.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVscFxVc2VyR3VpZGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Home/Privacy.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Jobseeker/Applications.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Jobseeker/Applications.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9ic2Vla2VyXEFwcGxpY2F0aW9ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Jobseeker/Dashboard.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Jobseeker/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9ic2Vla2VyXERhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Jobseeker/Interests.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Jobseeker/Interests.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9ic2Vla2VyXEludGVyZXN0cy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Jobseeker/Jobs.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Jobseeker/JobDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9ic2Vla2VyXEpvYkRldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Jobseeker/Jobs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9ic2Vla2VyXEpvYnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Jobseeker/Notifications.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Jobseeker/NotificationDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9ic2Vla2VyXE5vdGlmaWNhdGlvbkRldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Jobseeker/Notifications.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9ic2Vla2VyXE5vdGlmaWNhdGlvbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Jobseeker/Profile.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Jobseeker/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSm9ic2Vla2VyXFByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Recruiter/Applicants.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Recruiter/Applicants.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjcnVpdGVyXEFwcGxpY2FudHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Recruiter/Dashboard.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Recruiter/Dashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjcnVpdGVyXERhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Recruiter/EditJob.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Recruiter/EditJob.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjcnVpdGVyXEVkaXRKb2IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Recruiter/ManageJobs.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Recruiter/GenerateMessagePage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjcnVpdGVyXEdlbmVyYXRlTWVzc2FnZVBhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Recruiter/ManageJobs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjcnVpdGVyXE1hbmFnZUpvYnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Recruiter/PostJob.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Recruiter/PostJob.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjcnVpdGVyXFBvc3RKb2IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Recruiter/Profile.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Recruiter/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVjcnVpdGVyXFByb2ZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Shared/Error.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/_ViewImports.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/_ViewStart.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Ncedo/Downloads/HirePointProject/HirePointProject/Views/Shared/_Layout.cshtml]
+[C:/Users/Ncedo/Downloads/Final version (2)/Final version/Final version/HirePointProject 3/HirePointProject/HirePointProject/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-uw14ekslre

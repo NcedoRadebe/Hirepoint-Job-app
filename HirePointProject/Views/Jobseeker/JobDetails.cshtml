@@ -1,0 +1,598 @@
+﻿@model HirePoint.Models.Job
+
+@{
+    ViewData["Title"] = "Job Details";
+}
+
+<style>
+    .job-details-page {
+        background: #eef6fb;
+        padding: 30px;
+        min-height: calc(100vh - 120px);
+    }
+
+    .job-details-container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    /* Main job details card */
+    .job-details-card {
+        background: #ffffff;
+        border-radius: 14px;
+        padding: 30px;
+        box-shadow: 0 4px 14px rgba(24, 59, 86, 0.08);
+        border: 1px solid #d7e7f0;
+    }
+
+    /* Job title */
+    .job-details-title {
+        color: #183b56;
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 25px;
+    }
+
+    /* Job information */
+    .job-details-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 25px;
+        padding: 18px 0;
+        border-top: 1px solid #e5eef3;
+        border-bottom: 1px solid #e5eef3;
+    }
+
+    .job-info-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #66737d;
+        font-size: 14px;
+    }
+
+        .job-info-item i {
+            color: #2878ad;
+            font-size: 17px;
+        }
+
+    .job-info-label {
+        color: #183b56;
+        font-weight: 600;
+    }
+
+    /* Sections */
+    .job-details-section {
+        margin-top: 28px;
+    }
+
+        .job-details-section h3 {
+            color: #183b56;
+            font-size: 19px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .job-details-section p {
+            color: #66737d;
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0;
+            white-space: pre-line;
+        }
+
+    /* Apply button */
+    .apply-job-btn {
+        margin-top: 30px;
+        background: #2878ad;
+        color: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 11px 24px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+        .apply-job-btn:hover {
+            background: #1f628e;
+            transform: translateY(-1px);
+        }
+
+    /* Application popup */
+    .application-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(24, 59, 86, 0.45);
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .application-modal-content {
+        background: #ffffff;
+        width: 100%;
+        max-width: 520px;
+        border-radius: 14px;
+        padding: 28px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .application-modal-title {
+        color: #183b56;
+        font-size: 21px;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .application-modal-text {
+        color: #66737d;
+        font-size: 13px;
+        line-height: 1.6;
+        margin-bottom: 22px;
+    }
+
+    /* Checklist */
+    .application-checklist {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .application-check-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 13px;
+        background: #f5f9fc;
+        border: 1px solid #d7e7f0;
+        border-radius: 8px;
+    }
+
+        .application-check-item input {
+            margin-top: 3px;
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .application-check-item label {
+            color: #3d4f5c;
+            font-size: 13px;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+    /* Popup buttons */
+    .application-modal-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    .cancel-application-btn {
+        background: #ffffff;
+        color: #66737d;
+        border: 1px solid #cbd8df;
+        border-radius: 7px;
+        padding: 9px 17px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .submit-application-btn {
+        background: #2878ad;
+        color: #ffffff;
+        border: 1px solid #2878ad;
+        border-radius: 7px;
+        padding: 9px 17px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+        .submit-application-btn:hover {
+            background: #1f628e;
+        }
+
+    /* Success popup */
+    .success-modal {
+        display: none;
+        position: fixed;
+        z-index: 10000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(24, 59, 86, 0.45);
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .success-modal-content {
+        background: #ffffff;
+        width: 100%;
+        max-width: 430px;
+        border-radius: 14px;
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .success-icon {
+        font-size: 42px;
+        color: #2878ad;
+        margin-bottom: 12px;
+    }
+
+    .success-modal-content h3 {
+        color: #183b56;
+        font-size: 21px;
+        margin-bottom: 10px;
+    }
+
+    .success-modal-content p {
+        color: #66737d;
+        font-size: 14px;
+        margin-bottom: 22px;
+    }
+
+    .continue-browsing-btn {
+        display: inline-block;
+        background: #2878ad;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 7px;
+        padding: 10px 20px;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+        .continue-browsing-btn:hover {
+            background: #1f628e;
+            color: #ffffff;
+        }
+
+    /* Mobile */
+    @@media (max-width: 768px) {
+
+        .job-details-page {
+            padding: 15px;
+        }
+
+        .job-details-card {
+            padding: 20px;
+        }
+
+        .job-details-title {
+            font-size: 23px;
+        }
+
+        .job-details-info {
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .application-modal-content {
+            padding: 22px;
+        }
+
+        .application-modal-buttons {
+            flex-direction: column;
+        }
+
+        .cancel-application-btn,
+        .submit-application-btn {
+            width: 100%;
+        }
+    }
+</style>
+
+
+<div class="job-details-page">
+
+    <div class="job-details-container">
+
+        <div class="job-details-card">
+
+            <!-- JOB TITLE -->
+            <h1 class="job-details-title">
+                @Model.JobTitle
+            </h1>
+
+
+            <!-- BASIC JOB INFORMATION -->
+            <div class="job-details-info">
+
+                <div class="job-info-item">
+                    <i class="bi bi-cash-stack"></i>
+
+                    <span class="job-info-label">
+                        Salary:
+                    </span>
+
+                    <span>
+                        @Model.Salary
+                    </span>
+                </div>
+
+
+                <div class="job-info-item">
+                    <i class="bi bi-briefcase"></i>
+
+                    <span class="job-info-label">
+                        Employment:
+                    </span>
+
+                    <span>
+                        @Model.EmploymentType
+                    </span>
+                </div>
+
+
+                <div class="job-info-item">
+                    <i class="bi bi-building"></i>
+
+                    <span class="job-info-label">
+                        Company:
+                    </span>
+
+                    <span>
+                        @if (Model.Recruiter?.RecruiterProfile != null &&
+                                                !string.IsNullOrWhiteSpace(
+                                                Model.Recruiter.RecruiterProfile.CompanyName))
+                        {
+                            @Model.Recruiter.RecruiterProfile.CompanyName
+                        }
+                        else
+                        {
+                            <span>Company not provided</span>
+                        }
+                    </span>
+                </div>
+
+
+                <div class="job-info-item">
+                    <i class="bi bi-geo-alt"></i>
+
+                    <span class="job-info-label">
+                        Location:
+                    </span>
+
+                    <span>
+                        @Model.City, @Model.Province
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- JOB DESCRIPTION -->
+            <div class="job-details-section">
+
+                <h3>
+                    Job Description
+                </h3>
+
+                <p>
+                    @Model.JobDescription
+                </p>
+
+            </div>
+
+
+            <!-- APPLY BUTTON -->
+            <button type="button"
+                    class="apply-job-btn"
+                    onclick="openApplicationModal()">
+
+                <i class="bi bi-send me-1"></i>
+                Apply for this Job
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ==============================
+     APPLICATION POPUP
+     ============================== -->
+
+<div id="applicationModal"
+     class="application-modal">
+
+    <div class="application-modal-content">
+
+        <div class="application-modal-title">
+            Submit Your Application
+        </div>
+
+        <div class="application-modal-text">
+            Before submitting your application, please confirm the
+            information you would like to use for this application.
+        </div>
+
+
+        <!-- APPLICATION FORM -->
+        <form asp-controller="Jobseeker"
+              asp-action="Apply"
+              method="post">
+
+            <!-- Send the current JobID to Apply(int id) -->
+            <input type="hidden"
+                   name="id"
+                   value="@Model.JobID" />
+
+
+            <div class="application-checklist">
+
+                <!-- PROFILE CHECKBOX -->
+                <div class="application-check-item">
+
+                    <input type="checkbox"
+                           id="useProfile"
+                           name="useProfile"
+                           required />
+
+                    <label for="useProfile">
+                        I want to use my current profile information
+                        for this application.
+                    </label>
+
+                </div>
+
+
+                <!-- CV CHECKBOX -->
+                <div class="application-check-item">
+
+                    <input type="checkbox"
+                           id="useCV"
+                           name="useCV"
+                           required />
+
+                    <label for="useCV">
+                        I want to use my currently uploaded CV
+                        for this application.
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- POPUP BUTTONS -->
+            <div class="application-modal-buttons">
+
+                <button type="button"
+                        class="cancel-application-btn"
+                        onclick="closeApplicationModal()">
+
+                    Cancel
+
+                </button>
+
+
+                <button type="submit"
+                        class="submit-application-btn">
+
+                    Submit Application
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ==============================
+     SUCCESS POPUP
+     ============================== -->
+
+<div id="successModal"
+     class="success-modal">
+
+    <div class="success-modal-content">
+
+        <div class="success-icon">
+            <i class="bi bi-check-circle-fill"></i>
+        </div>
+
+        <h3>
+            Application submitted successfully
+        </h3>
+
+        <p>
+            Your application has been submitted successfully.
+        </p>
+
+        <a asp-controller="Jobseeker"
+           asp-action="Dashboard"
+           class="continue-browsing-btn">
+
+            Continue browsing
+
+        </a>
+
+    </div>
+
+</div>
+
+<!-- Already Applied Popup -->
+<div id="alreadyAppliedModal" class="success-modal">
+    <div class="success-modal-content">
+
+        <div class="success-icon">
+            <i class="bi bi-info-circle-fill"></i>
+        </div>
+
+        <h3>Already Applied</h3>
+
+        <p>
+            You have already applied for this job.
+        </p>
+
+        <a asp-controller="Jobseeker"
+           asp-action="Jobs"
+           class="continue-browsing-btn">
+            Find more Jobs
+        </a>
+
+    </div>
+</div>
+
+
+<script>
+
+    // Open the application checklist
+    function openApplicationModal() {
+
+        document.getElementById("applicationModal").style.display = "flex";
+
+    }
+
+
+    // Close the application checklist
+    function closeApplicationModal() {
+
+        document.getElementById("applicationModal").style.display = "none";
+
+    }
+
+
+
+     // Show success popup after a successful application
+     @if (TempData["Success"] != null)
+     {
+             <text>
+                 document.getElementById("successModal").style.display = "flex";
+             </text>
+     }
+
+     // Show already-applied popup
+    @if (TempData["AlreadyApplied"] != null)
+    {
+            <text>
+                document.getElementById("alreadyAppliedModal").style.display = "flex";
+            </text>
+    }
+
+</script>

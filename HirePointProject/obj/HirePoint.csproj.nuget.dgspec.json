@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\HirePoint.csproj": {}
+    "C:\\Users\\Ncedo\\Downloads\\Final version (2)\\Final version\\Final version\\HirePointProject 3\\HirePointProject\\HirePointProject\\HirePoint.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\HirePoint.csproj": {
+    "C:\\Users\\Ncedo\\Downloads\\Final version (2)\\Final version\\Final version\\HirePointProject 3\\HirePointProject\\HirePointProject\\HirePoint.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\HirePoint.csproj",
+        "projectUniqueName": "C:\\Users\\Ncedo\\Downloads\\Final version (2)\\Final version\\Final version\\HirePointProject 3\\HirePointProject\\HirePointProject\\HirePoint.csproj",
         "projectName": "HirePoint",
-        "projectPath": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\HirePoint.csproj",
+        "projectPath": "C:\\Users\\Ncedo\\Downloads\\Final version (2)\\Final version\\Final version\\HirePointProject 3\\HirePointProject\\HirePointProject\\HirePoint.csproj",
         "packagesPath": "C:\\Users\\Ncedo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ncedo\\Downloads\\HirePointProject\\HirePointProject\\obj\\",
+        "outputPath": "C:\\Users\\Ncedo\\Downloads\\Final version (2)\\Final version\\Final version\\HirePointProject 3\\HirePointProject\\HirePointProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -70,10 +70,6 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.19, )"
-            },
-            "OpenAI": {
-              "target": "Package",
-              "version": "[2.13.0, )"
             }
           },
           "imports": [
@@ -95,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.401/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

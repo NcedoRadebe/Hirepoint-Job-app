@@ -502,6 +502,26 @@ namespace HirePoint.Migrations
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
+                    b.Property<string>("RepresentativeEmail")
+                        .HasMaxLength(254)
+                        .HasColumnType("nvarchar(254)");
+
+                    b.Property<string>("RepresentativeName")
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<DateTime?>("RepresentativeVerificationExpiresAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RepresentativeVerificationStatus")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("RepresentativeVerificationTokenHash")
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
+
                     b.Property<string>("Website")
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");

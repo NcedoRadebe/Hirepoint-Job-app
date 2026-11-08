@@ -4,6 +4,7 @@
 
 <div class="hirepoint-home">
 
+    <!-- HERO CONTENT -->
     <div class="hirepoint-hero">
 
         <div class="hirepoint-icon">
@@ -35,27 +36,49 @@
 
 <style>
 
+    /* ==========================
+               PAGE
+               ========================== */
+
     body {
         margin: 0;
+        overflow: hidden;
     }
+
+
+    /* ==========================
+               HIREPOINT BACKGROUND
+               ========================== */
 
     .hirepoint-home {
         min-height: 100vh;
-        background: #2878ad;
+        background: linear-gradient( to bottom, #1f628e 0%, #2878ad 22%, #5f9fc3 45%, #9fc6dc 65%, #eef6fb 82%, #fffdf0 92%, #FFF9D6 100% );
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
+        overflow: hidden;
         padding: 40px 20px;
     }
 
+
+    /* ==========================
+               HERO CONTENT
+               ========================== */
 
     .hirepoint-hero {
         width: 100%;
         max-width: 700px;
         text-align: center;
-        color: white;
+        position: relative;
+        z-index: 2;
+        margin-top: -20px;
     }
 
+
+    /* ==========================
+               ICON
+               ========================== */
 
     .hirepoint-icon {
         width: 90px;
@@ -64,66 +87,97 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(255,255,255,0.15);
-        border: 1px solid rgba(255,255,255,0.25);
+        background: #ffffff;
+        color: #1f628e;
+        border: 3px solid #ffffff;
         border-radius: 22px;
         font-size: 42px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
     }
 
+
+    /* ==========================
+               MAIN HEADING
+               ========================== */
 
     .hirepoint-hero h1 {
         font-size: 48px;
         font-weight: 400;
         margin-bottom: 20px;
+        color: #ffffff;
     }
 
 
         .hirepoint-hero h1 strong {
             font-weight: 800;
+            color: #ffffff;
         }
 
+
+    /* ==========================
+               SUBTITLE
+               ========================== */
 
     .hirepoint-hero p {
         max-width: 600px;
         margin: 0 auto 35px;
         font-size: 18px;
         line-height: 1.7;
-        color: rgba(255,255,255,0.9);
+        color: #183b56;
     }
 
+
+    /* ==========================
+               GET STARTED BUTTON
+               ========================== */
 
     .hirepoint-start-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         padding: 13px 30px;
-        background: white;
-        color: #2878ad;
-        border: 2px solid white;
+        background: #1f628e;
+        color: #ffffff;
+        border: 2px solid #1f628e;
         border-radius: 8px;
         font-size: 16px;
         font-weight: 700;
-        transition: 0.2s ease;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        box-shadow: 0 5px 15px rgba(31, 98, 142, 0.25);
     }
 
 
+        /* ==========================
+               BUTTON HOVER
+               ========================== */
+
         .hirepoint-start-btn:hover {
-            background: #f2f7fa;
-            color: #1f628e;
+            background: #2878ad;
+            color: #ffffff;
+            border-color: #2878ad;
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(31, 98, 142, 0.30);
         }
 
+
+    /* ==========================
+               MOBILE
+               ========================== */
 
     @@media (max-width: 600px) {
 
-        .hirepoint-hero h1 {
-            font-size: 34px;
+        .hirepoint-hero {
+            margin-top: -10px;
         }
 
-        .hirepoint-hero p {
-            font-size: 16px;
-        }
+            .hirepoint-hero h1 {
+                font-size: 34px;
+            }
+
+            .hirepoint-hero p {
+                font-size: 16px;
+            }
 
         .hirepoint-icon {
             width: 75px;

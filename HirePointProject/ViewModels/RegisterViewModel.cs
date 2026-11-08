@@ -1,13 +1,10 @@
 ﻿using HirePoint.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Extensions.Options;
 using System.ComponentModel.DataAnnotations;
-using static Org.BouncyCastle.Math.EC.ECCurve;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace HirePoint.ViewModels
 {
-    public class RegisterViewModel
+    public class RegisterViewModel : IValidatableObject
     {
         // =========================================================
         // PERSONAL INFORMATION
@@ -29,16 +26,19 @@ namespace HirePoint.ViewModels
 
         [Required(ErrorMessage = "Email address is required.")]
         [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
-        [StringLength(254, ErrorMessage = "Email address is too long.")]
+        [StringLength(
+            254,
+            ErrorMessage = "Email address is too long."
+        )]
         [Display(Name = "Email Address")]
         public string Email { get; set; } = string.Empty;
 
 
         // =========================================================
         // PASSWORD
+        // JOBSEEKER ONLY
         // =========================================================
 
-        [Required(ErrorMessage = "Password is required.")]
         [DataType(DataType.Password)]
         [StringLength(
             100,
@@ -51,21 +51,21 @@ namespace HirePoint.ViewModels
                 "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character."
         )]
         [Display(Name = "Password")]
-        public string Password { get; set; } = string.Empty;
+        public string? Password { get; set; }
 
 
         // =========================================================
         // CONFIRM PASSWORD
+        // JOBSEEKER ONLY
         // =========================================================
 
-        [Required(ErrorMessage = "Please confirm your password.")]
         [DataType(DataType.Password)]
         [Compare(
             "Password",
             ErrorMessage = "Passwords do not match."
         )]
         [Display(Name = "Confirm Password")]
-        public string ConfirmPassword { get; set; } = string.Empty;
+        public string? ConfirmPassword { get; set; }
 
 
         // =========================================================
@@ -96,13 +96,14 @@ namespace HirePoint.ViewModels
 
         // =========================================================
         // QUALIFICATION
-        // OPTIONAL
+        // JOBSEEKER ONLY
         // =========================================================
 
         [StringLength(
             150,
             MinimumLength = 2,
-            ErrorMessage = "Qualification must be between 2 and 150 characters."
+            ErrorMessage =
+                "Qualification must be between 2 and 150 characters."
         )]
         [Display(Name = "Qualification")]
         public string? Qualification { get; set; }
@@ -120,7 +121,9 @@ namespace HirePoint.ViewModels
         // ACCOUNT TYPE
         // =========================================================
 
-        [Required(ErrorMessage = "Please select an account type.")]
+        [Required(
+            ErrorMessage = "Please select an account type."
+        )]
         [RegularExpression(
             "^(Jobseeker|Recruiter)$",
             ErrorMessage = "Please select a valid account type."
@@ -144,7 +147,6 @@ namespace HirePoint.ViewModels
 
         // =========================================================
         // RECRUITER INFORMATION
-        // OPTIONAL
         // =========================================================
 
         [StringLength(
@@ -157,18 +159,120 @@ namespace HirePoint.ViewModels
 
         [StringLength(
             2000,
-            ErrorMessage = "Company description cannot exceed 2000 characters."
+            ErrorMessage =
+                "Company description cannot exceed 2000 characters."
         )]
         [Display(Name = "Company Description")]
         public string? CompanyDescription { get; set; }
 
 
-        [Url(ErrorMessage = "Please enter a valid website URL.")]
+        [Url(
+            ErrorMessage = "Please enter a valid website URL."
+        )]
         [StringLength(
             300,
             ErrorMessage = "Website cannot exceed 300 characters."
         )]
         [Display(Name = "Company Website")]
         public string? Website { get; set; }
+
+
+        // =========================================================
+        // REPRESENTATIVE INFORMATION
+        // RECRUITER ONLY
+        // =========================================================
+
+        [StringLength(
+            150,
+            ErrorMessage =
+                "Representative name cannot exceed 150 characters."
+        )]
+        [Display(Name = "Representative Name")]
+        public string? RepresentativeName { get; set; }
+
+
+        [EmailAddress(
+            ErrorMessage =
+                "Please enter a valid representative email address."
+        )]
+        [StringLength(
+            254,
+            ErrorMessage =
+                "Representative email address is too long."
+        )]
+        [Display(Name = "Representative Email")]
+        public string? RepresentativeEmail { get; set; }
+
+
+        // =========================================================
+        // CONDITIONAL VALIDATION
+        // =========================================================
+
+        public IEnumerable<ValidationResult> Validate(
+            ValidationContext validationContext)
+        {
+            // -----------------------------------------------------
+            // RECRUITER
+            // -----------------------------------------------------
+
+            if (UserType.Equals(
+                    "Recruiter",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                if (string.IsNullOrWhiteSpace(
+                        RepresentativeName))
+                {
+                    yield return new ValidationResult(
+                        "Representative name is required for recruiter accounts.",
+                        new[]
+                        {
+                            nameof(RepresentativeName)
+                        });
+                }
+
+                if (string.IsNullOrWhiteSpace(
+                        RepresentativeEmail))
+                {
+                    yield return new ValidationResult(
+                        "Representative email is required for recruiter accounts.",
+                        new[]
+                        {
+                            nameof(RepresentativeEmail)
+                        });
+                }
+            }
+
+
+            // -----------------------------------------------------
+            // JOBSEEKER
+            // -----------------------------------------------------
+
+            if (UserType.Equals(
+                    "Jobseeker",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                if (string.IsNullOrWhiteSpace(
+                        Password))
+                {
+                    yield return new ValidationResult(
+                        "Password is required for jobseeker accounts.",
+                        new[]
+                        {
+                            nameof(Password)
+                        });
+                }
+
+                if (string.IsNullOrWhiteSpace(
+                        ConfirmPassword))
+                {
+                    yield return new ValidationResult(
+                        "Please confirm your password.",
+                        new[]
+                        {
+                            nameof(ConfirmPassword)
+                        });
+                }
+            }
+        }
     }
 }

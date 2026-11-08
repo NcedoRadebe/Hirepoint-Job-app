@@ -2,7 +2,6 @@ using HirePoint.Data;
 using HirePoint.Models;
 using HirePoint.Services;
 using Microsoft.EntityFrameworkCore;
-using System.Runtime;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,23 +12,46 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // ==========================
+// HTTP CLIENT
+// ==========================
+
+builder.Services.AddHttpClient();
+
+// ==========================
 // DATABASE
 // ==========================
 
 builder.Services.AddDbContext<HirePointDbContext>(options =>
     options.UseSqlServer(
-        builder.Configuration.GetConnectionString("DefaultConnection")
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlOptions =>
+        {
+            sqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 5,
+                maxRetryDelay: TimeSpan.FromSeconds(10),
+                errorNumbersToAdd: null);
+        }
     )
 );
+
+// ==========================
+// EMAIL
+// ==========================
 
 builder.Services.Configure<EmailSettings>(
     builder.Configuration.GetSection("EmailSettings"));
 
 builder.Services.AddScoped<IEmailService, EmailService>();
+
+// ==========================
+// AI EMAIL
+// ==========================
+
 builder.Services.Configure<AISettings>(
     builder.Configuration.GetSection("AISettings"));
 
 builder.Services.AddScoped<IAIEmailService, AIEmailService>();
+
 // ==========================
 // SESSION
 // ==========================

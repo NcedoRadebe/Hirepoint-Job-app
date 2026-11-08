@@ -1,84 +1,388 @@
 ﻿@model HirePoint.Models.User
 
+@{
+    ViewData["Title"] = "View User";
+}
 
-<h2>Edit User</h2>
+<style>
+    .edit-user-page {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 25px 0 45px;
+    }
+
+    .edit-user-header {
+        background: #ffffff;
+        color: #2878ad;
+        border-radius: 18px;
+        padding: 28px 32px;
+        margin-bottom: 25px;
+        box-shadow: 0 10px 30px rgba(40, 120, 173, 0.18);
+    }
+
+        .edit-user-header h2 {
+            margin: 0 0 6px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .edit-user-header p {
+            margin: 0;
+            color: rgba(255,255,255,0.8);
+        }
+
+    .user-details-card {
+        background: white;
+        border: 1px solid #e2ebf1;
+        border-radius: 18px;
+        padding: 32px;
+        box-shadow: 0 8px 30px rgba(31, 82, 112, 0.08);
+    }
+
+    .details-section-title {
+        color: #183b56;
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e5edf2;
+    }
+
+    .user-info {
+        margin-bottom: 20px;
+    }
+
+        .user-info label {
+            display: block;
+            color: #667784;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+    .user-info-value {
+        width: 100%;
+        min-height: 46px;
+        display: flex;
+        align-items: center;
+        padding: 11px 14px;
+        background: #f5f8fa;
+        border: 1px solid #e1e9ee;
+        border-radius: 10px;
+        color: #263746;
+        font-size: 14px;
+    }
+
+    .status-section {
+        margin-top: 10px;
+        padding-top: 25px;
+        border-top: 1px solid #e5edf2;
+    }
+
+        .status-section label {
+            display: block;
+            color: #183b56;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+    .status-select {
+        width: 100%;
+        max-width: 350px;
+        padding: 12px 14px;
+        border: 1px solid #bcd3e1;
+        border-radius: 10px;
+        background: white;
+        color: #263746;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+        .status-select:focus {
+            outline: none;
+            border-color: #2878ad;
+            box-shadow: 0 0 0 3px rgba(40, 120, 173, 0.12);
+        }
+
+    .user-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 28px;
+    }
+
+    .save-user-btn {
+        border: none;
+        background: #2878ad;
+        color: white;
+        padding: 11px 22px;
+        border-radius: 10px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.2s ease;
+    }
+
+        .save-user-btn:hover {
+            background: #1e628f;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+    .cancel-user-btn {
+        background: #eef3f6;
+        color: #425563;
+        padding: 11px 22px;
+        border-radius: 10px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.2s ease;
+    }
+
+        .cancel-user-btn:hover {
+            background: #dfe8ed;
+            color: #263746;
+        }
+
+    @@media (max-width: 768px) {
+        .user-details-card {
+            padding: 22px;
+        }
+
+        .edit-user-header {
+            padding: 24px;
+        }
+
+        .user-actions {
+            flex-direction: column;
+        }
+
+        .save-user-btn,
+        .cancel-user-btn {
+            text-align: center;
+        }
+    }
+</style>
 
 
-<form method="post">
+<div class="edit-user-page">
+
+    <!-- PAGE HEADER -->
+
+    <div class="edit-user-header">
+
+        <h2>
+            User Details
+        </h2>
+
+        <p>
+            View the user's account information and update their status.
+        </p>
+
+    </div>
 
 
-    <input type="hidden"
-           name="UserID"
-           value="@Model.UserID" />
+    <!-- USER DETAILS CARD -->
+
+    <div class="user-details-card">
+
+        <div class="details-section-title">
+            Account Information
+        </div>
 
 
+        <div class="row">
 
-    <label>Name</label>
+            <!-- FULL NAME -->
 
-    <input class="form-control"
-           name="FullName"
-           value="@Model.FullName" />
+            <div class="col-md-6">
+                <div class="user-info">
 
+                    <label>Full Name</label>
 
+                    <div class="user-info-value">
+                        @Model.FullName
+                    </div>
 
-    <label>Email</label>
-
-    <input class="form-control"
-           name="Email"
-           value="@Model.Email" />
-
-
-
-    <label>Phone</label>
-
-    <input class="form-control"
-           name="PhoneNumber"
-           value="@Model.PhoneNumber" />
+                </div>
+            </div>
 
 
+            <!-- EMAIL -->
 
-    <label>Gender</label>
+            <div class="col-md-6">
+                <div class="user-info">
 
-    <input class="form-control"
-           name="Gender"
-           value="@Model.Gender" />
+                    <label>Email Address</label>
 
+                    <div class="user-info-value">
+                        @Model.Email
+                    </div>
 
-
-    <label>Status</label>
-
-    <select class="form-control"
-            name="Status">
-
-
-        <option value="Active"
-                selected="@(Model.Status == "Active")">
-
-            Active
-
-        </option>
+                </div>
+            </div>
 
 
-        <option value="Inactive"
-                selected="@(Model.Status == "Inactive")">
+            <!-- PHONE -->
 
-            Inactive
+            <div class="col-md-6">
+                <div class="user-info">
 
-        </option>
+                    <label>Phone Number</label>
 
+                    <div class="user-info-value">
+                        @(string.IsNullOrWhiteSpace(Model.PhoneNumber)
+                                                ? "Not provided"
+                                                : Model.PhoneNumber)
+                    </div>
 
-    </select>
-
-
-
-    <br>
-
-
-    <button class="btn btn-success">
-
-        Save Changes
-
-    </button>
+                </div>
+            </div>
 
 
-</form>
+            <!-- GENDER -->
+
+            <div class="col-md-6">
+                <div class="user-info">
+
+                    <label>Gender</label>
+
+                    <div class="user-info-value">
+                        @(string.IsNullOrWhiteSpace(Model.Gender)
+                                                ? "Not provided"
+                                                : Model.Gender)
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- PROVINCE -->
+
+            <div class="col-md-6">
+                <div class="user-info">
+
+                    <label>Province</label>
+
+                    <div class="user-info-value">
+                        @(Model.Province?.ProvinceName ?? "Not provided")
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- USER TYPE -->
+
+            <div class="col-md-6">
+                <div class="user-info">
+
+                    <label>User Type</label>
+
+                    <div class="user-info-value">
+                        @Model.UserType
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- COMPANY -->
+
+            <div class="col-md-6">
+                <div class="user-info">
+
+                    <label>Company</label>
+
+                    <div class="user-info-value">
+                        @(Model.Company?.CompanyName ?? "Not associated with a company")
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- DATE CREATED -->
+
+            <div class="col-md-6">
+                <div class="user-info">
+
+                    <label>Account Created</label>
+
+                    <div class="user-info-value">
+                        @Model.DateCreated.ToString("dd MMMM yyyy")
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- STATUS -->
+
+        <div class="status-section">
+
+            <label for="Status">
+                Account Status
+            </label>
+
+            <select id="Status"
+                    name="Status"
+                    form="editUserForm"
+                    class="status-select">
+
+                <option value="Active"
+                        selected="@(Model.Status == "Active")">
+                    Active
+                </option>
+
+                <option value="Inactive"
+                        selected="@(Model.Status == "Inactive")">
+                    Inactive
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <form id="editUserForm"
+              asp-controller="Admin"
+              asp-action="EditUser"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <input type="hidden"
+                   name="UserID"
+                   value="@Model.UserID" />
+
+            <div class="user-actions">
+
+                <button type="submit"
+                        class="save-user-btn">
+
+                    <i class="bi bi-check-circle me-1"></i>
+                    Save Status
+
+                </button>
+
+                <a asp-controller="Admin"
+                   asp-action="ManageUsers"
+                   class="cancel-user-btn">
+
+                    <i class="bi bi-arrow-left me-1"></i>
+                    Return to Users
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

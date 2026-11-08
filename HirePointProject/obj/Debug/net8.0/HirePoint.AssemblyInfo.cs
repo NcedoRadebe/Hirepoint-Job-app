@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HirePoint")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5acc8b09ac01c2e9f0b1986993c2a844376ac1a9")]
 [assembly: System.Reflection.AssemblyProductAttribute("HirePoint")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HirePoint")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

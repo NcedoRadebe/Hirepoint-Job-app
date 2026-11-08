@@ -1,16 +1,20 @@
 ﻿using HirePoint.Data;
 using HirePoint.Models;
+using HirePoint.Services;
 using HirePoint.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using System.Text;
+using Microsoft.Extensions.Logging;
 
 namespace HirePoint.Controllers
 {
     public class AdminController : Controller
     {
         private readonly HirePointDbContext db;
+        private readonly IEmailService emailService;
+        private readonly ILogger<AdminController> logger;
 
         // =========================================================
         // PROTECTED SYSTEM ADMINISTRATOR
@@ -23,11 +27,15 @@ namespace HirePoint.Controllers
         // CONSTRUCTOR
         // =========================================================
 
-        public AdminController(HirePointDbContext context)
+        public AdminController(
+            HirePointDbContext context,
+            IEmailService emailService,
+            ILogger<AdminController> logger)
         {
             db = context;
+            this.emailService = emailService;
+            this.logger = logger;
         }
-
 
         // =========================================================
         // GET CURRENT USER ID
@@ -340,6 +348,12 @@ namespace HirePoint.Controllers
         // =========================================================
         // EDIT USER - GET
         // =========================================================
+        //
+        // The administrator can view the user's information.
+        // The information itself is NOT editable.
+        //
+        // Only Status is allowed to be changed.
+        // =========================================================
 
         [HttpGet]
         public IActionResult EditUser(int id)
@@ -350,6 +364,10 @@ namespace HirePoint.Controllers
             {
                 return accessResult;
             }
+
+            // -----------------------------------------------------
+            // PROTECT SYSTEM ADMINISTRATOR
+            // -----------------------------------------------------
 
             if (id == SYSTEM_ADMIN_ID)
             {
@@ -368,6 +386,10 @@ namespace HirePoint.Controllers
                     "Login",
                     "Account");
             }
+
+            // -----------------------------------------------------
+            // GET USER
+            // -----------------------------------------------------
 
             var user =
                 db.Users
@@ -403,10 +425,18 @@ namespace HirePoint.Controllers
         // =========================================================
         // EDIT USER - POST
         // =========================================================
+        //
+        // ADMIN CAN ONLY CHANGE USER STATUS.
+        //
+        // Full name, email, phone number, gender, user type,
+        // company, province, etc. are NOT changed here.
+        // =========================================================
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditUser(User user)
+        public IActionResult EditUser(
+            int UserID,
+            string Status)
         {
             var accessResult = CheckAdminAccess();
 
@@ -415,7 +445,11 @@ namespace HirePoint.Controllers
                 return accessResult;
             }
 
-            if (user.UserID == SYSTEM_ADMIN_ID)
+            // -----------------------------------------------------
+            // PROTECT SYSTEM ADMINISTRATOR
+            // -----------------------------------------------------
+
+            if (UserID == SYSTEM_ADMIN_ID)
             {
                 TempData["Error"] =
                     "The System Administrator account is protected and cannot be modified.";
@@ -433,10 +467,14 @@ namespace HirePoint.Controllers
                     "Account");
             }
 
+            // -----------------------------------------------------
+            // FIND USER
+            // -----------------------------------------------------
+
             var existing =
                 db.Users
                     .FirstOrDefault(x =>
-                        x.UserID == user.UserID);
+                        x.UserID == UserID);
 
             if (existing == null)
             {
@@ -459,255 +497,46 @@ namespace HirePoint.Controllers
             }
 
             // -----------------------------------------------------
-            // BASIC DETAILS
+            // ONLY ALLOW ACTIVE OR INACTIVE
             // -----------------------------------------------------
 
-            if (!string.IsNullOrWhiteSpace(user.FullName))
+            if (!string.Equals(
+                    Status,
+                    "Active",
+                    StringComparison.OrdinalIgnoreCase) &&
+                !string.Equals(
+                    Status,
+                    "Inactive",
+                    StringComparison.OrdinalIgnoreCase))
             {
-                existing.FullName =
-                    user.FullName.Trim();
+                TempData["Error"] =
+                    "Invalid account status.";
+
+                return RedirectToAction(
+                    "EditUser",
+                    new
+                    {
+                        id = UserID
+                    });
             }
 
-            if (!string.IsNullOrWhiteSpace(user.Email))
-            {
-                string newEmail =
-                    user.Email
-                        .Trim()
-                        .ToLowerInvariant();
+            // -----------------------------------------------------
+            // UPDATE ONLY STATUS
+            // -----------------------------------------------------
 
-                bool emailExists =
-                    db.Users.Any(x =>
-                        x.UserID != existing.UserID &&
-                        x.Email != null &&
-                        x.Email.ToLower() == newEmail);
-
-                if (emailExists)
-                {
-                    ModelState.AddModelError(
-                        nameof(user.Email),
-                        "An account with this email address already exists.");
-
-                    return View(user);
-                }
-
-                existing.Email =
-                    newEmail;
-            }
-
-            if (!string.IsNullOrWhiteSpace(user.PhoneNumber))
-            {
-                existing.PhoneNumber =
-                    user.PhoneNumber.Trim();
-            }
-
-            if (!string.IsNullOrWhiteSpace(user.Gender))
-            {
-                existing.Gender =
-                    user.Gender.Trim();
-            }
-
-            if (!string.IsNullOrWhiteSpace(user.Status))
-            {
-                existing.Status =
-                    user.Status.Trim();
-            }
-
-            // =====================================================
-            // SYSTEM ADMINISTRATOR USER TYPE + COMPANY
-            // =====================================================
-
-            if (IsSystemAdministrator(currentUser))
-            {
-                string finalUserType =
-                    !string.IsNullOrWhiteSpace(user.UserType)
-                        ? user.UserType.Trim()
-                        : existing.UserType?.Trim() ?? string.Empty;
-
-                int? finalCompanyID =
-                    user.CompanyID;
-
-                // -------------------------------------------------
-                // VALID USER TYPE
-                // -------------------------------------------------
-
-                bool validType =
-                    finalUserType.Equals(
-                        "Admin",
-                        StringComparison.OrdinalIgnoreCase) ||
-                    finalUserType.Equals(
-                        "Recruiter",
-                        StringComparison.OrdinalIgnoreCase) ||
-                    finalUserType.Equals(
-                        "Jobseeker",
-                        StringComparison.OrdinalIgnoreCase);
-
-                if (!validType)
-                {
-                    ModelState.AddModelError(
-                        nameof(user.UserType),
-                        "Please select a valid user type.");
-
-                    return View(user);
-                }
-
-                // -------------------------------------------------
-                // JOBSEEKERS MUST NOT BELONG TO A COMPANY
-                // -------------------------------------------------
-
-                if (finalUserType.Equals(
-                        "Jobseeker",
-                        StringComparison.OrdinalIgnoreCase))
-                {
-                    finalCompanyID = null;
-                }
-
-                // -------------------------------------------------
-                // ADMIN MUST BELONG TO A COMPANY
-                // -------------------------------------------------
-
-                if (finalUserType.Equals(
-                        "Admin",
-                        StringComparison.OrdinalIgnoreCase))
-                {
-                    if (!finalCompanyID.HasValue)
-                    {
-                        ModelState.AddModelError(
-                            nameof(user.CompanyID),
-                            "An administrator must be assigned to a company.");
-
-                        return View(user);
-                    }
-                }
-
-                // -------------------------------------------------
-                // RECRUITER MUST BELONG TO A COMPANY IF APPROVED
-                // -------------------------------------------------
-
-                if (finalUserType.Equals(
-                        "Recruiter",
-                        StringComparison.OrdinalIgnoreCase))
-                {
-                    // Existing approved recruiters must remain
-                    // attached to their company.
-                    if (existing.IsApproved &&
-                        !finalCompanyID.HasValue)
-                    {
-                        ModelState.AddModelError(
-                            nameof(user.CompanyID),
-                            "An approved recruiter must be assigned to a company.");
-
-                        return View(user);
-                    }
-                }
-
-                // -------------------------------------------------
-                // CHECK COMPANY EXISTS
-                // -------------------------------------------------
-
-                if (finalCompanyID.HasValue)
-                {
-                    bool companyExists =
-                        db.Companies.Any(x =>
-                            x.CompanyID ==
-                            finalCompanyID.Value);
-
-                    if (!companyExists)
-                    {
-                        ModelState.AddModelError(
-                            nameof(user.CompanyID),
-                            "The selected company does not exist.");
-
-                        return View(user);
-                    }
-                }
-
-                // -------------------------------------------------
-                // EXACTLY ONE ADMIN PER COMPANY
-                // -------------------------------------------------
-
-                if (finalUserType.Equals(
-                        "Admin",
-                        StringComparison.OrdinalIgnoreCase))
-                {
-                    bool anotherAdminExists =
-                        db.Users.Any(x =>
-                            x.UserID != existing.UserID &&
-                            x.CompanyID ==
-                                finalCompanyID.Value &&
-                            x.UserType != null &&
-                            x.UserType.ToLower() == "admin");
-
-                    if (anotherAdminExists)
-                    {
-                        ModelState.AddModelError(
-                            nameof(user.UserType),
-                            "This company already has an administrator.");
-
-                        return View(user);
-                    }
-                }
-
-                // -------------------------------------------------
-                // APPLY FINAL USER TYPE
-                // -------------------------------------------------
-
-                existing.UserType =
-                    finalUserType;
-
-                // -------------------------------------------------
-                // APPLY FINAL COMPANY
-                // -------------------------------------------------
-
-                existing.CompanyID =
-                    finalCompanyID;
-
-                // -------------------------------------------------
-                // RECRUITER APPROVAL RULE
-                // -------------------------------------------------
-                //
-                // If an existing user is changed to Recruiter,
-                // they should not automatically become approved.
-                //
-                // A recruiter must go through Company Admin approval.
-                // -------------------------------------------------
-
-                if (finalUserType.Equals(
-                        "Recruiter",
-                        StringComparison.OrdinalIgnoreCase))
-                {
-                    if (!existing.IsApproved)
-                    {
-                        existing.Status = "Pending";
-                    }
-                }
-
-                // -------------------------------------------------
-                // JOBSEEKER HAS NO COMPANY
-                // -------------------------------------------------
-
-                if (finalUserType.Equals(
-                        "Jobseeker",
-                        StringComparison.OrdinalIgnoreCase))
-                {
-                    existing.CompanyID = null;
-                    existing.IsApproved = true;
-
-                    if (string.Equals(
-                        existing.Status?.Trim(),
-                        "Pending",
-                        StringComparison.OrdinalIgnoreCase))
-                    {
-                        existing.Status = "Active";
-                    }
-                }
-            }
+            existing.Status =
+                Status.Equals(
+                    "Active",
+                    StringComparison.OrdinalIgnoreCase)
+                    ? "Active"
+                    : "Inactive";
 
             try
             {
                 db.SaveChanges();
 
                 TempData["Success"] =
-                    "User updated successfully.";
+                    "User status updated successfully.";
 
                 return RedirectToAction(
                     "ManageUsers");
@@ -715,9 +544,14 @@ namespace HirePoint.Controllers
             catch (DbUpdateException)
             {
                 TempData["Error"] =
-                    "The user could not be updated.";
+                    "The user status could not be updated.";
 
-                return View(user);
+                return RedirectToAction(
+                    "EditUser",
+                    new
+                    {
+                        id = UserID
+                    });
             }
         }
 
@@ -1499,6 +1333,209 @@ namespace HirePoint.Controllers
 
 
         // =========================================================
+        // VERIFY REPRESENTATIVE
+        // =========================================================
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> VerifyRepresentative(int id)
+        {
+            try
+            {
+                var accessResult = CheckAdminAccess();
+                if (accessResult != null)
+                    return accessResult;
+
+                var currentUser = GetCurrentUser();
+                if (currentUser == null)
+                {
+                    HttpContext.Session.Clear();
+                    return RedirectToAction("Login", "Account");
+                }
+
+                bool isSystemAdmin = IsSystemAdministrator(currentUser);
+
+                var recruiter = await db.Users
+                    .Include(x => x.RecruiterProfile)
+                    .FirstOrDefaultAsync(x =>
+                        x.UserID == id &&
+                        x.UserType != null &&
+                        x.UserType.ToLower() == "recruiter");
+
+                if (recruiter == null)
+                {
+                    TempData["ErrorMessage"] = "Recruiter could not be found.";
+                    return RedirectToAction(nameof(RecruiterApprovals));
+                }
+
+                if (recruiter.IsApproved)
+                {
+                    TempData["ErrorMessage"] = "This recruiter has already been approved.";
+                    return RedirectToAction(nameof(RecruiterApprovals));
+                }
+
+                if (!string.Equals(recruiter.Status?.Trim(), "Pending", StringComparison.OrdinalIgnoreCase))
+                {
+                    TempData["ErrorMessage"] = "This recruiter is no longer awaiting approval.";
+                    return RedirectToAction(nameof(RecruiterApprovals));
+                }
+
+                var recruiterProfile = recruiter.RecruiterProfile;
+                if (recruiterProfile == null)
+                {
+                    TempData["ErrorMessage"] = "Recruiter profile could not be found.";
+                    return RedirectToAction(nameof(RecruiterApprovals));
+                }
+
+                if (string.IsNullOrWhiteSpace(recruiterProfile.RepresentativeName))
+                {
+                    TempData["ErrorMessage"] = "The representative name is missing.";
+                    return RedirectToAction(nameof(RecruiterApprovals));
+                }
+
+                if (string.IsNullOrWhiteSpace(recruiterProfile.RepresentativeEmail))
+                {
+                    TempData["ErrorMessage"] = "The representative email is missing.";
+                    return RedirectToAction(nameof(RecruiterApprovals));
+                }
+
+                Company? company = null;
+
+                if (isSystemAdmin)
+                {
+                    string requestedCompany =
+                        (recruiterProfile.CompanyName ?? string.Empty).Trim();
+
+                    if (string.IsNullOrWhiteSpace(requestedCompany))
+                    {
+                        TempData["ErrorMessage"] =
+                            "The recruiter's requested company is missing.";
+                        return RedirectToAction(nameof(RecruiterApprovals));
+                    }
+
+                    company = await db.Companies
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(x =>
+                            x.CompanyName != null &&
+                            x.CompanyName.Trim().ToLower() == requestedCompany.ToLower());
+                }
+                else
+                {
+                    if (!currentUser.CompanyID.HasValue)
+                    {
+                        TempData["ErrorMessage"] =
+                            "Your administrator account is not assigned to a company.";
+                        return RedirectToAction(nameof(RecruiterApprovals));
+                    }
+
+                    company = await db.Companies
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(x =>
+                            x.CompanyID == currentUser.CompanyID.Value);
+
+                    if (company != null &&
+                        !string.Equals(
+                            recruiterProfile.CompanyName?.Trim(),
+                            company.CompanyName?.Trim(),
+                            StringComparison.OrdinalIgnoreCase))
+                    {
+                        TempData["ErrorMessage"] =
+                            "This recruiter does not belong to your assigned company.";
+                        return RedirectToAction(nameof(RecruiterApprovals));
+                    }
+                }
+
+                if (company == null)
+                {
+                    TempData["ErrorMessage"] =
+                        "The recruiter's requested company could not be found.";
+                    return RedirectToAction(nameof(RecruiterApprovals));
+                }
+
+                byte[] tokenBytes = RandomNumberGenerator.GetBytes(32);
+                string token = Convert.ToBase64String(tokenBytes)
+                    .Replace("+", "-")
+                    .Replace("/", "_")
+                    .Replace("=", "");
+
+                string tokenHash = Convert.ToHexString(
+                    SHA256.HashData(Encoding.UTF8.GetBytes(token)));
+
+                recruiterProfile.RepresentativeVerificationTokenHash = tokenHash;
+                recruiterProfile.RepresentativeVerificationExpiresAt = DateTime.UtcNow.AddHours(24);
+                recruiterProfile.RepresentativeVerificationStatus = "Pending";
+
+                string recruiterName = (recruiter.FullName ?? string.Empty).Trim();
+                string representativeName = recruiterProfile.RepresentativeName.Trim();
+                string representativeEmail = recruiterProfile.RepresentativeEmail.Trim();
+                string companyName = (recruiterProfile.CompanyName ?? company.CompanyName ?? string.Empty).Trim();
+
+                string knowPersonLink = Url.Action(
+                    "RepresentativeResponse", "Account",
+                    new { id = recruiter.UserID, token, response = "know" },
+                    Request.Scheme) ?? string.Empty;
+
+                string doNotKnowPersonLink = Url.Action(
+                    "RepresentativeResponse", "Account",
+                    new { id = recruiter.UserID, token, response = "dontknow" },
+                    Request.Scheme) ?? string.Empty;
+
+                if (string.IsNullOrWhiteSpace(knowPersonLink) ||
+                    string.IsNullOrWhiteSpace(doNotKnowPersonLink))
+                {
+                    TempData["ErrorMessage"] =
+                        "The representative verification links could not be created.";
+                    return RedirectToAction(nameof(RecruiterApprovals));
+                }
+
+                await db.SaveChangesAsync();
+
+                await emailService.SendRepresentativeVerificationEmailAsync(
+                    representativeName,
+                    representativeEmail,
+                    recruiterName,
+                    companyName,
+                    knowPersonLink,
+                    doNotKnowPersonLink);
+
+                TempData["SuccessMessage"] =
+                    $"Verification email sent successfully to {representativeEmail}.";
+
+                return RedirectToAction(nameof(RecruiterApprovals));
+            }
+            catch (Microsoft.Data.SqlClient.SqlException ex)
+            {
+                logger.LogError(ex,
+                    "SQL error while sending representative verification for recruiter {RecruiterId}", id);
+
+                TempData["ErrorMessage"] =
+                    "A database connection error occurred while preparing the verification request. Please try again.";
+
+                return RedirectToAction(nameof(RecruiterApprovals));
+            }
+            catch (DbUpdateException ex)
+            {
+                logger.LogError(ex,
+                    "Database update error while sending representative verification for recruiter {RecruiterId}", id);
+
+                TempData["ErrorMessage"] =
+                    "The verification request could not be saved to the database.";
+
+                return RedirectToAction(nameof(RecruiterApprovals));
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex,
+                    "Unexpected error while sending representative verification for recruiter {RecruiterId}", id);
+
+                TempData["ErrorMessage"] =
+                    "The representative verification email could not be sent. Please check the email settings and try again.";
+
+                return RedirectToAction(nameof(RecruiterApprovals));
+            }
+        }
+
+        // =========================================================
         // ANALYTICS
         // =========================================================
 
@@ -1808,9 +1845,11 @@ namespace HirePoint.Controllers
         // Pending recruiter:
         //
         //     User.CompanyID = NULL
+        //     IsApproved = false
+        //     Status = Pending
         //
-        //     RecruiterProfile.CompanyName =
-        //     company requested during registration
+        //     RecruiterProfile contains the company information
+        //     supplied during registration.
         //
         // After approval:
         //
@@ -1921,182 +1960,207 @@ namespace HirePoint.Controllers
         }
 
 
-        // =========================================================
-        // APPROVE RECRUITER
-        // =========================================================
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult ApproveRecruiter(int id)
+        public async Task<IActionResult> ApproveRecruiter(int id)
         {
             var accessResult = CheckAdminAccess();
-
             if (accessResult != null)
-            {
                 return accessResult;
-            }
 
             var currentUser = GetCurrentUser();
-
             if (currentUser == null)
-            {
-                return RedirectToAction(
-                    "Login",
-                    "Account");
-            }
+                return RedirectToAction("Login", "Account");
 
-            // -----------------------------------------------------
-            // SYSTEM ADMINISTRATOR CANNOT APPROVE
-            // -----------------------------------------------------
+            bool isSystemAdmin = IsSystemAdministrator(currentUser);
 
-            if (IsSystemAdministrator(currentUser))
-            {
-                TempData["Error"] =
-                    "Recruiters must be approved by the Company Administrator of the company they will join.";
-
-                return RedirectToAction(
-                    "RecruiterApprovals");
-            }
-
-            // -----------------------------------------------------
-            // COMPANY ADMIN MUST HAVE COMPANY
-            // -----------------------------------------------------
-
-            if (!currentUser.CompanyID.HasValue)
-            {
-                TempData["Error"] =
-                    "Your administrator account is not assigned to a company.";
-
-                return RedirectToAction(
-                    "RecruiterApprovals");
-            }
-
-            int companyID =
-                currentUser.CompanyID.Value;
-
-            var company =
-                db.Companies
-                    .AsNoTracking()
-                    .FirstOrDefault(x =>
-                        x.CompanyID == companyID);
-
-            if (company == null)
-            {
-                TempData["Error"] =
-                    "Your company could not be found.";
-
-                return RedirectToAction(
-                    "RecruiterApprovals");
-            }
-
-            string companyName =
-                (company.CompanyName ?? string.Empty)
-                    .Trim()
-                    .ToLower();
-
-            // -----------------------------------------------------
-            // FIND RECRUITER
-            // -----------------------------------------------------
-
-            var recruiter =
-                db.Users
-                    .Include(x => x.RecruiterProfile)
-                    .FirstOrDefault(x =>
-                        x.UserID == id &&
-                        x.UserType != null &&
-                        x.UserType.ToLower() == "recruiter");
+            // Load recruiter first. System Administrator may have no CompanyID.
+            var recruiter = await db.Users
+                .Include(x => x.RecruiterProfile)
+                .FirstOrDefaultAsync(x =>
+                    x.UserID == id &&
+                    x.UserType != null &&
+                    x.UserType.ToLower() == "recruiter");
 
             if (recruiter == null)
             {
-                TempData["Error"] =
-                    "Recruiter account not found.";
-
-                return RedirectToAction(
-                    "RecruiterApprovals");
+                TempData["ErrorMessage"] = "Recruiter could not be found.";
+                return RedirectToAction(nameof(RecruiterApprovals));
             }
 
-            // -----------------------------------------------------
-            // MUST STILL BE PENDING
-            // -----------------------------------------------------
-
-            bool isPending =
-                !recruiter.IsApproved &&
-                string.Equals(
-                    recruiter.Status?.Trim(),
-                    "Pending",
-                    StringComparison.OrdinalIgnoreCase);
-
-            if (!isPending)
+            if (recruiter.IsApproved)
             {
-                TempData["Error"] =
-                    "This recruiter is no longer awaiting approval.";
-
-                return RedirectToAction(
-                    "RecruiterApprovals");
+                TempData["ErrorMessage"] = "This recruiter has already been approved.";
+                return RedirectToAction(nameof(RecruiterApprovals));
             }
 
-            // -----------------------------------------------------
-            // PROFILE MUST EXIST
-            // -----------------------------------------------------
-
-            if (recruiter.RecruiterProfile == null)
+            if (!string.Equals(recruiter.Status?.Trim(), "Pending", StringComparison.OrdinalIgnoreCase))
             {
-                TempData["Error"] =
-                    "The recruiter's profile could not be found.";
-
-                return RedirectToAction(
-                    "RecruiterApprovals");
+                TempData["ErrorMessage"] = "This recruiter is no longer awaiting approval.";
+                return RedirectToAction(nameof(RecruiterApprovals));
             }
 
-            // -----------------------------------------------------
-            // VERIFY REQUESTED COMPANY
-            // -----------------------------------------------------
-
-            string requestedCompany =
-                (recruiter.RecruiterProfile.CompanyName ?? string.Empty)
-                    .Trim()
-                    .ToLower();
-
-            if (string.IsNullOrWhiteSpace(requestedCompany) ||
-                !requestedCompany.Equals(
-                    companyName,
-                    StringComparison.Ordinal))
+            var recruiterProfile = recruiter.RecruiterProfile;
+            if (recruiterProfile == null)
             {
-                TempData["Error"] =
-                    "This recruiter did not request to join your company.";
-
-                return RedirectToAction(
-                    "RecruiterApprovals");
+                TempData["ErrorMessage"] = "Recruiter profile could not be found.";
+                return RedirectToAction(nameof(RecruiterApprovals));
             }
 
-            // -----------------------------------------------------
-            // APPROVE
-            // -----------------------------------------------------
+            if (!string.Equals(
+                    recruiterProfile.RepresentativeVerificationStatus,
+                    "Verified",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                TempData["ErrorMessage"] =
+                    "The company representative has not verified this recruiter.";
+                return RedirectToAction(nameof(RecruiterApprovals));
+            }
 
-            recruiter.CompanyID =
-                companyID;
+            if (recruiterProfile.UserID != recruiter.UserID)
+            {
+                TempData["ErrorMessage"] = "Recruiter profile information is invalid.";
+                return RedirectToAction(nameof(RecruiterApprovals));
+            }
 
-            recruiter.IsApproved =
-                true;
+            Company? company = null;
 
-            recruiter.Status =
-                "Active";
+            if (isSystemAdmin)
+            {
+                string requestedCompany =
+                    (recruiterProfile.CompanyName ?? string.Empty).Trim();
+
+                if (string.IsNullOrWhiteSpace(requestedCompany))
+                {
+                    TempData["ErrorMessage"] =
+                        "The recruiter's requested company is missing.";
+                    return RedirectToAction(nameof(RecruiterApprovals));
+                }
+
+                company = await db.Companies
+                    .FirstOrDefaultAsync(x =>
+                        x.CompanyName != null &&
+                        x.CompanyName.Trim().ToLower() == requestedCompany.ToLower());
+            }
+            else
+            {
+                if (!currentUser.CompanyID.HasValue)
+                {
+                    TempData["ErrorMessage"] =
+                        "Your administrator account is not assigned to a company.";
+                    return RedirectToAction(nameof(RecruiterApprovals));
+                }
+
+                int adminCompanyId = currentUser.CompanyID.Value;
+
+                company = await db.Companies
+                    .FirstOrDefaultAsync(x => x.CompanyID == adminCompanyId);
+
+                if (company == null)
+                {
+                    TempData["ErrorMessage"] =
+                        "Your assigned company could not be found.";
+                    return RedirectToAction(nameof(RecruiterApprovals));
+                }
+
+                if (!string.Equals(
+                        recruiterProfile.CompanyName?.Trim(),
+                        company.CompanyName?.Trim(),
+                        StringComparison.OrdinalIgnoreCase))
+                {
+                    TempData["ErrorMessage"] =
+                        "This recruiter does not belong to your assigned company.";
+                    return RedirectToAction(nameof(RecruiterApprovals));
+                }
+            }
+
+            if (company == null)
+            {
+                TempData["ErrorMessage"] =
+                    "The recruiter's requested company could not be found.";
+                return RedirectToAction(nameof(RecruiterApprovals));
+            }
+
+            var oldTokens = await db.PasswordResetTokens
+                .Where(x => x.UserID == recruiter.UserID && x.UsedAt == null)
+                .ToListAsync();
+
+            foreach (var oldToken in oldTokens)
+                oldToken.UsedAt = DateTime.UtcNow;
+
+            byte[] tokenBytes = RandomNumberGenerator.GetBytes(32);
+
+            string createPasswordToken = Convert.ToBase64String(tokenBytes)
+                .Replace("+", "-")
+                .Replace("/", "_")
+                .Replace("=", "");
+
+            string tokenHash = Convert.ToHexString(
+                SHA256.HashData(Encoding.UTF8.GetBytes(createPasswordToken)));
+
+            var passwordToken = new PasswordResetToken
+            {
+                UserID = recruiter.UserID,
+                TokenHash = tokenHash,
+                ExpiresAt = DateTime.UtcNow.AddDays(3),
+                UsedAt = null
+            };
+
+            db.PasswordResetTokens.Add(passwordToken);
+
+            recruiter.CompanyID = company.CompanyID;
+            recruiter.IsApproved = true;
+            recruiter.Status = "Active";
+
+            string createPasswordLink = Url.Action(
+                "CreatePassword",
+                "Account",
+                new { id = recruiter.UserID, token = createPasswordToken },
+                Request.Scheme) ?? string.Empty;
+
+            if (string.IsNullOrWhiteSpace(createPasswordLink))
+            {
+                passwordToken.UsedAt = DateTime.UtcNow;
+                recruiter.CompanyID = null;
+                recruiter.IsApproved = false;
+                recruiter.Status = "Pending";
+                await db.SaveChangesAsync();
+
+                TempData["ErrorMessage"] =
+                    "The password creation link could not be created.";
+                return RedirectToAction(nameof(RecruiterApprovals));
+            }
+
+            await db.SaveChangesAsync();
+
+            string recruiterName = (recruiter.FullName ?? string.Empty).Trim();
 
             try
             {
-                db.SaveChanges();
+                await emailService.SendRecruiterApprovalEmailAsync(
+                    recruiterName,
+                    recruiter.Email,
+                    company.CompanyName,
+                    createPasswordLink);
 
-                TempData["Success"] =
-                    $"Recruiter '{recruiter.FullName}' has been approved and assigned to {company.CompanyName}.";
+                TempData["SuccessMessage"] =
+                    "Recruiter approved successfully. A password creation email has been sent to the recruiter.";
             }
-            catch (DbUpdateException)
+            catch (Exception ex)
             {
-                TempData["Error"] =
-                    "The recruiter could not be approved.";
+                passwordToken.UsedAt = DateTime.UtcNow;
+                await db.SaveChangesAsync();
+
+                logger.LogError(
+                    ex,
+                    "Recruiter {RecruiterId} was approved but password creation email failed.",
+                    recruiter.UserID);
+
+                TempData["ErrorMessage"] =
+                    "The recruiter was approved, but the password creation email could not be sent. Please try again.";
             }
 
-            return RedirectToAction(
-                "RecruiterApprovals");
+            return RedirectToAction(nameof(RecruiterApprovals));
         }
 
 

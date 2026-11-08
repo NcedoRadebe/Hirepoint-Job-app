@@ -1,0 +1,500 @@
+﻿@model HirePoint.ViewModels.ApplicationMessageViewModel
+
+@{
+    ViewData["Title"] = "Generate Application Message";
+}
+
+<div class="container py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="fw-bold mb-1">
+                Generate Application Message
+            </h2>
+
+            <p class="text-muted mb-0">
+                Create a personalized message for the applicant.
+            </p>
+        </div>
+
+        <a asp-controller="Recruiter"
+           asp-action="Applicants"
+           class="btn btn-outline-secondary"
+           data-bs-toggle="tooltip"
+           data-bs-placement="top"
+           title="Return to the list of job applications.">
+
+            <i class="bi bi-arrow-left me-1"></i>
+            Back to Applications
+
+        </a>
+
+    </div>
+
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+
+            <div asp-validation-summary="ModelOnly"></div>
+
+        </div>
+    }
+
+
+    <!-- Applicant Information -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-header bg-white">
+
+            <h5 class="mb-0 fw-semibold">
+                Applicant Information
+            </h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label fw-semibold">
+                        Applicant
+                    </label>
+
+                    <div data-bs-toggle="tooltip"
+                         data-bs-placement="top"
+                         title="The name of the jobseeker who submitted this application.">
+                        @Model.ApplicantName
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label fw-semibold">
+                        Email
+                    </label>
+
+                    <div data-bs-toggle="tooltip"
+                         data-bs-placement="top"
+                         title="The applicant's email address.">
+                        @Model.ApplicantEmail
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label fw-semibold">
+                        Position
+                    </label>
+
+                    <div data-bs-toggle="tooltip"
+                         data-bs-placement="top"
+                         title="The job position the applicant applied for.">
+                        @Model.JobTitle
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label fw-semibold">
+                        Application Status
+                    </label>
+
+                    <div>
+
+                        <span class="badge bg-primary"
+                              data-bs-toggle="tooltip"
+                              data-bs-placement="top"
+                              title="The current status of this application.">
+                            @Model.ApplicationStatus
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Jobseeker Profile -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-header bg-white">
+
+            <h5 class="mb-0 fw-semibold">
+                Jobseeker Profile
+            </h5>
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label fw-semibold">
+                        Qualification
+                    </label>
+
+                    <div class="text-muted"
+                         data-bs-toggle="tooltip"
+                         data-bs-placement="top"
+                         title="The qualification provided by the applicant.">
+
+                        @if (string.IsNullOrWhiteSpace(Model.Qualification))
+                        {
+                            <span>Not provided</span>
+                        }
+                        else
+                        {
+                            @Model.Qualification
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label fw-semibold">
+                        Skills
+                    </label>
+
+                    <div class="text-muted"
+                         data-bs-toggle="tooltip"
+                         data-bs-placement="top"
+                         title="The skills provided by the applicant.">
+
+                        @if (string.IsNullOrWhiteSpace(Model.Skills))
+                        {
+                            <span>Not provided</span>
+                        }
+                        else
+                        {
+                            @Model.Skills
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label fw-semibold">
+                        Education
+                    </label>
+
+                    <div class="text-muted"
+                         data-bs-toggle="tooltip"
+                         data-bs-placement="top"
+                         title="The education information provided by the applicant.">
+
+                        @if (string.IsNullOrWhiteSpace(Model.Education))
+                        {
+                            <span>Not provided</span>
+                        }
+                        else
+                        {
+                            @Model.Education
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 mb-3">
+
+                    <label class="form-label fw-semibold">
+                        Experience
+                    </label>
+
+                    <div class="text-muted"
+                         data-bs-toggle="tooltip"
+                         data-bs-placement="top"
+                         title="The work experience information provided by the applicant.">
+
+                        @if (string.IsNullOrWhiteSpace(Model.Experience))
+                        {
+                            <span>Not provided</span>
+                        }
+                        else
+                        {
+                            @Model.Experience
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    @if (!Model.MessageGenerated)
+    {
+        <!-- Reason Form -->
+
+        <div class="card shadow-sm">
+
+            <div class="card-header bg-white">
+
+                <h5 class="mb-0 fw-semibold">
+                    Message Details
+                </h5>
+
+            </div>
+
+            <div class="card-body">
+
+                <p class="text-muted">
+                    Tell the AI why the applicant has received this status
+                    or provide any additional information you want included
+                    in the message.
+                </p>
+
+
+                <form asp-controller="Recruiter"
+                      asp-action="GeneratePersonalizedMessage"
+                      method="post">
+
+                    @Html.AntiForgeryToken()
+
+                    <input type="hidden"
+                           asp-for="ApplicationID" />
+
+
+                    <div class="mb-3">
+
+                        <label asp-for="Reason"
+                               class="form-label fw-semibold">
+
+                            Reason or Additional Details
+
+                        </label>
+
+                        <textarea asp-for="Reason"
+                                  class="form-control"
+                                  rows="6"
+                                  maxlength="1000"
+                                  placeholder="For example: We were impressed with your experience and would like to invite you to the next stage of the recruitment process."
+                                  data-bs-toggle="tooltip"
+                                  data-bs-placement="top"
+                                  title="Enter the reason for the application decision or any additional details you want included in the message."></textarea>
+
+                        <span asp-validation-for="Reason"
+                              class="text-danger">
+                        </span>
+
+                        <div class="form-text">
+                            Provide specific details that you want the AI
+                            to include in the message.
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit"
+                            class="btn btn-primary"
+                            data-bs-toggle="tooltip"
+                            data-bs-placement="top"
+                            title="Generate a personalized message using the applicant's status and the details you provided.">
+
+                        <i class="bi bi-stars me-1"></i>
+
+                        Generate Personalized Message
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+    }
+    else
+    {
+        <!-- Generated Message -->
+
+        <div class="card shadow-sm">
+
+            <div class="card-header bg-white">
+
+                <h5 class="mb-0 fw-semibold">
+                    Review Your Message
+                </h5>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="alert alert-info">
+
+                    <i class="bi bi-info-circle me-1"></i>
+
+                    The AI-generated message is ready for review.
+                    You can edit it before sending.
+
+                </div>
+
+
+                <form asp-controller="Recruiter"
+                      asp-action="ConfirmAndSendMessage"
+                      method="post">
+
+                    @Html.AntiForgeryToken()
+
+                    <input type="hidden"
+                           asp-for="ApplicationID" />
+
+
+                    <input type="hidden"
+                           asp-for="ApplicantName" />
+
+                    <input type="hidden"
+                           asp-for="ApplicantEmail" />
+
+                    <input type="hidden"
+                           asp-for="JobTitle" />
+
+                    <input type="hidden"
+                           asp-for="ApplicationStatus" />
+
+                    <input type="hidden"
+                           asp-for="Reason" />
+
+
+                    <div class="mb-3">
+
+                        <label asp-for="GeneratedMessage"
+                               class="form-label fw-semibold">
+
+                            Message
+
+                        </label>
+
+                        <textarea asp-for="GeneratedMessage"
+                                  class="form-control"
+                                  rows="10"
+                                  maxlength="1000"
+                                  data-bs-toggle="tooltip"
+                                  data-bs-placement="top"
+                                  title="Review and edit the AI-generated message before sending it to the applicant."></textarea>
+
+                        <span asp-validation-for="GeneratedMessage"
+                              class="text-danger">
+                        </span>
+
+                        <div class="form-text">
+                            You can edit the message before sending it.
+                            Maximum 1000 characters.
+                        </div>
+
+                    </div>
+
+
+                    <div class="d-flex gap-2">
+
+                        <button type="submit"
+                                class="btn btn-success"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Confirm the message and send it to the applicant.">
+
+                            <i class="bi bi-send me-1"></i>
+
+                            Confirm & Send
+
+                        </button>
+
+                        <button type="submit"
+                                formaction="@Url.Action("GeneratePersonalizedMessage", "Recruiter")"
+                                class="btn btn-outline-primary"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Generate a new personalized message using the information provided.">
+
+                            <i class="bi bi-stars me-1"></i>
+
+                            Generate Again
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    }
+
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const tooltipTriggerList =
+            document.querySelectorAll('[data-bs-toggle="tooltip"]');
+
+        tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+
+            new bootstrap.Tooltip(tooltipTriggerEl);
+
+        });
+
+    });
+
+</script>
+
+<style>
+    .form-control {
+        background-color: #FFF8C6;
+        border: 1px solid #E6D98C;
+        color: #183b56;
+        border-radius: 10px;
+    }
+
+        .form-control:focus {
+            background-color: #FFF8C6;
+            border-color: #D6C65F;
+            color: #183b56;
+            box-shadow: 0 0 0 0.2rem rgba(230, 217, 140, 0.25);
+        }
+
+        .form-control::placeholder {
+            color: #777;
+        }
+</style>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync(
+            "_ValidationScriptsPartial");
+    }
+
+}

@@ -1,0 +1,295 @@
+﻿@{
+    ViewData["Title"] = "Help Centre";
+
+    var userType = Context.Session.GetString("UserType") ?? "User";
+}
+
+<div class="help-page">
+
+    <!-- PAGE HEADER -->
+    <div class="help-page-header">
+
+        <div>
+            <span class="help-eyebrow">
+                <i class="bi bi-question-circle"></i>
+                HIREPOINT SUPPORT
+            </span>
+
+            <h1>How can we help you?</h1>
+
+            <p>
+                Find guidance, learn how to use HirePoint,
+                and get help with common tasks.
+            </p>
+        </div>
+
+        <div class="help-header-icon">
+            <i class="bi bi-life-preserver"></i>
+        </div>
+
+    </div>
+
+
+    <!-- QUICK HELP -->
+    <div class="help-card-grid">
+
+        <!-- USER GUIDE -->
+        <a asp-controller="Help"
+           asp-action="UserGuide"
+           class="help-option-card">
+
+            <div class="help-option-icon guide-icon">
+                <i class="bi bi-compass"></i>
+            </div>
+
+            <div>
+                <h3>User Guide</h3>
+
+                <p>
+                    Take an interactive tour of HirePoint
+                    and learn where everything is.
+                </p>
+
+                <span class="help-card-link">
+                    Start or replay tour
+                    <i class="bi bi-arrow-right"></i>
+                </span>
+            </div>
+
+        </a>
+
+
+        <!-- FAQ -->
+        <a asp-controller="Help"
+           asp-action="FAQs"
+           class="help-option-card">
+
+            <div class="help-option-icon faq-icon">
+                <i class="bi bi-chat-left-text"></i>
+            </div>
+
+            <div>
+                <h3>Frequently Asked Questions</h3>
+
+                <p>
+                    Find answers to common questions
+                    about using HirePoint.
+                </p>
+
+                <span class="help-card-link">
+                    View FAQs
+                    <i class="bi bi-arrow-right"></i>
+                </span>
+            </div>
+
+        </a>
+
+
+        <!-- TROUBLESHOOTING -->
+        <a asp-controller="Help"
+           asp-action="Troubleshooting"
+           class="help-option-card">
+
+            <div class="help-option-icon trouble-icon">
+                <i class="bi bi-tools"></i>
+            </div>
+
+            <div>
+                <h3>Troubleshooting</h3>
+
+                <p>
+                    Get help with common problems,
+                    validation messages and unexpected issues.
+                </p>
+
+                <span class="help-card-link">
+                    Troubleshoot a problem
+                    <i class="bi bi-arrow-right"></i>
+                </span>
+            </div>
+
+        </a>
+
+    </div>
+
+
+    <!-- ROLE-SPECIFIC HELP -->
+    <div class="help-role-section">
+
+        <div class="help-section-heading">
+            <span class="help-section-label">
+                <i class="bi bi-person-badge"></i>
+                YOUR ROLE
+            </span>
+
+            <h2>HirePoint guidance for @userType</h2>
+
+            <p>
+                The information below is focused on the tasks
+                normally performed by your account type.
+            </p>
+        </div>
+
+
+        @if (userType.Equals(
+                "Jobseeker",
+                StringComparison.OrdinalIgnoreCase))
+        {
+            <div class="role-help-grid">
+
+                <div class="role-help-card">
+                    <i class="bi bi-person-vcard"></i>
+
+                    <h4>Complete your profile</h4>
+
+                    <p>
+                        Keep your personal information,
+                        qualifications and profile details up to date.
+                    </p>
+                </div>
+
+
+                <div class="role-help-card">
+                    <i class="bi bi-search"></i>
+
+                    <h4>Find jobs</h4>
+
+                    <p>
+                        Search available vacancies and review
+                        job requirements before applying.
+                    </p>
+                </div>
+
+
+                <div class="role-help-card">
+                    <i class="bi bi-file-earmark-check"></i>
+
+                    <h4>Track applications</h4>
+
+                    <p>
+                        Monitor the progress and status of
+                        jobs you have applied for.
+                    </p>
+                </div>
+
+            </div>
+        }
+        else if (userType.Equals(
+                     "Recruiter",
+                     StringComparison.OrdinalIgnoreCase))
+        {
+            <div class="role-help-grid">
+
+                <div class="role-help-card">
+                    <i class="bi bi-plus-circle"></i>
+
+                    <h4>Post a job</h4>
+
+                    <p>
+                        Create a vacancy and provide candidates
+                        with the required job information.
+                    </p>
+                </div>
+
+
+                <div class="role-help-card">
+                    <i class="bi bi-people"></i>
+
+                    <h4>Manage applicants</h4>
+
+                    <p>
+                        Review candidates and manage the progress
+                        of applications.
+                    </p>
+                </div>
+
+
+                <div class="role-help-card">
+                    <i class="bi bi-calendar-event"></i>
+
+                    <h4>Manage interviews</h4>
+
+                    <p>
+                        Review interview information and keep
+                        candidate communication organised.
+                    </p>
+                </div>
+
+            </div>
+        }
+        else if (userType.Equals(
+                     "Admin",
+                     StringComparison.OrdinalIgnoreCase))
+        {
+            <div class="role-help-grid">
+
+                <div class="role-help-card">
+                    <i class="bi bi-people"></i>
+
+                    <h4>Manage users</h4>
+
+                    <p>
+                        Manage HirePoint users and account information.
+                    </p>
+                </div>
+
+
+                <div class="role-help-card">
+                    <i class="bi bi-person-check"></i>
+
+                    <h4>Recruiter approvals</h4>
+
+                    <p>
+                        Review recruiter requests and manage
+                        approval decisions.
+                    </p>
+                </div>
+
+
+                <div class="role-help-card">
+                    <i class="bi bi-bar-chart"></i>
+
+                    <h4>Analytics</h4>
+
+                    <p>
+                        View system information and recruitment
+                        analytics.
+                    </p>
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+
+    <!-- NEED MORE HELP -->
+    <div class="help-bottom-card">
+
+        <div class="help-bottom-icon">
+            <i class="bi bi-lightbulb"></i>
+        </div>
+
+        <div>
+            <h3>Need help while using a feature?</h3>
+
+            <p>
+                Look for the
+                <strong>ⓘ</strong>
+                information icons throughout HirePoint.
+                Hover over them to see helpful explanations.
+            </p>
+        </div>
+
+        <a asp-controller="Help"
+           asp-action="UserGuide"
+           class="help-primary-button">
+
+            <i class="bi bi-play-circle"></i>
+            Replay Tour
+
+        </a>
+
+    </div>
+
+</div>

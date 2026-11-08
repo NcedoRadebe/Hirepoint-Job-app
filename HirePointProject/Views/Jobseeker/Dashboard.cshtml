@@ -12,12 +12,11 @@
            ========================== */
 
     .jobseeker-page {
-        background: #eef6fb;
+        background: #ffffff;
         padding: 25px;
         border-radius: 14px;
         min-height: calc(100vh - 120px);
     }
-
 
     /* ==========================
            HEADER
@@ -38,7 +37,6 @@
             margin-bottom: 0;
         }
 
-
     /* ==========================
            ALERTS
            ========================== */
@@ -48,14 +46,13 @@
         margin-bottom: 20px;
     }
 
-
     /* ==========================
            STAT CARDS
            ========================== */
 
     .jobseeker-card {
-        background: #ffffff;
-        border: 1px solid #d7e7f0;
+        background: #FBFFD9;
+        border: 1px solid #FBFFD9;
         border-radius: 12px;
         padding: 20px;
         height: 100%;
@@ -65,7 +62,7 @@
 
         .jobseeker-card:hover {
             transform: translateY(-3px);
-            border-color: #2878ad;
+            border-color: #E4FF00;
             box-shadow: 0 6px 16px rgba(40, 120, 173, 0.16);
         }
 
@@ -76,7 +73,7 @@
         align-items: center;
         justify-content: center;
         background: #eef6fb;
-        color: #2878ad;
+        color: #333615;
         border-radius: 9px;
         font-size: 20px;
         margin-bottom: 12px;
@@ -100,7 +97,6 @@
         font-size: 14px;
         margin-bottom: 15px;
     }
-
 
     /* ==========================
            BUTTONS
@@ -130,7 +126,6 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 12px rgba(40, 120, 173, 0.25);
         }
-
 
     /* ==========================
            RECOMMENDED JOBS SECTION
@@ -170,6 +165,47 @@
                 opacity: 0.8;
             }
 
+        /* ==========================
+           UPDATE INTERESTS LINK
+           ========================== */
+
+        .jobseeker-section-header .update-interests-link {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+            .jobseeker-section-header .update-interests-link:hover {
+                background: #FBFFD9;
+                color: #183b56;
+                font-weight: 600;
+                opacity: 1;
+            }
+
+    /* ==========================
+           RESTART TOUR BUTTON
+           ========================== */
+
+    .restart-tour-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-left: 8px;
+        padding: 8px 12px;
+        border-radius: 8px;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+    }
+
+        .restart-tour-link:hover {
+            background: #FBFFD9;
+            color: #183b56;
+        }
 
     /* ==========================
            TABLE
@@ -200,7 +236,6 @@
             background: #eef6fb;
         }
 
-
     /* ==========================
            JOB TITLE
            ========================== */
@@ -209,7 +244,6 @@
         color: #183b56;
         font-weight: 600;
     }
-
 
     /* ==========================
            COMPANY
@@ -220,6 +254,139 @@
         font-weight: 600;
     }
 
+    /* ==========================
+           RECOMMENDED JOB CARDS
+           ========================== */
+
+    .job-cards-container {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        width: 100%;
+        padding: 24px;
+        background: #ffffff;
+        box-sizing: border-box;
+    }
+
+    /* ==========================
+           INDIVIDUAL JOB CARD
+           ========================== */
+
+    .recommended-job-card {
+        width: 100%;
+        background: #DBFFFD;
+        border: 1px solid #d7e7f0;
+        border-radius: 16px;
+        padding: 25px;
+        box-sizing: border-box;
+        box-shadow: 0 4px 12px rgba(24, 59, 86, 0.06);
+        transition: all 0.2s ease;
+    }
+
+        .recommended-job-card:hover {
+            border-color: #2878ad;
+            box-shadow: 0 8px 20px rgba(40, 120, 173, 0.14);
+            transform: translateY(-3px);
+        }
+
+    /* ==========================
+           JOB TITLE
+           ========================== */
+
+    .recommended-job-title {
+        margin: 0 0 20px 0;
+        color: #183b56;
+        font-size: 23px;
+        font-weight: 700;
+        line-height: 1.3;
+    }
+
+    /* ==========================
+           JOB DETAILS
+           ========================== */
+
+    .recommended-job-detail {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #3d4f5c;
+        font-size: 15px;
+    }
+
+    .recommended-job-details {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 18px;
+        padding: 16px 0;
+        border-top: 1px solid #edf3f7;
+        border-bottom: 1px solid #edf3f7;
+    }
+
+    .recommended-job-detail i {
+        color: #2878ad;
+        font-size: 18px;
+    }
+
+    .detail-label {
+        color: #183b56;
+        font-weight: 700;
+    }
+
+    .detail-value {
+        color: #4f606c;
+        font-weight: 500;
+    }
+
+    /* ==========================
+           JOB DESCRIPTION
+           ========================== */
+
+    .recommended-job-description {
+        margin-top: 18px;
+        color: #66737d;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    /* ==========================
+           CARD FOOTER
+           ========================== */
+
+    .recommended-job-footer {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    /* ==========================
+           VIEW JOB BUTTON
+           ========================== */
+
+    .view-job-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: #2878ad;
+        color: #ffffff;
+        border: none;
+        border-radius: 9px;
+        padding: 10px 19px;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+        .view-job-btn:hover {
+            background: #1f628e;
+            border-color: #1f628e;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(40, 120, 173, 0.2);
+        }
 
     /* ==========================
            EMPTY STATE
@@ -230,7 +397,6 @@
         text-align: center;
         padding: 30px !important;
     }
-
 
     /* ==========================
            INTERESTS NOTICE
@@ -267,7 +433,6 @@
         margin-bottom: 15px;
     }
 
-
     /* ==========================
            RESPONSIVE
            ========================== */
@@ -296,6 +461,33 @@
         .jobseeker-table {
             min-width: 850px;
         }
+
+        .job-cards-container {
+            padding: 15px;
+            gap: 15px;
+        }
+
+        .recommended-job-card {
+            padding: 18px;
+        }
+
+        .recommended-job-title {
+            font-size: 18px;
+        }
+
+        .recommended-job-details {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .recommended-job-footer {
+            justify-content: flex-start;
+        }
+
+        .restart-tour-link {
+            margin-left: 0;
+        }
     }
 
 </style>
@@ -307,7 +499,8 @@
          PAGE HEADER
          ========================== -->
 
-    <div class="jobseeker-header">
+    <div class="jobseeker-header"
+         id="dashboardHeader">
 
         <h2>
             <i class="bi bi-speedometer2 me-2"></i>
@@ -370,7 +563,8 @@
          STATISTICS
          ========================== -->
 
-    <div class="row g-4 mb-4">
+    <div class="row g-4 mb-4"
+         id="dashboardStats">
 
         <!-- AVAILABLE JOBS -->
 
@@ -389,15 +583,6 @@
                 <h2>
                     @ViewBag.AvailableJobs
                 </h2>
-
-                <a asp-controller="Jobseeker"
-                   asp-action="Jobs"
-                   class="jobseeker-btn">
-
-                    <i class="bi bi-search me-1"></i>
-                    Find Jobs
-
-                </a>
 
             </div>
 
@@ -422,46 +607,28 @@
                     @ViewBag.Applications
                 </h2>
 
-                <a asp-controller="Jobseeker"
-                   asp-action="Applications"
-                   class="jobseeker-btn">
-
-                    <i class="bi bi-folder2-open me-1"></i>
-                    View Applications
-
-                </a>
-
             </div>
 
         </div>
 
 
-        <!-- PROFILE -->
+        <!-- NOTIFICATIONS -->
 
         <div class="col-lg-4 col-md-6">
 
             <div class="jobseeker-card">
 
                 <div class="jobseeker-card-icon">
-                    <i class="bi bi-person-circle"></i>
+                    <i class="bi bi-bell"></i>
                 </div>
 
                 <h5>
-                    Profile
+                    My Notifications
                 </h5>
 
-                <p>
-                    Update your personal information and CV.
-                </p>
-
-                <a asp-controller="Jobseeker"
-                   asp-action="Profile"
-                   class="jobseeker-btn">
-
-                    <i class="bi bi-pencil-square me-1"></i>
-                    Update Profile
-
-                </a>
+                <h2>
+                    @ViewBag.UnreadNotifications
+                </h2>
 
             </div>
 
@@ -474,7 +641,8 @@
          RECOMMENDED JOBS
          ========================== -->
 
-    <div class="jobseeker-section">
+    <div class="jobseeker-section"
+         id="recommendedJobs">
 
         <div class="jobseeker-section-header">
 
@@ -485,20 +653,27 @@
 
             <div>
 
+                <!-- UPDATE INTERESTS -->
+
                 <a asp-controller="Jobseeker"
                    asp-action="Interests"
-                   class="me-3">
+                   class="update-interests-link"
+                   id="updateInterestsLink">
 
                     <i class="bi bi-heart me-1"></i>
                     Update Interests
 
                 </a>
 
-                <a asp-controller="Jobseeker"
-                   asp-action="Jobs">
 
-                    View All
-                    <i class="bi bi-arrow-right ms-1"></i>
+                <!-- RESTART FULL TOUR -->
+
+                <a href="javascript:void(0);"
+                   id="restartJobseekerTour"
+                   class="restart-tour-link">
+
+                    <i class="bi bi-play-circle"></i>
+                    Restart Full Tour
 
                 </a>
 
@@ -512,139 +687,152 @@
              recommendedJobs != null &&
              recommendedJobs.Any())
         {
-            <div class="table-responsive">
+            <div class="job-cards-container"
+                 id="recommendedJobCards">
 
-                <table class="table jobseeker-table">
+                @foreach (var job in recommendedJobs)
+                {
+                    <div class="recommended-job-card">
 
-                    <thead>
+                        <!-- JOB TITLE -->
 
-                        <tr>
-
-                            <th>
-                                Job Title
-                            </th>
-
-                            <th>
-                                Company
-                            </th>
-
-                            <th>
-                                Location
-                            </th>
-
-                            <th>
-                                Salary
-                            </th>
-
-                            <th>
-                                Employment Type
-                            </th>
-
-                            <th>
-                                Action
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        @foreach (var job in recommendedJobs)
-                        {
-                            <tr>
-
-                                <!-- JOB TITLE -->
-
-                                <td>
-                                    <span class="job-title">
-                                        @job.JobTitle
-                                    </span>
-                                </td>
+                        <h3 class="recommended-job-title">
+                            @job.JobTitle
+                        </h3>
 
 
-                                <!-- COMPANY -->
+                        <!-- JOB DETAILS -->
 
-                                <td>
+                        <div class="recommended-job-details">
+
+                            <!-- SALARY -->
+
+                            <div class="recommended-job-detail">
+
+                                <i class="bi bi-cash-stack"></i>
+
+                                <span class="detail-label">
+                                    Salary:
+                                </span>
+
+                                <span class="detail-value">
+                                    @job.Salary
+                                </span>
+
+                            </div>
+
+
+                            <!-- EMPLOYMENT TYPE -->
+
+                            <div class="recommended-job-detail">
+
+                                <i class="bi bi-briefcase"></i>
+
+                                <span class="detail-label">
+                                    Employment:
+                                </span>
+
+                                <span class="detail-value">
+                                    @job.EmploymentType
+                                </span>
+
+                            </div>
+
+
+                            <!-- COMPANY -->
+
+                            <div class="recommended-job-detail">
+
+                                <i class="bi bi-building"></i>
+
+                                <span class="detail-label">
+                                    Company:
+                                </span>
+
+                                <span class="detail-value">
 
                                     @if (job.Recruiter?.RecruiterProfile != null &&
                                          !string.IsNullOrWhiteSpace(
                                              job.Recruiter.RecruiterProfile.CompanyName))
                                     {
-                                        <span class="company-name">
-
-                                            <i class="bi bi-building me-1"></i>
-
-                                            @job.Recruiter.RecruiterProfile.CompanyName
-
-                                        </span>
+                                        @job.Recruiter.RecruiterProfile.CompanyName
                                     }
                                     else
                                     {
-                                        <span class="text-muted">
+                                        <span>
                                             Company not provided
                                         </span>
                                     }
 
-                                </td>
+                                </span>
+
+                            </div>
 
 
-                                <!-- LOCATION -->
+                            <!-- LOCATION -->
 
-                                <td>
+                            <div class="recommended-job-detail">
 
-                                    <i class="bi bi-geo-alt me-1"></i>
+                                <i class="bi bi-geo-alt"></i>
 
+                                <span class="detail-label">
+                                    Location:
+                                </span>
+
+                                <span class="detail-value">
                                     @job.City, @job.Province
+                                </span>
 
-                                </td>
+                            </div>
 
-
-                                <!-- SALARY -->
-
-                                <td>
-                                    @job.Salary
-                                </td>
+                        </div>
 
 
-                                <!-- EMPLOYMENT TYPE -->
+                        <!-- JOB DESCRIPTION -->
 
-                                <td>
-                                    @job.EmploymentType
-                                </td>
+                        <div class="recommended-job-description">
+
+                            @if (!string.IsNullOrWhiteSpace(job.JobDescription))
+                            {
+                                if (job.JobDescription.Length > 180)
+                                {
+                                    @job.JobDescription.Substring(0, 180)
+                                    <span>...</span>
+                                }
+                                else
+                                {
+                                    @job.JobDescription
+                                }
+                            }
+                            else
+                            {
+                                <span>
+                                    No job description provided.
+                                </span>
+                            }
+
+                        </div>
 
 
-                                <!-- APPLY -->
+                        <!-- VIEW JOB BUTTON -->
 
-                                <td>
+                        <div class="recommended-job-footer">
 
-                                    <form asp-controller="Jobseeker"
-                                          asp-action="Apply"
-                                          asp-route-id="@job.JobID"
-                                          method="post"
-                                          class="d-inline">
+                            <a asp-controller="Jobseeker"
+                               asp-action="JobDetails"
+                               asp-route-id="@job.JobID"
+                               class="view-job-btn">
 
-                                        @Html.AntiForgeryToken()
+                                View Job
 
-                                        <button type="submit"
-                                                class="jobseeker-apply-btn">
+                                <i class="bi bi-arrow-right"></i>
 
-                                            <i class="bi bi-send me-1"></i>
+                            </a>
 
-                                            Apply
+                        </div>
 
-                                        </button>
-
-                                    </form>
-
-                                </td>
-
-                            </tr>
-                        }
-
-                    </tbody>
-
-                </table>
+                    </div>
+                }
 
             </div>
         }
@@ -692,3 +880,39 @@
     </div>
 
 </div>
+
+
+@section Scripts {
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const restartButton =
+                document.getElementById("restartJobseekerTour");
+
+            if (!restartButton) {
+                return;
+            }
+
+            restartButton.addEventListener("click", function () {
+
+                if (window.HirePointTour) {
+
+                    window.HirePointTour.restart();
+
+                } else {
+
+                    console.error(
+                        "HirePointTour was not loaded. Make sure ~/js/hirepoint-tour.js is included in _Layout.cshtml."
+                    );
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+}

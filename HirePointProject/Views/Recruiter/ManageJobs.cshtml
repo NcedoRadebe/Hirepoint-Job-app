@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Manage Jobs";
 
-var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
+    var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
 
 }
 
@@ -68,13 +68,13 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
         border-radius: 14px;
         padding: 25px;
         margin-bottom: 20px;
-        background: #ffffff;
+        background: #D7EBF7;
         transition: all 0.2s ease;
     }
 
         .job-item:hover {
             box-shadow: 0 7px 20px rgba(24, 59, 86, 0.10);
-            border-color: #bdd8e8;
+            border-color: #7CB7D9;
             transform: translateY(-1px);
         }
 
@@ -302,7 +302,10 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
         <!-- SUCCESS MESSAGE -->
         @if (TempData["Success"] != null)
         {
-            <div class="alert alert-success">
+            <div class="alert alert-success"
+                 data-bs-toggle="tooltip"
+                 data-bs-placement="top"
+                 title="This message confirms that your job management action was completed successfully.">
 
                 <i class="bi bi-check-circle me-2"></i>
 
@@ -315,7 +318,10 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
         <!-- ERROR MESSAGE -->
         @if (TempData["Error"] != null)
         {
-            <div class="alert alert-danger">
+            <div class="alert alert-danger"
+                 data-bs-toggle="tooltip"
+                 data-bs-placement="top"
+                 title="This message explains an error that occurred while managing your jobs.">
 
                 <i class="bi bi-exclamation-circle me-2"></i>
 
@@ -328,7 +334,10 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
         <!-- DATABASE ERROR -->
         @if (ViewBag.DbError != null)
         {
-            <div class="alert alert-danger">
+            <div class="alert alert-danger"
+                 data-bs-toggle="tooltip"
+                 data-bs-placement="top"
+                 title="A database error occurred while loading or managing your job listings.">
 
                 <strong>Database Error:</strong>
 
@@ -369,7 +378,10 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
 
                                 <div class="col-lg-9 col-md-8">
 
-                                    <div class="job-title">
+                                    <div class="job-title"
+                                         data-bs-toggle="tooltip"
+                                         data-bs-placement="top"
+                                         title="The title of this job listing.">
 
                                         @job.JobTitle
 
@@ -380,7 +392,10 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
 
                                         <!-- LOCATION -->
 
-                                        <span>
+                                        <span data-bs-toggle="tooltip"
+                                              data-bs-placement="top"
+                                              title="The city and province where this job is located.">
+
                                             <i class="bi bi-geo-alt me-1"></i>
 
                                             @job.City, @job.Province
@@ -389,7 +404,10 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
 
                                         <!-- EMPLOYMENT TYPE -->
 
-                                        <span>
+                                        <span data-bs-toggle="tooltip"
+                                              data-bs-placement="top"
+                                              title="The type of employment offered for this position.">
+
                                             <i class="bi bi-clock me-1"></i>
 
                                             @job.EmploymentType
@@ -398,7 +416,10 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
 
                                         <!-- EXPERIENCE -->
 
-                                        <span>
+                                        <span data-bs-toggle="tooltip"
+                                              data-bs-placement="top"
+                                              title="The level of work experience required for this position.">
+
                                             <i class="bi bi-person-workspace me-1"></i>
 
                                             @job.ExperienceLevel
@@ -407,7 +428,10 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
 
                                         <!-- SALARY -->
 
-                                        <span>
+                                        <span data-bs-toggle="tooltip"
+                                              data-bs-placement="top"
+                                              title="The salary or salary range offered for this position.">
+
                                             <i class="bi bi-cash me-1"></i>
 
                                             @job.Salary
@@ -416,7 +440,10 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
 
                                         <!-- DATE POSTED -->
 
-                                        <span>
+                                        <span data-bs-toggle="tooltip"
+                                              data-bs-placement="top"
+                                              title="The date this job listing was posted.">
+
                                             <i class="bi bi-calendar me-1"></i>
 
                                             Posted:
@@ -429,7 +456,10 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
                                     <!-- DESCRIPTION -->
                                     @if (!string.IsNullOrWhiteSpace(job.JobDescription))
                                     {
-                                        <div class="job-description">
+                                        <div class="job-description"
+                                             data-bs-toggle="tooltip"
+                                             data-bs-placement="top"
+                                             title="A summary of the responsibilities and duties for this job.">
 
                                             @{
                                                 var description = job.JobDescription.Trim();
@@ -449,7 +479,10 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
 
                                     <!-- CLOSING DATE -->
 
-                                    <div class="closing-date">
+                                    <div class="closing-date"
+                                         data-bs-toggle="tooltip"
+                                         data-bs-placement="top"
+                                         title="The date when applications for this job will close.">
 
                                         <i class="bi bi-calendar-x me-1"></i>
 
@@ -468,7 +501,10 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
                                             "Active",
                                             StringComparison.OrdinalIgnoreCase))
                                         {
-                                            <span class="status-badge status-active">
+                                            <span class="status-badge status-active"
+                                                  data-bs-toggle="tooltip"
+                                                  data-bs-placement="top"
+                                                  title="This job listing is currently active and available to jobseekers.">
 
                                                 <i class="bi bi-check-circle me-1"></i>
 
@@ -478,7 +514,10 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
                                         }
                                         else
                                         {
-                                            <span class="status-badge status-closed">
+                                            <span class="status-badge status-closed"
+                                                  data-bs-toggle="tooltip"
+                                                  data-bs-placement="top"
+                                                  title="This job listing is not currently active.">
 
                                                 <i class="bi bi-x-circle me-1"></i>
 
@@ -505,7 +544,10 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
                                         <a asp-controller="Recruiter"
                                            asp-action="EditJob"
                                            asp-route-id="@job.JobID"
-                                           class="edit-btn">
+                                           class="edit-btn"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="top"
+                                           title="Edit the details of this job listing.">
 
                                             <i class="bi bi-pencil-square me-1"></i>
 
@@ -514,24 +556,7 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
                                         </a>
 
 
-                                        <!-- DELETE DISABLED -->
-
-                                        <button type="button"
-                                                class="delete-btn"
-                                                disabled
-                                                title="Jobs cannot be deleted">
-
-                                            <i class="bi bi-trash me-1"></i>
-
-                                            Delete
-
-                                        </button>
-
-                                        <div class="delete-info">
-
-                                            Jobs cannot be deleted.
-
-                                        </div>
+                                       
 
                                     </div>
 
@@ -568,3 +593,20 @@ var jobs = Model?.ToList() ?? new List<HirePoint.Models.Job>();
     </div>
 
 </div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const tooltipTriggerList =
+            document.querySelectorAll('[data-bs-toggle="tooltip"]');
+
+        tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+
+            new bootstrap.Tooltip(tooltipTriggerEl);
+
+        });
+
+    });
+
+</script>

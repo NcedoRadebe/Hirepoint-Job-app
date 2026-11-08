@@ -6,9 +6,10 @@
 
 <style>
     .hirepoint-post-page {
-        background: #cfe3f7;
+        background: #ffffff;
         min-height: 100vh;
         padding: 40px 20px 60px;
+        border-radius: 20px;
     }
 
     .hirepoint-container {
@@ -34,9 +35,9 @@
         }
 
     .job-form-wrapper {
-        background: #fff;
+        background: #D7EBF7;
         border: 1px solid #d3e0eb;
-        border-radius: 12px;
+        border-radius: 20px;
         box-shadow: 0 6px 20px rgba(31, 59, 87, .08);
         overflow: hidden;
     }
@@ -192,7 +193,7 @@
 
     .cancel-button {
         min-height: 46px;
-        border: 1px solid #ccd9e4;
+        border: 1px solid #AFBFCC;
         border-radius: 7px;
         background: #fff;
         color: #326b9d;
@@ -206,7 +207,7 @@
     }
 
         .cancel-button:hover {
-            background: #eef5fa;
+            background: #AFBFCC;
             color: #285a85;
             text-decoration: none;
         }
@@ -261,8 +262,11 @@
     <div class="hirepoint-container">
 
         <div class="page-heading">
+            <h1>
+                <i class="bi bi-plus-circle"></i>
 
-            <h1>Post a Job</h1>
+                Post a Job
+            </h1>
 
             <p>
                 Create and publish a new job listing.
@@ -339,7 +343,10 @@
 
                                     <input asp-for="JobTitle"
                                            class="form-control"
-                                           placeholder="e.g. Software Developer" />
+                                           placeholder="e.g. Software Developer"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="top"
+                                           title="Enter the title of the position you are advertising, such as Software Developer." />
 
                                     <span asp-validation-for="JobTitle"
                                           class="text-danger validation-message">
@@ -366,7 +373,10 @@
                                     </label>
 
                                     <select asp-for="EmploymentType"
-                                            class="form-select">
+                                            class="form-select"
+                                            data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="Select whether the position is Full Time, Part Time, or an Internship.">
 
                                         <option value="">
                                             Select employment type
@@ -418,7 +428,10 @@
                                            class="form-control"
                                            value="@ViewBag.Qualification"
                                            placeholder="e.g. Bachelor of Computer Science"
-                                           autocomplete="off" />
+                                           autocomplete="off"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="top"
+                                           title="Enter the qualification preferred or required for this position. This field is optional." />
 
                                     <span class="text-danger validation-message">
 
@@ -485,7 +498,10 @@
                                     </label>
 
                                     <select asp-for="Province"
-                                            class="form-select">
+                                            class="form-select"
+                                            data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="Select the province where the job is located.">
 
                                         <option value="">
                                             Select province
@@ -529,7 +545,10 @@
 
                                     <input asp-for="City"
                                            class="form-control"
-                                           placeholder="e.g. Gqeberha" />
+                                           placeholder="e.g. Gqeberha"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="top"
+                                           title="Enter the city where the job is located. For example, Gqeberha." />
 
                                     <span asp-validation-for="City"
                                           class="text-danger validation-message">
@@ -557,7 +576,10 @@
 
                                     <input asp-for="Salary"
                                            class="form-control"
-                                           placeholder="e.g. R25,000 - R35,000 per month" />
+                                           placeholder="e.g. R25,000 - R35,000 per month"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="top"
+                                           title="Enter the salary or salary range offered for the position." />
 
                                     <span asp-validation-for="Salary"
                                           class="text-danger validation-message">
@@ -584,7 +606,10 @@
                                     </label>
 
                                     <select asp-for="ExperienceLevel"
-                                            class="form-select">
+                                            class="form-select"
+                                            data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="Select the level of work experience required for the position.">
 
                                         <option value="">
                                             Select experience
@@ -651,7 +676,10 @@
                                     <input asp-for="ClosingDate"
                                            type="date"
                                            class="form-control"
-                                           min="@DateTime.Today.ToString("yyyy-MM-dd")" />
+                                           min="@DateTime.Today.ToString("yyyy-MM-dd")"
+                                           data-bs-toggle="tooltip"
+                                           data-bs-placement="top"
+                                           title="Select the date when applications for this job will close." />
 
                                     <span asp-validation-for="ClosingDate"
                                           class="text-danger validation-message">
@@ -709,7 +737,10 @@
                             <textarea asp-for="JobDescription"
                                       class="form-control"
                                       rows="7"
-                                      placeholder="Describe the role, responsibilities and daily duties..."></textarea>
+                                      placeholder="Describe the role, responsibilities and daily duties..."
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="Describe the role, responsibilities, and typical duties the successful candidate will perform."></textarea>
 
                             <span asp-validation-for="JobDescription"
                                   class="text-danger validation-message">
@@ -759,7 +790,10 @@
                             <textarea asp-for="Requirements"
                                       class="form-control"
                                       rows="7"
-                                      placeholder="Qualifications, skills, experience and certifications..."></textarea>
+                                      placeholder="Qualifications, skills, experience and certifications..."
+                                      data-bs-toggle="tooltip"
+                                      data-bs-placement="top"
+                                      title="List the qualifications, skills, experience, certifications, or other requirements candidates should have."></textarea>
 
                             <span asp-validation-for="Requirements"
                                   class="text-danger validation-message">
@@ -787,7 +821,10 @@
 
                         <a asp-controller="Recruiter"
                            asp-action="ManageJobs"
-                           class="cancel-button">
+                           class="cancel-button"
+                           data-bs-toggle="tooltip"
+                           data-bs-placement="top"
+                           title="Cancel creating this job and return to Manage Jobs.">
 
                             <i class="bi bi-x-circle me-1"></i>
 
@@ -797,7 +834,10 @@
 
 
                         <button type="submit"
-                                class="publish-button">
+                                class="publish-button"
+                                data-bs-toggle="tooltip"
+                                data-bs-placement="top"
+                                title="Submit and publish this job listing.">
 
                             <i class="bi bi-send me-1"></i>
 
@@ -816,6 +856,23 @@
     </div>
 
 </div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const tooltipTriggerList =
+            document.querySelectorAll('[data-bs-toggle="tooltip"]');
+
+        tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+
+            new bootstrap.Tooltip(tooltipTriggerEl);
+
+        });
+
+    });
+
+</script>
 
 @section Scripts {
 

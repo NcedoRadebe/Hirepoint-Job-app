@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Recruiter Approval Pending";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6">
+
+            <div class="card shadow-sm">
+                <div class="card-body text-center p-5">
+
+                    <div class="mb-4">
+                        <div class="display-4 text-warning">
+                            <i class="bi bi-hourglass-split"></i>
+                        </div>
+                    </div>
+
+                    <h2 class="mb-3">
+                        Registration Awaiting Approval
+                    </h2>
+
+                    <p class="text-muted">
+                        Your recruiter registration has been received
+                        successfully.
+                    </p>
+
+                    <p class="text-muted">
+                        Before your recruiter account can be approved,
+                        your company representative must confirm that
+                        they know you.
+                    </p>
+
+                    <div class="alert alert-info mt-4">
+                        <strong>What happens next?</strong>
+                        <br />
+                        A verification request will be sent to the
+                        company representative whose details you provided
+                        during registration.
+                    </div>
+
+                    <p class="text-muted mt-4 mb-0">
+                        Please contact your company representative and
+                        ask them to respond to the HirePoint verification
+                        request.
+                    </p>
+
+                    <div class="mt-4">
+                        <a asp-controller="Account"
+                           asp-action="Login"
+                           class="btn btn-primary">
+                            Return to Login
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

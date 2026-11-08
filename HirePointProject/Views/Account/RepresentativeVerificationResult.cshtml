@@ -1,0 +1,62 @@
+﻿@model bool
+
+@{
+    ViewData["Title"] = "Representative Verification";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6">
+
+            <div class="card shadow-sm">
+                <div class="card-body text-center p-5">
+
+                    @if (Model)
+                    {
+                        <div class="mb-4">
+                            <div class="display-4 text-success">
+                                <i class="bi bi-check-circle-fill"></i>
+                            </div>
+                        </div>
+
+                        <h2 class="mb-3">
+                            Thank You
+                        </h2>
+
+                        <p class="text-muted mb-0">
+                            Your response has been recorded successfully.
+                        </p>
+
+                        <p class="text-muted">
+                            The HirePoint administrator has been notified
+                            of your response.
+                        </p>
+                    }
+                    else
+                    {
+                        <div class="mb-4">
+                            <div class="display-4 text-danger">
+                                <i class="bi bi-exclamation-circle-fill"></i>
+                            </div>
+                        </div>
+
+                        <h2 class="mb-3">
+                            Verification Link Invalid
+                        </h2>
+
+                        <p class="text-muted mb-0">
+                            This verification link is invalid or has expired.
+                        </p>
+
+                        <p class="text-muted">
+                            Please contact the person who sent you the
+                            verification request if you believe this is an error.
+                        </p>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

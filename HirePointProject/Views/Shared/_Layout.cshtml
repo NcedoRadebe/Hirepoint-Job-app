@@ -69,7 +69,7 @@
             .dashboard-sidebar {
                 width: 250px;
                 min-height: 100vh;
-                background: #183b56;
+            background: #2878ad;
                 color: white;
                 position: fixed;
                 left: 0;
@@ -190,7 +190,7 @@
 
 
                     .dashboard-nav a.active {
-                        background: #2878ad;
+                    background: #BBF2EC;
                         color: white;
                         box-shadow: 0 4px 10px rgba(40, 120, 173, 0.25);
                     }
@@ -227,7 +227,7 @@
 
 
                     .dashboard-logout a:hover {
-                        background: rgba(220, 53, 69, 0.18);
+                        background: rgba(255, 3, 74, 0.90);
                         color: #ff6b78;
                     }
 
@@ -582,6 +582,12 @@
 
                         </a>
 
+                        <a asp-controller="Admin"
+                           asp-action="RecruiterApprovals">
+                            <i class="bi bi-person-check"></i>
+                            <span>Request Approvals</span>
+                        </a>
+
 
                         <a asp-controller="Admin"
                            asp-action="JobListings">
@@ -793,32 +799,158 @@
             <div class="dashboard-content">
 
 
-                <!-- TOP BAR -->
-
                 <div class="dashboard-topbar">
 
-                    <h4>
-                        HirePoint Portal
-                    </h4>
+                    <!-- LEFT SIDE -->
+                    <div class="dashboard-topbar-left">
+
+                        <h4>
+                            @ViewData["Title"]
+                        </h4>
+
+                    </div>
 
 
-                    <div class="dashboard-user">
+                    <!-- RIGHT SIDE -->
+                    <div class="dashboard-topbar-right">
 
-                        <i class="bi bi-person-circle"></i>
+                        <!-- HELP -->
+                        <div class="hp-help-wrapper">
 
-                        <span>
+                            <button type="button"
+                                    class="hp-help-button"
+                                    id="hpHelpButton"
+                                    aria-expanded="false">
 
-                            Welcome,
-                            <strong>
-                                @Context.Session.GetString("UserName")
-                            </strong>
+                                <i class="bi bi-question-circle"></i>
 
-                        </span>
+                                <span>Help</span>
+
+                                <i class="bi bi-chevron-down hp-help-chevron"></i>
+
+                            </button>
+
+
+                            <!-- HELP DROPDOWN -->
+                            <div class="hp-help-dropdown"
+                                 id="hpHelpDropdown">
+
+                                <div class="hp-help-dropdown-header">
+
+                                    <div class="hp-help-dropdown-icon">
+
+                                        <i class="bi bi-life-preserver"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <strong>HirePoint Help</strong>
+
+                                        <small>
+                                            How can we help?
+                                        </small>
+
+                                    </div>
+
+                                </div>
+
+
+                                <a asp-controller="Help"
+                                   asp-action="UserGuide"
+                                   class="hp-help-dropdown-item">
+
+                                    <span class="hp-dropdown-item-icon">
+                                        <i class="bi bi-compass"></i>
+                                    </span>
+
+                                    <span>
+                                        <strong>User Guide</strong>
+                                        <small>
+                                            Take or replay the tour
+                                        </small>
+                                    </span>
+
+                                </a>
+
+
+                                <a asp-controller="Help"
+                                   asp-action="Index"
+                                   class="hp-help-dropdown-item">
+
+                                    <span class="hp-dropdown-item-icon">
+                                        <i class="bi bi-question-circle"></i>
+                                    </span>
+
+                                    <span>
+                                        <strong>Help Centre</strong>
+                                        <small>
+                                            Browse help topics
+                                        </small>
+                                    </span>
+
+                                </a>
+
+
+                                <a asp-controller="Help"
+                                   asp-action="FAQs"
+                                   class="hp-help-dropdown-item">
+
+                                    <span class="hp-dropdown-item-icon">
+                                        <i class="bi bi-chat-left-text"></i>
+                                    </span>
+
+                                    <span>
+                                        <strong>FAQs</strong>
+                                        <small>
+                                            Common questions
+                                        </small>
+                                    </span>
+
+                                </a>
+
+
+                                <a asp-controller="Help"
+                                   asp-action="Troubleshooting"
+                                   class="hp-help-dropdown-item">
+
+                                    <span class="hp-dropdown-item-icon">
+                                        <i class="bi bi-tools"></i>
+                                    </span>
+
+                                    <span>
+                                        <strong>Troubleshooting</strong>
+                                        <small>
+                                            Fix common problems
+                                        </small>
+                                    </span>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- USER -->
+                        <div class="dashboard-user">
+
+                            <i class="bi bi-person-circle"></i>
+
+                            <span>
+
+                                Welcome,
+                                <strong>
+                                    @Context.Session.GetString("UserName")
+                                </strong>
+
+                            </span>
+
+                        </div>
 
                     </div>
 
                 </div>
-
 
                 <!-- PAGE -->
 
@@ -928,15 +1060,87 @@
     </div>
 
 
-    <!-- JAVASCRIPT -->
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- HirePoint Shared Tour Engine -->
+    <script src="~/js/hirepoint-tour.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 
-</body>
 
-</html>
+    <script>
+
+            document.addEventListener(
+                "DOMContentLoaded",
+                function () {
+
+                    const helpButton =
+                        document.getElementById("hpHelpButton");
+
+                    const helpDropdown =
+                        document.getElementById("hpHelpDropdown");
+
+
+                    if (!helpButton || !helpDropdown) {
+                        return;
+                    }
+
+
+                    helpButton.addEventListener(
+                        "click",
+                        function (event) {
+
+                            event.preventDefault();
+                            event.stopPropagation();
+
+
+                            const isOpen =
+                                helpDropdown.classList.contains("show");
+
+
+                            helpDropdown.classList.toggle(
+                                "show",
+                                !isOpen
+                            );
+
+
+                            helpButton.setAttribute(
+                                "aria-expanded",
+                                (!isOpen).toString()
+                            );
+
+                        }
+                    );
+
+
+                    document.addEventListener(
+                        "click",
+                        function (event) {
+
+                            if (
+                                !helpButton.contains(event.target) &&
+                                !helpDropdown.contains(event.target)
+                            ) {
+
+                                helpDropdown.classList.remove(
+                                    "show"
+                                );
+
+
+                                helpButton.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                            }
+
+                        }
+                    );
+
+                }
+            );
+
+    </script>
+</body>

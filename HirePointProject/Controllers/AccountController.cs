@@ -16,9 +16,9 @@ namespace HirePoint.Controllers
         private readonly HirePointDbContext db;
         private readonly IEmailService emailService;
 
-    public AccountController(
-        HirePointDbContext context,
-        IEmailService emailService)
+        public AccountController(
+            HirePointDbContext context,
+            IEmailService emailService)
         {
             db = context;
             this.emailService = emailService;
@@ -104,6 +104,28 @@ namespace HirePoint.Controllers
             }
 
 
+
+            
+
+
+            // =====================================================
+            // EMAIL VERIFICATION
+            // =====================================================
+
+            if (!user.EmailConfirmed)
+            {
+                TempData["Error"] =
+                    "Please verify your email before logging in.";
+
+                return RedirectToAction(
+                    "VerifyEmail",
+                    new
+                    {
+                        email = user.Email
+                    });
+            }
+
+
             // =====================================================
             // RECRUITER APPROVAL
             // =====================================================
@@ -116,13 +138,11 @@ namespace HirePoint.Controllers
                     "Recruiter",
                     StringComparison.OrdinalIgnoreCase);
 
-            if (isRecruiter && !user.IsApproved)
+            if (isRecruiter &&
+    !user.IsApproved)
             {
-                ModelState.AddModelError(
-                    string.Empty,
-                    "Your recruiter account is awaiting approval by a Company Administrator.");
-
-                return View(model);
+                return RedirectToAction(
+                    "RecruiterPendingApproval");
             }
 
 
@@ -167,25 +187,6 @@ namespace HirePoint.Controllers
 
                 return View(model);
             }
-
-
-            // =====================================================
-            // EMAIL VERIFICATION
-            // =====================================================
-
-            if (!user.EmailConfirmed)
-            {
-                TempData["Error"] =
-                    "Please verify your email before logging in.";
-
-                return RedirectToAction(
-                    "VerifyEmail",
-                    new
-                    {
-                        email = user.Email
-                    });
-            }
-
 
             // =====================================================
             // CREATE SESSION
@@ -283,6 +284,15 @@ namespace HirePoint.Controllers
             return View(model);
         }
 
+        // =========================================================
+        // RECRUITER PENDING APPROVAL
+        // =========================================================
+
+        [HttpGet]
+        public IActionResult RecruiterPendingApproval()
+        {
+            return View();
+        }
 
         // =========================================================
         // REGISTER - GET
@@ -471,20 +481,33 @@ namespace HirePoint.Controllers
 
                 // =================================================
                 // PASSWORD
+                // JOBSEEKER ONLY
                 // =================================================
 
-                // Do NOT trim passwords.
+                // Recruiters do not create a password during registration.
+                // Their password is created only after representative
+                // verification and administrator approval.
+
                 string password =
                     model.Password ?? string.Empty;
 
-                if (string.IsNullOrWhiteSpace(password))
-                {
-                    ModelState.AddModelError(
-                        nameof(model.Password),
-                        "Password is required.");
+                string passwordHash =
+                    string.Empty;
 
-                    LoadProvinces(model);
-                    return View(model);
+                if (isJobseeker)
+                {
+                    if (string.IsNullOrWhiteSpace(password))
+                    {
+                        ModelState.AddModelError(
+                            nameof(model.Password),
+                            "Password is required for jobseeker accounts.");
+
+                        LoadProvinces(model);
+                        return View(model);
+                    }
+
+                    passwordHash =
+                        HashPassword(password);
                 }
 
 
@@ -501,7 +524,7 @@ namespace HirePoint.Controllers
                         email,
 
                     PasswordHash =
-                        HashPassword(password),
+                        passwordHash,
 
                     PhoneNumber =
                         (model.PhoneNumber ?? string.Empty).Trim(),
@@ -572,7 +595,19 @@ namespace HirePoint.Controllers
                                 string.IsNullOrWhiteSpace(
                                     model.Website)
                                     ? null
-                                    : model.Website.Trim()
+                                    : model.Website.Trim(),
+
+                            RepresentativeName =
+                                string.IsNullOrWhiteSpace(
+                                    model.RepresentativeName)
+                                    ? null
+                                    : model.RepresentativeName.Trim(),
+
+                            RepresentativeEmail =
+                                string.IsNullOrWhiteSpace(
+                                    model.RepresentativeEmail)
+                                    ? null
+                                    : model.RepresentativeEmail.Trim()
                         };
 
                     db.RecruiterProfiles.Add(profile);
@@ -922,7 +957,149 @@ namespace HirePoint.Controllers
 
             return RedirectToAction(
                 "Login");
+        }  
+// =========================================================
+// CREATE PASSWORD - GET
+// =========================================================
+
+        [HttpGet]
+        public IActionResult CreatePassword(int id,string token)
+        {
+            if (id <= 0 || string.IsNullOrWhiteSpace(token))
+            {
+                return View("CreatePasswordExpired");
+            }
+
+            string tokenHash =
+                Convert.ToHexString(
+                    SHA256.HashData(
+                        Encoding.UTF8.GetBytes(token)));
+
+            var passwordToken =
+                db.PasswordResetTokens
+                    .Include(x => x.User)
+                    .FirstOrDefault(x =>
+                        x.UserID == id &&
+                        x.TokenHash == tokenHash &&
+                        x.UsedAt == null &&
+                        x.ExpiresAt > DateTime.UtcNow);
+
+            if (passwordToken == null ||
+                passwordToken.User == null)
+            {
+                return View("CreatePasswordExpired");
+            }
+
+            var user = passwordToken.User;
+
+            if (!string.Equals(
+                    user.UserType,
+                    "Recruiter",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                return View("CreatePasswordExpired");
+            }
+
+            if (!user.IsApproved ||
+                !string.Equals(
+                    user.Status,
+                    "Active",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                return View("CreatePasswordExpired");
+            }
+
+            var model = new CreatePasswordViewModel
+            {
+                UserID = user.UserID,
+                Token = token
+            };
+
+            return View(model);
         }
+
+
+        // =========================================================
+        // CREATE PASSWORD - POST
+        // =========================================================
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreatePassword( CreatePasswordViewModel model)
+
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if (model.UserID <= 0 ||
+                string.IsNullOrWhiteSpace(model.Token))
+            {
+                return View("CreatePasswordExpired");
+            }
+
+            string tokenHash =
+                Convert.ToHexString(
+                    SHA256.HashData(
+                        Encoding.UTF8.GetBytes(model.Token)));
+
+            var passwordToken =
+                db.PasswordResetTokens
+                    .Include(x => x.User)
+                    .FirstOrDefault(x =>
+                        x.UserID == model.UserID &&
+                        x.TokenHash == tokenHash &&
+                        x.UsedAt == null &&
+                        x.ExpiresAt > DateTime.UtcNow);
+
+            if (passwordToken == null ||
+                passwordToken.User == null)
+            {
+                return View("CreatePasswordExpired");
+            }
+
+            var user = passwordToken.User;
+
+            if (!string.Equals(
+                    user.UserType,
+                    "Recruiter",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                return View("CreatePasswordExpired");
+            }
+
+            if (!user.IsApproved ||
+                !string.Equals(
+                    user.Status,
+                    "Active",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                return View("CreatePasswordExpired");
+            }
+
+            // ---------------------------------------------------------
+            // SAVE NEW PASSWORD
+            // ---------------------------------------------------------
+
+            user.PasswordHash =
+                HashPassword(model.NewPassword);
+
+            // ---------------------------------------------------------
+            // TOKEN CAN ONLY BE USED ONCE
+            // ---------------------------------------------------------
+
+            passwordToken.UsedAt =
+                DateTime.UtcNow;
+
+            db.SaveChanges();
+
+            TempData["Success"] =
+                "Your password has been created successfully. You can now log in.";
+
+            return RedirectToAction("Login");
+        }
+
 
 
         // =========================================================
@@ -991,17 +1168,13 @@ namespace HirePoint.Controllers
             // =====================================================
 
             if (user.UserType != null &&
-                user.UserType.Equals(
-                    "Recruiter",
-                    StringComparison.OrdinalIgnoreCase) &&
-                !user.IsApproved)
+    user.UserType.Equals(
+        "Recruiter",
+        StringComparison.OrdinalIgnoreCase) &&
+    !user.IsApproved)
             {
-                TempData["Success"] =
-                    "Your email has been verified successfully. " +
-                    "Your recruiter account is now awaiting approval by a Company Administrator.";
-
                 return RedirectToAction(
-                    "Login");
+                    "RecruiterPendingApproval");
             }
 
 
@@ -1017,6 +1190,146 @@ namespace HirePoint.Controllers
                 "Login");
         }
 
+        // =========================================================
+        // REPRESENTATIVE RESPONSE
+        // =========================================================
+
+        
+
+        [HttpGet]
+        public async Task<IActionResult> RepresentativeResponse(
+            int id,
+            string token,
+            string response)
+        {
+            if (string.IsNullOrWhiteSpace(token) ||
+                string.IsNullOrWhiteSpace(response))
+            {
+                return View(
+                    "RepresentativeVerificationResult",
+                    false);
+            }
+            var recruiter =
+                   await db.Users
+                    .Include(x => x.RecruiterProfile)
+                    .FirstOrDefaultAsync(x =>
+                        x.UserID == id &&
+                        x.UserType != null &&
+                        x.UserType.ToLower() == "recruiter");
+
+            if (recruiter == null ||
+                recruiter.RecruiterProfile == null)
+            {
+                return View(
+                    "RepresentativeVerificationResult",
+                    false);
+            }
+
+
+
+            var recruiterProfile =
+                recruiter.RecruiterProfile;
+
+
+            // =====================================================
+            // TOKEN MUST EXIST
+            // =====================================================
+
+            if (string.IsNullOrWhiteSpace(
+                    recruiterProfile.RepresentativeVerificationTokenHash))
+            {
+                return View(
+                    "RepresentativeVerificationResult",
+                    false);
+            }
+
+
+            // =====================================================
+            // TOKEN MUST NOT BE EXPIRED
+            // =====================================================
+
+            if (!recruiterProfile
+                    .RepresentativeVerificationExpiresAt
+                    .HasValue ||
+                recruiterProfile
+                    .RepresentativeVerificationExpiresAt
+                    .Value <= DateTime.UtcNow)
+            {
+                return View(
+                    "RepresentativeVerificationResult",
+                    false);
+            }
+
+
+            // =====================================================
+            // HASH TOKEN
+            // =====================================================
+
+            string tokenHash =
+                Convert.ToHexString(
+                    SHA256.HashData(
+                        Encoding.UTF8.GetBytes(token)));
+
+
+            // =====================================================
+            // VALIDATE TOKEN
+            // =====================================================
+
+            if (!string.Equals(
+                    tokenHash,
+                    recruiterProfile.RepresentativeVerificationTokenHash,
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                return View(
+                    "RepresentativeVerificationResult",
+                    false);
+            }
+
+
+            // =====================================================
+            // PROCESS RESPONSE
+            // =====================================================
+
+            if (response.Equals(
+                    "know",
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                recruiterProfile.RepresentativeVerificationStatus =
+                    "Verified";
+            }
+            else if (response.Equals(
+                         "dontknow",
+                         StringComparison.OrdinalIgnoreCase))
+            {
+                recruiterProfile.RepresentativeVerificationStatus =
+                    "Not Verified";
+            }
+            else
+            {
+                return View(
+                    "RepresentativeVerificationResult",
+                    false);
+            }
+
+
+            // =====================================================
+            // ONE-TIME TOKEN
+            // =====================================================
+
+            recruiterProfile.RepresentativeVerificationTokenHash =
+                null;
+
+            recruiterProfile.RepresentativeVerificationExpiresAt =
+                null;
+
+
+            await db.SaveChangesAsync();
+
+
+            return View(
+                "RepresentativeVerificationResult",
+                true);
+        }
 
         // =========================================================
         // LOGOUT
@@ -1085,5 +1398,5 @@ namespace HirePoint.Controllers
             return builder.ToString();
         }
     }
-
 }
+

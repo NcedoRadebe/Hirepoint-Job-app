@@ -7,8 +7,8 @@
 <style>
 
     /* =========================
-           NOTIFICATIONS PAGE
-           ========================= */
+               NOTIFICATIONS PAGE
+               ========================= */
 
     .notifications-page {
         background: var(--jobseeker-bg, #f5f7f6);
@@ -18,10 +18,9 @@
 
 
     /* =========================
-           HEADER
-           ========================= */
+               HEADER
+               ========================= */
 
-   
     .notifications-header {
         background: var(--jobseeker-primary, #2878ad);
         color: #fff;
@@ -33,7 +32,7 @@
     }
 
         .notifications-header:hover {
-            background: var(--jobseeker-primary-hover,#2878ad));
+            background: var(--jobseeker-primary-hover, #2878ad);
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0,0,0,.12);
         }
@@ -50,8 +49,8 @@
 
 
     /* =========================
-           DASHBOARD BUTTON
-           ========================= */
+               DASHBOARD BUTTON
+               ========================= */
 
     .notifications-dashboard-btn {
         color: #fff;
@@ -73,8 +72,8 @@
 
 
     /* =========================
-           MAIN CARD
-           ========================= */
+               MAIN NOTIFICATIONS CARD
+               ========================= */
 
     .notifications-card {
         background: #fff;
@@ -90,54 +89,18 @@
 
 
     /* =========================
-           CARD HEADER
-           ========================= */
-
-    .notifications-card-header {
-        background: var(--jobseeker-primary, #2878ad);
-        color: #fff;
-        padding: 20px 25px;
-    }
-
-        .notifications-card-header h5 {
-            font-weight: 700;
-            margin-bottom: 3px;
-        }
-
-        .notifications-card-header small {
-            opacity: .9;
-        }
-
-
-    /* =========================
-           COUNT
-           ========================= */
-
-    .notifications-count {
-        background: rgba(255,255,255,.95);
-        color: var(--jobseeker-primary, #2878ad));
-        padding: 7px 13px;
-        border-radius: 20px;
-        font-weight: 700;
-        transition: .25s ease;
-    }
-
-        .notifications-count:hover {
-            background: var(--jobseeker-primary-hover,#2878ad);
-            color: #fff;
-            transform: scale(1.05);
-        }
-
-
-    /* =========================
-           NOTIFICATION ITEM
-           ========================= */
+               NOTIFICATION ITEM
+               ========================= */
 
     .notification-item {
+        display: block;
         padding: 22px 25px;
         border-bottom: 1px solid #e9ecef;
         background: #fff;
+        text-decoration: none;
+        color: inherit;
         transition: .25s ease;
+        cursor: pointer;
     }
 
         .notification-item:last-child {
@@ -148,26 +111,28 @@
             background: var(--jobseeker-hover-bg, #eef5f2);
             transform: translateX(4px);
             box-shadow: inset 4px 0 0 var(--jobseeker-primary, #2878ad);
+            text-decoration: none;
+            color: inherit;
         }
 
 
     /* =========================
-           UNREAD
-           ========================= */
+               UNREAD NOTIFICATION
+               ========================= */
 
     .notification-unread {
-        background: var(--jobseeker-hover-bg, #eef5f2);
-        box-shadow: inset 4px 0 0 var(--jobseeker-primary, #2878ad);
+        background: #eaf5fc;
+        box-shadow: inset 4px 0 0 #2878ad;
     }
 
         .notification-unread:hover {
-            background: var(--jobseeker-hover-bg-dark, #e3eee9);
+            background: #e0f0fa;
         }
 
 
     /* =========================
-           ICON
-           ========================= */
+               ICON
+               ========================= */
 
     .notification-icon {
         width: 50px;
@@ -186,14 +151,14 @@
 
 
     .notification-icon-default {
-        background: var(--jobseeker-hover-bg, #eef5f2);
-        color: var(--jobseeker-primary, #2f6f5e);
+        background: #eef5f2;
+        color: #2878ad;
     }
 
 
     .notification-icon-success {
         background: #e8f4ed;
-        color: var(--jobseeker-primary, #2878ad);
+        color: #2878ad;
     }
 
 
@@ -204,14 +169,14 @@
 
 
     .notification-icon-interview {
-        background: var(--jobseeker-hover-bg, #eef5f2);
-        color: var(--jobseeker-primary, #2878ad));
+        background: #eef5f2;
+        color: #2878ad;
     }
 
 
     /* =========================
-           TITLE
-           ========================= */
+               TITLE
+               ========================= */
 
     .notification-title {
         font-weight: 700;
@@ -226,8 +191,8 @@
 
 
     /* =========================
-           MESSAGE
-           ========================= */
+               MESSAGE
+               ========================= */
 
     .notification-message {
         color: #6c757d;
@@ -237,8 +202,21 @@
 
 
     /* =========================
-           DATE
-           ========================= */
+               UNREAD TEXT
+               ========================= */
+
+    .notification-unread .notification-title {
+        color: #183b56;
+    }
+
+    .notification-unread .notification-message {
+        color: #495057;
+    }
+
+
+    /* =========================
+               DATE
+               ========================= */
 
     .notification-date {
         color: #8a9290;
@@ -248,28 +226,8 @@
 
 
     /* =========================
-           NEW BADGE
-           ========================= */
-
-    .notification-new {
-        background: var(--jobseeker-primary,#2878ad);
-        color: #fff;
-        font-size: 10px;
-        font-weight: 700;
-        padding: 4px 9px;
-        border-radius: 20px;
-        transition: .2s ease;
-    }
-
-        .notification-new:hover {
-            background: var(--jobseeker-primary-hover, #2878ad));
-            transform: scale(1.05);
-        }
-
-
-    /* =========================
-           EMPTY STATE
-           ========================= */
+               EMPTY STATE
+               ========================= */
 
     .notifications-empty {
         background: #fff;
@@ -293,24 +251,23 @@
         align-items: center;
         justify-content: center;
         border-radius: 50%;
-        background: var(--jobseeker-hover-bg, #eef5f2);
-        color: var(--jobseeker-primary, #2f6f5e);
+        background: #eef5f2;
+        color: #2878ad;
         font-size: 35px;
         margin-bottom: 20px;
         transition: .25s ease;
     }
 
-    .notifications-empty:hover
-    .notifications-empty-icon {
-        background: var(--jobseeker-primary, #2878ad);
+    .notifications-empty:hover .notifications-empty-icon {
+        background: #2878ad;
         color: #fff;
         transform: scale(1.08);
     }
 
 
     /* =========================
-           MAIN BUTTON
-           ========================= */
+               MAIN BUTTON
+               ========================= */
 
     .notifications-btn {
         background: var(--jobseeker-primary, #2878ad);
@@ -325,8 +282,8 @@
     }
 
         .notifications-btn:hover {
-            background: var(--jobseeker-primary-hover, #2878ad));
-            border-color: var(--jobseeker-primary-hover, #255a4d);
+            background: var(--jobseeker-primary-hover, #2878ad);
+            border-color: var(--jobseeker-primary-hover, #2878ad);
             color: #fff;
             transform: translateY(-2px);
             box-shadow: 0 5px 12px rgba(0,0,0,.12);
@@ -334,8 +291,8 @@
 
 
     /* =========================
-           MOBILE
-           ========================= */
+               MOBILE
+               ========================= */
 
     @@media (max-width: 767px) {
 
@@ -362,14 +319,14 @@
 
 </style>
 
+
 <div class="notifications-page">
 
     <div class="container-fluid">
 
-
         <!-- =========================
-         HEADER
-         ========================= -->
+             MAIN HEADER
+             ========================= -->
 
         <div class="notifications-header">
 
@@ -395,7 +352,10 @@
 
                 <a asp-controller="Jobseeker"
                    asp-action="Dashboard"
-                   class="notifications-dashboard-btn">
+                   class="notifications-dashboard-btn"
+                   data-bs-toggle="tooltip"
+                   data-bs-placement="top"
+                   title="Return to your Jobseeker Dashboard.">
 
                     <i class="bi bi-arrow-left me-2"></i>
 
@@ -412,8 +372,8 @@
         {
 
             <!-- =========================
-             EMPTY STATE
-             ========================= -->
+                 EMPTY STATE
+                 ========================= -->
 
             <div class="notifications-empty">
 
@@ -436,7 +396,10 @@
 
                 <a asp-controller="Jobseeker"
                    asp-action="Applications"
-                   class="notifications-btn">
+                   class="notifications-btn"
+                   data-bs-toggle="tooltip"
+                   data-bs-placement="top"
+                   title="View and track your job applications.">
 
                     <i class="bi bi-file-earmark-text me-2"></i>
 
@@ -451,45 +414,11 @@
         {
 
             <!-- =========================
-             NOTIFICATIONS
-             ========================= -->
+                 NOTIFICATION LIST
+                 ========================= -->
 
             <div class="notifications-card">
 
-
-                <div class="notifications-card-header">
-
-                    <div class="d-flex
-                        justify-content-between
-                        align-items-center">
-
-                        <div>
-
-                            <h5>
-                                Your Notifications
-                            </h5>
-
-                            <small>
-                                Recent updates from recruiters.
-                            </small>
-
-                        </div>
-
-
-                        <span class="notifications-count">
-
-                            @Model.Count()
-
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =========================
-                 LIST
-                 ========================= -->
                 @foreach (var notification in Model)
                 {
 
@@ -504,8 +433,7 @@
                             "Accepted",
                             StringComparison.OrdinalIgnoreCase))
                     {
-                        icon =
-                            "bi-check-circle-fill";
+                        icon = "bi-check-circle-fill";
 
                         iconClass =
                             "notification-icon-success";
@@ -516,8 +444,7 @@
                                  "Rejected",
                                  StringComparison.OrdinalIgnoreCase))
                     {
-                        icon =
-                            "bi-x-circle-fill";
+                        icon = "bi-x-circle-fill";
 
                         iconClass =
                             "notification-icon-danger";
@@ -536,13 +463,22 @@
                     }
 
 
-                    <div class="notification-item
+                    <!-- =========================
+                         CLICKABLE NOTIFICATION
+                         ========================= -->
+
+                    <a asp-controller="Jobseeker"
+                       asp-action="NotificationDetails"
+                       asp-route-id="@notification.NotificationID"
+                       class="notification-item
                         @(notification.IsRead
-                             ? ""
-                             : "notification-unread")">
+                           ? ""
+                           : "notification-unread")"
+                       data-bs-toggle="tooltip"
+                       data-bs-placement="top"
+                       title="Open this notification to view its details.">
 
                         <div class="d-flex align-items-start">
-
 
                             <!-- ICON -->
 
@@ -564,30 +500,18 @@
                                     flex-md-row
                                     justify-content-between">
 
-
                                     <div class="pe-md-4">
 
-                                        <div class="d-flex
-                                            align-items-center
-                                            gap-2
-                                            flex-wrap">
+                                        <!-- TITLE -->
 
-                                            <h6 class="notification-title">
+                                        <h6 class="notification-title">
 
-                                                @notification.Title
+                                            @notification.Title
 
-                                            </h6>
+                                        </h6>
 
 
-                                            @if (!notification.IsRead)
-                                            {
-                                                <span class="notification-new">
-                                                    NEW
-                                                </span>
-                                            }
-
-                                        </div>
-
+                                        <!-- MESSAGE -->
 
                                         <p class="notification-message">
 
@@ -597,6 +521,8 @@
 
                                     </div>
 
+
+                                    <!-- DATE -->
 
                                     <div class="notification-date">
 
@@ -613,7 +539,7 @@
 
                         </div>
 
-                    </div>
+                    </a>
 
                 }
 
@@ -624,3 +550,21 @@
     </div>
 
 </div>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const tooltipTriggerList =
+            document.querySelectorAll('[data-bs-toggle="tooltip"]');
+
+        tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+
+            new bootstrap.Tooltip(tooltipTriggerEl);
+
+        });
+
+    });
+
+</script>

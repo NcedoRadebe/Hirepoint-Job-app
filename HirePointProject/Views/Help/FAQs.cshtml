@@ -1,0 +1,215 @@
+﻿
+@{
+    ViewData["Title"] = "Frequently Asked Questions";
+}
+
+<div class="help-page">
+
+    <div class="help-page-header">
+
+        <div>
+            <span class="help-eyebrow">
+                <i class="bi bi-chat-left-text"></i>
+                HELP CENTRE
+            </span>
+
+            <h1>Frequently Asked Questions</h1>
+
+            <p>
+                Quick answers to common HirePoint questions.
+            </p>
+        </div>
+
+        <div class="help-header-icon">
+            <i class="bi bi-question-lg"></i>
+        </div>
+
+    </div>
+
+
+    <div class="faq-list">
+
+        <div class="faq-item">
+
+            <button class="faq-question"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq1">
+
+                <span>
+                    How do I start using HirePoint?
+                </span>
+
+                <i class="bi bi-chevron-down"></i>
+
+            </button>
+
+            <div id="faq1"
+                 class="collapse">
+
+                <div class="faq-answer">
+
+                    If this is your first time using HirePoint,
+                    the system will introduce you to the main
+                    features through the User Guide tour.
+
+                    You can also open
+                    <strong>Help → User Guide</strong>
+                    at any time to replay the tour.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button class="faq-question"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq2">
+
+                <span>
+                    How can I find help while completing a form?
+                </span>
+
+                <i class="bi bi-chevron-down"></i>
+
+            </button>
+
+            <div id="faq2"
+                 class="collapse">
+
+                <div class="faq-answer">
+
+                    Look for an
+                    <strong>ⓘ</strong>
+                    information icon next to a field.
+                    Hover over the icon to see an explanation
+                    of what information should be entered.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button class="faq-question"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq3">
+
+                <span>
+                    Can I replay the User Guide?
+                </span>
+
+                <i class="bi bi-chevron-down"></i>
+
+            </button>
+
+            <div id="faq3"
+                 class="collapse">
+
+                <div class="faq-answer">
+
+                    Yes. Open the
+                    <strong>Help</strong>
+                    menu in the top-right corner and select
+                    <strong>User Guide</strong>.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button class="faq-question"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq4">
+
+                <span>
+                    Why can't I access a particular feature?
+                </span>
+
+                <i class="bi bi-chevron-down"></i>
+
+            </button>
+
+            <div id="faq4"
+                 class="collapse">
+
+                <div class="faq-answer">
+
+                    HirePoint provides different functionality
+                    depending on whether you are a Jobseeker,
+                    Recruiter or Administrator.
+
+                    Some features are therefore only available
+                    to specific account types.
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="faq-item">
+
+            <button class="faq-question"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq5">
+
+                <span>
+                    What should I do if I receive an error?
+                </span>
+
+                <i class="bi bi-chevron-down"></i>
+
+            </button>
+
+            <div id="faq5"
+                 class="collapse">
+
+                <div class="faq-answer">
+
+                    Read the message displayed by HirePoint.
+                    The system provides validation and error
+                    messages where possible.
+
+                    If the problem continues, open
+                    <strong>Help → Troubleshooting</strong>
+                    for common solutions.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="help-back-link">
+
+        <a asp-controller="Help"
+           asp-action="Index">
+
+            <i class="bi bi-arrow-left"></i>
+            Back to Help Centre
+
+        </a>
+
+    </div>
+
+</div>

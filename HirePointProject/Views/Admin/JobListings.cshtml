@@ -24,11 +24,20 @@
 
     .job-listings-header {
         margin-bottom: 22px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 24px;
+        padding: 30px 32px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 20px;
+        background: #ffffff;
+        color: #2878ad;
+        box-shadow: 0 14px 35px rgba(40, 120, 173, 0.20);
     }
 
         .job-listings-header h2 {
             font-weight: 700;
-            color: #183b56;
+            color: #2878ad;
             margin-bottom: 5px;
         }
 
@@ -436,29 +445,7 @@
                                         </a>
 
 
-                                        <!-- DELETE -->
-
-                                        <form asp-controller="Admin"
-                                              asp-action="DeleteJob"
-                                              method="post"
-                                              class="d-inline"
-                                              onsubmit="return confirm('you cannot dele job deactivate or close it?');">
-
-                                            @Html.AntiForgeryToken()
-
-                                            <input type="hidden"
-                                                   name="id"
-                                                   value="@job.JobID" />
-
-                                            <button type="submit"
-                                                    class="btn btn-sm delete-job-button">
-
-                                                <i class="bi bi-trash me-1"></i>
-                                                Delete
-
-                                            </button>
-
-                                        </form>
+                                        
 
                                     </div>
 

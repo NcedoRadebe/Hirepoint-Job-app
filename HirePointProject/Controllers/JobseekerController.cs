@@ -1,5 +1,4 @@
-﻿
-using HirePoint.Data;
+﻿using HirePoint.Data;
 using HirePoint.Helpers;
 using HirePoint.Models;
 using HirePoint.ViewModels;
@@ -74,10 +73,6 @@ namespace HirePoint.Controllers
 
         private List<Job> GetRecommendedJobs(int userID)
         {
-            // -----------------------------------------------------
-            // GET SELECTED INTEREST IDs
-            // -----------------------------------------------------
-
             var interestIds =
                 db.JobseekerInterests
                 .AsNoTracking()
@@ -147,9 +142,7 @@ namespace HirePoint.Controllers
                         }
 
 
-                        // -----------------------------------------
                         // JOB TITLE MATCH
-                        // -----------------------------------------
 
                         if (!string.IsNullOrWhiteSpace(
                             job.JobTitle) &&
@@ -161,9 +154,7 @@ namespace HirePoint.Controllers
                         }
 
 
-                        // -----------------------------------------
                         // JOB DESCRIPTION MATCH
-                        // -----------------------------------------
 
                         if (!string.IsNullOrWhiteSpace(
                             job.JobDescription) &&
@@ -175,9 +166,7 @@ namespace HirePoint.Controllers
                         }
 
 
-                        // -----------------------------------------
                         // REQUIREMENTS MATCH
-                        // -----------------------------------------
 
                         if (!string.IsNullOrWhiteSpace(
                             job.Requirements) &&
@@ -189,9 +178,7 @@ namespace HirePoint.Controllers
                         }
 
 
-                        // -----------------------------------------
                         // SKILLS MATCH
-                        // -----------------------------------------
 
                         if (!string.IsNullOrWhiteSpace(
                             job.Skills) &&
@@ -242,7 +229,8 @@ namespace HirePoint.Controllers
                     "Account");
             }
 
-            int userID = GetUserID();
+            int userID =
+                GetUserID();
 
 
             // -----------------------------------------------------
@@ -267,14 +255,6 @@ namespace HirePoint.Controllers
 
             // =====================================================
             // CHECK INTERESTS FIRST
-            // =====================================================
-            //
-            // If the jobseeker has never selected any interests,
-            // send them to the separate Interests page.
-            //
-            // This prevents the dashboard from opening before
-            // interests have been selected.
-            //
             // =====================================================
 
             bool hasInterests =
@@ -421,8 +401,37 @@ namespace HirePoint.Controllers
                 GetRecommendedJobs(userID);
 
 
-            // Interests definitely exist because the check above
-            // redirects users who have none.
+            // =====================================================
+            // START FULL TOUR AFTER SUCCESSFUL INTEREST SAVE
+            // =====================================================
+            //
+            // This flag is created ONLY after Interests POST
+            // successfully saves to the database.
+            //
+            // It is consumed once here and immediately removed.
+            //
+
+            bool startFullTour =
+                HttpContext.Session.GetString(
+                    "HirePointStartFullTour") == "true";
+
+            if (startFullTour)
+            {
+                HttpContext.Session.Remove(
+                    "HirePointStartFullTour");
+
+                ViewBag.StartFullTour = true;
+            }
+            else
+            {
+                ViewBag.StartFullTour = false;
+            }
+
+
+            // =====================================================
+            // INTERESTS EXIST
+            // =====================================================
+
             ViewBag.HasInterests = true;
 
 
@@ -595,6 +604,21 @@ namespace HirePoint.Controllers
 
                 TempData["Success"] =
                     "Your job interests have been saved successfully.";
+
+
+                // =================================================
+                // ACTIVATE TOUR ONLY AFTER SUCCESSFUL SAVE
+                // =================================================
+                //
+                // Do NOT put this before SaveChanges().
+                //
+                // The Dashboard will consume this flag and
+                // immediately remove it.
+                //
+
+                HttpContext.Session.SetString(
+                    "HirePointStartFullTour",
+                    "true");
             }
             catch (DbUpdateException ex)
             {
@@ -603,16 +627,18 @@ namespace HirePoint.Controllers
                     ?? ex.Message;
 
                 return RedirectToAction(
-                    "Interests");
+                    "Interests",
+                    "Jobseeker");
             }
 
 
             // =====================================================
-            // GO BACK TO DASHBOARD
+            // GO TO DASHBOARD
             // =====================================================
 
             return RedirectToAction(
-                "Dashboard");
+                "Dashboard",
+                "Jobseeker");
         }
 
 
@@ -645,9 +671,7 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
-            // GET JOBSEEKER QUALIFICATION
-            // =====================================================
+            // GET QUALIFICATION
 
             string? qualification =
                 GetJobseekerQualification();
@@ -665,9 +689,7 @@ namespace HirePoint.Controllers
                     .ToLower();
 
 
-            // =====================================================
             // SEARCH JOB TITLES
-            // =====================================================
 
             var results =
                 db.Jobs
@@ -747,10 +769,6 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
-            // GET JOBSEEKER QUALIFICATION
-            // =====================================================
-
             string? qualification =
                 GetJobseekerQualification();
 
@@ -766,10 +784,6 @@ namespace HirePoint.Controllers
                     .Trim()
                     .ToLower();
 
-
-            // =====================================================
-            // GET MATCHING PROVINCES
-            // =====================================================
 
             var results =
                 db.Jobs
@@ -842,10 +856,6 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
-            // GET JOBSEEKER QUALIFICATION
-            // =====================================================
-
             string? qualification =
                 GetJobseekerQualification();
 
@@ -861,10 +871,6 @@ namespace HirePoint.Controllers
                     .Trim()
                     .ToLower();
 
-
-            // =====================================================
-            // GET MATCHING CITIES
-            // =====================================================
 
             var results =
                 db.Jobs
@@ -928,38 +934,6 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
-            // GET JOBSEEKER QUALIFICATION
-            // =====================================================
-
-            string? qualification =
-                GetJobseekerQualification();
-
-            if (string.IsNullOrWhiteSpace(
-                qualification))
-            {
-                ViewBag.RecommendedJobs =
-                    new List<Job>();
-
-                ViewBag.SelectedDatePosted =
-                    string.IsNullOrWhiteSpace(datePosted)
-                        ? "any"
-                        : datePosted;
-
-                return View(
-                    new List<Job>());
-            }
-
-            string qualificationSearch =
-                qualification
-                    .Trim()
-                    .ToLower();
-
-
-            // =====================================================
-            // BASE JOB QUERY
-            // =====================================================
-
             var jobs =
                 db.Jobs
                 .Include(x => x.Recruiter)
@@ -968,28 +942,11 @@ namespace HirePoint.Controllers
                 .Include(x => x.Qualification)
                 .Where(x =>
                     x.JobStatus == "Active" &&
-                    x.ClosingDate.Date >= DateTime.Today &&
-                    x.Qualification != null &&
-                    x.Qualification.Name != null &&
-                    (
-                        x.Qualification.Name
-                            .ToLower()
-                            .Contains(
-                                qualificationSearch)
-
-                        ||
-
-                        qualificationSearch
-                            .Contains(
-                                x.Qualification.Name
-                                    .ToLower())
-                    ))
+                    x.ClosingDate.Date >= DateTime.Today)
                 .AsQueryable();
 
 
-            // =====================================================
             // SEARCH BY JOB TITLE
-            // =====================================================
 
             if (!string.IsNullOrWhiteSpace(title))
             {
@@ -1002,9 +959,7 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
             // SEARCH BY PROVINCE
-            // =====================================================
 
             if (!string.IsNullOrWhiteSpace(province))
             {
@@ -1017,9 +972,7 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
             // SEARCH BY CITY
-            // =====================================================
 
             if (!string.IsNullOrWhiteSpace(city))
             {
@@ -1032,9 +985,7 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
             // FILTER BY DATE POSTED
-            // =====================================================
 
             DateTime today =
                 DateTime.Today;
@@ -1106,9 +1057,7 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
             // SORT JOBS
-            // =====================================================
 
             switch (sort?.ToLower())
             {
@@ -1140,26 +1089,20 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
             // LOAD RESULTS
-            // =====================================================
 
             var result =
                 jobs.ToList();
 
 
-            // =====================================================
             // RECOMMENDED JOBS
-            // =====================================================
 
             ViewBag.RecommendedJobs =
                 GetRecommendedJobs(
                     GetUserID());
 
 
-            // =====================================================
             // REMEMBER FILTER VALUES
-            // =====================================================
 
             ViewBag.SelectedDatePosted =
                 string.IsNullOrWhiteSpace(datePosted)
@@ -1190,9 +1133,7 @@ namespace HirePoint.Controllers
                 GetUserID();
 
 
-            // =====================================================
             // CHECK USER
-            // =====================================================
 
             var user =
                 db.Users
@@ -1210,30 +1151,7 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
-            // GET JOBSEEKER QUALIFICATION
-            // =====================================================
-
-            string? qualification =
-                GetJobseekerQualification();
-
-            if (string.IsNullOrWhiteSpace(
-                qualification))
-            {
-                TempData["Error"] =
-                    "Your qualification has not been set. Please update your profile.";
-
-                return RedirectToAction(
-                    "Profile");
-            }
-
-            string qualificationSearch =
-                qualification.Trim();
-
-
-            // =====================================================
             // CHECK JOB
-            // =====================================================
 
             var job =
                 db.Jobs
@@ -1253,60 +1171,25 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
-            // CHECK QUALIFICATION MATCH
-            // =====================================================
-
-            bool qualificationMatches =
-                job.Qualification != null &&
-                !string.IsNullOrWhiteSpace(
-                    job.Qualification.Name) &&
-                (
-                    job.Qualification.Name
-                        .Contains(
-                            qualificationSearch,
-                            StringComparison.OrdinalIgnoreCase)
-
-                    ||
-
-                    qualificationSearch
-                        .Contains(
-                            job.Qualification.Name,
-                            StringComparison.OrdinalIgnoreCase)
-                );
-
-            if (!qualificationMatches)
-            {
-                TempData["Error"] =
-                    "You can only apply for jobs related to your qualification.";
-
-                return RedirectToAction(
-                    "Jobs");
-            }
-
-
-            // =====================================================
             // CHECK DUPLICATE APPLICATION
-            // =====================================================
 
-            bool alreadyApplied =
-                db.Applications.Any(x =>
-                    x.JobID == id &&
-                    x.JobseekerID == userID);
+            var alreadyApplied =
+                db.Applications.Any(a =>
+                    a.JobID == id &&
+                    a.JobseekerID == userID);
 
             if (alreadyApplied)
             {
-                TempData["Error"] =
+                TempData["AlreadyApplied"] =
                     "You have already applied for this job.";
 
                 return RedirectToAction(
-                    "Applications");
+                    "JobDetails",
+                    new { id = id });
             }
 
 
-            // =====================================================
             // CREATE APPLICATION
-            // =====================================================
 
             var application =
                 new JobApplication
@@ -1328,9 +1211,7 @@ namespace HirePoint.Controllers
                 application);
 
 
-            // =====================================================
             // SAVE APPLICATION
-            // =====================================================
 
             try
             {
@@ -1340,7 +1221,8 @@ namespace HirePoint.Controllers
                     "Application submitted successfully.";
 
                 return RedirectToAction(
-                    "Applications");
+                    "JobDetails",
+                    new { id = id });
             }
             catch (DbUpdateException ex)
             {
@@ -1421,6 +1303,53 @@ namespace HirePoint.Controllers
                     !x.IsRead);
 
             return View(notifications);
+        }
+
+
+        // =========================================================
+        // NOTIFICATION DETAILS
+        // =========================================================
+
+        [HttpGet]
+        public IActionResult NotificationDetails(int id)
+        {
+            if (!IsJobseeker())
+            {
+                return RedirectToAction(
+                    "Login",
+                    "Account");
+            }
+
+            int userID =
+                GetUserID();
+
+
+            var notification =
+                db.Notifications
+                .FirstOrDefault(x =>
+                    x.NotificationID == id &&
+                    x.UserID == userID);
+
+
+            if (notification == null)
+            {
+                TempData["Error"] =
+                    "Notification not found.";
+
+                return RedirectToAction(
+                    "Notifications");
+            }
+
+
+            if (!notification.IsRead)
+            {
+                notification.IsRead = true;
+
+                db.SaveChanges();
+            }
+
+
+            return View(notification);
         }
 
 
@@ -1572,9 +1501,7 @@ namespace HirePoint.Controllers
                 GetUserID();
 
 
-            // =====================================================
             // LOAD REAL USER
-            // =====================================================
 
             var user =
                 db.Users
@@ -1593,9 +1520,7 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
             // UPDATE PERSONAL INFORMATION
-            // =====================================================
 
             if (!string.IsNullOrWhiteSpace(
                 model.FullName))
@@ -1632,21 +1557,23 @@ namespace HirePoint.Controllers
             }
 
 
-            // Phone number is optional.
+            // PHONE NUMBER
+
             user.PhoneNumber =
-                model.PhoneNumber?.Trim() ?? string.Empty;
+                model.PhoneNumber?.Trim()
+                ?? string.Empty;
 
 
-            // Gender is optional.
+            // GENDER
+
             user.Gender =
-                string.IsNullOrWhiteSpace(model.Gender)
+                string.IsNullOrWhiteSpace(
+                    model.Gender)
                     ? string.Empty
                     : model.Gender.Trim();
 
 
-            // =====================================================
             // UPDATE PROVINCE
-            // =====================================================
 
             if (model.ProvinceID.HasValue)
             {
@@ -1674,9 +1601,7 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
             // UPDATE JOBSEEKER PROFILE
-            // =====================================================
 
             var profile =
                 user.JobseekerProfile;
@@ -1691,9 +1616,7 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
             // UPDATE QUALIFICATION
-            // =====================================================
 
             string? qualification =
                 model.JobseekerProfile?
@@ -1707,9 +1630,7 @@ namespace HirePoint.Controllers
             }
 
 
-            // =====================================================
             // SAVE
-            // =====================================================
 
             try
             {
@@ -1732,6 +1653,39 @@ namespace HirePoint.Controllers
 
             return RedirectToAction(
                 "Profile");
+        }
+
+
+        // =========================================================
+        // JOB DETAILS
+        // =========================================================
+
+        [HttpGet]
+        public IActionResult JobDetails(int id)
+        {
+            if (!IsJobseeker())
+            {
+                return RedirectToAction(
+                    "Login",
+                    "Account");
+            }
+
+            var job =
+                db.Jobs
+                .AsNoTracking()
+                .Include(x => x.Recruiter)
+                    .ThenInclude(x =>
+                        x.RecruiterProfile)
+                .Include(x => x.Qualification)
+                .FirstOrDefault(x =>
+                    x.JobID == id);
+
+            if (job == null)
+            {
+                return NotFound();
+            }
+
+            return View(job);
         }
 
 
@@ -1846,6 +1800,114 @@ namespace HirePoint.Controllers
                 TempData["Error"] =
                     ex.Message;
             }
+
+            return RedirectToAction(
+                "Profile");
+        }
+
+
+        // =========================================================
+        // VIEW CV
+        // =========================================================
+
+        [HttpGet]
+        public IActionResult ViewCV()
+        {
+            if (!IsJobseeker())
+            {
+                return RedirectToAction(
+                    "Login",
+                    "Account");
+            }
+
+            int userID =
+                GetUserID();
+
+
+            // GET PROFILE
+
+            var profile =
+                db.JobseekerProfiles
+                .FirstOrDefault(x =>
+                    x.UserID == userID);
+
+
+            // CHECK PROFILE
+
+            if (profile == null ||
+                string.IsNullOrWhiteSpace(
+                    profile.CVFile))
+            {
+                TempData["Error"] =
+                    "No CV has been uploaded.";
+
+                return RedirectToAction(
+                    "Profile");
+            }
+
+
+            // GET FILE PATH
+
+            string filePath =
+                Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    "wwwroot",
+                    "uploads",
+                    "cv",
+                    profile.CVFile);
+
+
+            // CHECK FILE EXISTS
+
+            if (!System.IO.File.Exists(filePath))
+            {
+                TempData["Error"] =
+                    "Your CV file could not be found.";
+
+                return RedirectToAction(
+                    "Profile");
+            }
+
+
+            // GET EXTENSION
+
+            string extension =
+                Path.GetExtension(
+                    profile.CVFile)
+                .ToLowerInvariant();
+
+
+            // PDF
+
+            if (extension == ".pdf")
+            {
+                return PhysicalFile(
+                    filePath,
+                    "application/pdf");
+            }
+
+
+            // WORD DOCUMENT
+
+            if (extension == ".doc")
+            {
+                return PhysicalFile(
+                    filePath,
+                    "application/msword");
+            }
+
+            if (extension == ".docx")
+            {
+                return PhysicalFile(
+                    filePath,
+                    "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+            }
+
+
+            // UNSUPPORTED FILE
+
+            TempData["Error"] =
+                "The uploaded CV format is not supported.";
 
             return RedirectToAction(
                 "Profile");
